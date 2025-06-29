@@ -1,0 +1,3756 @@
+package gitlab
+
+import (
+	"bytes"
+	"context"
+	"encoding/json"
+	"fmt"
+	"io"
+	"net/http"
+	"net/url"
+	"strings"
+
+	"github.com/oapi-codegen/runtime"
+)
+
+// Defines values for GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName.
+const (
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConanExportTgz   GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conan_export.tgz"
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConanPackageTgz  GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conan_package.tgz"
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConanSourcesTgz  GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conan_sources.tgz"
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConanfilePy      GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conanfile.py"
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConaninfoTxt     GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conaninfo.txt"
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConanmanifestTxt GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conanmanifest.txt"
+)
+
+// Defines values for PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName.
+const (
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConanExportTgz   PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conan_export.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConanPackageTgz  PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conan_package.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConanSourcesTgz  PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conan_sources.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConanfilePy      PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conanfile.py"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConaninfoTxt     PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conaninfo.txt"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileNameConanmanifestTxt PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName = "conanmanifest.txt"
+)
+
+// Defines values for PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName.
+const (
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileNameConanExportTgz   PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName = "conan_export.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileNameConanPackageTgz  PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName = "conan_package.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileNameConanSourcesTgz  PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName = "conan_sources.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileNameConanfilePy      PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName = "conanfile.py"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileNameConaninfoTxt     PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName = "conaninfo.txt"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileNameConanmanifestTxt PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName = "conanmanifest.txt"
+)
+
+// Defines values for GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName.
+const (
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConanExportTgz   GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conan_export.tgz"
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConanPackageTgz  GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conan_package.tgz"
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConanSourcesTgz  GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conan_sources.tgz"
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConanfilePy      GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conanfile.py"
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConaninfoTxt     GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conaninfo.txt"
+	GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConanmanifestTxt GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conanmanifest.txt"
+)
+
+// Defines values for PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName.
+const (
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConanExportTgz   PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conan_export.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConanPackageTgz  PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conan_package.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConanSourcesTgz  PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conan_sources.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConanfilePy      PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conanfile.py"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConaninfoTxt     PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conaninfo.txt"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileNameConanmanifestTxt PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName = "conanmanifest.txt"
+)
+
+// Defines values for PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName.
+const (
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileNameConanExportTgz   PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName = "conan_export.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileNameConanPackageTgz  PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName = "conan_package.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileNameConanSourcesTgz  PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName = "conan_sources.tgz"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileNameConanfilePy      PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName = "conanfile.py"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileNameConaninfoTxt     PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName = "conaninfo.txt"
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileNameConanmanifestTxt PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName = "conanmanifest.txt"
+)
+
+type GetApiV4PackagesConanV1ConansSearchParams struct {
+	// Q Search query
+	Q string `form:"q" json:"q"`
+}
+type GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName string
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameJSONBody struct {
+	// File The package file to be published (generated by Multipart middleware)
+	File string `json:"file"`
+}
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName string
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName string
+type GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName string
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameJSONBody struct {
+	// File The package file to be published (generated by Multipart middleware)
+	File string `json:"file"`
+}
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName string
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName string
+type GetApiV4PackagesMavenpathFileNameParams struct {
+	// Path Package path
+	Path string `form:"path" json:"path"`
+}
+type GetApiV4PackagesNpmpackageNameParams struct {
+	// PackageName Package name
+	PackageName string `form:"package_name" json:"package_name"`
+}
+type GetApiV4PackagesNpmPackagepackageNameDistTagsParams struct {
+	// PackageName Package name
+	PackageName string `form:"package_name" json:"package_name"`
+}
+type DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagParams struct {
+	// PackageName Package name
+	PackageName string `form:"package_name" json:"package_name"`
+}
+type PutApiV4PackagesNpmPackagepackageNameDistTagsTagJSONBody struct {
+	// PackageName Package name
+	PackageName string `json:"package_name"`
+}
+type GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionParams struct {
+	// ModuleVersion Module version
+	ModuleVersion string `form:"module_version" json:"module_version"`
+}
+type GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadParams struct {
+	// ModuleVersion Module version
+	ModuleVersion string `form:"module_version" json:"module_version"`
+}
+type GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileParams struct {
+	// ModuleVersion Module version
+	ModuleVersion string `form:"module_version" json:"module_version"`
+}
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameJSONRequestBody PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameJSONBody
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameJSONRequestBody PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameJSONBody
+type PutApiV4PackagesNpmPackagepackageNameDistTagsTagJSONRequestBody PutApiV4PackagesNpmPackagepackageNameDistTagsTagJSONBody
+type GetApiV4PackagesConanV1ConansSearchResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type DeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		RecipeSnapshot *map[string]interface{} `json:"recipe_snapshot,omitempty"`
+	}
+}
+type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		RecipeUrls *map[string]interface{} `json:"recipe_urls,omitempty"`
+	}
+}
+type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		RecipeUrls *map[string]interface{} `json:"recipe_urls,omitempty"`
+	}
+}
+type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		PackageSnapshot *map[string]interface{} `json:"package_snapshot,omitempty"`
+	}
+}
+type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		PackageUrls *map[string]interface{} `json:"package_urls,omitempty"`
+	}
+}
+type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		PackageUrls *map[string]interface{} `json:"package_urls,omitempty"`
+	}
+}
+type PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		UploadUrls *map[string]interface{} `json:"upload_urls,omitempty"`
+	}
+}
+type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		UploadUrls *map[string]interface{} `json:"upload_urls,omitempty"`
+	}
+}
+type GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesConanV1PingResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesConanV1UsersAuthenticateResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesConanV1UsersCheckCredentialsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesMavenpathFileNameResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesNpmpackageNameResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		DistTags *map[string]interface{} `json:"dist-tags,omitempty"`
+		Name     *string                 `json:"name,omitempty"`
+		Versions *map[string]interface{} `json:"versions,omitempty"`
+	}
+}
+type PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PostApiV4PackagesNpmNpmV1SecurityAuditsQuickResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesNpmPackagepackageNameDistTagsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		DistTags *map[string]interface{} `json:"dist_tags,omitempty"`
+	}
+}
+type DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Name       *string `json:"name,omitempty"`
+		Provider   *string `json:"provider,omitempty"`
+		Providers  *string `json:"providers,omitempty"`
+		Root       *string `json:"root,omitempty"`
+		Source     *string `json:"source,omitempty"`
+		Submodules *string `json:"submodules,omitempty"`
+		Version    *string `json:"version,omitempty"`
+		Versions   *string `json:"versions,omitempty"`
+	}
+}
+type GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Name       *string `json:"name,omitempty"`
+		Provider   *string `json:"provider,omitempty"`
+		Providers  *string `json:"providers,omitempty"`
+		Root       *string `json:"root,omitempty"`
+		Source     *string `json:"source,omitempty"`
+		Submodules *string `json:"submodules,omitempty"`
+		Version    *string `json:"version,omitempty"`
+		Versions   *string `json:"versions,omitempty"`
+	}
+}
+type GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *string
+}
+type GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *[]struct {
+		Modules *string `json:"modules,omitempty"`
+	}
+}
+
+func (c *Client) GetApiV4PackagesConanV1ConansSearch(ctx context.Context, params *GetApiV4PackagesConanV1ConansSearchParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1ConansSearchRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) DeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannel(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannel(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigest(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrls(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReference(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigest(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrls(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrls(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearch(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrls(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileName(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, fileName)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameWithBody(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameRequestWithBody(c.Server, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, fileName, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileName(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName, body PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, fileName, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorize(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, fileName)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileName(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, conanPackageReference, packageRevision, fileName)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameWithBody(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameRequestWithBody(c.Server, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, conanPackageReference, packageRevision, fileName, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileName(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName, body PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, conanPackageReference, packageRevision, fileName, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorize(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeRequest(c.Server, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, conanPackageReference, packageRevision, fileName)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1Ping(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1PingRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1UsersAuthenticate(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1UsersAuthenticateRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesConanV1UsersCheckCredentials(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesConanV1UsersCheckCredentialsRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesMavenpathFileName(ctx context.Context, fileName string, params *GetApiV4PackagesMavenpathFileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesMavenpathFileNameRequest(c.Server, fileName, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesNpmpackageName(ctx context.Context, params *GetApiV4PackagesNpmpackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesNpmpackageNameRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulk(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PostApiV4PackagesNpmNpmV1SecurityAuditsQuick(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostApiV4PackagesNpmNpmV1SecurityAuditsQuickRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesNpmPackagepackageNameDistTags(ctx context.Context, params *GetApiV4PackagesNpmPackagepackageNameDistTagsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesNpmPackagepackageNameDistTagsRequest(c.Server, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) DeleteApiV4PackagesNpmPackagepackageNameDistTagsTag(ctx context.Context, tag string, params *DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteApiV4PackagesNpmPackagepackageNameDistTagsTagRequest(c.Server, tag, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PutApiV4PackagesNpmPackagepackageNameDistTagsTagWithBody(ctx context.Context, tag string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiV4PackagesNpmPackagepackageNameDistTagsTagRequestWithBody(c.Server, tag, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PutApiV4PackagesNpmPackagepackageNameDistTagsTag(ctx context.Context, tag string, body PutApiV4PackagesNpmPackagepackageNameDistTagsTagJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiV4PackagesNpmPackagepackageNameDistTagsTagRequest(c.Server, tag, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystem(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemRequest(c.Server, moduleNamespace, moduleName, moduleSystem)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersion(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionRequest(c.Server, moduleNamespace, moduleName, moduleSystem, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownload(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadRequest(c.Server, moduleNamespace, moduleName, moduleSystem, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFile(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileRequest(c.Server, moduleNamespace, moduleName, moduleSystem, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownload(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadRequest(c.Server, moduleNamespace, moduleName, moduleSystem)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersions(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsRequest(c.Server, moduleNamespace, moduleName, moduleSystem)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func NewGetApiV4PackagesConanV1ConansSearchRequest(server string, params *GetApiV4PackagesConanV1ConansSearchParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/search")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "q", runtime.ParamLocationQuery, params.Q); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewDeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/%s/%s/%s/%s", pathParam0, pathParam1, pathParam2, pathParam3)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/%s/%s/%s/%s", pathParam0, pathParam1, pathParam2, pathParam3)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/%s/%s/%s/%s/digest", pathParam0, pathParam1, pathParam2, pathParam3)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/%s/%s/%s/%s/download_urls", pathParam0, pathParam1, pathParam2, pathParam3)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam4 string
+
+	pathParam4, err = runtime.StyleParamWithLocation("simple", false, "conan_package_reference", runtime.ParamLocationPath, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/%s/%s/%s/%s/packages/%s", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam4 string
+
+	pathParam4, err = runtime.StyleParamWithLocation("simple", false, "conan_package_reference", runtime.ParamLocationPath, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/%s/%s/%s/%s/packages/%s/digest", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam4 string
+
+	pathParam4, err = runtime.StyleParamWithLocation("simple", false, "conan_package_reference", runtime.ParamLocationPath, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/%s/%s/%s/%s/packages/%s/download_urls", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewPostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam4 string
+
+	pathParam4, err = runtime.StyleParamWithLocation("simple", false, "conan_package_reference", runtime.ParamLocationPath, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/%s/%s/%s/%s/packages/%s/upload_urls", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/%s/%s/%s/%s/search", pathParam0, pathParam1, pathParam2, pathParam3)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewPostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/conans/%s/%s/%s/%s/upload_urls", pathParam0, pathParam1, pathParam2, pathParam3)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam4 string
+
+	pathParam4, err = runtime.StyleParamWithLocation("simple", false, "recipe_revision", runtime.ParamLocationPath, recipeRevision)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam5 string
+
+	pathParam5, err = runtime.StyleParamWithLocation("simple", false, "file_name", runtime.ParamLocationPath, fileName)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/files/%s/%s/%s/%s/%s/export/%s", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4, pathParam5)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName, body PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameRequestWithBody(server, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, fileName, "application/json", bodyReader)
+}
+func NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameRequestWithBody(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam4 string
+
+	pathParam4, err = runtime.StyleParamWithLocation("simple", false, "recipe_revision", runtime.ParamLocationPath, recipeRevision)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam5 string
+
+	pathParam5, err = runtime.StyleParamWithLocation("simple", false, "file_name", runtime.ParamLocationPath, fileName)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/files/%s/%s/%s/%s/%s/export/%s", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4, pathParam5)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PUT", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+func NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam4 string
+
+	pathParam4, err = runtime.StyleParamWithLocation("simple", false, "recipe_revision", runtime.ParamLocationPath, recipeRevision)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam5 string
+
+	pathParam5, err = runtime.StyleParamWithLocation("simple", false, "file_name", runtime.ParamLocationPath, fileName)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/files/%s/%s/%s/%s/%s/export/%s/authorize", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4, pathParam5)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PUT", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam4 string
+
+	pathParam4, err = runtime.StyleParamWithLocation("simple", false, "recipe_revision", runtime.ParamLocationPath, recipeRevision)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam5 string
+
+	pathParam5, err = runtime.StyleParamWithLocation("simple", false, "conan_package_reference", runtime.ParamLocationPath, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam6 string
+
+	pathParam6, err = runtime.StyleParamWithLocation("simple", false, "package_revision", runtime.ParamLocationPath, packageRevision)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam7 string
+
+	pathParam7, err = runtime.StyleParamWithLocation("simple", false, "file_name", runtime.ParamLocationPath, fileName)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/files/%s/%s/%s/%s/%s/package/%s/%s/%s", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4, pathParam5, pathParam6, pathParam7)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName, body PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameRequestWithBody(server, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, conanPackageReference, packageRevision, fileName, "application/json", bodyReader)
+}
+func NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameRequestWithBody(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam4 string
+
+	pathParam4, err = runtime.StyleParamWithLocation("simple", false, "recipe_revision", runtime.ParamLocationPath, recipeRevision)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam5 string
+
+	pathParam5, err = runtime.StyleParamWithLocation("simple", false, "conan_package_reference", runtime.ParamLocationPath, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam6 string
+
+	pathParam6, err = runtime.StyleParamWithLocation("simple", false, "package_revision", runtime.ParamLocationPath, packageRevision)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam7 string
+
+	pathParam7, err = runtime.StyleParamWithLocation("simple", false, "file_name", runtime.ParamLocationPath, fileName)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/files/%s/%s/%s/%s/%s/package/%s/%s/%s", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4, pathParam5, pathParam6, pathParam7)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PUT", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+func NewPutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeRequest(server string, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "package_name", runtime.ParamLocationPath, packageName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "package_version", runtime.ParamLocationPath, packageVersion)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "package_username", runtime.ParamLocationPath, packageUsername)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam3 string
+
+	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "package_channel", runtime.ParamLocationPath, packageChannel)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam4 string
+
+	pathParam4, err = runtime.StyleParamWithLocation("simple", false, "recipe_revision", runtime.ParamLocationPath, recipeRevision)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam5 string
+
+	pathParam5, err = runtime.StyleParamWithLocation("simple", false, "conan_package_reference", runtime.ParamLocationPath, conanPackageReference)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam6 string
+
+	pathParam6, err = runtime.StyleParamWithLocation("simple", false, "package_revision", runtime.ParamLocationPath, packageRevision)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam7 string
+
+	pathParam7, err = runtime.StyleParamWithLocation("simple", false, "file_name", runtime.ParamLocationPath, fileName)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/files/%s/%s/%s/%s/%s/package/%s/%s/%s/authorize", pathParam0, pathParam1, pathParam2, pathParam3, pathParam4, pathParam5, pathParam6, pathParam7)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PUT", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1PingRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/ping")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1UsersAuthenticateRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/users/authenticate")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesConanV1UsersCheckCredentialsRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/conan/v1/users/check_credentials")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesMavenpathFileNameRequest(server string, fileName string, params *GetApiV4PackagesMavenpathFileNameParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "file_name", runtime.ParamLocationPath, fileName)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/maven/*path/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "path", runtime.ParamLocationQuery, params.Path); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesNpmpackageNameRequest(server string, params *GetApiV4PackagesNpmpackageNameParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/npm/*package_name")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "package_name", runtime.ParamLocationQuery, params.PackageName); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewPostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/npm/-/npm/v1/security/advisories/bulk")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewPostApiV4PackagesNpmNpmV1SecurityAuditsQuickRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/npm/-/npm/v1/security/audits/quick")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesNpmPackagepackageNameDistTagsRequest(server string, params *GetApiV4PackagesNpmPackagepackageNameDistTagsParams) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/npm/-/package/*package_name/dist-tags")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "package_name", runtime.ParamLocationQuery, params.PackageName); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewDeleteApiV4PackagesNpmPackagepackageNameDistTagsTagRequest(server string, tag string, params *DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "tag", runtime.ParamLocationPath, tag)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/npm/-/package/*package_name/dist-tags/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "package_name", runtime.ParamLocationQuery, params.PackageName); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewPutApiV4PackagesNpmPackagepackageNameDistTagsTagRequest(server string, tag string, body PutApiV4PackagesNpmPackagepackageNameDistTagsTagJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPutApiV4PackagesNpmPackagepackageNameDistTagsTagRequestWithBody(server, tag, "application/json", bodyReader)
+}
+func NewPutApiV4PackagesNpmPackagepackageNameDistTagsTagRequestWithBody(server string, tag string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "tag", runtime.ParamLocationPath, tag)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/npm/-/package/*package_name/dist-tags/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PUT", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+func NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemRequest(server string, moduleNamespace string, moduleName string, moduleSystem string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "module_namespace", runtime.ParamLocationPath, moduleNamespace)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "module_name", runtime.ParamLocationPath, moduleName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "module_system", runtime.ParamLocationPath, moduleSystem)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/terraform/modules/v1/%s/%s/%s", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionRequest(server string, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "module_namespace", runtime.ParamLocationPath, moduleNamespace)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "module_name", runtime.ParamLocationPath, moduleName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "module_system", runtime.ParamLocationPath, moduleSystem)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/terraform/modules/v1/%s/%s/%s/*module_version", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "module_version", runtime.ParamLocationQuery, params.ModuleVersion); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadRequest(server string, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "module_namespace", runtime.ParamLocationPath, moduleNamespace)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "module_name", runtime.ParamLocationPath, moduleName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "module_system", runtime.ParamLocationPath, moduleSystem)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/terraform/modules/v1/%s/%s/%s/*module_version/download", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "module_version", runtime.ParamLocationQuery, params.ModuleVersion); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileRequest(server string, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "module_namespace", runtime.ParamLocationPath, moduleNamespace)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "module_name", runtime.ParamLocationPath, moduleName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "module_system", runtime.ParamLocationPath, moduleSystem)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/terraform/modules/v1/%s/%s/%s/*module_version/file", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "module_version", runtime.ParamLocationQuery, params.ModuleVersion); err != nil {
+			return nil, err
+		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+			return nil, err
+		} else {
+			for k, v := range parsed {
+				for _, v2 := range v {
+					queryValues.Add(k, v2)
+				}
+			}
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadRequest(server string, moduleNamespace string, moduleName string, moduleSystem string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "module_namespace", runtime.ParamLocationPath, moduleNamespace)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "module_name", runtime.ParamLocationPath, moduleName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "module_system", runtime.ParamLocationPath, moduleSystem)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/terraform/modules/v1/%s/%s/%s/download", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsRequest(server string, moduleNamespace string, moduleName string, moduleSystem string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "module_namespace", runtime.ParamLocationPath, moduleNamespace)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "module_name", runtime.ParamLocationPath, moduleName)
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam2 string
+
+	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "module_system", runtime.ParamLocationPath, moduleSystem)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/packages/terraform/modules/v1/%s/%s/%s/versions", pathParam0, pathParam1, pathParam2)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func (r GetApiV4PackagesConanV1ConansSearchResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1ConansSearchResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r DeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r DeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1PingResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1PingResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1UsersAuthenticateResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1UsersAuthenticateResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesConanV1UsersCheckCredentialsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesConanV1UsersCheckCredentialsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesMavenpathFileNameResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesMavenpathFileNameResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesNpmpackageNameResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesNpmpackageNameResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PostApiV4PackagesNpmNpmV1SecurityAuditsQuickResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PostApiV4PackagesNpmNpmV1SecurityAuditsQuickResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesNpmPackagepackageNameDistTagsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesNpmPackagepackageNameDistTagsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1ConansSearchWithResponse(ctx context.Context, params *GetApiV4PackagesConanV1ConansSearchParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1ConansSearchResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1ConansSearch(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1ConansSearchResponse(rsp)
+}
+func (c *ClientWithResponses) DeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*DeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse, error) {
+	rsp, err := c.DeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannel(ctx, packageName, packageVersion, packageUsername, packageChannel, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannel(ctx, packageName, packageVersion, packageUsername, packageChannel, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigest(ctx, packageName, packageVersion, packageUsername, packageChannel, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrls(ctx, packageName, packageVersion, packageUsername, packageChannel, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReference(ctx, packageName, packageVersion, packageUsername, packageChannel, conanPackageReference, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigest(ctx, packageName, packageVersion, packageUsername, packageChannel, conanPackageReference, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrls(ctx, packageName, packageVersion, packageUsername, packageChannel, conanPackageReference, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsResponse(rsp)
+}
+func (c *ClientWithResponses) PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, conanPackageReference string, reqEditors ...RequestEditorFn) (*PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsResponse, error) {
+	rsp, err := c.PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrls(ctx, packageName, packageVersion, packageUsername, packageChannel, conanPackageReference, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearch(ctx, packageName, packageVersion, packageUsername, packageChannel, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchResponse(rsp)
+}
+func (c *ClientWithResponses) PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, reqEditors ...RequestEditorFn) (*PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsResponse, error) {
+	rsp, err := c.PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrls(ctx, packageName, packageVersion, packageUsername, packageChannel, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileName(ctx, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, fileName, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse(rsp)
+}
+func (c *ClientWithResponses) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameWithBodyWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse, error) {
+	rsp, err := c.PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameWithBody(ctx, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, fileName, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse(rsp)
+}
+func (c *ClientWithResponses) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameParamsFileName, body PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse, error) {
+	rsp, err := c.PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileName(ctx, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, fileName, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse(rsp)
+}
+func (c *ClientWithResponses) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeParamsFileName, reqEditors ...RequestEditorFn) (*PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeResponse, error) {
+	rsp, err := c.PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorize(ctx, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, fileName, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileName(ctx, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, conanPackageReference, packageRevision, fileName, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse(rsp)
+}
+func (c *ClientWithResponses) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameWithBodyWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse, error) {
+	rsp, err := c.PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameWithBody(ctx, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, conanPackageReference, packageRevision, fileName, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse(rsp)
+}
+func (c *ClientWithResponses) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameParamsFileName, body PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse, error) {
+	rsp, err := c.PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileName(ctx, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, conanPackageReference, packageRevision, fileName, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse(rsp)
+}
+func (c *ClientWithResponses) PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeWithResponse(ctx context.Context, packageName string, packageVersion string, packageUsername string, packageChannel string, recipeRevision string, conanPackageReference string, packageRevision string, fileName PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeParamsFileName, reqEditors ...RequestEditorFn) (*PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeResponse, error) {
+	rsp, err := c.PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorize(ctx, packageName, packageVersion, packageUsername, packageChannel, recipeRevision, conanPackageReference, packageRevision, fileName, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1PingWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1PingResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1Ping(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1PingResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1UsersAuthenticateWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1UsersAuthenticateResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1UsersAuthenticate(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1UsersAuthenticateResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesConanV1UsersCheckCredentialsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1UsersCheckCredentialsResponse, error) {
+	rsp, err := c.GetApiV4PackagesConanV1UsersCheckCredentials(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesConanV1UsersCheckCredentialsResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesMavenpathFileNameWithResponse(ctx context.Context, fileName string, params *GetApiV4PackagesMavenpathFileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesMavenpathFileNameResponse, error) {
+	rsp, err := c.GetApiV4PackagesMavenpathFileName(ctx, fileName, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesMavenpathFileNameResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesNpmpackageNameWithResponse(ctx context.Context, params *GetApiV4PackagesNpmpackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesNpmpackageNameResponse, error) {
+	rsp, err := c.GetApiV4PackagesNpmpackageName(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesNpmpackageNameResponse(rsp)
+}
+func (c *ClientWithResponses) PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkResponse, error) {
+	rsp, err := c.PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulk(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkResponse(rsp)
+}
+func (c *ClientWithResponses) PostApiV4PackagesNpmNpmV1SecurityAuditsQuickWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostApiV4PackagesNpmNpmV1SecurityAuditsQuickResponse, error) {
+	rsp, err := c.PostApiV4PackagesNpmNpmV1SecurityAuditsQuick(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostApiV4PackagesNpmNpmV1SecurityAuditsQuickResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesNpmPackagepackageNameDistTagsWithResponse(ctx context.Context, params *GetApiV4PackagesNpmPackagepackageNameDistTagsParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesNpmPackagepackageNameDistTagsResponse, error) {
+	rsp, err := c.GetApiV4PackagesNpmPackagepackageNameDistTags(ctx, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesNpmPackagepackageNameDistTagsResponse(rsp)
+}
+func (c *ClientWithResponses) DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagWithResponse(ctx context.Context, tag string, params *DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagParams, reqEditors ...RequestEditorFn) (*DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagResponse, error) {
+	rsp, err := c.DeleteApiV4PackagesNpmPackagepackageNameDistTagsTag(ctx, tag, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseDeleteApiV4PackagesNpmPackagepackageNameDistTagsTagResponse(rsp)
+}
+func (c *ClientWithResponses) PutApiV4PackagesNpmPackagepackageNameDistTagsTagWithBodyWithResponse(ctx context.Context, tag string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse, error) {
+	rsp, err := c.PutApiV4PackagesNpmPackagepackageNameDistTagsTagWithBody(ctx, tag, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse(rsp)
+}
+func (c *ClientWithResponses) PutApiV4PackagesNpmPackagepackageNameDistTagsTagWithResponse(ctx context.Context, tag string, body PutApiV4PackagesNpmPackagepackageNameDistTagsTagJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse, error) {
+	rsp, err := c.PutApiV4PackagesNpmPackagepackageNameDistTagsTag(ctx, tag, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemResponse, error) {
+	rsp, err := c.GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystem(ctx, moduleNamespace, moduleName, moduleSystem, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionResponse, error) {
+	rsp, err := c.GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersion(ctx, moduleNamespace, moduleName, moduleSystem, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadResponse, error) {
+	rsp, err := c.GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownload(ctx, moduleNamespace, moduleName, moduleSystem, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileResponse, error) {
+	rsp, err := c.GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFile(ctx, moduleNamespace, moduleName, moduleSystem, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadResponse, error) {
+	rsp, err := c.GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownload(ctx, moduleNamespace, moduleName, moduleSystem, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsResponse, error) {
+	rsp, err := c.GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersions(ctx, moduleNamespace, moduleName, moduleSystem, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsResponse(rsp)
+}
+func ParseGetApiV4PackagesConanV1ConansSearchResponse(rsp *http.Response) (*GetApiV4PackagesConanV1ConansSearchResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1ConansSearchResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseDeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse(rsp *http.Response) (*DeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse(rsp *http.Response) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			RecipeSnapshot *map[string]interface{} `json:"recipe_snapshot,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestResponse(rsp *http.Response) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			RecipeUrls *map[string]interface{} `json:"recipe_urls,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsResponse(rsp *http.Response) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			RecipeUrls *map[string]interface{} `json:"recipe_urls,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceResponse(rsp *http.Response) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			PackageSnapshot *map[string]interface{} `json:"package_snapshot,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestResponse(rsp *http.Response) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			PackageUrls *map[string]interface{} `json:"package_urls,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsResponse(rsp *http.Response) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			PackageUrls *map[string]interface{} `json:"package_urls,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParsePostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsResponse(rsp *http.Response) (*PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			UploadUrls *map[string]interface{} `json:"upload_urls,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchResponse(rsp *http.Response) (*GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsResponse(rsp *http.Response) (*PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelUploadUrlsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			UploadUrls *map[string]interface{} `json:"upload_urls,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse(rsp *http.Response) (*GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse(rsp *http.Response) (*PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeResponse(rsp *http.Response) (*PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameAuthorizeResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse(rsp *http.Response) (*GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse(rsp *http.Response) (*PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeResponse(rsp *http.Response) (*PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileNameAuthorizeResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1PingResponse(rsp *http.Response) (*GetApiV4PackagesConanV1PingResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1PingResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1UsersAuthenticateResponse(rsp *http.Response) (*GetApiV4PackagesConanV1UsersAuthenticateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1UsersAuthenticateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesConanV1UsersCheckCredentialsResponse(rsp *http.Response) (*GetApiV4PackagesConanV1UsersCheckCredentialsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesConanV1UsersCheckCredentialsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesMavenpathFileNameResponse(rsp *http.Response) (*GetApiV4PackagesMavenpathFileNameResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesMavenpathFileNameResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesNpmpackageNameResponse(rsp *http.Response) (*GetApiV4PackagesNpmpackageNameResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesNpmpackageNameResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			DistTags *map[string]interface{} `json:"dist-tags,omitempty"`
+			Name     *string                 `json:"name,omitempty"`
+			Versions *map[string]interface{} `json:"versions,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParsePostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkResponse(rsp *http.Response) (*PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePostApiV4PackagesNpmNpmV1SecurityAuditsQuickResponse(rsp *http.Response) (*PostApiV4PackagesNpmNpmV1SecurityAuditsQuickResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostApiV4PackagesNpmNpmV1SecurityAuditsQuickResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesNpmPackagepackageNameDistTagsResponse(rsp *http.Response) (*GetApiV4PackagesNpmPackagepackageNameDistTagsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesNpmPackagepackageNameDistTagsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			DistTags *map[string]interface{} `json:"dist_tags,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseDeleteApiV4PackagesNpmPackagepackageNameDistTagsTagResponse(rsp *http.Response) (*DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse(rsp *http.Response) (*PutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemResponse(rsp *http.Response) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Name       *string `json:"name,omitempty"`
+			Provider   *string `json:"provider,omitempty"`
+			Providers  *string `json:"providers,omitempty"`
+			Root       *string `json:"root,omitempty"`
+			Source     *string `json:"source,omitempty"`
+			Submodules *string `json:"submodules,omitempty"`
+			Version    *string `json:"version,omitempty"`
+			Versions   *string `json:"versions,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionResponse(rsp *http.Response) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Name       *string `json:"name,omitempty"`
+			Provider   *string `json:"provider,omitempty"`
+			Providers  *string `json:"providers,omitempty"`
+			Root       *string `json:"root,omitempty"`
+			Source     *string `json:"source,omitempty"`
+			Submodules *string `json:"submodules,omitempty"`
+			Version    *string `json:"version,omitempty"`
+			Versions   *string `json:"versions,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadResponse(rsp *http.Response) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileResponse(rsp *http.Response) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest string
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadResponse(rsp *http.Response) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsResponse(rsp *http.Response) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersionsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest []struct {
+			Modules *string `json:"modules,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}

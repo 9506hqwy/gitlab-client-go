@@ -1,0 +1,1653 @@
+package gitlab
+
+import (
+	"bytes"
+	"context"
+	"encoding/json"
+	"fmt"
+	"io"
+	"net/http"
+	"net/url"
+	"strings"
+	"time"
+
+	"github.com/oapi-codegen/runtime"
+)
+
+// Defines values for PostApiV4JobsIdArtifactsJSONBodyArtifactFormat.
+const (
+	Gzip PostApiV4JobsIdArtifactsJSONBodyArtifactFormat = "gzip"
+	Raw  PostApiV4JobsIdArtifactsJSONBodyArtifactFormat = "raw"
+	Zip  PostApiV4JobsIdArtifactsJSONBodyArtifactFormat = "zip"
+)
+
+// Defines values for PostApiV4JobsIdArtifactsJSONBodyArtifactType.
+const (
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeAccessibility        PostApiV4JobsIdArtifactsJSONBodyArtifactType = "accessibility"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeAnnotations          PostApiV4JobsIdArtifactsJSONBodyArtifactType = "annotations"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeApiFuzzing           PostApiV4JobsIdArtifactsJSONBodyArtifactType = "api_fuzzing"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeArchive              PostApiV4JobsIdArtifactsJSONBodyArtifactType = "archive"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeBrowserPerformance   PostApiV4JobsIdArtifactsJSONBodyArtifactType = "browser_performance"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeClusterApplications  PostApiV4JobsIdArtifactsJSONBodyArtifactType = "cluster_applications"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeClusterImageScanning PostApiV4JobsIdArtifactsJSONBodyArtifactType = "cluster_image_scanning"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeCobertura            PostApiV4JobsIdArtifactsJSONBodyArtifactType = "cobertura"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeCodequality          PostApiV4JobsIdArtifactsJSONBodyArtifactType = "codequality"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeContainerScanning    PostApiV4JobsIdArtifactsJSONBodyArtifactType = "container_scanning"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeCoverageFuzzing      PostApiV4JobsIdArtifactsJSONBodyArtifactType = "coverage_fuzzing"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeCyclonedx            PostApiV4JobsIdArtifactsJSONBodyArtifactType = "cyclonedx"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeDast                 PostApiV4JobsIdArtifactsJSONBodyArtifactType = "dast"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeDependencyScanning   PostApiV4JobsIdArtifactsJSONBodyArtifactType = "dependency_scanning"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeDotenv               PostApiV4JobsIdArtifactsJSONBodyArtifactType = "dotenv"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeJacoco               PostApiV4JobsIdArtifactsJSONBodyArtifactType = "jacoco"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeJunit                PostApiV4JobsIdArtifactsJSONBodyArtifactType = "junit"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeLicenseScanning      PostApiV4JobsIdArtifactsJSONBodyArtifactType = "license_scanning"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeLoadPerformance      PostApiV4JobsIdArtifactsJSONBodyArtifactType = "load_performance"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeLsif                 PostApiV4JobsIdArtifactsJSONBodyArtifactType = "lsif"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeMetadata             PostApiV4JobsIdArtifactsJSONBodyArtifactType = "metadata"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeMetrics              PostApiV4JobsIdArtifactsJSONBodyArtifactType = "metrics"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeMetricsReferee       PostApiV4JobsIdArtifactsJSONBodyArtifactType = "metrics_referee"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeNetworkReferee       PostApiV4JobsIdArtifactsJSONBodyArtifactType = "network_referee"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypePerformance          PostApiV4JobsIdArtifactsJSONBodyArtifactType = "performance"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeRepositoryXray       PostApiV4JobsIdArtifactsJSONBodyArtifactType = "repository_xray"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeRequirements         PostApiV4JobsIdArtifactsJSONBodyArtifactType = "requirements"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeRequirementsV2       PostApiV4JobsIdArtifactsJSONBodyArtifactType = "requirements_v2"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeSast                 PostApiV4JobsIdArtifactsJSONBodyArtifactType = "sast"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeSecretDetection      PostApiV4JobsIdArtifactsJSONBodyArtifactType = "secret_detection"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeTerraform            PostApiV4JobsIdArtifactsJSONBodyArtifactType = "terraform"
+	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeTrace                PostApiV4JobsIdArtifactsJSONBodyArtifactType = "trace"
+)
+
+// Defines values for PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType.
+const (
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeAccessibility        PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "accessibility"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeAnnotations          PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "annotations"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeApiFuzzing           PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "api_fuzzing"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeArchive              PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "archive"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeBrowserPerformance   PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "browser_performance"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeClusterApplications  PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "cluster_applications"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeClusterImageScanning PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "cluster_image_scanning"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeCobertura            PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "cobertura"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeCodequality          PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "codequality"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeContainerScanning    PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "container_scanning"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeCoverageFuzzing      PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "coverage_fuzzing"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeCyclonedx            PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "cyclonedx"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeDast                 PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "dast"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeDependencyScanning   PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "dependency_scanning"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeDotenv               PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "dotenv"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeJacoco               PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "jacoco"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeJunit                PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "junit"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeLicenseScanning      PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "license_scanning"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeLoadPerformance      PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "load_performance"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeLsif                 PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "lsif"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeMetadata             PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "metadata"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeMetrics              PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "metrics"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeMetricsReferee       PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "metrics_referee"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeNetworkReferee       PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "network_referee"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypePerformance          PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "performance"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeRepositoryXray       PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "repository_xray"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeRequirements         PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "requirements"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeRequirementsV2       PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "requirements_v2"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeSast                 PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "sast"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeSecretDetection      PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "secret_detection"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeTerraform            PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "terraform"
+	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeTrace                PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "trace"
+)
+
+type PostApiV4JobsRequestJSONBody struct {
+	// Info Runner's metadata
+	Info *struct {
+		// Architecture Runner's architecture
+		Architecture *string `json:"architecture,omitempty"`
+
+		// Config Runner's config
+		Config *struct {
+			// Gpus GPUs enabled
+			Gpus *string `json:"gpus,omitempty"`
+		} `json:"config,omitempty"`
+
+		// Executor Runner's executor
+		Executor *string `json:"executor,omitempty"`
+
+		// Features Runner's features
+		Features *map[string]interface{} `json:"features,omitempty"`
+
+		// Name Runner's name
+		Name *string `json:"name,omitempty"`
+
+		// Platform Runner's platform
+		Platform *string `json:"platform,omitempty"`
+
+		// Revision Runner's revision
+		Revision *string `json:"revision,omitempty"`
+
+		// Version Runner's version
+		Version *string `json:"version,omitempty"`
+	} `json:"info,omitempty"`
+
+	// LastUpdate Runner's queue last_update token
+	LastUpdate *string `json:"last_update,omitempty"`
+
+	// Session Runner's session data
+	Session *struct {
+		// Authorization Session's authorization
+		Authorization *string `json:"authorization,omitempty"`
+
+		// Certificate Session's certificate
+		Certificate *string `json:"certificate,omitempty"`
+
+		// Url Session's url
+		Url *string `json:"url,omitempty"`
+	} `json:"session,omitempty"`
+
+	// SystemId Runner's system identifier
+	SystemId *string `json:"system_id,omitempty"`
+
+	// Token Runner's authentication token
+	Token string `json:"token"`
+}
+type PutApiV4JobsIdJSONBody struct {
+	// Checksum Job's trace CRC32 checksum
+	Checksum *string `json:"checksum,omitempty"`
+
+	// ExitCode Job's exit code
+	ExitCode *int32 `json:"exit_code,omitempty"`
+
+	// FailureReason Job's failure_reason
+	FailureReason *string `json:"failure_reason,omitempty"`
+
+	// Output Build log state
+	Output *struct {
+		// Bytesize Job's trace size in bytes
+		Bytesize *int32 `json:"bytesize,omitempty"`
+
+		// Checksum Job's trace CRC32 checksum
+		Checksum *string `json:"checksum,omitempty"`
+	} `json:"output,omitempty"`
+
+	// State Job's status: success, failed
+	State *string `json:"state,omitempty"`
+
+	// Token Job token
+	Token string `json:"token"`
+}
+type GetApiV4JobsIdArtifactsParams struct {
+	// Token Job's authentication token
+	Token *string `form:"token,omitempty" json:"token,omitempty"`
+
+	// DirectDownload Perform direct download from remote storage instead of proxying artifacts
+	DirectDownload *bool `form:"direct_download,omitempty" json:"direct_download,omitempty"`
+}
+type PostApiV4JobsIdArtifactsJSONBody struct {
+	// Accessibility Specify accessibility level of artifact private/public
+	Accessibility *string `json:"accessibility,omitempty"`
+
+	// ArtifactFormat The format of artifact
+	ArtifactFormat *PostApiV4JobsIdArtifactsJSONBodyArtifactFormat `json:"artifact_format,omitempty"`
+
+	// ArtifactType The type of artifact
+	ArtifactType *PostApiV4JobsIdArtifactsJSONBodyArtifactType `json:"artifact_type,omitempty"`
+
+	// ExpireIn Specify when artifact should expire
+	ExpireIn *string `json:"expire_in,omitempty"`
+
+	// File The artifact file to store (generated by Multipart middleware)
+	File string `json:"file"`
+
+	// Metadata The artifact metadata to store (generated by Multipart middleware)
+	Metadata *string `json:"metadata,omitempty"`
+
+	// Token Job's authentication token
+	Token *string `json:"token,omitempty"`
+}
+type PostApiV4JobsIdArtifactsJSONBodyArtifactFormat string
+type PostApiV4JobsIdArtifactsJSONBodyArtifactType string
+type PostApiV4JobsIdArtifactsAuthorizeJSONBody struct {
+	// ArtifactType The type of artifact
+	ArtifactType *PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType `json:"artifact_type,omitempty"`
+
+	// Filesize Size of artifact file
+	Filesize *int32 `json:"filesize,omitempty"`
+
+	// Token Job's authentication token
+	Token *string `json:"token,omitempty"`
+}
+type PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType string
+type PatchApiV4JobsIdTraceJSONBody struct {
+	// DebugTrace Enable or Disable the debug trace
+	DebugTrace *bool `json:"debug_trace,omitempty"`
+
+	// Token Job's authentication token
+	Token *string `json:"token,omitempty"`
+}
+type PostApiV4JobsRequestJSONRequestBody PostApiV4JobsRequestJSONBody
+type PutApiV4JobsIdJSONRequestBody PutApiV4JobsIdJSONBody
+type PostApiV4JobsIdArtifactsJSONRequestBody PostApiV4JobsIdArtifactsJSONBody
+type PostApiV4JobsIdArtifactsAuthorizeJSONRequestBody PostApiV4JobsIdArtifactsAuthorizeJSONBody
+type PatchApiV4JobsIdTraceJSONRequestBody PatchApiV4JobsIdTraceJSONBody
+type GetApiV4JobResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		AllowFailure *bool `json:"allow_failure,omitempty"`
+		Archived     *bool `json:"archived,omitempty"`
+		Artifacts    *[]struct {
+			FileFormat *GetApiV4Job200ArtifactsFileFormat `json:"file_format,omitempty"`
+			FileType   *GetApiV4Job200ArtifactsFileType   `json:"file_type,omitempty"`
+			Filename   *string                            `json:"filename,omitempty"`
+			Size       *int32                             `json:"size,omitempty"`
+		} `json:"artifacts,omitempty"`
+		ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
+		ArtifactsFile     *struct {
+			Filename *string `json:"filename,omitempty"`
+			Size     *int32  `json:"size,omitempty"`
+		} `json:"artifacts_file,omitempty"`
+
+		// Commit API_Entities_Commit model
+		Commit *struct {
+			AuthorEmail      *string                 `json:"author_email,omitempty"`
+			AuthorName       *string                 `json:"author_name,omitempty"`
+			AuthoredDate     *time.Time              `json:"authored_date,omitempty"`
+			CommittedDate    *time.Time              `json:"committed_date,omitempty"`
+			CommitterEmail   *string                 `json:"committer_email,omitempty"`
+			CommitterName    *string                 `json:"committer_name,omitempty"`
+			CreatedAt        *time.Time              `json:"created_at,omitempty"`
+			ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
+			Id               *string                 `json:"id,omitempty"`
+			Message          *string                 `json:"message,omitempty"`
+			ParentIds        *[]string               `json:"parent_ids,omitempty"`
+			ShortId          *string                 `json:"short_id,omitempty"`
+			Title            *string                 `json:"title,omitempty"`
+			Trailers         *map[string]interface{} `json:"trailers,omitempty"`
+			WebUrl           *string                 `json:"web_url,omitempty"`
+		} `json:"commit,omitempty"`
+		Coverage  *float32   `json:"coverage,omitempty"`
+		CreatedAt *time.Time `json:"created_at,omitempty"`
+
+		// Duration Time spent running
+		Duration      *float32   `json:"duration,omitempty"`
+		ErasedAt      *time.Time `json:"erased_at,omitempty"`
+		FailureReason *string    `json:"failure_reason,omitempty"`
+		FinishedAt    *time.Time `json:"finished_at,omitempty"`
+		Id            *int32     `json:"id,omitempty"`
+		Name          *string    `json:"name,omitempty"`
+
+		// Pipeline API_Entities_Ci_PipelineBasic model
+		Pipeline *struct {
+			CreatedAt *time.Time `json:"created_at,omitempty"`
+			Id        *int32     `json:"id,omitempty"`
+			Iid       *int32     `json:"iid,omitempty"`
+			ProjectId *int32     `json:"project_id,omitempty"`
+			Ref       *string    `json:"ref,omitempty"`
+			Sha       *string    `json:"sha,omitempty"`
+			Source    *string    `json:"source,omitempty"`
+			Status    *string    `json:"status,omitempty"`
+			UpdatedAt *time.Time `json:"updated_at,omitempty"`
+			WebUrl    *string    `json:"web_url,omitempty"`
+		} `json:"pipeline,omitempty"`
+		Project *struct {
+			CiJobTokenScopeEnabled *string `json:"ci_job_token_scope_enabled,omitempty"`
+		} `json:"project,omitempty"`
+
+		// QueuedDuration Time spent enqueued
+		QueuedDuration *float32 `json:"queued_duration,omitempty"`
+		Ref            *string  `json:"ref,omitempty"`
+
+		// Runner API_Entities_Ci_Runner model
+		Runner *struct {
+			Active    *bool      `json:"active,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty"`
+
+			// CreatedBy API_Entities_UserBasic model
+			CreatedBy *struct {
+				AvatarPath       *string `json:"avatar_path,omitempty"`
+				AvatarUrl        *string `json:"avatar_url,omitempty"`
+				CustomAttributes *[]struct {
+					Key   *string `json:"key,omitempty"`
+					Value *string `json:"value,omitempty"`
+				} `json:"custom_attributes,omitempty"`
+				Id          *int32  `json:"id,omitempty"`
+				Locked      *bool   `json:"locked,omitempty"`
+				Name        *string `json:"name,omitempty"`
+				PublicEmail *string `json:"public_email,omitempty"`
+				State       *string `json:"state,omitempty"`
+				Username    *string `json:"username,omitempty"`
+				WebUrl      *string `json:"web_url,omitempty"`
+			} `json:"created_by,omitempty"`
+			Description *string                         `json:"description,omitempty"`
+			Id          *int32                          `json:"id,omitempty"`
+			IpAddress   *string                         `json:"ip_address,omitempty"`
+			IsShared    *bool                           `json:"is_shared,omitempty"`
+			Name        *string                         `json:"name,omitempty"`
+			Online      *bool                           `json:"online,omitempty"`
+			Paused      *bool                           `json:"paused,omitempty"`
+			RunnerType  *GetApiV4Job200RunnerRunnerType `json:"runner_type,omitempty"`
+			Status      *string                         `json:"status,omitempty"`
+		} `json:"runner,omitempty"`
+
+		// RunnerManager API_Entities_Ci_RunnerManager model
+		RunnerManager *struct {
+			Architecture *string `json:"architecture,omitempty"`
+			ContactedAt  *string `json:"contacted_at,omitempty"`
+			CreatedAt    *string `json:"created_at,omitempty"`
+			Id           *int32  `json:"id,omitempty"`
+			IpAddress    *string `json:"ip_address,omitempty"`
+			Platform     *string `json:"platform,omitempty"`
+			Revision     *string `json:"revision,omitempty"`
+			Status       *string `json:"status,omitempty"`
+			SystemId     *string `json:"system_id,omitempty"`
+			Version      *string `json:"version,omitempty"`
+		} `json:"runner_manager,omitempty"`
+		Stage     *string    `json:"stage,omitempty"`
+		StartedAt *time.Time `json:"started_at,omitempty"`
+		Status    *string    `json:"status,omitempty"`
+		Tag       *bool      `json:"tag,omitempty"`
+		TagList   *[]string  `json:"tag_list,omitempty"`
+		User      *struct {
+			AvatarPath       *string `json:"avatar_path,omitempty"`
+			AvatarUrl        *string `json:"avatar_url,omitempty"`
+			Bio              *string `json:"bio,omitempty"`
+			Bot              *string `json:"bot,omitempty"`
+			CreatedAt        *string `json:"created_at,omitempty"`
+			CustomAttributes *[]struct {
+				Key   *string `json:"key,omitempty"`
+				Value *string `json:"value,omitempty"`
+			} `json:"custom_attributes,omitempty"`
+			Discord         *string `json:"discord,omitempty"`
+			Followers       *string `json:"followers,omitempty"`
+			Following       *string `json:"following,omitempty"`
+			Github          *string `json:"github,omitempty"`
+			Id              *int32  `json:"id,omitempty"`
+			IsFollowed      *string `json:"is_followed,omitempty"`
+			JobTitle        *string `json:"job_title,omitempty"`
+			Linkedin        *string `json:"linkedin,omitempty"`
+			LocalTime       *string `json:"local_time,omitempty"`
+			Location        *string `json:"location,omitempty"`
+			Locked          *bool   `json:"locked,omitempty"`
+			Name            *string `json:"name,omitempty"`
+			Organization    *string `json:"organization,omitempty"`
+			Pronouns        *string `json:"pronouns,omitempty"`
+			PublicEmail     *string `json:"public_email,omitempty"`
+			Skype           *string `json:"skype,omitempty"`
+			State           *string `json:"state,omitempty"`
+			Twitter         *string `json:"twitter,omitempty"`
+			Username        *string `json:"username,omitempty"`
+			WebUrl          *string `json:"web_url,omitempty"`
+			WebsiteUrl      *string `json:"website_url,omitempty"`
+			WorkInformation *string `json:"work_information,omitempty"`
+		} `json:"user,omitempty"`
+		WebUrl *string `json:"web_url,omitempty"`
+	}
+}
+type GetApiV4Job200ArtifactsFileFormat string
+type GetApiV4Job200ArtifactsFileType string
+type GetApiV4Job200RunnerRunnerType string
+type GetApiV4JobAllowedAgentsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		AllowFailure *bool `json:"allow_failure,omitempty"`
+		Archived     *bool `json:"archived,omitempty"`
+		Artifacts    *[]struct {
+			FileFormat *GetApiV4JobAllowedAgents200ArtifactsFileFormat `json:"file_format,omitempty"`
+			FileType   *GetApiV4JobAllowedAgents200ArtifactsFileType   `json:"file_type,omitempty"`
+			Filename   *string                                         `json:"filename,omitempty"`
+			Size       *int32                                          `json:"size,omitempty"`
+		} `json:"artifacts,omitempty"`
+		ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
+		ArtifactsFile     *struct {
+			Filename *string `json:"filename,omitempty"`
+			Size     *int32  `json:"size,omitempty"`
+		} `json:"artifacts_file,omitempty"`
+
+		// Commit API_Entities_Commit model
+		Commit *struct {
+			AuthorEmail      *string                 `json:"author_email,omitempty"`
+			AuthorName       *string                 `json:"author_name,omitempty"`
+			AuthoredDate     *time.Time              `json:"authored_date,omitempty"`
+			CommittedDate    *time.Time              `json:"committed_date,omitempty"`
+			CommitterEmail   *string                 `json:"committer_email,omitempty"`
+			CommitterName    *string                 `json:"committer_name,omitempty"`
+			CreatedAt        *time.Time              `json:"created_at,omitempty"`
+			ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
+			Id               *string                 `json:"id,omitempty"`
+			Message          *string                 `json:"message,omitempty"`
+			ParentIds        *[]string               `json:"parent_ids,omitempty"`
+			ShortId          *string                 `json:"short_id,omitempty"`
+			Title            *string                 `json:"title,omitempty"`
+			Trailers         *map[string]interface{} `json:"trailers,omitempty"`
+			WebUrl           *string                 `json:"web_url,omitempty"`
+		} `json:"commit,omitempty"`
+		Coverage  *float32   `json:"coverage,omitempty"`
+		CreatedAt *time.Time `json:"created_at,omitempty"`
+
+		// Duration Time spent running
+		Duration      *float32   `json:"duration,omitempty"`
+		ErasedAt      *time.Time `json:"erased_at,omitempty"`
+		FailureReason *string    `json:"failure_reason,omitempty"`
+		FinishedAt    *time.Time `json:"finished_at,omitempty"`
+		Id            *int32     `json:"id,omitempty"`
+		Name          *string    `json:"name,omitempty"`
+
+		// Pipeline API_Entities_Ci_PipelineBasic model
+		Pipeline *struct {
+			CreatedAt *time.Time `json:"created_at,omitempty"`
+			Id        *int32     `json:"id,omitempty"`
+			Iid       *int32     `json:"iid,omitempty"`
+			ProjectId *int32     `json:"project_id,omitempty"`
+			Ref       *string    `json:"ref,omitempty"`
+			Sha       *string    `json:"sha,omitempty"`
+			Source    *string    `json:"source,omitempty"`
+			Status    *string    `json:"status,omitempty"`
+			UpdatedAt *time.Time `json:"updated_at,omitempty"`
+			WebUrl    *string    `json:"web_url,omitempty"`
+		} `json:"pipeline,omitempty"`
+		Project *struct {
+			CiJobTokenScopeEnabled *string `json:"ci_job_token_scope_enabled,omitempty"`
+		} `json:"project,omitempty"`
+
+		// QueuedDuration Time spent enqueued
+		QueuedDuration *float32 `json:"queued_duration,omitempty"`
+		Ref            *string  `json:"ref,omitempty"`
+
+		// Runner API_Entities_Ci_Runner model
+		Runner *struct {
+			Active    *bool      `json:"active,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty"`
+
+			// CreatedBy API_Entities_UserBasic model
+			CreatedBy *struct {
+				AvatarPath       *string `json:"avatar_path,omitempty"`
+				AvatarUrl        *string `json:"avatar_url,omitempty"`
+				CustomAttributes *[]struct {
+					Key   *string `json:"key,omitempty"`
+					Value *string `json:"value,omitempty"`
+				} `json:"custom_attributes,omitempty"`
+				Id          *int32  `json:"id,omitempty"`
+				Locked      *bool   `json:"locked,omitempty"`
+				Name        *string `json:"name,omitempty"`
+				PublicEmail *string `json:"public_email,omitempty"`
+				State       *string `json:"state,omitempty"`
+				Username    *string `json:"username,omitempty"`
+				WebUrl      *string `json:"web_url,omitempty"`
+			} `json:"created_by,omitempty"`
+			Description *string                                      `json:"description,omitempty"`
+			Id          *int32                                       `json:"id,omitempty"`
+			IpAddress   *string                                      `json:"ip_address,omitempty"`
+			IsShared    *bool                                        `json:"is_shared,omitempty"`
+			Name        *string                                      `json:"name,omitempty"`
+			Online      *bool                                        `json:"online,omitempty"`
+			Paused      *bool                                        `json:"paused,omitempty"`
+			RunnerType  *GetApiV4JobAllowedAgents200RunnerRunnerType `json:"runner_type,omitempty"`
+			Status      *string                                      `json:"status,omitempty"`
+		} `json:"runner,omitempty"`
+
+		// RunnerManager API_Entities_Ci_RunnerManager model
+		RunnerManager *struct {
+			Architecture *string `json:"architecture,omitempty"`
+			ContactedAt  *string `json:"contacted_at,omitempty"`
+			CreatedAt    *string `json:"created_at,omitempty"`
+			Id           *int32  `json:"id,omitempty"`
+			IpAddress    *string `json:"ip_address,omitempty"`
+			Platform     *string `json:"platform,omitempty"`
+			Revision     *string `json:"revision,omitempty"`
+			Status       *string `json:"status,omitempty"`
+			SystemId     *string `json:"system_id,omitempty"`
+			Version      *string `json:"version,omitempty"`
+		} `json:"runner_manager,omitempty"`
+		Stage     *string    `json:"stage,omitempty"`
+		StartedAt *time.Time `json:"started_at,omitempty"`
+		Status    *string    `json:"status,omitempty"`
+		Tag       *bool      `json:"tag,omitempty"`
+		TagList   *[]string  `json:"tag_list,omitempty"`
+		User      *struct {
+			AvatarPath       *string `json:"avatar_path,omitempty"`
+			AvatarUrl        *string `json:"avatar_url,omitempty"`
+			Bio              *string `json:"bio,omitempty"`
+			Bot              *string `json:"bot,omitempty"`
+			CreatedAt        *string `json:"created_at,omitempty"`
+			CustomAttributes *[]struct {
+				Key   *string `json:"key,omitempty"`
+				Value *string `json:"value,omitempty"`
+			} `json:"custom_attributes,omitempty"`
+			Discord         *string `json:"discord,omitempty"`
+			Followers       *string `json:"followers,omitempty"`
+			Following       *string `json:"following,omitempty"`
+			Github          *string `json:"github,omitempty"`
+			Id              *int32  `json:"id,omitempty"`
+			IsFollowed      *string `json:"is_followed,omitempty"`
+			JobTitle        *string `json:"job_title,omitempty"`
+			Linkedin        *string `json:"linkedin,omitempty"`
+			LocalTime       *string `json:"local_time,omitempty"`
+			Location        *string `json:"location,omitempty"`
+			Locked          *bool   `json:"locked,omitempty"`
+			Name            *string `json:"name,omitempty"`
+			Organization    *string `json:"organization,omitempty"`
+			Pronouns        *string `json:"pronouns,omitempty"`
+			PublicEmail     *string `json:"public_email,omitempty"`
+			Skype           *string `json:"skype,omitempty"`
+			State           *string `json:"state,omitempty"`
+			Twitter         *string `json:"twitter,omitempty"`
+			Username        *string `json:"username,omitempty"`
+			WebUrl          *string `json:"web_url,omitempty"`
+			WebsiteUrl      *string `json:"website_url,omitempty"`
+			WorkInformation *string `json:"work_information,omitempty"`
+		} `json:"user,omitempty"`
+		WebUrl *string `json:"web_url,omitempty"`
+	}
+}
+type GetApiV4JobAllowedAgents200ArtifactsFileFormat string
+type GetApiV4JobAllowedAgents200ArtifactsFileType string
+type GetApiV4JobAllowedAgents200RunnerRunnerType string
+type PostApiV4JobsRequestResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PutApiV4JobsIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type GetApiV4JobsIdArtifactsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PostApiV4JobsIdArtifactsResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PostApiV4JobsIdArtifactsAuthorizeResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+type PatchApiV4JobsIdTraceResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+
+func (c *Client) GetApiV4Job(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4JobRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4JobAllowedAgents(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4JobAllowedAgentsRequest(c.Server)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PostApiV4JobsRequestWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostApiV4JobsRequestRequestWithBody(c.Server, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PostApiV4JobsRequest(ctx context.Context, body PostApiV4JobsRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostApiV4JobsRequestRequest(c.Server, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PutApiV4JobsIdWithBody(ctx context.Context, id int32, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiV4JobsIdRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PutApiV4JobsId(ctx context.Context, id int32, body PutApiV4JobsIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutApiV4JobsIdRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) GetApiV4JobsIdArtifacts(ctx context.Context, id int32, params *GetApiV4JobsIdArtifactsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetApiV4JobsIdArtifactsRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PostApiV4JobsIdArtifactsWithBody(ctx context.Context, id int32, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostApiV4JobsIdArtifactsRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PostApiV4JobsIdArtifacts(ctx context.Context, id int32, body PostApiV4JobsIdArtifactsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostApiV4JobsIdArtifactsRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PostApiV4JobsIdArtifactsAuthorizeWithBody(ctx context.Context, id int32, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostApiV4JobsIdArtifactsAuthorizeRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PostApiV4JobsIdArtifactsAuthorize(ctx context.Context, id int32, body PostApiV4JobsIdArtifactsAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostApiV4JobsIdArtifactsAuthorizeRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PatchApiV4JobsIdTraceWithBody(ctx context.Context, id int32, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchApiV4JobsIdTraceRequestWithBody(c.Server, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func (c *Client) PatchApiV4JobsIdTrace(ctx context.Context, id int32, body PatchApiV4JobsIdTraceJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPatchApiV4JobsIdTraceRequest(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+func NewGetApiV4JobRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/job")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewGetApiV4JobAllowedAgentsRequest(server string) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/job/allowed_agents")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewPostApiV4JobsRequestRequest(server string, body PostApiV4JobsRequestJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostApiV4JobsRequestRequestWithBody(server, "application/json", bodyReader)
+}
+func NewPostApiV4JobsRequestRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/jobs/request")
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+func NewPutApiV4JobsIdRequest(server string, id int32, body PutApiV4JobsIdJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPutApiV4JobsIdRequestWithBody(server, id, "application/json", bodyReader)
+}
+func NewPutApiV4JobsIdRequestWithBody(server string, id int32, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/jobs/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PUT", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+func NewGetApiV4JobsIdArtifactsRequest(server string, id int32, params *GetApiV4JobsIdArtifactsParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/jobs/%s/artifacts", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Token != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "token", runtime.ParamLocationQuery, *params.Token); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.DirectDownload != nil {
+
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "direct_download", runtime.ParamLocationQuery, *params.DirectDownload); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+func NewPostApiV4JobsIdArtifactsRequest(server string, id int32, body PostApiV4JobsIdArtifactsJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostApiV4JobsIdArtifactsRequestWithBody(server, id, "application/json", bodyReader)
+}
+func NewPostApiV4JobsIdArtifactsRequestWithBody(server string, id int32, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/jobs/%s/artifacts", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+func NewPostApiV4JobsIdArtifactsAuthorizeRequest(server string, id int32, body PostApiV4JobsIdArtifactsAuthorizeJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPostApiV4JobsIdArtifactsAuthorizeRequestWithBody(server, id, "application/json", bodyReader)
+}
+func NewPostApiV4JobsIdArtifactsAuthorizeRequestWithBody(server string, id int32, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/jobs/%s/artifacts/authorize", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+func NewPatchApiV4JobsIdTraceRequest(server string, id int32, body PatchApiV4JobsIdTraceJSONRequestBody) (*http.Request, error) {
+	var bodyReader io.Reader
+	buf, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+	bodyReader = bytes.NewReader(buf)
+	return NewPatchApiV4JobsIdTraceRequestWithBody(server, id, "application/json", bodyReader)
+}
+func NewPatchApiV4JobsIdTraceRequestWithBody(server string, id int32, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/v4/jobs/%s/trace", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PATCH", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+func (r GetApiV4JobResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4JobResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4JobAllowedAgentsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4JobAllowedAgentsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PostApiV4JobsRequestResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PostApiV4JobsRequestResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PutApiV4JobsIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PutApiV4JobsIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r GetApiV4JobsIdArtifactsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r GetApiV4JobsIdArtifactsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PostApiV4JobsIdArtifactsResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PostApiV4JobsIdArtifactsResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PostApiV4JobsIdArtifactsAuthorizeResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PostApiV4JobsIdArtifactsAuthorizeResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (r PatchApiV4JobsIdTraceResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+func (r PatchApiV4JobsIdTraceResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+func (c *ClientWithResponses) GetApiV4JobWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetApiV4JobResponse, error) {
+	rsp, err := c.GetApiV4Job(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4JobResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4JobAllowedAgentsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetApiV4JobAllowedAgentsResponse, error) {
+	rsp, err := c.GetApiV4JobAllowedAgents(ctx, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4JobAllowedAgentsResponse(rsp)
+}
+func (c *ClientWithResponses) PostApiV4JobsRequestWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostApiV4JobsRequestResponse, error) {
+	rsp, err := c.PostApiV4JobsRequestWithBody(ctx, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostApiV4JobsRequestResponse(rsp)
+}
+func (c *ClientWithResponses) PostApiV4JobsRequestWithResponse(ctx context.Context, body PostApiV4JobsRequestJSONRequestBody, reqEditors ...RequestEditorFn) (*PostApiV4JobsRequestResponse, error) {
+	rsp, err := c.PostApiV4JobsRequest(ctx, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostApiV4JobsRequestResponse(rsp)
+}
+func (c *ClientWithResponses) PutApiV4JobsIdWithBodyWithResponse(ctx context.Context, id int32, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4JobsIdResponse, error) {
+	rsp, err := c.PutApiV4JobsIdWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiV4JobsIdResponse(rsp)
+}
+func (c *ClientWithResponses) PutApiV4JobsIdWithResponse(ctx context.Context, id int32, body PutApiV4JobsIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4JobsIdResponse, error) {
+	rsp, err := c.PutApiV4JobsId(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutApiV4JobsIdResponse(rsp)
+}
+func (c *ClientWithResponses) GetApiV4JobsIdArtifactsWithResponse(ctx context.Context, id int32, params *GetApiV4JobsIdArtifactsParams, reqEditors ...RequestEditorFn) (*GetApiV4JobsIdArtifactsResponse, error) {
+	rsp, err := c.GetApiV4JobsIdArtifacts(ctx, id, params, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetApiV4JobsIdArtifactsResponse(rsp)
+}
+func (c *ClientWithResponses) PostApiV4JobsIdArtifactsWithBodyWithResponse(ctx context.Context, id int32, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostApiV4JobsIdArtifactsResponse, error) {
+	rsp, err := c.PostApiV4JobsIdArtifactsWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostApiV4JobsIdArtifactsResponse(rsp)
+}
+func (c *ClientWithResponses) PostApiV4JobsIdArtifactsWithResponse(ctx context.Context, id int32, body PostApiV4JobsIdArtifactsJSONRequestBody, reqEditors ...RequestEditorFn) (*PostApiV4JobsIdArtifactsResponse, error) {
+	rsp, err := c.PostApiV4JobsIdArtifacts(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostApiV4JobsIdArtifactsResponse(rsp)
+}
+func (c *ClientWithResponses) PostApiV4JobsIdArtifactsAuthorizeWithBodyWithResponse(ctx context.Context, id int32, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostApiV4JobsIdArtifactsAuthorizeResponse, error) {
+	rsp, err := c.PostApiV4JobsIdArtifactsAuthorizeWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostApiV4JobsIdArtifactsAuthorizeResponse(rsp)
+}
+func (c *ClientWithResponses) PostApiV4JobsIdArtifactsAuthorizeWithResponse(ctx context.Context, id int32, body PostApiV4JobsIdArtifactsAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*PostApiV4JobsIdArtifactsAuthorizeResponse, error) {
+	rsp, err := c.PostApiV4JobsIdArtifactsAuthorize(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePostApiV4JobsIdArtifactsAuthorizeResponse(rsp)
+}
+func (c *ClientWithResponses) PatchApiV4JobsIdTraceWithBodyWithResponse(ctx context.Context, id int32, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PatchApiV4JobsIdTraceResponse, error) {
+	rsp, err := c.PatchApiV4JobsIdTraceWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchApiV4JobsIdTraceResponse(rsp)
+}
+func (c *ClientWithResponses) PatchApiV4JobsIdTraceWithResponse(ctx context.Context, id int32, body PatchApiV4JobsIdTraceJSONRequestBody, reqEditors ...RequestEditorFn) (*PatchApiV4JobsIdTraceResponse, error) {
+	rsp, err := c.PatchApiV4JobsIdTrace(ctx, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePatchApiV4JobsIdTraceResponse(rsp)
+}
+func ParseGetApiV4JobResponse(rsp *http.Response) (*GetApiV4JobResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4JobResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			AllowFailure *bool `json:"allow_failure,omitempty"`
+			Archived     *bool `json:"archived,omitempty"`
+			Artifacts    *[]struct {
+				FileFormat *GetApiV4Job200ArtifactsFileFormat `json:"file_format,omitempty"`
+				FileType   *GetApiV4Job200ArtifactsFileType   `json:"file_type,omitempty"`
+				Filename   *string                            `json:"filename,omitempty"`
+				Size       *int32                             `json:"size,omitempty"`
+			} `json:"artifacts,omitempty"`
+			ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
+			ArtifactsFile     *struct {
+				Filename *string `json:"filename,omitempty"`
+				Size     *int32  `json:"size,omitempty"`
+			} `json:"artifacts_file,omitempty"`
+
+			// Commit API_Entities_Commit model
+			Commit *struct {
+				AuthorEmail      *string                 `json:"author_email,omitempty"`
+				AuthorName       *string                 `json:"author_name,omitempty"`
+				AuthoredDate     *time.Time              `json:"authored_date,omitempty"`
+				CommittedDate    *time.Time              `json:"committed_date,omitempty"`
+				CommitterEmail   *string                 `json:"committer_email,omitempty"`
+				CommitterName    *string                 `json:"committer_name,omitempty"`
+				CreatedAt        *time.Time              `json:"created_at,omitempty"`
+				ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
+				Id               *string                 `json:"id,omitempty"`
+				Message          *string                 `json:"message,omitempty"`
+				ParentIds        *[]string               `json:"parent_ids,omitempty"`
+				ShortId          *string                 `json:"short_id,omitempty"`
+				Title            *string                 `json:"title,omitempty"`
+				Trailers         *map[string]interface{} `json:"trailers,omitempty"`
+				WebUrl           *string                 `json:"web_url,omitempty"`
+			} `json:"commit,omitempty"`
+			Coverage  *float32   `json:"coverage,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty"`
+
+			// Duration Time spent running
+			Duration      *float32   `json:"duration,omitempty"`
+			ErasedAt      *time.Time `json:"erased_at,omitempty"`
+			FailureReason *string    `json:"failure_reason,omitempty"`
+			FinishedAt    *time.Time `json:"finished_at,omitempty"`
+			Id            *int32     `json:"id,omitempty"`
+			Name          *string    `json:"name,omitempty"`
+
+			// Pipeline API_Entities_Ci_PipelineBasic model
+			Pipeline *struct {
+				CreatedAt *time.Time `json:"created_at,omitempty"`
+				Id        *int32     `json:"id,omitempty"`
+				Iid       *int32     `json:"iid,omitempty"`
+				ProjectId *int32     `json:"project_id,omitempty"`
+				Ref       *string    `json:"ref,omitempty"`
+				Sha       *string    `json:"sha,omitempty"`
+				Source    *string    `json:"source,omitempty"`
+				Status    *string    `json:"status,omitempty"`
+				UpdatedAt *time.Time `json:"updated_at,omitempty"`
+				WebUrl    *string    `json:"web_url,omitempty"`
+			} `json:"pipeline,omitempty"`
+			Project *struct {
+				CiJobTokenScopeEnabled *string `json:"ci_job_token_scope_enabled,omitempty"`
+			} `json:"project,omitempty"`
+
+			// QueuedDuration Time spent enqueued
+			QueuedDuration *float32 `json:"queued_duration,omitempty"`
+			Ref            *string  `json:"ref,omitempty"`
+
+			// Runner API_Entities_Ci_Runner model
+			Runner *struct {
+				Active    *bool      `json:"active,omitempty"`
+				CreatedAt *time.Time `json:"created_at,omitempty"`
+
+				// CreatedBy API_Entities_UserBasic model
+				CreatedBy *struct {
+					AvatarPath       *string `json:"avatar_path,omitempty"`
+					AvatarUrl        *string `json:"avatar_url,omitempty"`
+					CustomAttributes *[]struct {
+						Key   *string `json:"key,omitempty"`
+						Value *string `json:"value,omitempty"`
+					} `json:"custom_attributes,omitempty"`
+					Id          *int32  `json:"id,omitempty"`
+					Locked      *bool   `json:"locked,omitempty"`
+					Name        *string `json:"name,omitempty"`
+					PublicEmail *string `json:"public_email,omitempty"`
+					State       *string `json:"state,omitempty"`
+					Username    *string `json:"username,omitempty"`
+					WebUrl      *string `json:"web_url,omitempty"`
+				} `json:"created_by,omitempty"`
+				Description *string                         `json:"description,omitempty"`
+				Id          *int32                          `json:"id,omitempty"`
+				IpAddress   *string                         `json:"ip_address,omitempty"`
+				IsShared    *bool                           `json:"is_shared,omitempty"`
+				Name        *string                         `json:"name,omitempty"`
+				Online      *bool                           `json:"online,omitempty"`
+				Paused      *bool                           `json:"paused,omitempty"`
+				RunnerType  *GetApiV4Job200RunnerRunnerType `json:"runner_type,omitempty"`
+				Status      *string                         `json:"status,omitempty"`
+			} `json:"runner,omitempty"`
+
+			// RunnerManager API_Entities_Ci_RunnerManager model
+			RunnerManager *struct {
+				Architecture *string `json:"architecture,omitempty"`
+				ContactedAt  *string `json:"contacted_at,omitempty"`
+				CreatedAt    *string `json:"created_at,omitempty"`
+				Id           *int32  `json:"id,omitempty"`
+				IpAddress    *string `json:"ip_address,omitempty"`
+				Platform     *string `json:"platform,omitempty"`
+				Revision     *string `json:"revision,omitempty"`
+				Status       *string `json:"status,omitempty"`
+				SystemId     *string `json:"system_id,omitempty"`
+				Version      *string `json:"version,omitempty"`
+			} `json:"runner_manager,omitempty"`
+			Stage     *string    `json:"stage,omitempty"`
+			StartedAt *time.Time `json:"started_at,omitempty"`
+			Status    *string    `json:"status,omitempty"`
+			Tag       *bool      `json:"tag,omitempty"`
+			TagList   *[]string  `json:"tag_list,omitempty"`
+			User      *struct {
+				AvatarPath       *string `json:"avatar_path,omitempty"`
+				AvatarUrl        *string `json:"avatar_url,omitempty"`
+				Bio              *string `json:"bio,omitempty"`
+				Bot              *string `json:"bot,omitempty"`
+				CreatedAt        *string `json:"created_at,omitempty"`
+				CustomAttributes *[]struct {
+					Key   *string `json:"key,omitempty"`
+					Value *string `json:"value,omitempty"`
+				} `json:"custom_attributes,omitempty"`
+				Discord         *string `json:"discord,omitempty"`
+				Followers       *string `json:"followers,omitempty"`
+				Following       *string `json:"following,omitempty"`
+				Github          *string `json:"github,omitempty"`
+				Id              *int32  `json:"id,omitempty"`
+				IsFollowed      *string `json:"is_followed,omitempty"`
+				JobTitle        *string `json:"job_title,omitempty"`
+				Linkedin        *string `json:"linkedin,omitempty"`
+				LocalTime       *string `json:"local_time,omitempty"`
+				Location        *string `json:"location,omitempty"`
+				Locked          *bool   `json:"locked,omitempty"`
+				Name            *string `json:"name,omitempty"`
+				Organization    *string `json:"organization,omitempty"`
+				Pronouns        *string `json:"pronouns,omitempty"`
+				PublicEmail     *string `json:"public_email,omitempty"`
+				Skype           *string `json:"skype,omitempty"`
+				State           *string `json:"state,omitempty"`
+				Twitter         *string `json:"twitter,omitempty"`
+				Username        *string `json:"username,omitempty"`
+				WebUrl          *string `json:"web_url,omitempty"`
+				WebsiteUrl      *string `json:"website_url,omitempty"`
+				WorkInformation *string `json:"work_information,omitempty"`
+			} `json:"user,omitempty"`
+			WebUrl *string `json:"web_url,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParseGetApiV4JobAllowedAgentsResponse(rsp *http.Response) (*GetApiV4JobAllowedAgentsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4JobAllowedAgentsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			AllowFailure *bool `json:"allow_failure,omitempty"`
+			Archived     *bool `json:"archived,omitempty"`
+			Artifacts    *[]struct {
+				FileFormat *GetApiV4JobAllowedAgents200ArtifactsFileFormat `json:"file_format,omitempty"`
+				FileType   *GetApiV4JobAllowedAgents200ArtifactsFileType   `json:"file_type,omitempty"`
+				Filename   *string                                         `json:"filename,omitempty"`
+				Size       *int32                                          `json:"size,omitempty"`
+			} `json:"artifacts,omitempty"`
+			ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
+			ArtifactsFile     *struct {
+				Filename *string `json:"filename,omitempty"`
+				Size     *int32  `json:"size,omitempty"`
+			} `json:"artifacts_file,omitempty"`
+
+			// Commit API_Entities_Commit model
+			Commit *struct {
+				AuthorEmail      *string                 `json:"author_email,omitempty"`
+				AuthorName       *string                 `json:"author_name,omitempty"`
+				AuthoredDate     *time.Time              `json:"authored_date,omitempty"`
+				CommittedDate    *time.Time              `json:"committed_date,omitempty"`
+				CommitterEmail   *string                 `json:"committer_email,omitempty"`
+				CommitterName    *string                 `json:"committer_name,omitempty"`
+				CreatedAt        *time.Time              `json:"created_at,omitempty"`
+				ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
+				Id               *string                 `json:"id,omitempty"`
+				Message          *string                 `json:"message,omitempty"`
+				ParentIds        *[]string               `json:"parent_ids,omitempty"`
+				ShortId          *string                 `json:"short_id,omitempty"`
+				Title            *string                 `json:"title,omitempty"`
+				Trailers         *map[string]interface{} `json:"trailers,omitempty"`
+				WebUrl           *string                 `json:"web_url,omitempty"`
+			} `json:"commit,omitempty"`
+			Coverage  *float32   `json:"coverage,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty"`
+
+			// Duration Time spent running
+			Duration      *float32   `json:"duration,omitempty"`
+			ErasedAt      *time.Time `json:"erased_at,omitempty"`
+			FailureReason *string    `json:"failure_reason,omitempty"`
+			FinishedAt    *time.Time `json:"finished_at,omitempty"`
+			Id            *int32     `json:"id,omitempty"`
+			Name          *string    `json:"name,omitempty"`
+
+			// Pipeline API_Entities_Ci_PipelineBasic model
+			Pipeline *struct {
+				CreatedAt *time.Time `json:"created_at,omitempty"`
+				Id        *int32     `json:"id,omitempty"`
+				Iid       *int32     `json:"iid,omitempty"`
+				ProjectId *int32     `json:"project_id,omitempty"`
+				Ref       *string    `json:"ref,omitempty"`
+				Sha       *string    `json:"sha,omitempty"`
+				Source    *string    `json:"source,omitempty"`
+				Status    *string    `json:"status,omitempty"`
+				UpdatedAt *time.Time `json:"updated_at,omitempty"`
+				WebUrl    *string    `json:"web_url,omitempty"`
+			} `json:"pipeline,omitempty"`
+			Project *struct {
+				CiJobTokenScopeEnabled *string `json:"ci_job_token_scope_enabled,omitempty"`
+			} `json:"project,omitempty"`
+
+			// QueuedDuration Time spent enqueued
+			QueuedDuration *float32 `json:"queued_duration,omitempty"`
+			Ref            *string  `json:"ref,omitempty"`
+
+			// Runner API_Entities_Ci_Runner model
+			Runner *struct {
+				Active    *bool      `json:"active,omitempty"`
+				CreatedAt *time.Time `json:"created_at,omitempty"`
+
+				// CreatedBy API_Entities_UserBasic model
+				CreatedBy *struct {
+					AvatarPath       *string `json:"avatar_path,omitempty"`
+					AvatarUrl        *string `json:"avatar_url,omitempty"`
+					CustomAttributes *[]struct {
+						Key   *string `json:"key,omitempty"`
+						Value *string `json:"value,omitempty"`
+					} `json:"custom_attributes,omitempty"`
+					Id          *int32  `json:"id,omitempty"`
+					Locked      *bool   `json:"locked,omitempty"`
+					Name        *string `json:"name,omitempty"`
+					PublicEmail *string `json:"public_email,omitempty"`
+					State       *string `json:"state,omitempty"`
+					Username    *string `json:"username,omitempty"`
+					WebUrl      *string `json:"web_url,omitempty"`
+				} `json:"created_by,omitempty"`
+				Description *string                                      `json:"description,omitempty"`
+				Id          *int32                                       `json:"id,omitempty"`
+				IpAddress   *string                                      `json:"ip_address,omitempty"`
+				IsShared    *bool                                        `json:"is_shared,omitempty"`
+				Name        *string                                      `json:"name,omitempty"`
+				Online      *bool                                        `json:"online,omitempty"`
+				Paused      *bool                                        `json:"paused,omitempty"`
+				RunnerType  *GetApiV4JobAllowedAgents200RunnerRunnerType `json:"runner_type,omitempty"`
+				Status      *string                                      `json:"status,omitempty"`
+			} `json:"runner,omitempty"`
+
+			// RunnerManager API_Entities_Ci_RunnerManager model
+			RunnerManager *struct {
+				Architecture *string `json:"architecture,omitempty"`
+				ContactedAt  *string `json:"contacted_at,omitempty"`
+				CreatedAt    *string `json:"created_at,omitempty"`
+				Id           *int32  `json:"id,omitempty"`
+				IpAddress    *string `json:"ip_address,omitempty"`
+				Platform     *string `json:"platform,omitempty"`
+				Revision     *string `json:"revision,omitempty"`
+				Status       *string `json:"status,omitempty"`
+				SystemId     *string `json:"system_id,omitempty"`
+				Version      *string `json:"version,omitempty"`
+			} `json:"runner_manager,omitempty"`
+			Stage     *string    `json:"stage,omitempty"`
+			StartedAt *time.Time `json:"started_at,omitempty"`
+			Status    *string    `json:"status,omitempty"`
+			Tag       *bool      `json:"tag,omitempty"`
+			TagList   *[]string  `json:"tag_list,omitempty"`
+			User      *struct {
+				AvatarPath       *string `json:"avatar_path,omitempty"`
+				AvatarUrl        *string `json:"avatar_url,omitempty"`
+				Bio              *string `json:"bio,omitempty"`
+				Bot              *string `json:"bot,omitempty"`
+				CreatedAt        *string `json:"created_at,omitempty"`
+				CustomAttributes *[]struct {
+					Key   *string `json:"key,omitempty"`
+					Value *string `json:"value,omitempty"`
+				} `json:"custom_attributes,omitempty"`
+				Discord         *string `json:"discord,omitempty"`
+				Followers       *string `json:"followers,omitempty"`
+				Following       *string `json:"following,omitempty"`
+				Github          *string `json:"github,omitempty"`
+				Id              *int32  `json:"id,omitempty"`
+				IsFollowed      *string `json:"is_followed,omitempty"`
+				JobTitle        *string `json:"job_title,omitempty"`
+				Linkedin        *string `json:"linkedin,omitempty"`
+				LocalTime       *string `json:"local_time,omitempty"`
+				Location        *string `json:"location,omitempty"`
+				Locked          *bool   `json:"locked,omitempty"`
+				Name            *string `json:"name,omitempty"`
+				Organization    *string `json:"organization,omitempty"`
+				Pronouns        *string `json:"pronouns,omitempty"`
+				PublicEmail     *string `json:"public_email,omitempty"`
+				Skype           *string `json:"skype,omitempty"`
+				State           *string `json:"state,omitempty"`
+				Twitter         *string `json:"twitter,omitempty"`
+				Username        *string `json:"username,omitempty"`
+				WebUrl          *string `json:"web_url,omitempty"`
+				WebsiteUrl      *string `json:"website_url,omitempty"`
+				WorkInformation *string `json:"work_information,omitempty"`
+			} `json:"user,omitempty"`
+			WebUrl *string `json:"web_url,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
+	return response, nil
+}
+func ParsePostApiV4JobsRequestResponse(rsp *http.Response) (*PostApiV4JobsRequestResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostApiV4JobsRequestResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePutApiV4JobsIdResponse(rsp *http.Response) (*PutApiV4JobsIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PutApiV4JobsIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParseGetApiV4JobsIdArtifactsResponse(rsp *http.Response) (*GetApiV4JobsIdArtifactsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetApiV4JobsIdArtifactsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePostApiV4JobsIdArtifactsResponse(rsp *http.Response) (*PostApiV4JobsIdArtifactsResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostApiV4JobsIdArtifactsResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePostApiV4JobsIdArtifactsAuthorizeResponse(rsp *http.Response) (*PostApiV4JobsIdArtifactsAuthorizeResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PostApiV4JobsIdArtifactsAuthorizeResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}
+func ParsePatchApiV4JobsIdTraceResponse(rsp *http.Response) (*PatchApiV4JobsIdTraceResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &PatchApiV4JobsIdTraceResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	return response, nil
+}

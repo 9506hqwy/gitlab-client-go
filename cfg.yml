@@ -1,0 +1,5 @@
+package: gitlab
+output: /tmp/client.go
+generate:
+  models: true
+  client: true
