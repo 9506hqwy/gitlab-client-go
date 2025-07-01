@@ -13,59 +13,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-// Defines values for GetApiV4MergeRequestsParamsState.
-const (
-	GetApiV4MergeRequestsParamsStateAll    GetApiV4MergeRequestsParamsState = "all"
-	GetApiV4MergeRequestsParamsStateClosed GetApiV4MergeRequestsParamsState = "closed"
-	GetApiV4MergeRequestsParamsStateLocked GetApiV4MergeRequestsParamsState = "locked"
-	GetApiV4MergeRequestsParamsStateMerged GetApiV4MergeRequestsParamsState = "merged"
-	GetApiV4MergeRequestsParamsStateOpened GetApiV4MergeRequestsParamsState = "opened"
-)
-
-// Defines values for GetApiV4MergeRequestsParamsOrderBy.
-const (
-	GetApiV4MergeRequestsParamsOrderByCreatedAt     GetApiV4MergeRequestsParamsOrderBy = "created_at"
-	GetApiV4MergeRequestsParamsOrderByLabelPriority GetApiV4MergeRequestsParamsOrderBy = "label_priority"
-	GetApiV4MergeRequestsParamsOrderByMergedAt      GetApiV4MergeRequestsParamsOrderBy = "merged_at"
-	GetApiV4MergeRequestsParamsOrderByMilestoneDue  GetApiV4MergeRequestsParamsOrderBy = "milestone_due"
-	GetApiV4MergeRequestsParamsOrderByPopularity    GetApiV4MergeRequestsParamsOrderBy = "popularity"
-	GetApiV4MergeRequestsParamsOrderByPriority      GetApiV4MergeRequestsParamsOrderBy = "priority"
-	GetApiV4MergeRequestsParamsOrderByTitle         GetApiV4MergeRequestsParamsOrderBy = "title"
-	GetApiV4MergeRequestsParamsOrderByUpdatedAt     GetApiV4MergeRequestsParamsOrderBy = "updated_at"
-)
-
-// Defines values for GetApiV4MergeRequestsParamsSort.
-const (
-	GetApiV4MergeRequestsParamsSortAsc  GetApiV4MergeRequestsParamsSort = "asc"
-	GetApiV4MergeRequestsParamsSortDesc GetApiV4MergeRequestsParamsSort = "desc"
-)
-
-// Defines values for GetApiV4MergeRequestsParamsView.
-const (
-	GetApiV4MergeRequestsParamsViewSimple GetApiV4MergeRequestsParamsView = "simple"
-)
-
-// Defines values for GetApiV4MergeRequestsParamsScope.
-const (
-	GetApiV4MergeRequestsParamsScopeAll           GetApiV4MergeRequestsParamsScope = "all"
-	GetApiV4MergeRequestsParamsScopeAssignedToMe  GetApiV4MergeRequestsParamsScope = "assigned-to-me"
-	GetApiV4MergeRequestsParamsScopeAssignedToMe1 GetApiV4MergeRequestsParamsScope = "assigned_to_me"
-	GetApiV4MergeRequestsParamsScopeCreatedByMe   GetApiV4MergeRequestsParamsScope = "created-by-me"
-	GetApiV4MergeRequestsParamsScopeCreatedByMe1  GetApiV4MergeRequestsParamsScope = "created_by_me"
-)
-
-// Defines values for GetApiV4MergeRequestsParamsWip.
-const (
-	GetApiV4MergeRequestsParamsWipNo  GetApiV4MergeRequestsParamsWip = "no"
-	GetApiV4MergeRequestsParamsWipYes GetApiV4MergeRequestsParamsWip = "yes"
-)
-
-// Defines values for GetApiV4MergeRequestsParamsApproved.
-const (
-	GetApiV4MergeRequestsParamsApprovedNo  GetApiV4MergeRequestsParamsApproved = "no"
-	GetApiV4MergeRequestsParamsApprovedYes GetApiV4MergeRequestsParamsApproved = "yes"
-)
-
 type GetApiV4MergeRequestsParams struct {
 	// AuthorId Returns merge requests created by the given user `id`. Mutually exclusive with `author_username`. Combine with `scope=all` or `scope=assigned_to_me`.
 	AuthorId *int32 `form:"author_id,omitempty" json:"author_id,omitempty"`
@@ -95,13 +42,13 @@ type GetApiV4MergeRequestsParams struct {
 	ReviewerId *int32 `form:"reviewer_id,omitempty" json:"reviewer_id,omitempty"`
 
 	// State Returns `all` merge requests or just those that are `opened`, `closed`, `locked`, or `merged`.
-	State *GetApiV4MergeRequestsParamsState `form:"state,omitempty" json:"state,omitempty"`
+	State *string `form:"state,omitempty" json:"state,omitempty"`
 
 	// OrderBy Returns merge requests ordered by `created_at`, `label_priority`, `milestone_due`, `popularity`, `priority`, `title`, `updated_at` or `merged_at` fields. Introduced in GitLab 14.8.
-	OrderBy *GetApiV4MergeRequestsParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Returns merge requests sorted in `asc` or `desc` order.
-	Sort *GetApiV4MergeRequestsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// WithLabelsDetails If `true`, response returns more details for each label in labels field: `:name`,`:color`, `:description`, `:description_html`, `:text_color`
 	WithLabelsDetails *bool `form:"with_labels_details,omitempty" json:"with_labels_details,omitempty"`
@@ -122,10 +69,10 @@ type GetApiV4MergeRequestsParams struct {
 	UpdatedBefore *time.Time `form:"updated_before,omitempty" json:"updated_before,omitempty"`
 
 	// View If simple, returns the `iid`, URL, title, description, and basic state of merge request
-	View *GetApiV4MergeRequestsParamsView `form:"view,omitempty" json:"view,omitempty"`
+	View *string `form:"view,omitempty" json:"view,omitempty"`
 
 	// Scope Returns merge requests for the given scope: `created_by_me`, `assigned_to_me` or `all`
-	Scope *GetApiV4MergeRequestsParamsScope `form:"scope,omitempty" json:"scope,omitempty"`
+	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
 
 	// SourceBranch Returns merge requests with the given source branch
 	SourceBranch *string `form:"source_branch,omitempty" json:"source_branch,omitempty"`
@@ -143,7 +90,7 @@ type GetApiV4MergeRequestsParams struct {
 	In *string `form:"in,omitempty" json:"in,omitempty"`
 
 	// Wip Filter merge requests against their `wip` status. `yes` to return only draft merge requests, `no` to return non-draft merge requests.
-	Wip *GetApiV4MergeRequestsParamsWip `form:"wip,omitempty" json:"wip,omitempty"`
+	Wip *string `form:"wip,omitempty" json:"wip,omitempty"`
 
 	// NotAuthorId `<Negated>` Returns merge requests created by the given user `id`. Mutually exclusive with `author_username`. Combine with `scope=all` or `scope=assigned_to_me`.
 	NotAuthorId *int32 `form:"not[author_id],omitempty" json:"not[author_id],omitempty"`
@@ -182,7 +129,7 @@ type GetApiV4MergeRequestsParams struct {
 	Environment *string `form:"environment,omitempty" json:"environment,omitempty"`
 
 	// Approved Filters merge requests by their `approved` status. `yes` returns only approved merge requests. `no` returns only non-approved merge requests.
-	Approved *GetApiV4MergeRequestsParamsApproved `form:"approved,omitempty" json:"approved,omitempty"`
+	Approved *string `form:"approved,omitempty" json:"approved,omitempty"`
 
 	// MergeUserId Returns merge requests which have been merged by the user with the given user `id`. Mutually exclusive with `merge_user_username`.
 	MergeUserId *int32 `form:"merge_user_id,omitempty" json:"merge_user_id,omitempty"`
@@ -208,13 +155,6 @@ type GetApiV4MergeRequestsParams struct {
 	// PerPage Number of items per page
 	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 }
-type GetApiV4MergeRequestsParamsState string
-type GetApiV4MergeRequestsParamsOrderBy string
-type GetApiV4MergeRequestsParamsSort string
-type GetApiV4MergeRequestsParamsView string
-type GetApiV4MergeRequestsParamsScope string
-type GetApiV4MergeRequestsParamsWip string
-type GetApiV4MergeRequestsParamsApproved string
 type GetApiV4MergeRequestsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response

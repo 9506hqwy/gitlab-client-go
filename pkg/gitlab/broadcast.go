@@ -14,66 +14,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-// Defines values for PostApiV4BroadcastMessagesJSONBodyBroadcastType.
-const (
-	PostApiV4BroadcastMessagesJSONBodyBroadcastTypeBanner       PostApiV4BroadcastMessagesJSONBodyBroadcastType = "banner"
-	PostApiV4BroadcastMessagesJSONBodyBroadcastTypeNotification PostApiV4BroadcastMessagesJSONBodyBroadcastType = "notification"
-)
-
-// Defines values for PostApiV4BroadcastMessagesJSONBodyTargetAccessLevels.
-const (
-	PostApiV4BroadcastMessagesJSONBodyTargetAccessLevelsN10 PostApiV4BroadcastMessagesJSONBodyTargetAccessLevels = 10
-	PostApiV4BroadcastMessagesJSONBodyTargetAccessLevelsN15 PostApiV4BroadcastMessagesJSONBodyTargetAccessLevels = 15
-	PostApiV4BroadcastMessagesJSONBodyTargetAccessLevelsN20 PostApiV4BroadcastMessagesJSONBodyTargetAccessLevels = 20
-	PostApiV4BroadcastMessagesJSONBodyTargetAccessLevelsN30 PostApiV4BroadcastMessagesJSONBodyTargetAccessLevels = 30
-	PostApiV4BroadcastMessagesJSONBodyTargetAccessLevelsN40 PostApiV4BroadcastMessagesJSONBodyTargetAccessLevels = 40
-	PostApiV4BroadcastMessagesJSONBodyTargetAccessLevelsN50 PostApiV4BroadcastMessagesJSONBodyTargetAccessLevels = 50
-)
-
-// Defines values for PostApiV4BroadcastMessagesJSONBodyTheme.
-const (
-	PostApiV4BroadcastMessagesJSONBodyThemeBlue        PostApiV4BroadcastMessagesJSONBodyTheme = "blue"
-	PostApiV4BroadcastMessagesJSONBodyThemeDark        PostApiV4BroadcastMessagesJSONBodyTheme = "dark"
-	PostApiV4BroadcastMessagesJSONBodyThemeGreen       PostApiV4BroadcastMessagesJSONBodyTheme = "green"
-	PostApiV4BroadcastMessagesJSONBodyThemeIndigo      PostApiV4BroadcastMessagesJSONBodyTheme = "indigo"
-	PostApiV4BroadcastMessagesJSONBodyThemeLight       PostApiV4BroadcastMessagesJSONBodyTheme = "light"
-	PostApiV4BroadcastMessagesJSONBodyThemeLightBlue   PostApiV4BroadcastMessagesJSONBodyTheme = "light-blue"
-	PostApiV4BroadcastMessagesJSONBodyThemeLightGreen  PostApiV4BroadcastMessagesJSONBodyTheme = "light-green"
-	PostApiV4BroadcastMessagesJSONBodyThemeLightIndigo PostApiV4BroadcastMessagesJSONBodyTheme = "light-indigo"
-	PostApiV4BroadcastMessagesJSONBodyThemeLightRed    PostApiV4BroadcastMessagesJSONBodyTheme = "light-red"
-	PostApiV4BroadcastMessagesJSONBodyThemeRed         PostApiV4BroadcastMessagesJSONBodyTheme = "red"
-)
-
-// Defines values for PutApiV4BroadcastMessagesIdJSONBodyBroadcastType.
-const (
-	PutApiV4BroadcastMessagesIdJSONBodyBroadcastTypeBanner       PutApiV4BroadcastMessagesIdJSONBodyBroadcastType = "banner"
-	PutApiV4BroadcastMessagesIdJSONBodyBroadcastTypeNotification PutApiV4BroadcastMessagesIdJSONBodyBroadcastType = "notification"
-)
-
-// Defines values for PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevels.
-const (
-	PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevelsN10 PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevels = 10
-	PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevelsN15 PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevels = 15
-	PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevelsN20 PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevels = 20
-	PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevelsN30 PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevels = 30
-	PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevelsN40 PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevels = 40
-	PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevelsN50 PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevels = 50
-)
-
-// Defines values for PutApiV4BroadcastMessagesIdJSONBodyTheme.
-const (
-	PutApiV4BroadcastMessagesIdJSONBodyThemeBlue        PutApiV4BroadcastMessagesIdJSONBodyTheme = "blue"
-	PutApiV4BroadcastMessagesIdJSONBodyThemeDark        PutApiV4BroadcastMessagesIdJSONBodyTheme = "dark"
-	PutApiV4BroadcastMessagesIdJSONBodyThemeGreen       PutApiV4BroadcastMessagesIdJSONBodyTheme = "green"
-	PutApiV4BroadcastMessagesIdJSONBodyThemeIndigo      PutApiV4BroadcastMessagesIdJSONBodyTheme = "indigo"
-	PutApiV4BroadcastMessagesIdJSONBodyThemeLight       PutApiV4BroadcastMessagesIdJSONBodyTheme = "light"
-	PutApiV4BroadcastMessagesIdJSONBodyThemeLightBlue   PutApiV4BroadcastMessagesIdJSONBodyTheme = "light-blue"
-	PutApiV4BroadcastMessagesIdJSONBodyThemeLightGreen  PutApiV4BroadcastMessagesIdJSONBodyTheme = "light-green"
-	PutApiV4BroadcastMessagesIdJSONBodyThemeLightIndigo PutApiV4BroadcastMessagesIdJSONBodyTheme = "light-indigo"
-	PutApiV4BroadcastMessagesIdJSONBodyThemeLightRed    PutApiV4BroadcastMessagesIdJSONBodyTheme = "light-red"
-	PutApiV4BroadcastMessagesIdJSONBodyThemeRed         PutApiV4BroadcastMessagesIdJSONBodyTheme = "red"
-)
-
 type GetApiV4BroadcastMessagesParams struct {
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -83,7 +23,7 @@ type GetApiV4BroadcastMessagesParams struct {
 }
 type PostApiV4BroadcastMessagesJSONBody struct {
 	// BroadcastType Broadcast type. Defaults to banner
-	BroadcastType *PostApiV4BroadcastMessagesJSONBodyBroadcastType `json:"broadcast_type,omitempty"`
+	BroadcastType *string `json:"broadcast_type,omitempty"`
 
 	// Color Background color (Deprecated. Use "theme" instead.)
 	Color *string `json:"color,omitempty"`
@@ -104,20 +44,17 @@ type PostApiV4BroadcastMessagesJSONBody struct {
 	StartsAt *time.Time `json:"starts_at,omitempty"`
 
 	// TargetAccessLevels Target user roles
-	TargetAccessLevels *[]PostApiV4BroadcastMessagesJSONBodyTargetAccessLevels `json:"target_access_levels,omitempty"`
+	TargetAccessLevels *[]int32 `json:"target_access_levels,omitempty"`
 
 	// TargetPath Target path
 	TargetPath *string `json:"target_path,omitempty"`
 
 	// Theme The theme for the message
-	Theme *PostApiV4BroadcastMessagesJSONBodyTheme `json:"theme,omitempty"`
+	Theme *string `json:"theme,omitempty"`
 }
-type PostApiV4BroadcastMessagesJSONBodyBroadcastType string
-type PostApiV4BroadcastMessagesJSONBodyTargetAccessLevels int32
-type PostApiV4BroadcastMessagesJSONBodyTheme string
 type PutApiV4BroadcastMessagesIdJSONBody struct {
 	// BroadcastType Broadcast Type
-	BroadcastType *PutApiV4BroadcastMessagesIdJSONBodyBroadcastType `json:"broadcast_type,omitempty"`
+	BroadcastType *string `json:"broadcast_type,omitempty"`
 
 	// Color Background color (Deprecated. Use "theme" instead.)
 	Color *string `json:"color,omitempty"`
@@ -138,17 +75,14 @@ type PutApiV4BroadcastMessagesIdJSONBody struct {
 	StartsAt *time.Time `json:"starts_at,omitempty"`
 
 	// TargetAccessLevels Target user roles
-	TargetAccessLevels *[]PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevels `json:"target_access_levels,omitempty"`
+	TargetAccessLevels *[]int32 `json:"target_access_levels,omitempty"`
 
 	// TargetPath Target path
 	TargetPath *string `json:"target_path,omitempty"`
 
 	// Theme The theme for the message
-	Theme *PutApiV4BroadcastMessagesIdJSONBodyTheme `json:"theme,omitempty"`
+	Theme *string `json:"theme,omitempty"`
 }
-type PutApiV4BroadcastMessagesIdJSONBodyBroadcastType string
-type PutApiV4BroadcastMessagesIdJSONBodyTargetAccessLevels int32
-type PutApiV4BroadcastMessagesIdJSONBodyTheme string
 type PostApiV4BroadcastMessagesJSONRequestBody PostApiV4BroadcastMessagesJSONBody
 type PutApiV4BroadcastMessagesIdJSONRequestBody PutApiV4BroadcastMessagesIdJSONBody
 type GetApiV4BroadcastMessagesResponse struct {

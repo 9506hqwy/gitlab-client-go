@@ -13,25 +13,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// Defines values for GetApiV4EventsParamsTargetType.
-const (
-	GetApiV4EventsParamsTargetTypeDesign       GetApiV4EventsParamsTargetType = "design"
-	GetApiV4EventsParamsTargetTypeIssue        GetApiV4EventsParamsTargetType = "issue"
-	GetApiV4EventsParamsTargetTypeMergeRequest GetApiV4EventsParamsTargetType = "merge_request"
-	GetApiV4EventsParamsTargetTypeMilestone    GetApiV4EventsParamsTargetType = "milestone"
-	GetApiV4EventsParamsTargetTypeNote         GetApiV4EventsParamsTargetType = "note"
-	GetApiV4EventsParamsTargetTypeProject      GetApiV4EventsParamsTargetType = "project"
-	GetApiV4EventsParamsTargetTypeSnippet      GetApiV4EventsParamsTargetType = "snippet"
-	GetApiV4EventsParamsTargetTypeUser         GetApiV4EventsParamsTargetType = "user"
-	GetApiV4EventsParamsTargetTypeWiki         GetApiV4EventsParamsTargetType = "wiki"
-)
-
-// Defines values for GetApiV4EventsParamsSort.
-const (
-	GetApiV4EventsParamsSortAsc  GetApiV4EventsParamsSort = "asc"
-	GetApiV4EventsParamsSortDesc GetApiV4EventsParamsSort = "desc"
-)
-
 type GetApiV4EventsParams struct {
 	// Scope Include all events across a user’s projects
 	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
@@ -46,7 +27,7 @@ type GetApiV4EventsParams struct {
 	Action *string `form:"action,omitempty" json:"action,omitempty"`
 
 	// TargetType Event target type to filter on
-	TargetType *GetApiV4EventsParamsTargetType `form:"target_type,omitempty" json:"target_type,omitempty"`
+	TargetType *string `form:"target_type,omitempty" json:"target_type,omitempty"`
 
 	// Before Include only events created before this date
 	Before *openapi_types.Date `form:"before,omitempty" json:"before,omitempty"`
@@ -55,10 +36,8 @@ type GetApiV4EventsParams struct {
 	After *openapi_types.Date `form:"after,omitempty" json:"after,omitempty"`
 
 	// Sort Return events sorted in ascending and descending order
-	Sort *GetApiV4EventsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 }
-type GetApiV4EventsParamsTargetType string
-type GetApiV4EventsParamsSort string
 type GetApiV4EventsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response

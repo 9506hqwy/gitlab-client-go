@@ -14,99 +14,25 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-// Defines values for GetApiV4AdminBatchedBackgroundMigrationsParamsDatabase.
-const (
-	GetApiV4AdminBatchedBackgroundMigrationsParamsDatabaseCi        GetApiV4AdminBatchedBackgroundMigrationsParamsDatabase = "ci"
-	GetApiV4AdminBatchedBackgroundMigrationsParamsDatabaseEmbedding GetApiV4AdminBatchedBackgroundMigrationsParamsDatabase = "embedding"
-	GetApiV4AdminBatchedBackgroundMigrationsParamsDatabaseGeo       GetApiV4AdminBatchedBackgroundMigrationsParamsDatabase = "geo"
-	GetApiV4AdminBatchedBackgroundMigrationsParamsDatabaseMain      GetApiV4AdminBatchedBackgroundMigrationsParamsDatabase = "main"
-	GetApiV4AdminBatchedBackgroundMigrationsParamsDatabaseSec       GetApiV4AdminBatchedBackgroundMigrationsParamsDatabase = "sec"
-)
-
-// Defines values for GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabase.
-const (
-	GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabaseCi        GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabase = "ci"
-	GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabaseEmbedding GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabase = "embedding"
-	GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabaseGeo       GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabase = "geo"
-	GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabaseMain      GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabase = "main"
-	GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabaseSec       GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabase = "sec"
-)
-
-// Defines values for PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabase.
-const (
-	PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabaseCi        PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabase = "ci"
-	PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabaseEmbedding PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabase = "embedding"
-	PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabaseGeo       PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabase = "geo"
-	PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabaseMain      PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabase = "main"
-	PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabaseSec       PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabase = "sec"
-)
-
-// Defines values for PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabase.
-const (
-	PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabaseCi        PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabase = "ci"
-	PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabaseEmbedding PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabase = "embedding"
-	PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabaseGeo       PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabase = "geo"
-	PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabaseMain      PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabase = "main"
-	PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabaseSec       PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabase = "sec"
-)
-
-// Defines values for PostApiV4AdminCiVariablesJSONBodyVariableType.
-const (
-	PostApiV4AdminCiVariablesJSONBodyVariableTypeEnvVar PostApiV4AdminCiVariablesJSONBodyVariableType = "env_var"
-	PostApiV4AdminCiVariablesJSONBodyVariableTypeFile   PostApiV4AdminCiVariablesJSONBodyVariableType = "file"
-)
-
-// Defines values for PutApiV4AdminCiVariablesKeyJSONBodyVariableType.
-const (
-	PutApiV4AdminCiVariablesKeyJSONBodyVariableTypeEnvVar PutApiV4AdminCiVariablesKeyJSONBodyVariableType = "env_var"
-	PutApiV4AdminCiVariablesKeyJSONBodyVariableTypeFile   PutApiV4AdminCiVariablesKeyJSONBodyVariableType = "file"
-)
-
-// Defines values for PostApiV4AdminClustersAddJSONBodyPlatformKubernetesAttributesAuthorizationType.
-const (
-	PostApiV4AdminClustersAddJSONBodyPlatformKubernetesAttributesAuthorizationTypeAbac                 PostApiV4AdminClustersAddJSONBodyPlatformKubernetesAttributesAuthorizationType = "abac"
-	PostApiV4AdminClustersAddJSONBodyPlatformKubernetesAttributesAuthorizationTypeRbac                 PostApiV4AdminClustersAddJSONBodyPlatformKubernetesAttributesAuthorizationType = "rbac"
-	PostApiV4AdminClustersAddJSONBodyPlatformKubernetesAttributesAuthorizationTypeUnknownAuthorization PostApiV4AdminClustersAddJSONBodyPlatformKubernetesAttributesAuthorizationType = "unknown_authorization"
-)
-
-// Defines values for GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameParamsDatabaseName.
-const (
-	GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameParamsDatabaseNameCi   GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameParamsDatabaseName = "ci"
-	GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameParamsDatabaseNameMain GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameParamsDatabaseName = "main"
-)
-
-// Defines values for PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabase.
-const (
-	PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabaseCi        PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabase = "ci"
-	PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabaseEmbedding PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabase = "embedding"
-	PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabaseGeo       PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabase = "geo"
-	PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabaseMain      PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabase = "main"
-	PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabaseSec       PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabase = "sec"
-)
-
 type GetApiV4AdminBatchedBackgroundMigrationsParams struct {
 	// Database The name of the database, the default `main`
-	Database *GetApiV4AdminBatchedBackgroundMigrationsParamsDatabase `form:"database,omitempty" json:"database,omitempty"`
+	Database *string `form:"database,omitempty" json:"database,omitempty"`
 
 	// JobClassName Filter migrations by job class name.
 	JobClassName *string `form:"job_class_name,omitempty" json:"job_class_name,omitempty"`
 }
-type GetApiV4AdminBatchedBackgroundMigrationsParamsDatabase string
 type GetApiV4AdminBatchedBackgroundMigrationsIdParams struct {
 	// Database The name of the database
-	Database *GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabase `form:"database,omitempty" json:"database,omitempty"`
+	Database *string `form:"database,omitempty" json:"database,omitempty"`
 }
-type GetApiV4AdminBatchedBackgroundMigrationsIdParamsDatabase string
 type PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBody struct {
 	// Database The name of the database
-	Database *PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabase `json:"database,omitempty"`
+	Database *string `json:"database,omitempty"`
 }
-type PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBodyDatabase string
 type PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBody struct {
 	// Database The name of the database
-	Database *PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabase `json:"database,omitempty"`
+	Database *string `json:"database,omitempty"`
 }
-type PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBodyDatabase string
 type GetApiV4AdminCiVariablesParams struct {
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -134,9 +60,8 @@ type PostApiV4AdminCiVariablesJSONBody struct {
 	Value string `json:"value"`
 
 	// VariableType The type of a variable. Available types are: env_var (default) and file
-	VariableType *PostApiV4AdminCiVariablesJSONBodyVariableType `json:"variable_type,omitempty"`
+	VariableType *string `json:"variable_type,omitempty"`
 }
-type PostApiV4AdminCiVariablesJSONBodyVariableType string
 type PutApiV4AdminCiVariablesKeyJSONBody struct {
 	// Description The description of the variable
 	Description *string `json:"description,omitempty"`
@@ -154,9 +79,8 @@ type PutApiV4AdminCiVariablesKeyJSONBody struct {
 	Value *string `json:"value,omitempty"`
 
 	// VariableType The type of a variable. Available types are: env_var (default) and file
-	VariableType *PutApiV4AdminCiVariablesKeyJSONBodyVariableType `json:"variable_type,omitempty"`
+	VariableType *string `json:"variable_type,omitempty"`
 }
-type PutApiV4AdminCiVariablesKeyJSONBodyVariableType string
 type PostApiV4AdminClustersAddJSONBody struct {
 	// Domain Cluster base domain
 	Domain *string `json:"domain,omitempty"`
@@ -185,7 +109,7 @@ type PostApiV4AdminClustersAddJSONBody struct {
 		ApiUrl string `json:"api_url"`
 
 		// AuthorizationType Cluster authorization type, defaults to RBAC
-		AuthorizationType *PostApiV4AdminClustersAddJSONBodyPlatformKubernetesAttributesAuthorizationType `json:"authorization_type,omitempty"`
+		AuthorizationType *string `json:"authorization_type,omitempty"`
 
 		// CaCert TLS certificate (needed if API is using a self-signed TLS certificate)
 		CaCert *string `json:"ca_cert,omitempty"`
@@ -197,7 +121,6 @@ type PostApiV4AdminClustersAddJSONBody struct {
 		Token string `json:"token"`
 	} `json:"platform_kubernetes_attributes"`
 }
-type PostApiV4AdminClustersAddJSONBodyPlatformKubernetesAttributesAuthorizationType string
 type PutApiV4AdminClustersClusterIdJSONBody struct {
 	// Domain Cluster base domain
 	Domain *string `json:"domain,omitempty"`
@@ -235,12 +158,10 @@ type PutApiV4AdminClustersClusterIdJSONBody struct {
 		Token *string `json:"token,omitempty"`
 	} `json:"platform_kubernetes_attributes,omitempty"`
 }
-type GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameParamsDatabaseName string
 type PostApiV4AdminMigrationsTimestampMarkJSONBody struct {
 	// Database The name of the database
-	Database *PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabase `json:"database,omitempty"`
+	Database *string `json:"database,omitempty"`
 }
-type PostApiV4AdminMigrationsTimestampMarkJSONBodyDatabase string
 type PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONRequestBody PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBody
 type PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONRequestBody PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBody
 type PostApiV4AdminCiVariablesJSONRequestBody PostApiV4AdminCiVariablesJSONBody
@@ -887,7 +808,7 @@ func (c *Client) PutApiV4AdminClustersClusterId(ctx context.Context, clusterId i
 	}
 	return c.Client.Do(req)
 }
-func (c *Client) GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableName(ctx context.Context, databaseName GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameParamsDatabaseName, tableName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableName(ctx context.Context, databaseName string, tableName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameRequest(c.Server, databaseName, tableName)
 	if err != nil {
 		return nil, err
@@ -1497,7 +1418,7 @@ func NewPutApiV4AdminClustersClusterIdRequestWithBody(server string, clusterId i
 
 	return req, nil
 }
-func NewGetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameRequest(server string, databaseName GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameParamsDatabaseName, tableName string) (*http.Request, error) {
+func NewGetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameRequest(server string, databaseName string, tableName string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -1911,7 +1832,7 @@ func (c *ClientWithResponses) PutApiV4AdminClustersClusterIdWithResponse(ctx con
 	}
 	return ParsePutApiV4AdminClustersClusterIdResponse(rsp)
 }
-func (c *ClientWithResponses) GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameWithResponse(ctx context.Context, databaseName GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameParamsDatabaseName, tableName string, reqEditors ...RequestEditorFn) (*GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameResponse, error) {
+func (c *ClientWithResponses) GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameWithResponse(ctx context.Context, databaseName string, tableName string, reqEditors ...RequestEditorFn) (*GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameResponse, error) {
 	rsp, err := c.GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableName(ctx, databaseName, tableName, reqEditors...)
 	if err != nil {
 		return nil, err

@@ -15,22 +15,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// Defines values for GetApiV4PersonalAccessTokensParamsState.
-const (
-	GetApiV4PersonalAccessTokensParamsStateActive   GetApiV4PersonalAccessTokensParamsState = "active"
-	GetApiV4PersonalAccessTokensParamsStateInactive GetApiV4PersonalAccessTokensParamsState = "inactive"
-)
-
-// Defines values for GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevel.
-const (
-	GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevelN10 GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevel = 10
-	GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevelN15 GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevel = 15
-	GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevelN20 GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevel = 20
-	GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevelN30 GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevel = 30
-	GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevelN40 GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevel = 40
-	GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevelN50 GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevel = 50
-)
-
 type GetApiV4PersonalAccessTokensParams struct {
 	// UserId Filter PATs by User ID
 	UserId *int32 `form:"user_id,omitempty" json:"user_id,omitempty"`
@@ -39,7 +23,7 @@ type GetApiV4PersonalAccessTokensParams struct {
 	Revoked *bool `form:"revoked,omitempty" json:"revoked,omitempty"`
 
 	// State Filter tokens which are either active or not
-	State *GetApiV4PersonalAccessTokensParamsState `form:"state,omitempty" json:"state,omitempty"`
+	State *string `form:"state,omitempty" json:"state,omitempty"`
 
 	// CreatedBefore Filter tokens which were created before given datetime
 	CreatedBefore *time.Time `form:"created_before,omitempty" json:"created_before,omitempty"`
@@ -71,10 +55,9 @@ type GetApiV4PersonalAccessTokensParams struct {
 	// PerPage Number of items per page
 	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 }
-type GetApiV4PersonalAccessTokensParamsState string
 type GetApiV4PersonalAccessTokensSelfAssociationsParams struct {
 	// MinAccessLevel Limit by minimum access level of authenticated user
-	MinAccessLevel *GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevel `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
 
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -82,7 +65,6 @@ type GetApiV4PersonalAccessTokensSelfAssociationsParams struct {
 	// PerPage Number of items per page
 	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 }
-type GetApiV4PersonalAccessTokensSelfAssociationsParamsMinAccessLevel int32
 type PostApiV4PersonalAccessTokensSelfRotateJSONBody struct {
 	// ExpiresAt The expiration date of the token
 	ExpiresAt *openapi_types.Date `json:"expires_at,omitempty"`

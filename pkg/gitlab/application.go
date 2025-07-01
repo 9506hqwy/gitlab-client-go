@@ -13,36 +13,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-// Defines values for GetApiV4ApplicationPlanLimitsParamsPlanName.
-const (
-	GetApiV4ApplicationPlanLimitsParamsPlanNameBronze                    GetApiV4ApplicationPlanLimitsParamsPlanName = "bronze"
-	GetApiV4ApplicationPlanLimitsParamsPlanNameDefault                   GetApiV4ApplicationPlanLimitsParamsPlanName = "default"
-	GetApiV4ApplicationPlanLimitsParamsPlanNameFree                      GetApiV4ApplicationPlanLimitsParamsPlanName = "free"
-	GetApiV4ApplicationPlanLimitsParamsPlanNameGold                      GetApiV4ApplicationPlanLimitsParamsPlanName = "gold"
-	GetApiV4ApplicationPlanLimitsParamsPlanNameOpensource                GetApiV4ApplicationPlanLimitsParamsPlanName = "opensource"
-	GetApiV4ApplicationPlanLimitsParamsPlanNamePremium                   GetApiV4ApplicationPlanLimitsParamsPlanName = "premium"
-	GetApiV4ApplicationPlanLimitsParamsPlanNamePremiumTrial              GetApiV4ApplicationPlanLimitsParamsPlanName = "premium_trial"
-	GetApiV4ApplicationPlanLimitsParamsPlanNameSilver                    GetApiV4ApplicationPlanLimitsParamsPlanName = "silver"
-	GetApiV4ApplicationPlanLimitsParamsPlanNameUltimate                  GetApiV4ApplicationPlanLimitsParamsPlanName = "ultimate"
-	GetApiV4ApplicationPlanLimitsParamsPlanNameUltimateTrial             GetApiV4ApplicationPlanLimitsParamsPlanName = "ultimate_trial"
-	GetApiV4ApplicationPlanLimitsParamsPlanNameUltimateTrialPaidCustomer GetApiV4ApplicationPlanLimitsParamsPlanName = "ultimate_trial_paid_customer"
-)
-
-// Defines values for PutApiV4ApplicationPlanLimitsJSONBodyPlanName.
-const (
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNameBronze                    PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "bronze"
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNameDefault                   PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "default"
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNameFree                      PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "free"
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNameGold                      PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "gold"
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNameOpensource                PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "opensource"
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNamePremium                   PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "premium"
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNamePremiumTrial              PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "premium_trial"
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNameSilver                    PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "silver"
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNameUltimate                  PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "ultimate"
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNameUltimateTrial             PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "ultimate_trial"
-	PutApiV4ApplicationPlanLimitsJSONBodyPlanNameUltimateTrialPaidCustomer PutApiV4ApplicationPlanLimitsJSONBodyPlanName = "ultimate_trial_paid_customer"
-)
-
 type PutApiV4ApplicationAppearanceMultipartBody struct {
 	// Description Markdown text shown on the sign in / sign up page
 	Description *string `json:"description,omitempty"`
@@ -97,9 +67,8 @@ type PutApiV4ApplicationAppearanceMultipartBody struct {
 }
 type GetApiV4ApplicationPlanLimitsParams struct {
 	// PlanName Name of the plan to get the limits from. Default: default.
-	PlanName *GetApiV4ApplicationPlanLimitsParamsPlanName `form:"plan_name,omitempty" json:"plan_name,omitempty"`
+	PlanName *string `form:"plan_name,omitempty" json:"plan_name,omitempty"`
 }
-type GetApiV4ApplicationPlanLimitsParamsPlanName string
 type PutApiV4ApplicationPlanLimitsJSONBody struct {
 	// CiActiveJobs Total number of jobs in currently active pipelines
 	CiActiveJobs *int32 `json:"ci_active_jobs,omitempty"`
@@ -159,7 +128,7 @@ type PutApiV4ApplicationPlanLimitsJSONBody struct {
 	PipelineHierarchySize *int32 `json:"pipeline_hierarchy_size,omitempty"`
 
 	// PlanName Name of the plan to update
-	PlanName PutApiV4ApplicationPlanLimitsJSONBodyPlanName `json:"plan_name"`
+	PlanName string `json:"plan_name"`
 
 	// PypiMaxFileSize Maximum PyPI package file size in bytes
 	PypiMaxFileSize *int32 `json:"pypi_max_file_size,omitempty"`
@@ -170,7 +139,6 @@ type PutApiV4ApplicationPlanLimitsJSONBody struct {
 	// TerraformModuleMaxFileSize Maximum Terraform Module package file size in bytes
 	TerraformModuleMaxFileSize *int32 `json:"terraform_module_max_file_size,omitempty"`
 }
-type PutApiV4ApplicationPlanLimitsJSONBodyPlanName string
 type PostApiV4ApplicationsJSONBody struct {
 	// Confidential The application is used where the client secret can be kept confidential. Native mobile apps \
 	//

@@ -15,141 +15,9 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// Defines values for PostApiV4UserRunnersJSONBodyAccessLevel.
-const (
-	NotProtected PostApiV4UserRunnersJSONBodyAccessLevel = "not_protected"
-	RefProtected PostApiV4UserRunnersJSONBodyAccessLevel = "ref_protected"
-)
-
-// Defines values for PostApiV4UserRunnersJSONBodyRunnerType.
-const (
-	PostApiV4UserRunnersJSONBodyRunnerTypeGroupType    PostApiV4UserRunnersJSONBodyRunnerType = "group_type"
-	PostApiV4UserRunnersJSONBodyRunnerTypeInstanceType PostApiV4UserRunnersJSONBodyRunnerType = "instance_type"
-	PostApiV4UserRunnersJSONBodyRunnerTypeProjectType  PostApiV4UserRunnersJSONBodyRunnerType = "project_type"
-)
-
-// Defines values for GetApiV4UsersIdEventsParamsTargetType.
-const (
-	Design       GetApiV4UsersIdEventsParamsTargetType = "design"
-	Issue        GetApiV4UsersIdEventsParamsTargetType = "issue"
-	MergeRequest GetApiV4UsersIdEventsParamsTargetType = "merge_request"
-	Milestone    GetApiV4UsersIdEventsParamsTargetType = "milestone"
-	Note         GetApiV4UsersIdEventsParamsTargetType = "note"
-	Project      GetApiV4UsersIdEventsParamsTargetType = "project"
-	Snippet      GetApiV4UsersIdEventsParamsTargetType = "snippet"
-	User         GetApiV4UsersIdEventsParamsTargetType = "user"
-	Wiki         GetApiV4UsersIdEventsParamsTargetType = "wiki"
-)
-
-// Defines values for GetApiV4UsersIdEventsParamsSort.
-const (
-	GetApiV4UsersIdEventsParamsSortAsc  GetApiV4UsersIdEventsParamsSort = "asc"
-	GetApiV4UsersIdEventsParamsSortDesc GetApiV4UsersIdEventsParamsSort = "desc"
-)
-
-// Defines values for GetApiV4UsersUserIdContributedProjectsParamsOrderBy.
-const (
-	GetApiV4UsersUserIdContributedProjectsParamsOrderByCreatedAt      GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "created_at"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderById             GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "id"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderByLastActivityAt GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "last_activity_at"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderByName           GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "name"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderByPackagesSize   GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "packages_size"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderByPath           GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "path"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderByRepositorySize GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "repository_size"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderBySimilarity     GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "similarity"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderByStarCount      GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "star_count"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderByStorageSize    GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "storage_size"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderByUpdatedAt      GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "updated_at"
-	GetApiV4UsersUserIdContributedProjectsParamsOrderByWikiSize       GetApiV4UsersUserIdContributedProjectsParamsOrderBy = "wiki_size"
-)
-
-// Defines values for GetApiV4UsersUserIdContributedProjectsParamsSort.
-const (
-	GetApiV4UsersUserIdContributedProjectsParamsSortAsc  GetApiV4UsersUserIdContributedProjectsParamsSort = "asc"
-	GetApiV4UsersUserIdContributedProjectsParamsSortDesc GetApiV4UsersUserIdContributedProjectsParamsSort = "desc"
-)
-
-// Defines values for GetApiV4UsersUserIdProjectsParamsOrderBy.
-const (
-	GetApiV4UsersUserIdProjectsParamsOrderByCreatedAt      GetApiV4UsersUserIdProjectsParamsOrderBy = "created_at"
-	GetApiV4UsersUserIdProjectsParamsOrderById             GetApiV4UsersUserIdProjectsParamsOrderBy = "id"
-	GetApiV4UsersUserIdProjectsParamsOrderByLastActivityAt GetApiV4UsersUserIdProjectsParamsOrderBy = "last_activity_at"
-	GetApiV4UsersUserIdProjectsParamsOrderByName           GetApiV4UsersUserIdProjectsParamsOrderBy = "name"
-	GetApiV4UsersUserIdProjectsParamsOrderByPackagesSize   GetApiV4UsersUserIdProjectsParamsOrderBy = "packages_size"
-	GetApiV4UsersUserIdProjectsParamsOrderByPath           GetApiV4UsersUserIdProjectsParamsOrderBy = "path"
-	GetApiV4UsersUserIdProjectsParamsOrderByRepositorySize GetApiV4UsersUserIdProjectsParamsOrderBy = "repository_size"
-	GetApiV4UsersUserIdProjectsParamsOrderBySimilarity     GetApiV4UsersUserIdProjectsParamsOrderBy = "similarity"
-	GetApiV4UsersUserIdProjectsParamsOrderByStarCount      GetApiV4UsersUserIdProjectsParamsOrderBy = "star_count"
-	GetApiV4UsersUserIdProjectsParamsOrderByStorageSize    GetApiV4UsersUserIdProjectsParamsOrderBy = "storage_size"
-	GetApiV4UsersUserIdProjectsParamsOrderByUpdatedAt      GetApiV4UsersUserIdProjectsParamsOrderBy = "updated_at"
-	GetApiV4UsersUserIdProjectsParamsOrderByWikiSize       GetApiV4UsersUserIdProjectsParamsOrderBy = "wiki_size"
-)
-
-// Defines values for GetApiV4UsersUserIdProjectsParamsSort.
-const (
-	GetApiV4UsersUserIdProjectsParamsSortAsc  GetApiV4UsersUserIdProjectsParamsSort = "asc"
-	GetApiV4UsersUserIdProjectsParamsSortDesc GetApiV4UsersUserIdProjectsParamsSort = "desc"
-)
-
-// Defines values for GetApiV4UsersUserIdProjectsParamsVisibility.
-const (
-	GetApiV4UsersUserIdProjectsParamsVisibilityInternal GetApiV4UsersUserIdProjectsParamsVisibility = "internal"
-	GetApiV4UsersUserIdProjectsParamsVisibilityPrivate  GetApiV4UsersUserIdProjectsParamsVisibility = "private"
-	GetApiV4UsersUserIdProjectsParamsVisibilityPublic   GetApiV4UsersUserIdProjectsParamsVisibility = "public"
-)
-
-// Defines values for GetApiV4UsersUserIdProjectsParamsMinAccessLevel.
-const (
-	GetApiV4UsersUserIdProjectsParamsMinAccessLevelN10 GetApiV4UsersUserIdProjectsParamsMinAccessLevel = 10
-	GetApiV4UsersUserIdProjectsParamsMinAccessLevelN15 GetApiV4UsersUserIdProjectsParamsMinAccessLevel = 15
-	GetApiV4UsersUserIdProjectsParamsMinAccessLevelN20 GetApiV4UsersUserIdProjectsParamsMinAccessLevel = 20
-	GetApiV4UsersUserIdProjectsParamsMinAccessLevelN30 GetApiV4UsersUserIdProjectsParamsMinAccessLevel = 30
-	GetApiV4UsersUserIdProjectsParamsMinAccessLevelN40 GetApiV4UsersUserIdProjectsParamsMinAccessLevel = 40
-	GetApiV4UsersUserIdProjectsParamsMinAccessLevelN50 GetApiV4UsersUserIdProjectsParamsMinAccessLevel = 50
-)
-
-// Defines values for GetApiV4UsersUserIdStarredProjectsParamsOrderBy.
-const (
-	CreatedAt      GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "created_at"
-	Id             GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "id"
-	LastActivityAt GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "last_activity_at"
-	Name           GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "name"
-	PackagesSize   GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "packages_size"
-	Path           GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "path"
-	RepositorySize GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "repository_size"
-	Similarity     GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "similarity"
-	StarCount      GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "star_count"
-	StorageSize    GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "storage_size"
-	UpdatedAt      GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "updated_at"
-	WikiSize       GetApiV4UsersUserIdStarredProjectsParamsOrderBy = "wiki_size"
-)
-
-// Defines values for GetApiV4UsersUserIdStarredProjectsParamsSort.
-const (
-	Asc  GetApiV4UsersUserIdStarredProjectsParamsSort = "asc"
-	Desc GetApiV4UsersUserIdStarredProjectsParamsSort = "desc"
-)
-
-// Defines values for GetApiV4UsersUserIdStarredProjectsParamsVisibility.
-const (
-	GetApiV4UsersUserIdStarredProjectsParamsVisibilityInternal GetApiV4UsersUserIdStarredProjectsParamsVisibility = "internal"
-	GetApiV4UsersUserIdStarredProjectsParamsVisibilityPrivate  GetApiV4UsersUserIdStarredProjectsParamsVisibility = "private"
-	GetApiV4UsersUserIdStarredProjectsParamsVisibilityPublic   GetApiV4UsersUserIdStarredProjectsParamsVisibility = "public"
-)
-
-// Defines values for GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevel.
-const (
-	GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevelN10 GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevel = 10
-	GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevelN15 GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevel = 15
-	GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevelN20 GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevel = 20
-	GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevelN30 GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevel = 30
-	GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevelN40 GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevel = 40
-	GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevelN50 GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevel = 50
-)
-
 type PostApiV4UserRunnersJSONBody struct {
 	// AccessLevel The access level of the runner
-	AccessLevel *PostApiV4UserRunnersJSONBodyAccessLevel `json:"access_level,omitempty"`
+	AccessLevel *string `json:"access_level,omitempty"`
 
 	// Description Description of the runner
 	Description *string `json:"description,omitempty"`
@@ -176,13 +44,11 @@ type PostApiV4UserRunnersJSONBody struct {
 	RunUntagged *bool `json:"run_untagged,omitempty"`
 
 	// RunnerType Specifies the scope of the runner
-	RunnerType PostApiV4UserRunnersJSONBodyRunnerType `json:"runner_type"`
+	RunnerType string `json:"runner_type"`
 
 	// TagList A list of runner tags
 	TagList *[]string `json:"tag_list,omitempty"`
 }
-type PostApiV4UserRunnersJSONBodyAccessLevel string
-type PostApiV4UserRunnersJSONBodyRunnerType string
 type GetApiV4UsersIdEventsParams struct {
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -194,7 +60,7 @@ type GetApiV4UsersIdEventsParams struct {
 	Action *string `form:"action,omitempty" json:"action,omitempty"`
 
 	// TargetType Event target type to filter on
-	TargetType *GetApiV4UsersIdEventsParamsTargetType `form:"target_type,omitempty" json:"target_type,omitempty"`
+	TargetType *string `form:"target_type,omitempty" json:"target_type,omitempty"`
 
 	// Before Include only events created before this date
 	Before *openapi_types.Date `form:"before,omitempty" json:"before,omitempty"`
@@ -203,16 +69,14 @@ type GetApiV4UsersIdEventsParams struct {
 	After *openapi_types.Date `form:"after,omitempty" json:"after,omitempty"`
 
 	// Sort Return events sorted in ascending and descending order
-	Sort *GetApiV4UsersIdEventsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 }
-type GetApiV4UsersIdEventsParamsTargetType string
-type GetApiV4UsersIdEventsParamsSort string
 type GetApiV4UsersUserIdContributedProjectsParams struct {
 	// OrderBy Return projects ordered by field. storage_size, repository_size, wiki_size, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to.
-	OrderBy *GetApiV4UsersUserIdContributedProjectsParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Return projects sorted in ascending and descending order
-	Sort *GetApiV4UsersUserIdContributedProjectsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -223,20 +87,18 @@ type GetApiV4UsersUserIdContributedProjectsParams struct {
 	// Simple Return only the ID, URL, name, and path of each project
 	Simple *bool `form:"simple,omitempty" json:"simple,omitempty"`
 }
-type GetApiV4UsersUserIdContributedProjectsParamsOrderBy string
-type GetApiV4UsersUserIdContributedProjectsParamsSort string
 type GetApiV4UsersUserIdProjectsParams struct {
 	// OrderBy Return projects ordered by field. storage_size, repository_size, wiki_size, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to.
-	OrderBy *GetApiV4UsersUserIdProjectsParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Return projects sorted in ascending and descending order
-	Sort *GetApiV4UsersUserIdProjectsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Archived Limit by archived status
 	Archived *bool `form:"archived,omitempty" json:"archived,omitempty"`
 
 	// Visibility Limit by visibility
-	Visibility *GetApiV4UsersUserIdProjectsParamsVisibility `form:"visibility,omitempty" json:"visibility,omitempty"`
+	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty"`
 
 	// Search Return list of projects matching the search criteria
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
@@ -266,7 +128,7 @@ type GetApiV4UsersUserIdProjectsParams struct {
 	WithProgrammingLanguage *string `form:"with_programming_language,omitempty" json:"with_programming_language,omitempty"`
 
 	// MinAccessLevel Limit by minimum access level of authenticated user
-	MinAccessLevel *GetApiV4UsersUserIdProjectsParamsMinAccessLevel `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
 
 	// IdAfter Limit results to projects with IDs greater than the specified ID
 	IdAfter *int32 `form:"id_after,omitempty" json:"id_after,omitempty"`
@@ -328,22 +190,18 @@ type GetApiV4UsersUserIdProjectsParams struct {
 	// WithCustomAttributes Include custom attributes in the response
 	WithCustomAttributes *bool `form:"with_custom_attributes,omitempty" json:"with_custom_attributes,omitempty"`
 }
-type GetApiV4UsersUserIdProjectsParamsOrderBy string
-type GetApiV4UsersUserIdProjectsParamsSort string
-type GetApiV4UsersUserIdProjectsParamsVisibility string
-type GetApiV4UsersUserIdProjectsParamsMinAccessLevel int32
 type GetApiV4UsersUserIdStarredProjectsParams struct {
 	// OrderBy Return projects ordered by field. storage_size, repository_size, wiki_size, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to.
-	OrderBy *GetApiV4UsersUserIdStarredProjectsParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Return projects sorted in ascending and descending order
-	Sort *GetApiV4UsersUserIdStarredProjectsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Archived Limit by archived status
 	Archived *bool `form:"archived,omitempty" json:"archived,omitempty"`
 
 	// Visibility Limit by visibility
-	Visibility *GetApiV4UsersUserIdStarredProjectsParamsVisibility `form:"visibility,omitempty" json:"visibility,omitempty"`
+	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty"`
 
 	// Search Return list of projects matching the search criteria
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
@@ -373,7 +231,7 @@ type GetApiV4UsersUserIdStarredProjectsParams struct {
 	WithProgrammingLanguage *string `form:"with_programming_language,omitempty" json:"with_programming_language,omitempty"`
 
 	// MinAccessLevel Limit by minimum access level of authenticated user
-	MinAccessLevel *GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevel `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
 
 	// IdAfter Limit results to projects with IDs greater than the specified ID
 	IdAfter *int32 `form:"id_after,omitempty" json:"id_after,omitempty"`
@@ -432,10 +290,6 @@ type GetApiV4UsersUserIdStarredProjectsParams struct {
 	// Statistics Include project statistics
 	Statistics *bool `form:"statistics,omitempty" json:"statistics,omitempty"`
 }
-type GetApiV4UsersUserIdStarredProjectsParamsOrderBy string
-type GetApiV4UsersUserIdStarredProjectsParamsSort string
-type GetApiV4UsersUserIdStarredProjectsParamsVisibility string
-type GetApiV4UsersUserIdStarredProjectsParamsMinAccessLevel int32
 type PostApiV4UserRunnersJSONRequestBody PostApiV4UserRunnersJSONBody
 type PostApiV4UserRunnersResponse struct {
 	Body         []byte

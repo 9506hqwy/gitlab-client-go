@@ -15,697 +15,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-// Defines values for GetApiV4GroupsParamsVisibility.
-const (
-	GetApiV4GroupsParamsVisibilityInternal GetApiV4GroupsParamsVisibility = "internal"
-	GetApiV4GroupsParamsVisibilityPrivate  GetApiV4GroupsParamsVisibility = "private"
-	GetApiV4GroupsParamsVisibilityPublic   GetApiV4GroupsParamsVisibility = "public"
-)
-
-// Defines values for GetApiV4GroupsParamsOrderBy.
-const (
-	GetApiV4GroupsParamsOrderById         GetApiV4GroupsParamsOrderBy = "id"
-	GetApiV4GroupsParamsOrderByName       GetApiV4GroupsParamsOrderBy = "name"
-	GetApiV4GroupsParamsOrderByPath       GetApiV4GroupsParamsOrderBy = "path"
-	GetApiV4GroupsParamsOrderBySimilarity GetApiV4GroupsParamsOrderBy = "similarity"
-)
-
-// Defines values for GetApiV4GroupsParamsSort.
-const (
-	GetApiV4GroupsParamsSortAsc  GetApiV4GroupsParamsSort = "asc"
-	GetApiV4GroupsParamsSortDesc GetApiV4GroupsParamsSort = "desc"
-)
-
-// Defines values for GetApiV4GroupsParamsMinAccessLevel.
-const (
-	GetApiV4GroupsParamsMinAccessLevelN10 GetApiV4GroupsParamsMinAccessLevel = 10
-	GetApiV4GroupsParamsMinAccessLevelN15 GetApiV4GroupsParamsMinAccessLevel = 15
-	GetApiV4GroupsParamsMinAccessLevelN20 GetApiV4GroupsParamsMinAccessLevel = 20
-	GetApiV4GroupsParamsMinAccessLevelN30 GetApiV4GroupsParamsMinAccessLevel = 30
-	GetApiV4GroupsParamsMinAccessLevelN40 GetApiV4GroupsParamsMinAccessLevel = 40
-	GetApiV4GroupsParamsMinAccessLevelN50 GetApiV4GroupsParamsMinAccessLevel = 50
-)
-
-// Defines values for PostApiV4GroupsJSONBodyDefaultBranchProtection.
-const (
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionN0 PostApiV4GroupsJSONBodyDefaultBranchProtection = 0
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionN1 PostApiV4GroupsJSONBodyDefaultBranchProtection = 1
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionN2 PostApiV4GroupsJSONBodyDefaultBranchProtection = 2
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionN3 PostApiV4GroupsJSONBodyDefaultBranchProtection = 3
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionN4 PostApiV4GroupsJSONBodyDefaultBranchProtection = 4
-)
-
-// Defines values for PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel.
-const (
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevelN0  PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel = 0
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevelN30 PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel = 30
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevelN40 PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel = 40
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevelN60 PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel = 60
-)
-
-// Defines values for PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel.
-const (
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevelN0  PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel = 0
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevelN30 PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel = 30
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevelN40 PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel = 40
-	PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevelN60 PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel = 60
-)
-
-// Defines values for PostApiV4GroupsJSONBodyDuoAvailability.
-const (
-	PostApiV4GroupsJSONBodyDuoAvailabilityDefaultOff PostApiV4GroupsJSONBodyDuoAvailability = "default_off"
-	PostApiV4GroupsJSONBodyDuoAvailabilityDefaultOn  PostApiV4GroupsJSONBodyDuoAvailability = "default_on"
-	PostApiV4GroupsJSONBodyDuoAvailabilityNeverOn    PostApiV4GroupsJSONBodyDuoAvailability = "never_on"
-)
-
-// Defines values for PostApiV4GroupsJSONBodyEnabledGitAccessProtocol.
-const (
-	PostApiV4GroupsJSONBodyEnabledGitAccessProtocolAll  PostApiV4GroupsJSONBodyEnabledGitAccessProtocol = "all"
-	PostApiV4GroupsJSONBodyEnabledGitAccessProtocolHttp PostApiV4GroupsJSONBodyEnabledGitAccessProtocol = "http"
-	PostApiV4GroupsJSONBodyEnabledGitAccessProtocolSsh  PostApiV4GroupsJSONBodyEnabledGitAccessProtocol = "ssh"
-)
-
-// Defines values for PostApiV4GroupsJSONBodyProjectCreationLevel.
-const (
-	PostApiV4GroupsJSONBodyProjectCreationLevelAdministrator PostApiV4GroupsJSONBodyProjectCreationLevel = "administrator"
-	PostApiV4GroupsJSONBodyProjectCreationLevelDeveloper     PostApiV4GroupsJSONBodyProjectCreationLevel = "developer"
-	PostApiV4GroupsJSONBodyProjectCreationLevelMaintainer    PostApiV4GroupsJSONBodyProjectCreationLevel = "maintainer"
-	PostApiV4GroupsJSONBodyProjectCreationLevelNoone         PostApiV4GroupsJSONBodyProjectCreationLevel = "noone"
-	PostApiV4GroupsJSONBodyProjectCreationLevelOwner         PostApiV4GroupsJSONBodyProjectCreationLevel = "owner"
-)
-
-// Defines values for PostApiV4GroupsJSONBodySharedRunnersSetting.
-const (
-	PostApiV4GroupsJSONBodySharedRunnersSettingDisabledAndOverridable   PostApiV4GroupsJSONBodySharedRunnersSetting = "disabled_and_overridable"
-	PostApiV4GroupsJSONBodySharedRunnersSettingDisabledAndUnoverridable PostApiV4GroupsJSONBodySharedRunnersSetting = "disabled_and_unoverridable"
-	PostApiV4GroupsJSONBodySharedRunnersSettingEnabled                  PostApiV4GroupsJSONBodySharedRunnersSetting = "enabled"
-)
-
-// Defines values for PostApiV4GroupsJSONBodySubgroupCreationLevel.
-const (
-	PostApiV4GroupsJSONBodySubgroupCreationLevelMaintainer PostApiV4GroupsJSONBodySubgroupCreationLevel = "maintainer"
-	PostApiV4GroupsJSONBodySubgroupCreationLevelOwner      PostApiV4GroupsJSONBodySubgroupCreationLevel = "owner"
-)
-
-// Defines values for PostApiV4GroupsJSONBodyVisibility.
-const (
-	PostApiV4GroupsJSONBodyVisibilityInternal PostApiV4GroupsJSONBodyVisibility = "internal"
-	PostApiV4GroupsJSONBodyVisibilityPrivate  PostApiV4GroupsJSONBodyVisibility = "private"
-	PostApiV4GroupsJSONBodyVisibilityPublic   PostApiV4GroupsJSONBodyVisibility = "public"
-)
-
-// Defines values for PostApiV4GroupsJSONBodyWikiAccessLevel.
-const (
-	PostApiV4GroupsJSONBodyWikiAccessLevelDisabled PostApiV4GroupsJSONBodyWikiAccessLevel = "disabled"
-	PostApiV4GroupsJSONBodyWikiAccessLevelEnabled  PostApiV4GroupsJSONBodyWikiAccessLevel = "enabled"
-	PostApiV4GroupsJSONBodyWikiAccessLevelPrivate  PostApiV4GroupsJSONBodyWikiAccessLevel = "private"
-)
-
-// Defines values for PutApiV4GroupsIdJSONBodyDefaultBranchProtection.
-const (
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionN0 PutApiV4GroupsIdJSONBodyDefaultBranchProtection = 0
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionN1 PutApiV4GroupsIdJSONBodyDefaultBranchProtection = 1
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionN2 PutApiV4GroupsIdJSONBodyDefaultBranchProtection = 2
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionN3 PutApiV4GroupsIdJSONBodyDefaultBranchProtection = 3
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionN4 PutApiV4GroupsIdJSONBodyDefaultBranchProtection = 4
-)
-
-// Defines values for PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel.
-const (
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevelN0  PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel = 0
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevelN30 PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel = 30
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevelN40 PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel = 40
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevelN60 PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel = 60
-)
-
-// Defines values for PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel.
-const (
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevelN0  PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel = 0
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevelN30 PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel = 30
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevelN40 PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel = 40
-	PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevelN60 PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel = 60
-)
-
-// Defines values for PutApiV4GroupsIdJSONBodyDuoAvailability.
-const (
-	PutApiV4GroupsIdJSONBodyDuoAvailabilityDefaultOff PutApiV4GroupsIdJSONBodyDuoAvailability = "default_off"
-	PutApiV4GroupsIdJSONBodyDuoAvailabilityDefaultOn  PutApiV4GroupsIdJSONBodyDuoAvailability = "default_on"
-	PutApiV4GroupsIdJSONBodyDuoAvailabilityNeverOn    PutApiV4GroupsIdJSONBodyDuoAvailability = "never_on"
-)
-
-// Defines values for PutApiV4GroupsIdJSONBodyEnabledGitAccessProtocol.
-const (
-	PutApiV4GroupsIdJSONBodyEnabledGitAccessProtocolAll  PutApiV4GroupsIdJSONBodyEnabledGitAccessProtocol = "all"
-	PutApiV4GroupsIdJSONBodyEnabledGitAccessProtocolHttp PutApiV4GroupsIdJSONBodyEnabledGitAccessProtocol = "http"
-	PutApiV4GroupsIdJSONBodyEnabledGitAccessProtocolSsh  PutApiV4GroupsIdJSONBodyEnabledGitAccessProtocol = "ssh"
-)
-
-// Defines values for PutApiV4GroupsIdJSONBodyProjectCreationLevel.
-const (
-	PutApiV4GroupsIdJSONBodyProjectCreationLevelAdministrator PutApiV4GroupsIdJSONBodyProjectCreationLevel = "administrator"
-	PutApiV4GroupsIdJSONBodyProjectCreationLevelDeveloper     PutApiV4GroupsIdJSONBodyProjectCreationLevel = "developer"
-	PutApiV4GroupsIdJSONBodyProjectCreationLevelMaintainer    PutApiV4GroupsIdJSONBodyProjectCreationLevel = "maintainer"
-	PutApiV4GroupsIdJSONBodyProjectCreationLevelNoone         PutApiV4GroupsIdJSONBodyProjectCreationLevel = "noone"
-	PutApiV4GroupsIdJSONBodyProjectCreationLevelOwner         PutApiV4GroupsIdJSONBodyProjectCreationLevel = "owner"
-)
-
-// Defines values for PutApiV4GroupsIdJSONBodySharedRunnersSetting.
-const (
-	PutApiV4GroupsIdJSONBodySharedRunnersSettingDisabledAndOverridable   PutApiV4GroupsIdJSONBodySharedRunnersSetting = "disabled_and_overridable"
-	PutApiV4GroupsIdJSONBodySharedRunnersSettingDisabledAndUnoverridable PutApiV4GroupsIdJSONBodySharedRunnersSetting = "disabled_and_unoverridable"
-	PutApiV4GroupsIdJSONBodySharedRunnersSettingEnabled                  PutApiV4GroupsIdJSONBodySharedRunnersSetting = "enabled"
-)
-
-// Defines values for PutApiV4GroupsIdJSONBodySubgroupCreationLevel.
-const (
-	PutApiV4GroupsIdJSONBodySubgroupCreationLevelMaintainer PutApiV4GroupsIdJSONBodySubgroupCreationLevel = "maintainer"
-	PutApiV4GroupsIdJSONBodySubgroupCreationLevelOwner      PutApiV4GroupsIdJSONBodySubgroupCreationLevel = "owner"
-)
-
-// Defines values for PutApiV4GroupsIdJSONBodyVisibility.
-const (
-	PutApiV4GroupsIdJSONBodyVisibilityInternal PutApiV4GroupsIdJSONBodyVisibility = "internal"
-	PutApiV4GroupsIdJSONBodyVisibilityPrivate  PutApiV4GroupsIdJSONBodyVisibility = "private"
-	PutApiV4GroupsIdJSONBodyVisibilityPublic   PutApiV4GroupsIdJSONBodyVisibility = "public"
-)
-
-// Defines values for PutApiV4GroupsIdJSONBodyWikiAccessLevel.
-const (
-	PutApiV4GroupsIdJSONBodyWikiAccessLevelDisabled PutApiV4GroupsIdJSONBodyWikiAccessLevel = "disabled"
-	PutApiV4GroupsIdJSONBodyWikiAccessLevelEnabled  PutApiV4GroupsIdJSONBodyWikiAccessLevel = "enabled"
-	PutApiV4GroupsIdJSONBodyWikiAccessLevelPrivate  PutApiV4GroupsIdJSONBodyWikiAccessLevel = "private"
-)
-
-// Defines values for GetApiV4GroupsIdBillableMembersParamsSort.
-const (
-	GetApiV4GroupsIdBillableMembersParamsSortAccessLevelAsc     GetApiV4GroupsIdBillableMembersParamsSort = "access_level_asc"
-	GetApiV4GroupsIdBillableMembersParamsSortAccessLevelDesc    GetApiV4GroupsIdBillableMembersParamsSort = "access_level_desc"
-	GetApiV4GroupsIdBillableMembersParamsSortLastActivityOnAsc  GetApiV4GroupsIdBillableMembersParamsSort = "last_activity_on_asc"
-	GetApiV4GroupsIdBillableMembersParamsSortLastActivityOnDesc GetApiV4GroupsIdBillableMembersParamsSort = "last_activity_on_desc"
-	GetApiV4GroupsIdBillableMembersParamsSortLastJoined         GetApiV4GroupsIdBillableMembersParamsSort = "last_joined"
-	GetApiV4GroupsIdBillableMembersParamsSortNameAsc            GetApiV4GroupsIdBillableMembersParamsSort = "name_asc"
-	GetApiV4GroupsIdBillableMembersParamsSortNameDesc           GetApiV4GroupsIdBillableMembersParamsSort = "name_desc"
-	GetApiV4GroupsIdBillableMembersParamsSortOldestJoined       GetApiV4GroupsIdBillableMembersParamsSort = "oldest_joined"
-	GetApiV4GroupsIdBillableMembersParamsSortOldestSignIn       GetApiV4GroupsIdBillableMembersParamsSort = "oldest_sign_in"
-	GetApiV4GroupsIdBillableMembersParamsSortRecentSignIn       GetApiV4GroupsIdBillableMembersParamsSort = "recent_sign_in"
-)
-
-// Defines values for PostApiV4GroupsIdClustersUserJSONBodyPlatformKubernetesAttributesAuthorizationType.
-const (
-	PostApiV4GroupsIdClustersUserJSONBodyPlatformKubernetesAttributesAuthorizationTypeAbac                 PostApiV4GroupsIdClustersUserJSONBodyPlatformKubernetesAttributesAuthorizationType = "abac"
-	PostApiV4GroupsIdClustersUserJSONBodyPlatformKubernetesAttributesAuthorizationTypeRbac                 PostApiV4GroupsIdClustersUserJSONBodyPlatformKubernetesAttributesAuthorizationType = "rbac"
-	PostApiV4GroupsIdClustersUserJSONBodyPlatformKubernetesAttributesAuthorizationTypeUnknownAuthorization PostApiV4GroupsIdClustersUserJSONBodyPlatformKubernetesAttributesAuthorizationType = "unknown_authorization"
-)
-
-// Defines values for PostApiV4GroupsIdDeployTokensJSONBodyScopes.
-const (
-	PostApiV4GroupsIdDeployTokensJSONBodyScopesReadPackageRegistry  PostApiV4GroupsIdDeployTokensJSONBodyScopes = "read_package_registry"
-	PostApiV4GroupsIdDeployTokensJSONBodyScopesReadRegistry         PostApiV4GroupsIdDeployTokensJSONBodyScopes = "read_registry"
-	PostApiV4GroupsIdDeployTokensJSONBodyScopesReadRepository       PostApiV4GroupsIdDeployTokensJSONBodyScopes = "read_repository"
-	PostApiV4GroupsIdDeployTokensJSONBodyScopesReadVirtualRegistry  PostApiV4GroupsIdDeployTokensJSONBodyScopes = "read_virtual_registry"
-	PostApiV4GroupsIdDeployTokensJSONBodyScopesWritePackageRegistry PostApiV4GroupsIdDeployTokensJSONBodyScopes = "write_package_registry"
-	PostApiV4GroupsIdDeployTokensJSONBodyScopesWriteRegistry        PostApiV4GroupsIdDeployTokensJSONBodyScopes = "write_registry"
-	PostApiV4GroupsIdDeployTokensJSONBodyScopesWriteVirtualRegistry PostApiV4GroupsIdDeployTokensJSONBodyScopes = "write_virtual_registry"
-)
-
-// Defines values for GetApiV4GroupsIdDescendantGroupsParamsVisibility.
-const (
-	GetApiV4GroupsIdDescendantGroupsParamsVisibilityInternal GetApiV4GroupsIdDescendantGroupsParamsVisibility = "internal"
-	GetApiV4GroupsIdDescendantGroupsParamsVisibilityPrivate  GetApiV4GroupsIdDescendantGroupsParamsVisibility = "private"
-	GetApiV4GroupsIdDescendantGroupsParamsVisibilityPublic   GetApiV4GroupsIdDescendantGroupsParamsVisibility = "public"
-)
-
-// Defines values for GetApiV4GroupsIdDescendantGroupsParamsOrderBy.
-const (
-	GetApiV4GroupsIdDescendantGroupsParamsOrderById         GetApiV4GroupsIdDescendantGroupsParamsOrderBy = "id"
-	GetApiV4GroupsIdDescendantGroupsParamsOrderByName       GetApiV4GroupsIdDescendantGroupsParamsOrderBy = "name"
-	GetApiV4GroupsIdDescendantGroupsParamsOrderByPath       GetApiV4GroupsIdDescendantGroupsParamsOrderBy = "path"
-	GetApiV4GroupsIdDescendantGroupsParamsOrderBySimilarity GetApiV4GroupsIdDescendantGroupsParamsOrderBy = "similarity"
-)
-
-// Defines values for GetApiV4GroupsIdDescendantGroupsParamsSort.
-const (
-	GetApiV4GroupsIdDescendantGroupsParamsSortAsc  GetApiV4GroupsIdDescendantGroupsParamsSort = "asc"
-	GetApiV4GroupsIdDescendantGroupsParamsSortDesc GetApiV4GroupsIdDescendantGroupsParamsSort = "desc"
-)
-
-// Defines values for GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevel.
-const (
-	GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevelN10 GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevel = 10
-	GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevelN15 GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevel = 15
-	GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevelN20 GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevel = 20
-	GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevelN30 GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevel = 30
-	GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevelN40 GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevel = 40
-	GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevelN50 GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevel = 50
-)
-
-// Defines values for GetApiV4GroupsIdGroupsSharedParamsVisibility.
-const (
-	GetApiV4GroupsIdGroupsSharedParamsVisibilityInternal GetApiV4GroupsIdGroupsSharedParamsVisibility = "internal"
-	GetApiV4GroupsIdGroupsSharedParamsVisibilityPrivate  GetApiV4GroupsIdGroupsSharedParamsVisibility = "private"
-	GetApiV4GroupsIdGroupsSharedParamsVisibilityPublic   GetApiV4GroupsIdGroupsSharedParamsVisibility = "public"
-)
-
-// Defines values for GetApiV4GroupsIdGroupsSharedParamsMinAccessLevel.
-const (
-	GetApiV4GroupsIdGroupsSharedParamsMinAccessLevelN10 GetApiV4GroupsIdGroupsSharedParamsMinAccessLevel = 10
-	GetApiV4GroupsIdGroupsSharedParamsMinAccessLevelN15 GetApiV4GroupsIdGroupsSharedParamsMinAccessLevel = 15
-	GetApiV4GroupsIdGroupsSharedParamsMinAccessLevelN20 GetApiV4GroupsIdGroupsSharedParamsMinAccessLevel = 20
-	GetApiV4GroupsIdGroupsSharedParamsMinAccessLevelN30 GetApiV4GroupsIdGroupsSharedParamsMinAccessLevel = 30
-	GetApiV4GroupsIdGroupsSharedParamsMinAccessLevelN40 GetApiV4GroupsIdGroupsSharedParamsMinAccessLevel = 40
-	GetApiV4GroupsIdGroupsSharedParamsMinAccessLevelN50 GetApiV4GroupsIdGroupsSharedParamsMinAccessLevel = 50
-)
-
-// Defines values for GetApiV4GroupsIdGroupsSharedParamsOrderBy.
-const (
-	GetApiV4GroupsIdGroupsSharedParamsOrderById         GetApiV4GroupsIdGroupsSharedParamsOrderBy = "id"
-	GetApiV4GroupsIdGroupsSharedParamsOrderByName       GetApiV4GroupsIdGroupsSharedParamsOrderBy = "name"
-	GetApiV4GroupsIdGroupsSharedParamsOrderByPath       GetApiV4GroupsIdGroupsSharedParamsOrderBy = "path"
-	GetApiV4GroupsIdGroupsSharedParamsOrderBySimilarity GetApiV4GroupsIdGroupsSharedParamsOrderBy = "similarity"
-)
-
-// Defines values for GetApiV4GroupsIdGroupsSharedParamsSort.
-const (
-	GetApiV4GroupsIdGroupsSharedParamsSortAsc  GetApiV4GroupsIdGroupsSharedParamsSort = "asc"
-	GetApiV4GroupsIdGroupsSharedParamsSortDesc GetApiV4GroupsIdGroupsSharedParamsSort = "desc"
-)
-
-// Defines values for DeleteApiV4GroupsIdIntegrationsSlugParamsSlug.
-const (
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugAppleAppStore                                 DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "apple-app-store"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugAsana                                         DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "asana"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugAssembla                                      DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "assembla"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugBamboo                                        DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "bamboo"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugBugzilla                                      DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "bugzilla"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugBuildkite                                     DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "buildkite"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugCampfire                                      DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "campfire"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugClickup                                       DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "clickup"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugConfluence                                    DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "confluence"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugCustomIssueTracker                            DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "custom-issue-tracker"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugDatadog                                       DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "datadog"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugDiffblueCover                                 DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "diffblue-cover"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugDiscord                                       DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "discord"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugDroneCi                                       DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "drone-ci"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugEmailsOnPush                                  DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "emails-on-push"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugEwm                                           DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "ewm"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugExternalWiki                                  DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "external-wiki"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugGitGuardian                                   DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "git-guardian"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugGithub                                        DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "github"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugGitlabSlackApplication                        DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "gitlab-slack-application"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugGoogleCloudPlatformArtifactRegistry           DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "google-cloud-platform-artifact-registry"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugGoogleCloudPlatformWorkloadIdentityFederation DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "google-cloud-platform-workload-identity-federation"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugGooglePlay                                    DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "google-play"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugHangoutsChat                                  DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "hangouts-chat"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugHarbor                                        DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "harbor"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugIrker                                         DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "irker"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugJenkins                                       DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "jenkins"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugJira                                          DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "jira"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugJiraCloudApp                                  DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "jira-cloud-app"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugMatrix                                        DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "matrix"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugMattermost                                    DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "mattermost"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugMattermostSlashCommands                       DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "mattermost-slash-commands"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugMicrosoftTeams                                DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "microsoft-teams"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugMockCi                                        DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "mock-ci"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugMockMonitoring                                DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "mock-monitoring"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugPackagist                                     DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "packagist"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugPhorge                                        DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "phorge"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugPipelinesEmail                                DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "pipelines-email"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugPivotaltracker                                DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "pivotaltracker"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugPumble                                        DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "pumble"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugPushover                                      DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "pushover"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugRedmine                                       DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "redmine"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugSlack                                         DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "slack"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugSlackSlashCommands                            DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "slack-slash-commands"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugSquashTm                                      DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "squash-tm"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugTeamcity                                      DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "teamcity"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugTelegram                                      DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "telegram"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugUnifyCircuit                                  DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "unify-circuit"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugWebexTeams                                    DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "webex-teams"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugYoutrack                                      DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "youtrack"
-	DeleteApiV4GroupsIdIntegrationsSlugParamsSlugZentao                                        DeleteApiV4GroupsIdIntegrationsSlugParamsSlug = "zentao"
-)
-
-// Defines values for GetApiV4GroupsIdIntegrationsSlugParamsSlug.
-const (
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugAppleAppStore                                 GetApiV4GroupsIdIntegrationsSlugParamsSlug = "apple-app-store"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugAsana                                         GetApiV4GroupsIdIntegrationsSlugParamsSlug = "asana"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugAssembla                                      GetApiV4GroupsIdIntegrationsSlugParamsSlug = "assembla"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugBamboo                                        GetApiV4GroupsIdIntegrationsSlugParamsSlug = "bamboo"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugBugzilla                                      GetApiV4GroupsIdIntegrationsSlugParamsSlug = "bugzilla"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugBuildkite                                     GetApiV4GroupsIdIntegrationsSlugParamsSlug = "buildkite"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugCampfire                                      GetApiV4GroupsIdIntegrationsSlugParamsSlug = "campfire"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugClickup                                       GetApiV4GroupsIdIntegrationsSlugParamsSlug = "clickup"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugConfluence                                    GetApiV4GroupsIdIntegrationsSlugParamsSlug = "confluence"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugCustomIssueTracker                            GetApiV4GroupsIdIntegrationsSlugParamsSlug = "custom-issue-tracker"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugDatadog                                       GetApiV4GroupsIdIntegrationsSlugParamsSlug = "datadog"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugDiffblueCover                                 GetApiV4GroupsIdIntegrationsSlugParamsSlug = "diffblue-cover"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugDiscord                                       GetApiV4GroupsIdIntegrationsSlugParamsSlug = "discord"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugDroneCi                                       GetApiV4GroupsIdIntegrationsSlugParamsSlug = "drone-ci"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugEmailsOnPush                                  GetApiV4GroupsIdIntegrationsSlugParamsSlug = "emails-on-push"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugEwm                                           GetApiV4GroupsIdIntegrationsSlugParamsSlug = "ewm"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugExternalWiki                                  GetApiV4GroupsIdIntegrationsSlugParamsSlug = "external-wiki"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugGitGuardian                                   GetApiV4GroupsIdIntegrationsSlugParamsSlug = "git-guardian"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugGithub                                        GetApiV4GroupsIdIntegrationsSlugParamsSlug = "github"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugGitlabSlackApplication                        GetApiV4GroupsIdIntegrationsSlugParamsSlug = "gitlab-slack-application"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugGoogleCloudPlatformArtifactRegistry           GetApiV4GroupsIdIntegrationsSlugParamsSlug = "google-cloud-platform-artifact-registry"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugGoogleCloudPlatformWorkloadIdentityFederation GetApiV4GroupsIdIntegrationsSlugParamsSlug = "google-cloud-platform-workload-identity-federation"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugGooglePlay                                    GetApiV4GroupsIdIntegrationsSlugParamsSlug = "google-play"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugHangoutsChat                                  GetApiV4GroupsIdIntegrationsSlugParamsSlug = "hangouts-chat"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugHarbor                                        GetApiV4GroupsIdIntegrationsSlugParamsSlug = "harbor"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugIrker                                         GetApiV4GroupsIdIntegrationsSlugParamsSlug = "irker"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugJenkins                                       GetApiV4GroupsIdIntegrationsSlugParamsSlug = "jenkins"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugJira                                          GetApiV4GroupsIdIntegrationsSlugParamsSlug = "jira"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugJiraCloudApp                                  GetApiV4GroupsIdIntegrationsSlugParamsSlug = "jira-cloud-app"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugMatrix                                        GetApiV4GroupsIdIntegrationsSlugParamsSlug = "matrix"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugMattermost                                    GetApiV4GroupsIdIntegrationsSlugParamsSlug = "mattermost"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugMattermostSlashCommands                       GetApiV4GroupsIdIntegrationsSlugParamsSlug = "mattermost-slash-commands"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugMicrosoftTeams                                GetApiV4GroupsIdIntegrationsSlugParamsSlug = "microsoft-teams"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugMockCi                                        GetApiV4GroupsIdIntegrationsSlugParamsSlug = "mock-ci"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugMockMonitoring                                GetApiV4GroupsIdIntegrationsSlugParamsSlug = "mock-monitoring"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugPackagist                                     GetApiV4GroupsIdIntegrationsSlugParamsSlug = "packagist"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugPhorge                                        GetApiV4GroupsIdIntegrationsSlugParamsSlug = "phorge"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugPipelinesEmail                                GetApiV4GroupsIdIntegrationsSlugParamsSlug = "pipelines-email"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugPivotaltracker                                GetApiV4GroupsIdIntegrationsSlugParamsSlug = "pivotaltracker"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugPumble                                        GetApiV4GroupsIdIntegrationsSlugParamsSlug = "pumble"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugPushover                                      GetApiV4GroupsIdIntegrationsSlugParamsSlug = "pushover"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugRedmine                                       GetApiV4GroupsIdIntegrationsSlugParamsSlug = "redmine"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugSlack                                         GetApiV4GroupsIdIntegrationsSlugParamsSlug = "slack"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugSlackSlashCommands                            GetApiV4GroupsIdIntegrationsSlugParamsSlug = "slack-slash-commands"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugSquashTm                                      GetApiV4GroupsIdIntegrationsSlugParamsSlug = "squash-tm"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugTeamcity                                      GetApiV4GroupsIdIntegrationsSlugParamsSlug = "teamcity"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugTelegram                                      GetApiV4GroupsIdIntegrationsSlugParamsSlug = "telegram"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugUnifyCircuit                                  GetApiV4GroupsIdIntegrationsSlugParamsSlug = "unify-circuit"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugWebexTeams                                    GetApiV4GroupsIdIntegrationsSlugParamsSlug = "webex-teams"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugYoutrack                                      GetApiV4GroupsIdIntegrationsSlugParamsSlug = "youtrack"
-	GetApiV4GroupsIdIntegrationsSlugParamsSlugZentao                                        GetApiV4GroupsIdIntegrationsSlugParamsSlug = "zentao"
-)
-
-// Defines values for PostApiV4GroupsIdInvitationsJSONBodyAccessLevel.
-const (
-	PostApiV4GroupsIdInvitationsJSONBodyAccessLevelN10 PostApiV4GroupsIdInvitationsJSONBodyAccessLevel = 10
-	PostApiV4GroupsIdInvitationsJSONBodyAccessLevelN15 PostApiV4GroupsIdInvitationsJSONBodyAccessLevel = 15
-	PostApiV4GroupsIdInvitationsJSONBodyAccessLevelN20 PostApiV4GroupsIdInvitationsJSONBodyAccessLevel = 20
-	PostApiV4GroupsIdInvitationsJSONBodyAccessLevelN30 PostApiV4GroupsIdInvitationsJSONBodyAccessLevel = 30
-	PostApiV4GroupsIdInvitationsJSONBodyAccessLevelN40 PostApiV4GroupsIdInvitationsJSONBodyAccessLevel = 40
-	PostApiV4GroupsIdInvitationsJSONBodyAccessLevelN5  PostApiV4GroupsIdInvitationsJSONBodyAccessLevel = 5
-	PostApiV4GroupsIdInvitationsJSONBodyAccessLevelN50 PostApiV4GroupsIdInvitationsJSONBodyAccessLevel = 50
-)
-
-// Defines values for PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevel.
-const (
-	PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevelN10 PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevel = 10
-	PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevelN15 PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevel = 15
-	PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevelN20 PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevel = 20
-	PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevelN30 PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevel = 30
-	PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevelN40 PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevel = 40
-	PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevelN50 PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevel = 50
-)
-
-// Defines values for GetApiV4GroupsIdInvitedGroupsParamsRelation.
-const (
-	GetApiV4GroupsIdInvitedGroupsParamsRelationDirect    GetApiV4GroupsIdInvitedGroupsParamsRelation = "direct"
-	GetApiV4GroupsIdInvitedGroupsParamsRelationInherited GetApiV4GroupsIdInvitedGroupsParamsRelation = "inherited"
-)
-
-// Defines values for GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevel.
-const (
-	GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevelN10 GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevel = 10
-	GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevelN15 GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevel = 15
-	GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevelN20 GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevel = 20
-	GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevelN30 GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevel = 30
-	GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevelN40 GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevel = 40
-	GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevelN50 GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevel = 50
-)
-
-// Defines values for GetApiV4GroupsIdMembersAllParamsState.
-const (
-	GetApiV4GroupsIdMembersAllParamsStateActive   GetApiV4GroupsIdMembersAllParamsState = "active"
-	GetApiV4GroupsIdMembersAllParamsStateAwaiting GetApiV4GroupsIdMembersAllParamsState = "awaiting"
-)
-
-// Defines values for PutApiV4GroupsIdMembersUserIdStateJSONBodyState.
-const (
-	PutApiV4GroupsIdMembersUserIdStateJSONBodyStateActive   PutApiV4GroupsIdMembersUserIdStateJSONBodyState = "active"
-	PutApiV4GroupsIdMembersUserIdStateJSONBodyStateAwaiting PutApiV4GroupsIdMembersUserIdStateJSONBodyState = "awaiting"
-)
-
-// Defines values for GetApiV4GroupsIdMergeRequestsParamsState.
-const (
-	GetApiV4GroupsIdMergeRequestsParamsStateAll    GetApiV4GroupsIdMergeRequestsParamsState = "all"
-	GetApiV4GroupsIdMergeRequestsParamsStateClosed GetApiV4GroupsIdMergeRequestsParamsState = "closed"
-	GetApiV4GroupsIdMergeRequestsParamsStateLocked GetApiV4GroupsIdMergeRequestsParamsState = "locked"
-	GetApiV4GroupsIdMergeRequestsParamsStateMerged GetApiV4GroupsIdMergeRequestsParamsState = "merged"
-	GetApiV4GroupsIdMergeRequestsParamsStateOpened GetApiV4GroupsIdMergeRequestsParamsState = "opened"
-)
-
-// Defines values for GetApiV4GroupsIdMergeRequestsParamsOrderBy.
-const (
-	GetApiV4GroupsIdMergeRequestsParamsOrderByCreatedAt     GetApiV4GroupsIdMergeRequestsParamsOrderBy = "created_at"
-	GetApiV4GroupsIdMergeRequestsParamsOrderByLabelPriority GetApiV4GroupsIdMergeRequestsParamsOrderBy = "label_priority"
-	GetApiV4GroupsIdMergeRequestsParamsOrderByMergedAt      GetApiV4GroupsIdMergeRequestsParamsOrderBy = "merged_at"
-	GetApiV4GroupsIdMergeRequestsParamsOrderByMilestoneDue  GetApiV4GroupsIdMergeRequestsParamsOrderBy = "milestone_due"
-	GetApiV4GroupsIdMergeRequestsParamsOrderByPopularity    GetApiV4GroupsIdMergeRequestsParamsOrderBy = "popularity"
-	GetApiV4GroupsIdMergeRequestsParamsOrderByPriority      GetApiV4GroupsIdMergeRequestsParamsOrderBy = "priority"
-	GetApiV4GroupsIdMergeRequestsParamsOrderByTitle         GetApiV4GroupsIdMergeRequestsParamsOrderBy = "title"
-	GetApiV4GroupsIdMergeRequestsParamsOrderByUpdatedAt     GetApiV4GroupsIdMergeRequestsParamsOrderBy = "updated_at"
-)
-
-// Defines values for GetApiV4GroupsIdMergeRequestsParamsSort.
-const (
-	GetApiV4GroupsIdMergeRequestsParamsSortAsc  GetApiV4GroupsIdMergeRequestsParamsSort = "asc"
-	GetApiV4GroupsIdMergeRequestsParamsSortDesc GetApiV4GroupsIdMergeRequestsParamsSort = "desc"
-)
-
-// Defines values for GetApiV4GroupsIdMergeRequestsParamsView.
-const (
-	GetApiV4GroupsIdMergeRequestsParamsViewSimple GetApiV4GroupsIdMergeRequestsParamsView = "simple"
-)
-
-// Defines values for GetApiV4GroupsIdMergeRequestsParamsScope.
-const (
-	GetApiV4GroupsIdMergeRequestsParamsScopeAll           GetApiV4GroupsIdMergeRequestsParamsScope = "all"
-	GetApiV4GroupsIdMergeRequestsParamsScopeAssignedToMe  GetApiV4GroupsIdMergeRequestsParamsScope = "assigned-to-me"
-	GetApiV4GroupsIdMergeRequestsParamsScopeAssignedToMe1 GetApiV4GroupsIdMergeRequestsParamsScope = "assigned_to_me"
-	GetApiV4GroupsIdMergeRequestsParamsScopeCreatedByMe   GetApiV4GroupsIdMergeRequestsParamsScope = "created-by-me"
-	GetApiV4GroupsIdMergeRequestsParamsScopeCreatedByMe1  GetApiV4GroupsIdMergeRequestsParamsScope = "created_by_me"
-)
-
-// Defines values for GetApiV4GroupsIdMergeRequestsParamsWip.
-const (
-	GetApiV4GroupsIdMergeRequestsParamsWipNo  GetApiV4GroupsIdMergeRequestsParamsWip = "no"
-	GetApiV4GroupsIdMergeRequestsParamsWipYes GetApiV4GroupsIdMergeRequestsParamsWip = "yes"
-)
-
-// Defines values for GetApiV4GroupsIdMergeRequestsParamsApproved.
-const (
-	GetApiV4GroupsIdMergeRequestsParamsApprovedNo  GetApiV4GroupsIdMergeRequestsParamsApproved = "no"
-	GetApiV4GroupsIdMergeRequestsParamsApprovedYes GetApiV4GroupsIdMergeRequestsParamsApproved = "yes"
-)
-
-// Defines values for GetApiV4GroupsIdPackagesParamsOrderBy.
-const (
-	GetApiV4GroupsIdPackagesParamsOrderByCreatedAt   GetApiV4GroupsIdPackagesParamsOrderBy = "created_at"
-	GetApiV4GroupsIdPackagesParamsOrderByName        GetApiV4GroupsIdPackagesParamsOrderBy = "name"
-	GetApiV4GroupsIdPackagesParamsOrderByProjectPath GetApiV4GroupsIdPackagesParamsOrderBy = "project_path"
-	GetApiV4GroupsIdPackagesParamsOrderByType        GetApiV4GroupsIdPackagesParamsOrderBy = "type"
-	GetApiV4GroupsIdPackagesParamsOrderByVersion     GetApiV4GroupsIdPackagesParamsOrderBy = "version"
-)
-
-// Defines values for GetApiV4GroupsIdPackagesParamsSort.
-const (
-	GetApiV4GroupsIdPackagesParamsSortAsc  GetApiV4GroupsIdPackagesParamsSort = "asc"
-	GetApiV4GroupsIdPackagesParamsSortDesc GetApiV4GroupsIdPackagesParamsSort = "desc"
-)
-
-// Defines values for GetApiV4GroupsIdPackagesParamsPackageType.
-const (
-	GetApiV4GroupsIdPackagesParamsPackageTypeComposer        GetApiV4GroupsIdPackagesParamsPackageType = "composer"
-	GetApiV4GroupsIdPackagesParamsPackageTypeConan           GetApiV4GroupsIdPackagesParamsPackageType = "conan"
-	GetApiV4GroupsIdPackagesParamsPackageTypeDebian          GetApiV4GroupsIdPackagesParamsPackageType = "debian"
-	GetApiV4GroupsIdPackagesParamsPackageTypeGeneric         GetApiV4GroupsIdPackagesParamsPackageType = "generic"
-	GetApiV4GroupsIdPackagesParamsPackageTypeGolang          GetApiV4GroupsIdPackagesParamsPackageType = "golang"
-	GetApiV4GroupsIdPackagesParamsPackageTypeHelm            GetApiV4GroupsIdPackagesParamsPackageType = "helm"
-	GetApiV4GroupsIdPackagesParamsPackageTypeMaven           GetApiV4GroupsIdPackagesParamsPackageType = "maven"
-	GetApiV4GroupsIdPackagesParamsPackageTypeMlModel         GetApiV4GroupsIdPackagesParamsPackageType = "ml_model"
-	GetApiV4GroupsIdPackagesParamsPackageTypeNpm             GetApiV4GroupsIdPackagesParamsPackageType = "npm"
-	GetApiV4GroupsIdPackagesParamsPackageTypeNuget           GetApiV4GroupsIdPackagesParamsPackageType = "nuget"
-	GetApiV4GroupsIdPackagesParamsPackageTypePypi            GetApiV4GroupsIdPackagesParamsPackageType = "pypi"
-	GetApiV4GroupsIdPackagesParamsPackageTypeRpm             GetApiV4GroupsIdPackagesParamsPackageType = "rpm"
-	GetApiV4GroupsIdPackagesParamsPackageTypeRubygems        GetApiV4GroupsIdPackagesParamsPackageType = "rubygems"
-	GetApiV4GroupsIdPackagesParamsPackageTypeTerraformModule GetApiV4GroupsIdPackagesParamsPackageType = "terraform_module"
-)
-
-// Defines values for GetApiV4GroupsIdPackagesParamsStatus.
-const (
-	GetApiV4GroupsIdPackagesParamsStatusDefault            GetApiV4GroupsIdPackagesParamsStatus = "default"
-	GetApiV4GroupsIdPackagesParamsStatusDeprecated         GetApiV4GroupsIdPackagesParamsStatus = "deprecated"
-	GetApiV4GroupsIdPackagesParamsStatusError              GetApiV4GroupsIdPackagesParamsStatus = "error"
-	GetApiV4GroupsIdPackagesParamsStatusHidden             GetApiV4GroupsIdPackagesParamsStatus = "hidden"
-	GetApiV4GroupsIdPackagesParamsStatusPendingDestruction GetApiV4GroupsIdPackagesParamsStatus = "pending_destruction"
-	GetApiV4GroupsIdPackagesParamsStatusProcessing         GetApiV4GroupsIdPackagesParamsStatus = "processing"
-)
-
-// Defines values for GetApiV4GroupsIdProjectsParamsVisibility.
-const (
-	GetApiV4GroupsIdProjectsParamsVisibilityInternal GetApiV4GroupsIdProjectsParamsVisibility = "internal"
-	GetApiV4GroupsIdProjectsParamsVisibilityPrivate  GetApiV4GroupsIdProjectsParamsVisibility = "private"
-	GetApiV4GroupsIdProjectsParamsVisibilityPublic   GetApiV4GroupsIdProjectsParamsVisibility = "public"
-)
-
-// Defines values for GetApiV4GroupsIdProjectsParamsOrderBy.
-const (
-	GetApiV4GroupsIdProjectsParamsOrderByCreatedAt      GetApiV4GroupsIdProjectsParamsOrderBy = "created_at"
-	GetApiV4GroupsIdProjectsParamsOrderById             GetApiV4GroupsIdProjectsParamsOrderBy = "id"
-	GetApiV4GroupsIdProjectsParamsOrderByLastActivityAt GetApiV4GroupsIdProjectsParamsOrderBy = "last_activity_at"
-	GetApiV4GroupsIdProjectsParamsOrderByName           GetApiV4GroupsIdProjectsParamsOrderBy = "name"
-	GetApiV4GroupsIdProjectsParamsOrderByPath           GetApiV4GroupsIdProjectsParamsOrderBy = "path"
-	GetApiV4GroupsIdProjectsParamsOrderBySimilarity     GetApiV4GroupsIdProjectsParamsOrderBy = "similarity"
-	GetApiV4GroupsIdProjectsParamsOrderByStarCount      GetApiV4GroupsIdProjectsParamsOrderBy = "star_count"
-	GetApiV4GroupsIdProjectsParamsOrderByUpdatedAt      GetApiV4GroupsIdProjectsParamsOrderBy = "updated_at"
-)
-
-// Defines values for GetApiV4GroupsIdProjectsParamsSort.
-const (
-	GetApiV4GroupsIdProjectsParamsSortAsc  GetApiV4GroupsIdProjectsParamsSort = "asc"
-	GetApiV4GroupsIdProjectsParamsSortDesc GetApiV4GroupsIdProjectsParamsSort = "desc"
-)
-
-// Defines values for GetApiV4GroupsIdProjectsParamsMinAccessLevel.
-const (
-	GetApiV4GroupsIdProjectsParamsMinAccessLevelN10 GetApiV4GroupsIdProjectsParamsMinAccessLevel = 10
-	GetApiV4GroupsIdProjectsParamsMinAccessLevelN15 GetApiV4GroupsIdProjectsParamsMinAccessLevel = 15
-	GetApiV4GroupsIdProjectsParamsMinAccessLevelN20 GetApiV4GroupsIdProjectsParamsMinAccessLevel = 20
-	GetApiV4GroupsIdProjectsParamsMinAccessLevelN30 GetApiV4GroupsIdProjectsParamsMinAccessLevel = 30
-	GetApiV4GroupsIdProjectsParamsMinAccessLevelN40 GetApiV4GroupsIdProjectsParamsMinAccessLevel = 40
-	GetApiV4GroupsIdProjectsParamsMinAccessLevelN50 GetApiV4GroupsIdProjectsParamsMinAccessLevel = 50
-)
-
-// Defines values for GetApiV4GroupsIdProjectsSharedParamsVisibility.
-const (
-	GetApiV4GroupsIdProjectsSharedParamsVisibilityInternal GetApiV4GroupsIdProjectsSharedParamsVisibility = "internal"
-	GetApiV4GroupsIdProjectsSharedParamsVisibilityPrivate  GetApiV4GroupsIdProjectsSharedParamsVisibility = "private"
-	GetApiV4GroupsIdProjectsSharedParamsVisibilityPublic   GetApiV4GroupsIdProjectsSharedParamsVisibility = "public"
-)
-
-// Defines values for GetApiV4GroupsIdProjectsSharedParamsOrderBy.
-const (
-	GetApiV4GroupsIdProjectsSharedParamsOrderByCreatedAt      GetApiV4GroupsIdProjectsSharedParamsOrderBy = "created_at"
-	GetApiV4GroupsIdProjectsSharedParamsOrderById             GetApiV4GroupsIdProjectsSharedParamsOrderBy = "id"
-	GetApiV4GroupsIdProjectsSharedParamsOrderByLastActivityAt GetApiV4GroupsIdProjectsSharedParamsOrderBy = "last_activity_at"
-	GetApiV4GroupsIdProjectsSharedParamsOrderByName           GetApiV4GroupsIdProjectsSharedParamsOrderBy = "name"
-	GetApiV4GroupsIdProjectsSharedParamsOrderByPath           GetApiV4GroupsIdProjectsSharedParamsOrderBy = "path"
-	GetApiV4GroupsIdProjectsSharedParamsOrderByStarCount      GetApiV4GroupsIdProjectsSharedParamsOrderBy = "star_count"
-	GetApiV4GroupsIdProjectsSharedParamsOrderByUpdatedAt      GetApiV4GroupsIdProjectsSharedParamsOrderBy = "updated_at"
-)
-
-// Defines values for GetApiV4GroupsIdProjectsSharedParamsSort.
-const (
-	GetApiV4GroupsIdProjectsSharedParamsSortAsc  GetApiV4GroupsIdProjectsSharedParamsSort = "asc"
-	GetApiV4GroupsIdProjectsSharedParamsSortDesc GetApiV4GroupsIdProjectsSharedParamsSort = "desc"
-)
-
-// Defines values for GetApiV4GroupsIdProjectsSharedParamsMinAccessLevel.
-const (
-	GetApiV4GroupsIdProjectsSharedParamsMinAccessLevelN10 GetApiV4GroupsIdProjectsSharedParamsMinAccessLevel = 10
-	GetApiV4GroupsIdProjectsSharedParamsMinAccessLevelN15 GetApiV4GroupsIdProjectsSharedParamsMinAccessLevel = 15
-	GetApiV4GroupsIdProjectsSharedParamsMinAccessLevelN20 GetApiV4GroupsIdProjectsSharedParamsMinAccessLevel = 20
-	GetApiV4GroupsIdProjectsSharedParamsMinAccessLevelN30 GetApiV4GroupsIdProjectsSharedParamsMinAccessLevel = 30
-	GetApiV4GroupsIdProjectsSharedParamsMinAccessLevelN40 GetApiV4GroupsIdProjectsSharedParamsMinAccessLevel = 40
-	GetApiV4GroupsIdProjectsSharedParamsMinAccessLevelN50 GetApiV4GroupsIdProjectsSharedParamsMinAccessLevel = 50
-)
-
-// Defines values for GetApiV4GroupsIdReleasesParamsSort.
-const (
-	GetApiV4GroupsIdReleasesParamsSortAsc  GetApiV4GroupsIdReleasesParamsSort = "asc"
-	GetApiV4GroupsIdReleasesParamsSortDesc GetApiV4GroupsIdReleasesParamsSort = "desc"
-)
-
-// Defines values for GetApiV4GroupsIdRunnersParamsType.
-const (
-	GetApiV4GroupsIdRunnersParamsTypeGroupType    GetApiV4GroupsIdRunnersParamsType = "group_type"
-	GetApiV4GroupsIdRunnersParamsTypeInstanceType GetApiV4GroupsIdRunnersParamsType = "instance_type"
-	GetApiV4GroupsIdRunnersParamsTypeProjectType  GetApiV4GroupsIdRunnersParamsType = "project_type"
-)
-
-// Defines values for GetApiV4GroupsIdRunnersParamsStatus.
-const (
-	GetApiV4GroupsIdRunnersParamsStatusActive         GetApiV4GroupsIdRunnersParamsStatus = "active"
-	GetApiV4GroupsIdRunnersParamsStatusNeverContacted GetApiV4GroupsIdRunnersParamsStatus = "never_contacted"
-	GetApiV4GroupsIdRunnersParamsStatusOffline        GetApiV4GroupsIdRunnersParamsStatus = "offline"
-	GetApiV4GroupsIdRunnersParamsStatusOnline         GetApiV4GroupsIdRunnersParamsStatus = "online"
-	GetApiV4GroupsIdRunnersParamsStatusPaused         GetApiV4GroupsIdRunnersParamsStatus = "paused"
-	GetApiV4GroupsIdRunnersParamsStatusStale          GetApiV4GroupsIdRunnersParamsStatus = "stale"
-)
-
-// Defines values for PostApiV4GroupsIdShareJSONBodyGroupAccess.
-const (
-	PostApiV4GroupsIdShareJSONBodyGroupAccessN10 PostApiV4GroupsIdShareJSONBodyGroupAccess = 10
-	PostApiV4GroupsIdShareJSONBodyGroupAccessN15 PostApiV4GroupsIdShareJSONBodyGroupAccess = 15
-	PostApiV4GroupsIdShareJSONBodyGroupAccessN20 PostApiV4GroupsIdShareJSONBodyGroupAccess = 20
-	PostApiV4GroupsIdShareJSONBodyGroupAccessN30 PostApiV4GroupsIdShareJSONBodyGroupAccess = 30
-	PostApiV4GroupsIdShareJSONBodyGroupAccessN40 PostApiV4GroupsIdShareJSONBodyGroupAccess = 40
-	PostApiV4GroupsIdShareJSONBodyGroupAccessN50 PostApiV4GroupsIdShareJSONBodyGroupAccess = 50
-)
-
-// Defines values for GetApiV4GroupsIdSubgroupsParamsVisibility.
-const (
-	GetApiV4GroupsIdSubgroupsParamsVisibilityInternal GetApiV4GroupsIdSubgroupsParamsVisibility = "internal"
-	GetApiV4GroupsIdSubgroupsParamsVisibilityPrivate  GetApiV4GroupsIdSubgroupsParamsVisibility = "private"
-	GetApiV4GroupsIdSubgroupsParamsVisibilityPublic   GetApiV4GroupsIdSubgroupsParamsVisibility = "public"
-)
-
-// Defines values for GetApiV4GroupsIdSubgroupsParamsOrderBy.
-const (
-	GetApiV4GroupsIdSubgroupsParamsOrderById         GetApiV4GroupsIdSubgroupsParamsOrderBy = "id"
-	GetApiV4GroupsIdSubgroupsParamsOrderByName       GetApiV4GroupsIdSubgroupsParamsOrderBy = "name"
-	GetApiV4GroupsIdSubgroupsParamsOrderByPath       GetApiV4GroupsIdSubgroupsParamsOrderBy = "path"
-	GetApiV4GroupsIdSubgroupsParamsOrderBySimilarity GetApiV4GroupsIdSubgroupsParamsOrderBy = "similarity"
-)
-
-// Defines values for GetApiV4GroupsIdSubgroupsParamsSort.
-const (
-	GetApiV4GroupsIdSubgroupsParamsSortAsc  GetApiV4GroupsIdSubgroupsParamsSort = "asc"
-	GetApiV4GroupsIdSubgroupsParamsSortDesc GetApiV4GroupsIdSubgroupsParamsSort = "desc"
-)
-
-// Defines values for GetApiV4GroupsIdSubgroupsParamsMinAccessLevel.
-const (
-	GetApiV4GroupsIdSubgroupsParamsMinAccessLevelN10 GetApiV4GroupsIdSubgroupsParamsMinAccessLevel = 10
-	GetApiV4GroupsIdSubgroupsParamsMinAccessLevelN15 GetApiV4GroupsIdSubgroupsParamsMinAccessLevel = 15
-	GetApiV4GroupsIdSubgroupsParamsMinAccessLevelN20 GetApiV4GroupsIdSubgroupsParamsMinAccessLevel = 20
-	GetApiV4GroupsIdSubgroupsParamsMinAccessLevelN30 GetApiV4GroupsIdSubgroupsParamsMinAccessLevel = 30
-	GetApiV4GroupsIdSubgroupsParamsMinAccessLevelN40 GetApiV4GroupsIdSubgroupsParamsMinAccessLevel = 40
-	GetApiV4GroupsIdSubgroupsParamsMinAccessLevelN50 GetApiV4GroupsIdSubgroupsParamsMinAccessLevel = 50
-)
-
-// Defines values for PostApiV4GroupsIdVariablesJSONBodyVariableType.
-const (
-	PostApiV4GroupsIdVariablesJSONBodyVariableTypeEnvVar PostApiV4GroupsIdVariablesJSONBodyVariableType = "env_var"
-	PostApiV4GroupsIdVariablesJSONBodyVariableTypeFile   PostApiV4GroupsIdVariablesJSONBodyVariableType = "file"
-)
-
-// Defines values for PutApiV4GroupsIdVariablesKeyJSONBodyVariableType.
-const (
-	PutApiV4GroupsIdVariablesKeyJSONBodyVariableTypeEnvVar PutApiV4GroupsIdVariablesKeyJSONBodyVariableType = "env_var"
-	PutApiV4GroupsIdVariablesKeyJSONBodyVariableTypeFile   PutApiV4GroupsIdVariablesKeyJSONBodyVariableType = "file"
-)
-
-// Defines values for PostApiV4GroupsIdWikisJSONBodyFormat.
-const (
-	PostApiV4GroupsIdWikisJSONBodyFormatAsciidoc PostApiV4GroupsIdWikisJSONBodyFormat = "asciidoc"
-	PostApiV4GroupsIdWikisJSONBodyFormatMarkdown PostApiV4GroupsIdWikisJSONBodyFormat = "markdown"
-	PostApiV4GroupsIdWikisJSONBodyFormatOrg      PostApiV4GroupsIdWikisJSONBodyFormat = "org"
-	PostApiV4GroupsIdWikisJSONBodyFormatRdoc     PostApiV4GroupsIdWikisJSONBodyFormat = "rdoc"
-)
-
-// Defines values for PutApiV4GroupsIdWikisSlugJSONBodyFormat.
-const (
-	PutApiV4GroupsIdWikisSlugJSONBodyFormatAsciidoc PutApiV4GroupsIdWikisSlugJSONBodyFormat = "asciidoc"
-	PutApiV4GroupsIdWikisSlugJSONBodyFormatMarkdown PutApiV4GroupsIdWikisSlugJSONBodyFormat = "markdown"
-	PutApiV4GroupsIdWikisSlugJSONBodyFormatOrg      PutApiV4GroupsIdWikisSlugJSONBodyFormat = "org"
-	PutApiV4GroupsIdWikisSlugJSONBodyFormatRdoc     PutApiV4GroupsIdWikisSlugJSONBodyFormat = "rdoc"
-)
-
 type GetApiV4GroupIdPackagesComposerpackageNameParams struct {
 	// PackageName The Composer package name
 	PackageName string `form:"package_name" json:"package_name"`
@@ -728,7 +37,7 @@ type GetApiV4GroupsParams struct {
 	AllAvailable *bool `form:"all_available,omitempty" json:"all_available,omitempty"`
 
 	// Visibility Limit by visibility
-	Visibility *GetApiV4GroupsParamsVisibility `form:"visibility,omitempty" json:"visibility,omitempty"`
+	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty"`
 
 	// Search Search for a specific group
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
@@ -737,13 +46,13 @@ type GetApiV4GroupsParams struct {
 	Owned *bool `form:"owned,omitempty" json:"owned,omitempty"`
 
 	// OrderBy Order by name, path, id or similarity if searching
-	OrderBy *GetApiV4GroupsParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Sort by asc (ascending) or desc (descending)
-	Sort *GetApiV4GroupsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// MinAccessLevel Minimum access level of authenticated user
-	MinAccessLevel *GetApiV4GroupsParamsMinAccessLevel `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
 
 	// TopLevelOnly Only include top-level groups
 	TopLevelOnly *bool `form:"top_level_only,omitempty" json:"top_level_only,omitempty"`
@@ -766,10 +75,6 @@ type GetApiV4GroupsParams struct {
 	// WithCustomAttributes Include custom attributes in the response
 	WithCustomAttributes *bool `form:"with_custom_attributes,omitempty" json:"with_custom_attributes,omitempty"`
 }
-type GetApiV4GroupsParamsVisibility string
-type GetApiV4GroupsParamsOrderBy string
-type GetApiV4GroupsParamsSort string
-type GetApiV4GroupsParamsMinAccessLevel int32
 type PostApiV4GroupsJSONBody struct {
 	// AiSettingsAttributes AI-related settings
 	AiSettingsAttributes *struct {
@@ -790,7 +95,7 @@ type PostApiV4GroupsJSONBody struct {
 	DefaultBranch *string `json:"default_branch,omitempty"`
 
 	// DefaultBranchProtection Determine if developers can push to default branch
-	DefaultBranchProtection *PostApiV4GroupsJSONBodyDefaultBranchProtection `json:"default_branch_protection,omitempty"`
+	DefaultBranchProtection *int32 `json:"default_branch_protection,omitempty"`
 
 	// DefaultBranchProtectionDefaults Determine if developers can push to default branch
 	DefaultBranchProtectionDefaults *struct {
@@ -800,13 +105,13 @@ type PostApiV4GroupsJSONBody struct {
 		// AllowedToMerge An array of access levels allowed to merge
 		AllowedToMerge *[]struct {
 			// AccessLevel A valid access level
-			AccessLevel PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel `json:"access_level"`
+			AccessLevel int32 `json:"access_level"`
 		} `json:"allowed_to_merge,omitempty"`
 
 		// AllowedToPush An array of access levels allowed to push
 		AllowedToPush *[]struct {
 			// AccessLevel A valid access level
-			AccessLevel PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel `json:"access_level"`
+			AccessLevel int32 `json:"access_level"`
 		} `json:"allowed_to_push,omitempty"`
 
 		// CodeOwnerApprovalRequired Require approval from code owners
@@ -820,7 +125,7 @@ type PostApiV4GroupsJSONBody struct {
 	Description *string `json:"description,omitempty"`
 
 	// DuoAvailability Duo availability. One of `default_on`, `default_off` or `never_on`
-	DuoAvailability *PostApiV4GroupsJSONBodyDuoAvailability `json:"duo_availability,omitempty"`
+	DuoAvailability *string `json:"duo_availability,omitempty"`
 
 	// EmailsDisabled _(Deprecated)_ Disable email notifications. Use: emails_enabled
 	EmailsDisabled *bool `json:"emails_disabled,omitempty"`
@@ -829,7 +134,7 @@ type PostApiV4GroupsJSONBody struct {
 	EmailsEnabled *bool `json:"emails_enabled,omitempty"`
 
 	// EnabledGitAccessProtocol Allow only the selected protocols to be used for Git access.
-	EnabledGitAccessProtocol *PostApiV4GroupsJSONBodyEnabledGitAccessProtocol `json:"enabled_git_access_protocol,omitempty"`
+	EnabledGitAccessProtocol *string `json:"enabled_git_access_protocol,omitempty"`
 
 	// ExperimentFeaturesEnabled Enable experiment features for this group
 	ExperimentFeaturesEnabled *bool `json:"experiment_features_enabled,omitempty"`
@@ -868,7 +173,7 @@ type PostApiV4GroupsJSONBody struct {
 	Path string `json:"path"`
 
 	// ProjectCreationLevel Determine if developers can create projects in the group
-	ProjectCreationLevel *PostApiV4GroupsJSONBodyProjectCreationLevel `json:"project_creation_level,omitempty"`
+	ProjectCreationLevel *string `json:"project_creation_level,omitempty"`
 
 	// RequestAccessEnabled Allow users to request member access
 	RequestAccessEnabled *bool `json:"request_access_enabled,omitempty"`
@@ -883,33 +188,23 @@ type PostApiV4GroupsJSONBody struct {
 	SharedRunnersMinutesLimit *int32 `json:"shared_runners_minutes_limit,omitempty"`
 
 	// SharedRunnersSetting Enable/disable shared runners for the group and its subgroups and projects
-	SharedRunnersSetting *PostApiV4GroupsJSONBodySharedRunnersSetting `json:"shared_runners_setting,omitempty"`
+	SharedRunnersSetting *string `json:"shared_runners_setting,omitempty"`
 
 	// ShowDiffPreviewInEmail Include the code diff preview in merge request notification emails
 	ShowDiffPreviewInEmail *bool `json:"show_diff_preview_in_email,omitempty"`
 
 	// SubgroupCreationLevel Allowed to create subgroups
-	SubgroupCreationLevel *PostApiV4GroupsJSONBodySubgroupCreationLevel `json:"subgroup_creation_level,omitempty"`
+	SubgroupCreationLevel *string `json:"subgroup_creation_level,omitempty"`
 
 	// TwoFactorGracePeriod Time before Two-factor authentication is enforced
 	TwoFactorGracePeriod *int32 `json:"two_factor_grace_period,omitempty"`
 
 	// Visibility The visibility of the group
-	Visibility *PostApiV4GroupsJSONBodyVisibility `json:"visibility,omitempty"`
+	Visibility *string `json:"visibility,omitempty"`
 
 	// WikiAccessLevel Wiki access level. One of `disabled`, `private` or `enabled`
-	WikiAccessLevel *PostApiV4GroupsJSONBodyWikiAccessLevel `json:"wiki_access_level,omitempty"`
+	WikiAccessLevel *string `json:"wiki_access_level,omitempty"`
 }
-type PostApiV4GroupsJSONBodyDefaultBranchProtection int32
-type PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel int32
-type PostApiV4GroupsJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel int32
-type PostApiV4GroupsJSONBodyDuoAvailability string
-type PostApiV4GroupsJSONBodyEnabledGitAccessProtocol string
-type PostApiV4GroupsJSONBodyProjectCreationLevel string
-type PostApiV4GroupsJSONBodySharedRunnersSetting string
-type PostApiV4GroupsJSONBodySubgroupCreationLevel string
-type PostApiV4GroupsJSONBodyVisibility string
-type PostApiV4GroupsJSONBodyWikiAccessLevel string
 type PostApiV4GroupsImportMultipartBody struct {
 	// File The group export file to be imported
 	File string `json:"file"`
@@ -959,7 +254,7 @@ type PutApiV4GroupsIdJSONBody struct {
 	DefaultBranch *string `json:"default_branch,omitempty"`
 
 	// DefaultBranchProtection Determine if developers can push to default branch
-	DefaultBranchProtection *PutApiV4GroupsIdJSONBodyDefaultBranchProtection `json:"default_branch_protection,omitempty"`
+	DefaultBranchProtection *int32 `json:"default_branch_protection,omitempty"`
 
 	// DefaultBranchProtectionDefaults Determine if developers can push to default branch
 	DefaultBranchProtectionDefaults *struct {
@@ -969,13 +264,13 @@ type PutApiV4GroupsIdJSONBody struct {
 		// AllowedToMerge An array of access levels allowed to merge
 		AllowedToMerge *[]struct {
 			// AccessLevel A valid access level
-			AccessLevel PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel `json:"access_level"`
+			AccessLevel int32 `json:"access_level"`
 		} `json:"allowed_to_merge,omitempty"`
 
 		// AllowedToPush An array of access levels allowed to push
 		AllowedToPush *[]struct {
 			// AccessLevel A valid access level
-			AccessLevel PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel `json:"access_level"`
+			AccessLevel int32 `json:"access_level"`
 		} `json:"allowed_to_push,omitempty"`
 
 		// CodeOwnerApprovalRequired Require approval from code owners
@@ -989,7 +284,7 @@ type PutApiV4GroupsIdJSONBody struct {
 	Description *string `json:"description,omitempty"`
 
 	// DuoAvailability Duo availability. One of `default_on`, `default_off` or `never_on`
-	DuoAvailability *PutApiV4GroupsIdJSONBodyDuoAvailability `json:"duo_availability,omitempty"`
+	DuoAvailability *string `json:"duo_availability,omitempty"`
 
 	// DuoCoreFeaturesEnabled [Experimental] Indicates whether GitLab Duo Core features are enabled for the group
 	DuoCoreFeaturesEnabled *bool `json:"duo_core_features_enabled,omitempty"`
@@ -1004,7 +299,7 @@ type PutApiV4GroupsIdJSONBody struct {
 	EmailsEnabled *bool `json:"emails_enabled,omitempty"`
 
 	// EnabledGitAccessProtocol Allow only the selected protocols to be used for Git access.
-	EnabledGitAccessProtocol *PutApiV4GroupsIdJSONBodyEnabledGitAccessProtocol `json:"enabled_git_access_protocol,omitempty"`
+	EnabledGitAccessProtocol *string `json:"enabled_git_access_protocol,omitempty"`
 
 	// ExperimentFeaturesEnabled Enable experiment features for this group
 	ExperimentFeaturesEnabled *bool `json:"experiment_features_enabled,omitempty"`
@@ -1061,7 +356,7 @@ type PutApiV4GroupsIdJSONBody struct {
 	PreventSharingGroupsOutsideHierarchy *bool `json:"prevent_sharing_groups_outside_hierarchy,omitempty"`
 
 	// ProjectCreationLevel Determine if developers can create projects in the group
-	ProjectCreationLevel *PutApiV4GroupsIdJSONBodyProjectCreationLevel `json:"project_creation_level,omitempty"`
+	ProjectCreationLevel *string `json:"project_creation_level,omitempty"`
 
 	// RequestAccessEnabled Allow users to request member access
 	RequestAccessEnabled *bool `json:"request_access_enabled,omitempty"`
@@ -1079,13 +374,13 @@ type PutApiV4GroupsIdJSONBody struct {
 	SharedRunnersMinutesLimit *int32 `json:"shared_runners_minutes_limit,omitempty"`
 
 	// SharedRunnersSetting Enable/disable shared runners for the group and its subgroups and projects
-	SharedRunnersSetting *PutApiV4GroupsIdJSONBodySharedRunnersSetting `json:"shared_runners_setting,omitempty"`
+	SharedRunnersSetting *string `json:"shared_runners_setting,omitempty"`
 
 	// ShowDiffPreviewInEmail Include the code diff preview in merge request notification emails
 	ShowDiffPreviewInEmail *bool `json:"show_diff_preview_in_email,omitempty"`
 
 	// SubgroupCreationLevel Allowed to create subgroups
-	SubgroupCreationLevel *PutApiV4GroupsIdJSONBodySubgroupCreationLevel `json:"subgroup_creation_level,omitempty"`
+	SubgroupCreationLevel *string `json:"subgroup_creation_level,omitempty"`
 
 	// TwoFactorGracePeriod Time before Two-factor authentication is enforced
 	TwoFactorGracePeriod *int32 `json:"two_factor_grace_period,omitempty"`
@@ -1103,24 +398,14 @@ type PutApiV4GroupsIdJSONBody struct {
 	UniqueProjectDownloadLimitIntervalInSeconds *int32 `json:"unique_project_download_limit_interval_in_seconds,omitempty"`
 
 	// Visibility The visibility of the group
-	Visibility *PutApiV4GroupsIdJSONBodyVisibility `json:"visibility,omitempty"`
+	Visibility *string `json:"visibility,omitempty"`
 
 	// WebBasedCommitSigningEnabled Enable web based commit signing for this group
 	WebBasedCommitSigningEnabled *bool `json:"web_based_commit_signing_enabled,omitempty"`
 
 	// WikiAccessLevel Wiki access level. One of `disabled`, `private` or `enabled`
-	WikiAccessLevel *PutApiV4GroupsIdJSONBodyWikiAccessLevel `json:"wiki_access_level,omitempty"`
+	WikiAccessLevel *string `json:"wiki_access_level,omitempty"`
 }
-type PutApiV4GroupsIdJSONBodyDefaultBranchProtection int32
-type PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToMergeAccessLevel int32
-type PutApiV4GroupsIdJSONBodyDefaultBranchProtectionDefaultsAllowedToPushAccessLevel int32
-type PutApiV4GroupsIdJSONBodyDuoAvailability string
-type PutApiV4GroupsIdJSONBodyEnabledGitAccessProtocol string
-type PutApiV4GroupsIdJSONBodyProjectCreationLevel string
-type PutApiV4GroupsIdJSONBodySharedRunnersSetting string
-type PutApiV4GroupsIdJSONBodySubgroupCreationLevel string
-type PutApiV4GroupsIdJSONBodyVisibility string
-type PutApiV4GroupsIdJSONBodyWikiAccessLevel string
 type GetApiV4GroupsIdDebianDistributionsParams struct {
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -1395,9 +680,8 @@ type GetApiV4GroupsIdBillableMembersParams struct {
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
 	// Sort The sorting option
-	Sort *GetApiV4GroupsIdBillableMembersParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 }
-type GetApiV4GroupsIdBillableMembersParamsSort string
 type GetApiV4GroupsIdBillableMembersUserIdIndirectParams struct {
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -1447,7 +731,7 @@ type PostApiV4GroupsIdClustersUserJSONBody struct {
 		ApiUrl string `json:"api_url"`
 
 		// AuthorizationType Cluster authorization type, defaults to RBAC
-		AuthorizationType *PostApiV4GroupsIdClustersUserJSONBodyPlatformKubernetesAttributesAuthorizationType `json:"authorization_type,omitempty"`
+		AuthorizationType *string `json:"authorization_type,omitempty"`
 
 		// CaCert TLS certificate (needed if API is using a self-signed TLS certificate)
 		CaCert *string `json:"ca_cert,omitempty"`
@@ -1459,7 +743,6 @@ type PostApiV4GroupsIdClustersUserJSONBody struct {
 		Token string `json:"token"`
 	} `json:"platform_kubernetes_attributes"`
 }
-type PostApiV4GroupsIdClustersUserJSONBodyPlatformKubernetesAttributesAuthorizationType string
 type PutApiV4GroupsIdClustersClusterIdJSONBody struct {
 	// Domain Cluster base domain
 	Domain *string `json:"domain,omitempty"`
@@ -1519,12 +802,11 @@ type PostApiV4GroupsIdDeployTokensJSONBody struct {
 	Name string `json:"name"`
 
 	// Scopes Indicates the deploy token scopes. Must be at least one of `read_repository`, `read_registry`, `write_registry`, `read_package_registry`, or `write_package_registry`
-	Scopes []PostApiV4GroupsIdDeployTokensJSONBodyScopes `json:"scopes"`
+	Scopes []string `json:"scopes"`
 
 	// Username Username for deploy token. Default is `gitlab+deploy-token-{n}`
 	Username *string `json:"username,omitempty"`
 }
-type PostApiV4GroupsIdDeployTokensJSONBodyScopes string
 type GetApiV4GroupsIdDescendantGroupsParams struct {
 	// Statistics Include project statistics
 	Statistics *bool `form:"statistics,omitempty" json:"statistics,omitempty"`
@@ -1539,7 +821,7 @@ type GetApiV4GroupsIdDescendantGroupsParams struct {
 	AllAvailable *bool `form:"all_available,omitempty" json:"all_available,omitempty"`
 
 	// Visibility Limit by visibility
-	Visibility *GetApiV4GroupsIdDescendantGroupsParamsVisibility `form:"visibility,omitempty" json:"visibility,omitempty"`
+	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty"`
 
 	// Search Search for a specific group
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
@@ -1548,13 +830,13 @@ type GetApiV4GroupsIdDescendantGroupsParams struct {
 	Owned *bool `form:"owned,omitempty" json:"owned,omitempty"`
 
 	// OrderBy Order by name, path, id or similarity if searching
-	OrderBy *GetApiV4GroupsIdDescendantGroupsParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Sort by asc (ascending) or desc (descending)
-	Sort *GetApiV4GroupsIdDescendantGroupsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// MinAccessLevel Minimum access level of authenticated user
-	MinAccessLevel *GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevel `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
 
 	// TopLevelOnly Only include top-level groups
 	TopLevelOnly *bool `form:"top_level_only,omitempty" json:"top_level_only,omitempty"`
@@ -1577,10 +859,6 @@ type GetApiV4GroupsIdDescendantGroupsParams struct {
 	// WithCustomAttributes Include custom attributes in the response
 	WithCustomAttributes *bool `form:"with_custom_attributes,omitempty" json:"with_custom_attributes,omitempty"`
 }
-type GetApiV4GroupsIdDescendantGroupsParamsVisibility string
-type GetApiV4GroupsIdDescendantGroupsParamsOrderBy string
-type GetApiV4GroupsIdDescendantGroupsParamsSort string
-type GetApiV4GroupsIdDescendantGroupsParamsMinAccessLevel int32
 type GetApiV4GroupsIdEpicsEpicIidAwardEmojiParams struct {
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -1626,19 +904,19 @@ type GetApiV4GroupsIdGroupsSharedParams struct {
 	SkipGroups *[]int32 `form:"skip_groups,omitempty" json:"skip_groups,omitempty"`
 
 	// Visibility Limit by visibility
-	Visibility *GetApiV4GroupsIdGroupsSharedParamsVisibility `form:"visibility,omitempty" json:"visibility,omitempty"`
+	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty"`
 
 	// Search Search for a specific group
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
 	// MinAccessLevel Minimum access level of authenticated user
-	MinAccessLevel *GetApiV4GroupsIdGroupsSharedParamsMinAccessLevel `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
 
 	// OrderBy Order by name, path, id or similarity if searching
-	OrderBy *GetApiV4GroupsIdGroupsSharedParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Sort by asc (ascending) or desc (descending)
-	Sort *GetApiV4GroupsIdGroupsSharedParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -1649,10 +927,6 @@ type GetApiV4GroupsIdGroupsSharedParams struct {
 	// WithCustomAttributes Include custom attributes in the response
 	WithCustomAttributes *bool `form:"with_custom_attributes,omitempty" json:"with_custom_attributes,omitempty"`
 }
-type GetApiV4GroupsIdGroupsSharedParamsVisibility string
-type GetApiV4GroupsIdGroupsSharedParamsMinAccessLevel int32
-type GetApiV4GroupsIdGroupsSharedParamsOrderBy string
-type GetApiV4GroupsIdGroupsSharedParamsSort string
 type PutApiV4GroupsIdIntegrationsAppleAppStoreJSONBody struct {
 	// AppStoreIssuerId Apple App Store Connect issuer ID.
 	AppStoreIssuerId string `json:"app_store_issuer_id"`
@@ -3019,8 +2293,6 @@ type PutApiV4GroupsIdIntegrationsZentaoJSONBody struct {
 	UseInheritedSettings *bool  `json:"use_inherited_settings,omitempty"`
 	ZentaoProductXid     string `json:"zentao_product_xid"`
 }
-type DeleteApiV4GroupsIdIntegrationsSlugParamsSlug string
-type GetApiV4GroupsIdIntegrationsSlugParamsSlug string
 type GetApiV4GroupsIdInvitationsParams struct {
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -3033,7 +2305,7 @@ type GetApiV4GroupsIdInvitationsParams struct {
 }
 type PostApiV4GroupsIdInvitationsJSONBody struct {
 	// AccessLevel A valid access level (defaults: `30`, developer access level)
-	AccessLevel PostApiV4GroupsIdInvitationsJSONBodyAccessLevel `json:"access_level"`
+	AccessLevel int32 `json:"access_level"`
 
 	// Email The email address to invite, or multiple emails separated by comma
 	Email *[]string `json:"email,omitempty"`
@@ -3050,10 +2322,9 @@ type PostApiV4GroupsIdInvitationsJSONBody struct {
 	// UserId The user ID of the new member or multiple IDs separated by commas.
 	UserId *[]string `json:"user_id,omitempty"`
 }
-type PostApiV4GroupsIdInvitationsJSONBodyAccessLevel int32
 type PutApiV4GroupsIdInvitationsEmailJSONBody struct {
 	// AccessLevel A valid access level (defaults: `30`, developer access level)
-	AccessLevel *PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevel `json:"access_level,omitempty"`
+	AccessLevel *int32 `json:"access_level,omitempty"`
 
 	// ExpiresAt Date string in ISO 8601 format (`YYYY-MM-DDTHH:MM:SSZ`)
 	ExpiresAt *time.Time `json:"expires_at,omitempty"`
@@ -3061,16 +2332,15 @@ type PutApiV4GroupsIdInvitationsEmailJSONBody struct {
 	// MemberRoleId The ID of a member role for the invited user
 	MemberRoleId *int32 `json:"member_role_id,omitempty"`
 }
-type PutApiV4GroupsIdInvitationsEmailJSONBodyAccessLevel int32
 type GetApiV4GroupsIdInvitedGroupsParams struct {
 	// Relation Include group relations
-	Relation *[]GetApiV4GroupsIdInvitedGroupsParamsRelation `form:"relation,omitempty" json:"relation,omitempty"`
+	Relation *[]string `form:"relation,omitempty" json:"relation,omitempty"`
 
 	// Search Search for a specific group
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
 	// MinAccessLevel Minimum access level of authenticated user
-	MinAccessLevel *GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevel `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
 
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -3081,8 +2351,6 @@ type GetApiV4GroupsIdInvitedGroupsParams struct {
 	// WithCustomAttributes Include custom attributes in the response
 	WithCustomAttributes *bool `form:"with_custom_attributes,omitempty" json:"with_custom_attributes,omitempty"`
 }
-type GetApiV4GroupsIdInvitedGroupsParamsRelation string
-type GetApiV4GroupsIdInvitedGroupsParamsMinAccessLevel int32
 type GetApiV4GroupsIdIssuesParams struct {
 	// AssigneeId Return issues assigned to the given user
 	AssigneeId *int `form:"assignee_id,omitempty" json:"assignee_id,omitempty"`
@@ -3214,7 +2482,7 @@ type GetApiV4GroupsIdMembersAllParams struct {
 	ShowSeatInfo *bool `form:"show_seat_info,omitempty" json:"show_seat_info,omitempty"`
 
 	// State Filter results by member state
-	State *GetApiV4GroupsIdMembersAllParamsState `form:"state,omitempty" json:"state,omitempty"`
+	State *string `form:"state,omitempty" json:"state,omitempty"`
 
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -3222,7 +2490,6 @@ type GetApiV4GroupsIdMembersAllParams struct {
 	// PerPage Number of items per page
 	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 }
-type GetApiV4GroupsIdMembersAllParamsState string
 type DeleteApiV4GroupsIdMembersUserIdParams struct {
 	// SkipSubresources Flag indicating if the deletion of direct memberships of the removed member in subgroups and projects should be skipped
 	SkipSubresources *bool `form:"skip_subresources,omitempty" json:"skip_subresources,omitempty"`
@@ -3242,9 +2509,8 @@ type PutApiV4GroupsIdMembersUserIdJSONBody struct {
 }
 type PutApiV4GroupsIdMembersUserIdStateJSONBody struct {
 	// State The new state for the memberships of the user
-	State PutApiV4GroupsIdMembersUserIdStateJSONBodyState `json:"state"`
+	State string `json:"state"`
 }
-type PutApiV4GroupsIdMembersUserIdStateJSONBodyState string
 type GetApiV4GroupsIdMergeRequestsParams struct {
 	// AuthorId Returns merge requests created by the given user `id`. Mutually exclusive with `author_username`. Combine with `scope=all` or `scope=assigned_to_me`.
 	AuthorId *int32 `form:"author_id,omitempty" json:"author_id,omitempty"`
@@ -3274,13 +2540,13 @@ type GetApiV4GroupsIdMergeRequestsParams struct {
 	ReviewerId *int32 `form:"reviewer_id,omitempty" json:"reviewer_id,omitempty"`
 
 	// State Returns `all` merge requests or just those that are `opened`, `closed`, `locked`, or `merged`.
-	State *GetApiV4GroupsIdMergeRequestsParamsState `form:"state,omitempty" json:"state,omitempty"`
+	State *string `form:"state,omitempty" json:"state,omitempty"`
 
 	// OrderBy Returns merge requests ordered by `created_at`, `label_priority`, `milestone_due`, `popularity`, `priority`, `title`, `updated_at` or `merged_at` fields. Introduced in GitLab 14.8.
-	OrderBy *GetApiV4GroupsIdMergeRequestsParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Returns merge requests sorted in `asc` or `desc` order.
-	Sort *GetApiV4GroupsIdMergeRequestsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// WithLabelsDetails If `true`, response returns more details for each label in labels field: `:name`,`:color`, `:description`, `:description_html`, `:text_color`
 	WithLabelsDetails *bool `form:"with_labels_details,omitempty" json:"with_labels_details,omitempty"`
@@ -3301,10 +2567,10 @@ type GetApiV4GroupsIdMergeRequestsParams struct {
 	UpdatedBefore *time.Time `form:"updated_before,omitempty" json:"updated_before,omitempty"`
 
 	// View If simple, returns the `iid`, URL, title, description, and basic state of merge request
-	View *GetApiV4GroupsIdMergeRequestsParamsView `form:"view,omitempty" json:"view,omitempty"`
+	View *string `form:"view,omitempty" json:"view,omitempty"`
 
 	// Scope Returns merge requests for the given scope: `created_by_me`, `assigned_to_me` or `all`
-	Scope *GetApiV4GroupsIdMergeRequestsParamsScope `form:"scope,omitempty" json:"scope,omitempty"`
+	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
 
 	// SourceBranch Returns merge requests with the given source branch
 	SourceBranch *string `form:"source_branch,omitempty" json:"source_branch,omitempty"`
@@ -3322,7 +2588,7 @@ type GetApiV4GroupsIdMergeRequestsParams struct {
 	In *string `form:"in,omitempty" json:"in,omitempty"`
 
 	// Wip Filter merge requests against their `wip` status. `yes` to return only draft merge requests, `no` to return non-draft merge requests.
-	Wip *GetApiV4GroupsIdMergeRequestsParamsWip `form:"wip,omitempty" json:"wip,omitempty"`
+	Wip *string `form:"wip,omitempty" json:"wip,omitempty"`
 
 	// NotAuthorId `<Negated>` Returns merge requests created by the given user `id`. Mutually exclusive with `author_username`. Combine with `scope=all` or `scope=assigned_to_me`.
 	NotAuthorId *int32 `form:"not[author_id],omitempty" json:"not[author_id],omitempty"`
@@ -3361,7 +2627,7 @@ type GetApiV4GroupsIdMergeRequestsParams struct {
 	Environment *string `form:"environment,omitempty" json:"environment,omitempty"`
 
 	// Approved Filters merge requests by their `approved` status. `yes` returns only approved merge requests. `no` returns only non-approved merge requests.
-	Approved *GetApiV4GroupsIdMergeRequestsParamsApproved `form:"approved,omitempty" json:"approved,omitempty"`
+	Approved *string `form:"approved,omitempty" json:"approved,omitempty"`
 
 	// MergeUserId Returns merge requests which have been merged by the user with the given user `id`. Mutually exclusive with `merge_user_username`.
 	MergeUserId *int32 `form:"merge_user_id,omitempty" json:"merge_user_id,omitempty"`
@@ -3390,13 +2656,6 @@ type GetApiV4GroupsIdMergeRequestsParams struct {
 	// NonArchived Returns merge requests from non archived projects only.
 	NonArchived *bool `form:"non_archived,omitempty" json:"non_archived,omitempty"`
 }
-type GetApiV4GroupsIdMergeRequestsParamsState string
-type GetApiV4GroupsIdMergeRequestsParamsOrderBy string
-type GetApiV4GroupsIdMergeRequestsParamsSort string
-type GetApiV4GroupsIdMergeRequestsParamsView string
-type GetApiV4GroupsIdMergeRequestsParamsScope string
-type GetApiV4GroupsIdMergeRequestsParamsWip string
-type GetApiV4GroupsIdMergeRequestsParamsApproved string
 type GetApiV4GroupsIdPackagesParams struct {
 	// ExcludeSubgroups Determines if subgroups should be excluded
 	ExcludeSubgroups *bool `form:"exclude_subgroups,omitempty" json:"exclude_subgroups,omitempty"`
@@ -3408,13 +2667,13 @@ type GetApiV4GroupsIdPackagesParams struct {
 	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 
 	// OrderBy Return packages ordered by `created_at`, `name`, `version` or `type` fields.
-	OrderBy *GetApiV4GroupsIdPackagesParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Return packages sorted in `asc` or `desc` order.
-	Sort *GetApiV4GroupsIdPackagesParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// PackageType Return packages of a certain type
-	PackageType *GetApiV4GroupsIdPackagesParamsPackageType `form:"package_type,omitempty" json:"package_type,omitempty"`
+	PackageType *string `form:"package_type,omitempty" json:"package_type,omitempty"`
 
 	// PackageName Return packages with this name
 	PackageName *string `form:"package_name,omitempty" json:"package_name,omitempty"`
@@ -3426,12 +2685,8 @@ type GetApiV4GroupsIdPackagesParams struct {
 	IncludeVersionless *bool `form:"include_versionless,omitempty" json:"include_versionless,omitempty"`
 
 	// Status Return packages with specified status
-	Status *GetApiV4GroupsIdPackagesParamsStatus `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty"`
 }
-type GetApiV4GroupsIdPackagesParamsOrderBy string
-type GetApiV4GroupsIdPackagesParamsSort string
-type GetApiV4GroupsIdPackagesParamsPackageType string
-type GetApiV4GroupsIdPackagesParamsStatus string
 type GetApiV4GroupsIdPendingMembersParams struct {
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -3448,16 +2703,16 @@ type GetApiV4GroupsIdProjectsParams struct {
 	Archived *bool `form:"archived,omitempty" json:"archived,omitempty"`
 
 	// Visibility Limit by visibility
-	Visibility *GetApiV4GroupsIdProjectsParamsVisibility `form:"visibility,omitempty" json:"visibility,omitempty"`
+	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty"`
 
 	// Search Return list of authorized projects matching the search criteria
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
 	// OrderBy Return projects ordered by field
-	OrderBy *GetApiV4GroupsIdProjectsParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Return projects sorted in ascending and descending order
-	Sort *GetApiV4GroupsIdProjectsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Simple Return only the ID, URL, name, and path of each project
 	Simple *bool `form:"simple,omitempty" json:"simple,omitempty"`
@@ -3484,7 +2739,7 @@ type GetApiV4GroupsIdProjectsParams struct {
 	IncludeAncestorGroups *bool `form:"include_ancestor_groups,omitempty" json:"include_ancestor_groups,omitempty"`
 
 	// MinAccessLevel Limit by minimum access level of authenticated user on projects
-	MinAccessLevel *GetApiV4GroupsIdProjectsParamsMinAccessLevel `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
 
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -3498,25 +2753,21 @@ type GetApiV4GroupsIdProjectsParams struct {
 	// WithSecurityReports Return only projects having security report artifacts present
 	WithSecurityReports *bool `form:"with_security_reports,omitempty" json:"with_security_reports,omitempty"`
 }
-type GetApiV4GroupsIdProjectsParamsVisibility string
-type GetApiV4GroupsIdProjectsParamsOrderBy string
-type GetApiV4GroupsIdProjectsParamsSort string
-type GetApiV4GroupsIdProjectsParamsMinAccessLevel int32
 type GetApiV4GroupsIdProjectsSharedParams struct {
 	// Archived Limit by archived status
 	Archived *bool `form:"archived,omitempty" json:"archived,omitempty"`
 
 	// Visibility Limit by visibility
-	Visibility *GetApiV4GroupsIdProjectsSharedParamsVisibility `form:"visibility,omitempty" json:"visibility,omitempty"`
+	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty"`
 
 	// Search Return list of authorized projects matching the search criteria
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
 	// OrderBy Return projects ordered by field
-	OrderBy *GetApiV4GroupsIdProjectsSharedParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Return projects sorted in ascending and descending order
-	Sort *GetApiV4GroupsIdProjectsSharedParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Simple Return only the ID, URL, name, and path of each project
 	Simple *bool `form:"simple,omitempty" json:"simple,omitempty"`
@@ -3531,7 +2782,7 @@ type GetApiV4GroupsIdProjectsSharedParams struct {
 	WithMergeRequestsEnabled *bool `form:"with_merge_requests_enabled,omitempty" json:"with_merge_requests_enabled,omitempty"`
 
 	// MinAccessLevel Limit by minimum access level of authenticated user on projects
-	MinAccessLevel *GetApiV4GroupsIdProjectsSharedParamsMinAccessLevel `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
 
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -3542,10 +2793,6 @@ type GetApiV4GroupsIdProjectsSharedParams struct {
 	// WithCustomAttributes Include custom attributes in the response
 	WithCustomAttributes *bool `form:"with_custom_attributes,omitempty" json:"with_custom_attributes,omitempty"`
 }
-type GetApiV4GroupsIdProjectsSharedParamsVisibility string
-type GetApiV4GroupsIdProjectsSharedParamsOrderBy string
-type GetApiV4GroupsIdProjectsSharedParamsSort string
-type GetApiV4GroupsIdProjectsSharedParamsMinAccessLevel int32
 type GetApiV4GroupsIdProvisionedUsersParams struct {
 	// Username Return a single user with a specific username
 	Username *string `form:"username,omitempty" json:"username,omitempty"`
@@ -3580,7 +2827,7 @@ type GetApiV4GroupsIdRegistryRepositoriesParams struct {
 }
 type GetApiV4GroupsIdReleasesParams struct {
 	// Sort The direction of the order. Either `desc` (default) for descending order or `asc` for ascending order
-	Sort *GetApiV4GroupsIdReleasesParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Simple Return only limited fields for each release
 	Simple *bool `form:"simple,omitempty" json:"simple,omitempty"`
@@ -3591,16 +2838,15 @@ type GetApiV4GroupsIdReleasesParams struct {
 	// PerPage Number of items per page
 	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 }
-type GetApiV4GroupsIdReleasesParamsSort string
 type GetApiV4GroupsIdRunnersParams struct {
 	// Type The type of runners to return
-	Type *GetApiV4GroupsIdRunnersParamsType `form:"type,omitempty" json:"type,omitempty"`
+	Type *string `form:"type,omitempty" json:"type,omitempty"`
 
 	// Paused Whether to include only runners that are accepting or ignoring new jobs
 	Paused *bool `form:"paused,omitempty" json:"paused,omitempty"`
 
 	// Status The status of runners to return
-	Status *GetApiV4GroupsIdRunnersParamsStatus `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty"`
 
 	// TagList A list of runner tags
 	TagList *[]string `form:"tag_list,omitempty" json:"tag_list,omitempty"`
@@ -3614,8 +2860,6 @@ type GetApiV4GroupsIdRunnersParams struct {
 	// PerPage Number of items per page
 	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 }
-type GetApiV4GroupsIdRunnersParamsType string
-type GetApiV4GroupsIdRunnersParamsStatus string
 type GetApiV4GroupsIdSamlUsersParams struct {
 	// Username Return single user with a specific username.
 	Username *string `form:"username,omitempty" json:"username,omitempty"`
@@ -3646,7 +2890,7 @@ type PostApiV4GroupsIdShareJSONBody struct {
 	ExpiresAt *openapi_types.Date `json:"expires_at,omitempty"`
 
 	// GroupAccess The group access level
-	GroupAccess PostApiV4GroupsIdShareJSONBodyGroupAccess `json:"group_access"`
+	GroupAccess int32 `json:"group_access"`
 
 	// GroupId The ID of the group to share
 	GroupId int32 `json:"group_id"`
@@ -3654,7 +2898,6 @@ type PostApiV4GroupsIdShareJSONBody struct {
 	// MemberRoleId The ID of the Member Role to be assigned to the group
 	MemberRoleId *int32 `json:"member_role_id,omitempty"`
 }
-type PostApiV4GroupsIdShareJSONBodyGroupAccess int32
 type GetApiV4GroupsIdSshCertificatesParams struct {
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -3683,7 +2926,7 @@ type GetApiV4GroupsIdSubgroupsParams struct {
 	AllAvailable *bool `form:"all_available,omitempty" json:"all_available,omitempty"`
 
 	// Visibility Limit by visibility
-	Visibility *GetApiV4GroupsIdSubgroupsParamsVisibility `form:"visibility,omitempty" json:"visibility,omitempty"`
+	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty"`
 
 	// Search Search for a specific group
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
@@ -3692,13 +2935,13 @@ type GetApiV4GroupsIdSubgroupsParams struct {
 	Owned *bool `form:"owned,omitempty" json:"owned,omitempty"`
 
 	// OrderBy Order by name, path, id or similarity if searching
-	OrderBy *GetApiV4GroupsIdSubgroupsParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Sort by asc (ascending) or desc (descending)
-	Sort *GetApiV4GroupsIdSubgroupsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// MinAccessLevel Minimum access level of authenticated user
-	MinAccessLevel *GetApiV4GroupsIdSubgroupsParamsMinAccessLevel `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
 
 	// TopLevelOnly Only include top-level groups
 	TopLevelOnly *bool `form:"top_level_only,omitempty" json:"top_level_only,omitempty"`
@@ -3721,10 +2964,6 @@ type GetApiV4GroupsIdSubgroupsParams struct {
 	// WithCustomAttributes Include custom attributes in the response
 	WithCustomAttributes *bool `form:"with_custom_attributes,omitempty" json:"with_custom_attributes,omitempty"`
 }
-type GetApiV4GroupsIdSubgroupsParamsVisibility string
-type GetApiV4GroupsIdSubgroupsParamsOrderBy string
-type GetApiV4GroupsIdSubgroupsParamsSort string
-type GetApiV4GroupsIdSubgroupsParamsMinAccessLevel int32
 type PostApiV4GroupsIdTokensRevokeJSONBody struct {
 	// Token The token to revoke
 	Token string `json:"token"`
@@ -3803,9 +3042,8 @@ type PostApiV4GroupsIdVariablesJSONBody struct {
 	Value string `json:"value"`
 
 	// VariableType The type of the variable. Default: env_var
-	VariableType *PostApiV4GroupsIdVariablesJSONBodyVariableType `json:"variable_type,omitempty"`
+	VariableType *string `json:"variable_type,omitempty"`
 }
-type PostApiV4GroupsIdVariablesJSONBodyVariableType string
 type PutApiV4GroupsIdVariablesKeyJSONBody struct {
 	// Description The description of the variable
 	Description *string `json:"description,omitempty"`
@@ -3826,9 +3064,8 @@ type PutApiV4GroupsIdVariablesKeyJSONBody struct {
 	Value *string `json:"value,omitempty"`
 
 	// VariableType The type of the variable. Default: env_var
-	VariableType *PutApiV4GroupsIdVariablesKeyJSONBodyVariableType `json:"variable_type,omitempty"`
+	VariableType *string `json:"variable_type,omitempty"`
 }
-type PutApiV4GroupsIdVariablesKeyJSONBodyVariableType string
 type GetApiV4GroupsIdWikisParams struct {
 	// WithContent Include pages' content
 	WithContent *bool `form:"with_content,omitempty" json:"with_content,omitempty"`
@@ -3838,7 +3075,7 @@ type PostApiV4GroupsIdWikisJSONBody struct {
 	Content string `json:"content"`
 
 	// Format Format of a wiki page. Available formats are markdown, rdoc, asciidoc and org
-	Format      *PostApiV4GroupsIdWikisJSONBodyFormat `json:"format,omitempty"`
+	Format      *string `json:"format,omitempty"`
 	FrontMatter *struct {
 		// Title Front matter title of a wiki page
 		Title *string `json:"title,omitempty"`
@@ -3847,7 +3084,6 @@ type PostApiV4GroupsIdWikisJSONBody struct {
 	// Title Title of a wiki page
 	Title string `json:"title"`
 }
-type PostApiV4GroupsIdWikisJSONBodyFormat string
 type PostApiV4GroupsIdWikisAttachmentsJSONBody struct {
 	// Branch The name of the branch
 	Branch *string `json:"branch,omitempty"`
@@ -3867,7 +3103,7 @@ type PutApiV4GroupsIdWikisSlugJSONBody struct {
 	Content *string `json:"content,omitempty"`
 
 	// Format Format of a wiki page. Available formats are markdown, rdoc, asciidoc and org
-	Format      *PutApiV4GroupsIdWikisSlugJSONBodyFormat `json:"format,omitempty"`
+	Format      *string `json:"format,omitempty"`
 	FrontMatter *struct {
 		// Title Front matter title of a wiki page
 		Title *string `json:"title,omitempty"`
@@ -3876,7 +3112,6 @@ type PutApiV4GroupsIdWikisSlugJSONBody struct {
 	// Title Title of a wiki page
 	Title *string `json:"title,omitempty"`
 }
-type PutApiV4GroupsIdWikisSlugJSONBodyFormat string
 type PostApiV4GroupsJSONRequestBody PostApiV4GroupsJSONBody
 type PostApiV4GroupsImportMultipartRequestBody PostApiV4GroupsImportMultipartBody
 type PutApiV4GroupsIdJSONRequestBody PutApiV4GroupsIdJSONBody
@@ -5261,24 +4496,22 @@ type PostApiV4GroupsIdAccessTokensSelfRotateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AccessLevel  *PostApiV4GroupsIdAccessTokensSelfRotate200AccessLevel  `json:"access_level,omitempty"`
-		Active       *bool                                                   `json:"active,omitempty"`
-		CreatedAt    *time.Time                                              `json:"created_at,omitempty"`
-		Description  *string                                                 `json:"description,omitempty"`
-		ExpiresAt    *time.Time                                              `json:"expires_at,omitempty"`
-		Id           *int32                                                  `json:"id,omitempty"`
-		LastUsedAt   *time.Time                                              `json:"last_used_at,omitempty"`
-		Name         *string                                                 `json:"name,omitempty"`
-		ResourceId   *int32                                                  `json:"resource_id,omitempty"`
-		ResourceType *PostApiV4GroupsIdAccessTokensSelfRotate200ResourceType `json:"resource_type,omitempty"`
-		Revoked      *bool                                                   `json:"revoked,omitempty"`
-		Scopes       *[]interface{}                                          `json:"scopes,omitempty"`
-		Token        *string                                                 `json:"token,omitempty"`
-		UserId       *int32                                                  `json:"user_id,omitempty"`
+		AccessLevel  *int32         `json:"access_level,omitempty"`
+		Active       *bool          `json:"active,omitempty"`
+		CreatedAt    *time.Time     `json:"created_at,omitempty"`
+		Description  *string        `json:"description,omitempty"`
+		ExpiresAt    *time.Time     `json:"expires_at,omitempty"`
+		Id           *int32         `json:"id,omitempty"`
+		LastUsedAt   *time.Time     `json:"last_used_at,omitempty"`
+		Name         *string        `json:"name,omitempty"`
+		ResourceId   *int32         `json:"resource_id,omitempty"`
+		ResourceType *string        `json:"resource_type,omitempty"`
+		Revoked      *bool          `json:"revoked,omitempty"`
+		Scopes       *[]interface{} `json:"scopes,omitempty"`
+		Token        *string        `json:"token,omitempty"`
+		UserId       *int32         `json:"user_id,omitempty"`
 	}
 }
-type PostApiV4GroupsIdAccessTokensSelfRotate200AccessLevel int32
-type PostApiV4GroupsIdAccessTokensSelfRotate200ResourceType string
 type PostApiV4GroupsIdArchiveResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -5531,43 +4764,43 @@ type GetApiV4GroupsIdBillableMembersResponse struct {
 		IsUsingSeat *string `json:"is_using_seat,omitempty"`
 		Locked      *bool   `json:"locked,omitempty"`
 		MemberRole  *struct {
-			AdminCicdVariables         *bool                                                        `json:"admin_cicd_variables,omitempty"`
-			AdminComplianceFramework   *bool                                                        `json:"admin_compliance_framework,omitempty"`
-			AdminGroupMember           *bool                                                        `json:"admin_group_member,omitempty"`
-			AdminIntegrations          *bool                                                        `json:"admin_integrations,omitempty"`
-			AdminMergeRequest          *bool                                                        `json:"admin_merge_request,omitempty"`
-			AdminProtectedBranch       *bool                                                        `json:"admin_protected_branch,omitempty"`
-			AdminProtectedEnvironments *bool                                                        `json:"admin_protected_environments,omitempty"`
-			AdminPushRules             *bool                                                        `json:"admin_push_rules,omitempty"`
-			AdminRunners               *bool                                                        `json:"admin_runners,omitempty"`
-			AdminSecurityTesting       *bool                                                        `json:"admin_security_testing,omitempty"`
-			AdminTerraformState        *bool                                                        `json:"admin_terraform_state,omitempty"`
-			AdminVulnerability         *bool                                                        `json:"admin_vulnerability,omitempty"`
-			AdminWebHook               *bool                                                        `json:"admin_web_hook,omitempty"`
-			ArchiveProject             *bool                                                        `json:"archive_project,omitempty"`
-			BaseAccessLevel            *GetApiV4GroupsIdBillableMembers200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-			Description                *string                                                      `json:"description,omitempty"`
-			GroupId                    *int32                                                       `json:"group_id,omitempty"`
-			Id                         *int32                                                       `json:"id,omitempty"`
-			ManageDeployTokens         *bool                                                        `json:"manage_deploy_tokens,omitempty"`
-			ManageGroupAccessTokens    *bool                                                        `json:"manage_group_access_tokens,omitempty"`
-			ManageMergeRequestSettings *bool                                                        `json:"manage_merge_request_settings,omitempty"`
-			ManageProjectAccessTokens  *bool                                                        `json:"manage_project_access_tokens,omitempty"`
-			ManageProtectedTags        *bool                                                        `json:"manage_protected_tags,omitempty"`
-			ManageSecurityPolicyLink   *bool                                                        `json:"manage_security_policy_link,omitempty"`
-			Name                       *string                                                      `json:"name,omitempty"`
-			ReadAdminCicd              *bool                                                        `json:"read_admin_cicd,omitempty"`
-			ReadAdminMonitoring        *bool                                                        `json:"read_admin_monitoring,omitempty"`
-			ReadAdminSubscription      *bool                                                        `json:"read_admin_subscription,omitempty"`
-			ReadAdminUsers             *bool                                                        `json:"read_admin_users,omitempty"`
-			ReadCode                   *bool                                                        `json:"read_code,omitempty"`
-			ReadComplianceDashboard    *bool                                                        `json:"read_compliance_dashboard,omitempty"`
-			ReadCrmContact             *bool                                                        `json:"read_crm_contact,omitempty"`
-			ReadDependency             *bool                                                        `json:"read_dependency,omitempty"`
-			ReadRunners                *bool                                                        `json:"read_runners,omitempty"`
-			ReadVulnerability          *bool                                                        `json:"read_vulnerability,omitempty"`
-			RemoveGroup                *bool                                                        `json:"remove_group,omitempty"`
-			RemoveProject              *bool                                                        `json:"remove_project,omitempty"`
+			AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+			AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+			AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+			AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+			AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+			AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+			AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+			AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+			AdminRunners               *bool   `json:"admin_runners,omitempty"`
+			AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+			AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+			AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+			AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+			ArchiveProject             *bool   `json:"archive_project,omitempty"`
+			BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+			Description                *string `json:"description,omitempty"`
+			GroupId                    *int32  `json:"group_id,omitempty"`
+			Id                         *int32  `json:"id,omitempty"`
+			ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+			ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+			ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+			ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+			ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+			ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+			Name                       *string `json:"name,omitempty"`
+			ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+			ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+			ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+			ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+			ReadCode                   *bool   `json:"read_code,omitempty"`
+			ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+			ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+			ReadDependency             *bool   `json:"read_dependency,omitempty"`
+			ReadRunners                *bool   `json:"read_runners,omitempty"`
+			ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+			RemoveGroup                *bool   `json:"remove_group,omitempty"`
+			RemoveProject              *bool   `json:"remove_project,omitempty"`
 		} `json:"member_role,omitempty"`
 		MembershipState *string `json:"membership_state,omitempty"`
 		Name            *string `json:"name,omitempty"`
@@ -5578,7 +4811,6 @@ type GetApiV4GroupsIdBillableMembersResponse struct {
 		WebUrl          *string `json:"web_url,omitempty"`
 	}
 }
-type GetApiV4GroupsIdBillableMembers200MemberRoleBaseAccessLevel int32
 type DeleteApiV4GroupsIdBillableMembersUserIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -6332,22 +5564,20 @@ type GetApiV4GroupsIdExportRelationsStatusResponse struct {
 	JSON200      *[]struct {
 		Batched *bool `json:"batched,omitempty"`
 		Batches *struct {
-			BatchNumber  *int32                                                 `json:"batch_number,omitempty"`
-			Error        *string                                                `json:"error,omitempty"`
-			ObjectsCount *int32                                                 `json:"objects_count,omitempty"`
-			Status       *GetApiV4GroupsIdExportRelationsStatus200BatchesStatus `json:"status,omitempty"`
-			UpdatedAt    *time.Time                                             `json:"updated_at,omitempty"`
+			BatchNumber  *int32     `json:"batch_number,omitempty"`
+			Error        *string    `json:"error,omitempty"`
+			ObjectsCount *int32     `json:"objects_count,omitempty"`
+			Status       *string    `json:"status,omitempty"`
+			UpdatedAt    *time.Time `json:"updated_at,omitempty"`
 		} `json:"batches,omitempty"`
-		BatchesCount      *int32                                          `json:"batches_count,omitempty"`
-		Error             *string                                         `json:"error,omitempty"`
-		Relation          *string                                         `json:"relation,omitempty"`
-		Status            *GetApiV4GroupsIdExportRelationsStatus200Status `json:"status,omitempty"`
-		TotalObjectsCount *int32                                          `json:"total_objects_count,omitempty"`
-		UpdatedAt         *time.Time                                      `json:"updated_at,omitempty"`
+		BatchesCount      *int32     `json:"batches_count,omitempty"`
+		Error             *string    `json:"error,omitempty"`
+		Relation          *string    `json:"relation,omitempty"`
+		Status            *string    `json:"status,omitempty"`
+		TotalObjectsCount *int32     `json:"total_objects_count,omitempty"`
+		UpdatedAt         *time.Time `json:"updated_at,omitempty"`
 	}
 }
-type GetApiV4GroupsIdExportRelationsStatus200BatchesStatus string
-type GetApiV4GroupsIdExportRelationsStatus200Status string
 type GetApiV4GroupsIdGroupsSharedResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -8296,43 +7526,43 @@ type GetApiV4GroupsIdMembersResponse struct {
 		IsUsingSeat *string `json:"is_using_seat,omitempty"`
 		Locked      *bool   `json:"locked,omitempty"`
 		MemberRole  *struct {
-			AdminCicdVariables         *bool                                                `json:"admin_cicd_variables,omitempty"`
-			AdminComplianceFramework   *bool                                                `json:"admin_compliance_framework,omitempty"`
-			AdminGroupMember           *bool                                                `json:"admin_group_member,omitempty"`
-			AdminIntegrations          *bool                                                `json:"admin_integrations,omitempty"`
-			AdminMergeRequest          *bool                                                `json:"admin_merge_request,omitempty"`
-			AdminProtectedBranch       *bool                                                `json:"admin_protected_branch,omitempty"`
-			AdminProtectedEnvironments *bool                                                `json:"admin_protected_environments,omitempty"`
-			AdminPushRules             *bool                                                `json:"admin_push_rules,omitempty"`
-			AdminRunners               *bool                                                `json:"admin_runners,omitempty"`
-			AdminSecurityTesting       *bool                                                `json:"admin_security_testing,omitempty"`
-			AdminTerraformState        *bool                                                `json:"admin_terraform_state,omitempty"`
-			AdminVulnerability         *bool                                                `json:"admin_vulnerability,omitempty"`
-			AdminWebHook               *bool                                                `json:"admin_web_hook,omitempty"`
-			ArchiveProject             *bool                                                `json:"archive_project,omitempty"`
-			BaseAccessLevel            *GetApiV4GroupsIdMembers200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-			Description                *string                                              `json:"description,omitempty"`
-			GroupId                    *int32                                               `json:"group_id,omitempty"`
-			Id                         *int32                                               `json:"id,omitempty"`
-			ManageDeployTokens         *bool                                                `json:"manage_deploy_tokens,omitempty"`
-			ManageGroupAccessTokens    *bool                                                `json:"manage_group_access_tokens,omitempty"`
-			ManageMergeRequestSettings *bool                                                `json:"manage_merge_request_settings,omitempty"`
-			ManageProjectAccessTokens  *bool                                                `json:"manage_project_access_tokens,omitempty"`
-			ManageProtectedTags        *bool                                                `json:"manage_protected_tags,omitempty"`
-			ManageSecurityPolicyLink   *bool                                                `json:"manage_security_policy_link,omitempty"`
-			Name                       *string                                              `json:"name,omitempty"`
-			ReadAdminCicd              *bool                                                `json:"read_admin_cicd,omitempty"`
-			ReadAdminMonitoring        *bool                                                `json:"read_admin_monitoring,omitempty"`
-			ReadAdminSubscription      *bool                                                `json:"read_admin_subscription,omitempty"`
-			ReadAdminUsers             *bool                                                `json:"read_admin_users,omitempty"`
-			ReadCode                   *bool                                                `json:"read_code,omitempty"`
-			ReadComplianceDashboard    *bool                                                `json:"read_compliance_dashboard,omitempty"`
-			ReadCrmContact             *bool                                                `json:"read_crm_contact,omitempty"`
-			ReadDependency             *bool                                                `json:"read_dependency,omitempty"`
-			ReadRunners                *bool                                                `json:"read_runners,omitempty"`
-			ReadVulnerability          *bool                                                `json:"read_vulnerability,omitempty"`
-			RemoveGroup                *bool                                                `json:"remove_group,omitempty"`
-			RemoveProject              *bool                                                `json:"remove_project,omitempty"`
+			AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+			AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+			AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+			AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+			AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+			AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+			AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+			AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+			AdminRunners               *bool   `json:"admin_runners,omitempty"`
+			AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+			AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+			AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+			AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+			ArchiveProject             *bool   `json:"archive_project,omitempty"`
+			BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+			Description                *string `json:"description,omitempty"`
+			GroupId                    *int32  `json:"group_id,omitempty"`
+			Id                         *int32  `json:"id,omitempty"`
+			ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+			ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+			ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+			ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+			ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+			ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+			Name                       *string `json:"name,omitempty"`
+			ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+			ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+			ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+			ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+			ReadCode                   *bool   `json:"read_code,omitempty"`
+			ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+			ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+			ReadDependency             *bool   `json:"read_dependency,omitempty"`
+			ReadRunners                *bool   `json:"read_runners,omitempty"`
+			ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+			RemoveGroup                *bool   `json:"remove_group,omitempty"`
+			RemoveProject              *bool   `json:"remove_project,omitempty"`
 		} `json:"member_role,omitempty"`
 		MembershipState *string `json:"membership_state,omitempty"`
 		Name            *string `json:"name,omitempty"`
@@ -8343,7 +7573,6 @@ type GetApiV4GroupsIdMembersResponse struct {
 		WebUrl          *string `json:"web_url,omitempty"`
 	}
 }
-type GetApiV4GroupsIdMembers200MemberRoleBaseAccessLevel int32
 type PostApiV4GroupsIdMembersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -8384,43 +7613,43 @@ type PostApiV4GroupsIdMembersResponse struct {
 		IsUsingSeat *string `json:"is_using_seat,omitempty"`
 		Locked      *bool   `json:"locked,omitempty"`
 		MemberRole  *struct {
-			AdminCicdVariables         *bool                                                 `json:"admin_cicd_variables,omitempty"`
-			AdminComplianceFramework   *bool                                                 `json:"admin_compliance_framework,omitempty"`
-			AdminGroupMember           *bool                                                 `json:"admin_group_member,omitempty"`
-			AdminIntegrations          *bool                                                 `json:"admin_integrations,omitempty"`
-			AdminMergeRequest          *bool                                                 `json:"admin_merge_request,omitempty"`
-			AdminProtectedBranch       *bool                                                 `json:"admin_protected_branch,omitempty"`
-			AdminProtectedEnvironments *bool                                                 `json:"admin_protected_environments,omitempty"`
-			AdminPushRules             *bool                                                 `json:"admin_push_rules,omitempty"`
-			AdminRunners               *bool                                                 `json:"admin_runners,omitempty"`
-			AdminSecurityTesting       *bool                                                 `json:"admin_security_testing,omitempty"`
-			AdminTerraformState        *bool                                                 `json:"admin_terraform_state,omitempty"`
-			AdminVulnerability         *bool                                                 `json:"admin_vulnerability,omitempty"`
-			AdminWebHook               *bool                                                 `json:"admin_web_hook,omitempty"`
-			ArchiveProject             *bool                                                 `json:"archive_project,omitempty"`
-			BaseAccessLevel            *PostApiV4GroupsIdMembers201MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-			Description                *string                                               `json:"description,omitempty"`
-			GroupId                    *int32                                                `json:"group_id,omitempty"`
-			Id                         *int32                                                `json:"id,omitempty"`
-			ManageDeployTokens         *bool                                                 `json:"manage_deploy_tokens,omitempty"`
-			ManageGroupAccessTokens    *bool                                                 `json:"manage_group_access_tokens,omitempty"`
-			ManageMergeRequestSettings *bool                                                 `json:"manage_merge_request_settings,omitempty"`
-			ManageProjectAccessTokens  *bool                                                 `json:"manage_project_access_tokens,omitempty"`
-			ManageProtectedTags        *bool                                                 `json:"manage_protected_tags,omitempty"`
-			ManageSecurityPolicyLink   *bool                                                 `json:"manage_security_policy_link,omitempty"`
-			Name                       *string                                               `json:"name,omitempty"`
-			ReadAdminCicd              *bool                                                 `json:"read_admin_cicd,omitempty"`
-			ReadAdminMonitoring        *bool                                                 `json:"read_admin_monitoring,omitempty"`
-			ReadAdminSubscription      *bool                                                 `json:"read_admin_subscription,omitempty"`
-			ReadAdminUsers             *bool                                                 `json:"read_admin_users,omitempty"`
-			ReadCode                   *bool                                                 `json:"read_code,omitempty"`
-			ReadComplianceDashboard    *bool                                                 `json:"read_compliance_dashboard,omitempty"`
-			ReadCrmContact             *bool                                                 `json:"read_crm_contact,omitempty"`
-			ReadDependency             *bool                                                 `json:"read_dependency,omitempty"`
-			ReadRunners                *bool                                                 `json:"read_runners,omitempty"`
-			ReadVulnerability          *bool                                                 `json:"read_vulnerability,omitempty"`
-			RemoveGroup                *bool                                                 `json:"remove_group,omitempty"`
-			RemoveProject              *bool                                                 `json:"remove_project,omitempty"`
+			AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+			AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+			AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+			AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+			AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+			AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+			AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+			AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+			AdminRunners               *bool   `json:"admin_runners,omitempty"`
+			AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+			AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+			AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+			AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+			ArchiveProject             *bool   `json:"archive_project,omitempty"`
+			BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+			Description                *string `json:"description,omitempty"`
+			GroupId                    *int32  `json:"group_id,omitempty"`
+			Id                         *int32  `json:"id,omitempty"`
+			ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+			ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+			ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+			ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+			ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+			ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+			Name                       *string `json:"name,omitempty"`
+			ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+			ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+			ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+			ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+			ReadCode                   *bool   `json:"read_code,omitempty"`
+			ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+			ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+			ReadDependency             *bool   `json:"read_dependency,omitempty"`
+			ReadRunners                *bool   `json:"read_runners,omitempty"`
+			ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+			RemoveGroup                *bool   `json:"remove_group,omitempty"`
+			RemoveProject              *bool   `json:"remove_project,omitempty"`
 		} `json:"member_role,omitempty"`
 		MembershipState *string `json:"membership_state,omitempty"`
 		Name            *string `json:"name,omitempty"`
@@ -8431,7 +7660,6 @@ type PostApiV4GroupsIdMembersResponse struct {
 		WebUrl          *string `json:"web_url,omitempty"`
 	}
 }
-type PostApiV4GroupsIdMembers201MemberRoleBaseAccessLevel int32
 type GetApiV4GroupsIdMembersAllResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -8472,43 +7700,43 @@ type GetApiV4GroupsIdMembersAllResponse struct {
 		IsUsingSeat *string `json:"is_using_seat,omitempty"`
 		Locked      *bool   `json:"locked,omitempty"`
 		MemberRole  *struct {
-			AdminCicdVariables         *bool                                                   `json:"admin_cicd_variables,omitempty"`
-			AdminComplianceFramework   *bool                                                   `json:"admin_compliance_framework,omitempty"`
-			AdminGroupMember           *bool                                                   `json:"admin_group_member,omitempty"`
-			AdminIntegrations          *bool                                                   `json:"admin_integrations,omitempty"`
-			AdminMergeRequest          *bool                                                   `json:"admin_merge_request,omitempty"`
-			AdminProtectedBranch       *bool                                                   `json:"admin_protected_branch,omitempty"`
-			AdminProtectedEnvironments *bool                                                   `json:"admin_protected_environments,omitempty"`
-			AdminPushRules             *bool                                                   `json:"admin_push_rules,omitempty"`
-			AdminRunners               *bool                                                   `json:"admin_runners,omitempty"`
-			AdminSecurityTesting       *bool                                                   `json:"admin_security_testing,omitempty"`
-			AdminTerraformState        *bool                                                   `json:"admin_terraform_state,omitempty"`
-			AdminVulnerability         *bool                                                   `json:"admin_vulnerability,omitempty"`
-			AdminWebHook               *bool                                                   `json:"admin_web_hook,omitempty"`
-			ArchiveProject             *bool                                                   `json:"archive_project,omitempty"`
-			BaseAccessLevel            *GetApiV4GroupsIdMembersAll200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-			Description                *string                                                 `json:"description,omitempty"`
-			GroupId                    *int32                                                  `json:"group_id,omitempty"`
-			Id                         *int32                                                  `json:"id,omitempty"`
-			ManageDeployTokens         *bool                                                   `json:"manage_deploy_tokens,omitempty"`
-			ManageGroupAccessTokens    *bool                                                   `json:"manage_group_access_tokens,omitempty"`
-			ManageMergeRequestSettings *bool                                                   `json:"manage_merge_request_settings,omitempty"`
-			ManageProjectAccessTokens  *bool                                                   `json:"manage_project_access_tokens,omitempty"`
-			ManageProtectedTags        *bool                                                   `json:"manage_protected_tags,omitempty"`
-			ManageSecurityPolicyLink   *bool                                                   `json:"manage_security_policy_link,omitempty"`
-			Name                       *string                                                 `json:"name,omitempty"`
-			ReadAdminCicd              *bool                                                   `json:"read_admin_cicd,omitempty"`
-			ReadAdminMonitoring        *bool                                                   `json:"read_admin_monitoring,omitempty"`
-			ReadAdminSubscription      *bool                                                   `json:"read_admin_subscription,omitempty"`
-			ReadAdminUsers             *bool                                                   `json:"read_admin_users,omitempty"`
-			ReadCode                   *bool                                                   `json:"read_code,omitempty"`
-			ReadComplianceDashboard    *bool                                                   `json:"read_compliance_dashboard,omitempty"`
-			ReadCrmContact             *bool                                                   `json:"read_crm_contact,omitempty"`
-			ReadDependency             *bool                                                   `json:"read_dependency,omitempty"`
-			ReadRunners                *bool                                                   `json:"read_runners,omitempty"`
-			ReadVulnerability          *bool                                                   `json:"read_vulnerability,omitempty"`
-			RemoveGroup                *bool                                                   `json:"remove_group,omitempty"`
-			RemoveProject              *bool                                                   `json:"remove_project,omitempty"`
+			AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+			AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+			AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+			AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+			AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+			AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+			AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+			AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+			AdminRunners               *bool   `json:"admin_runners,omitempty"`
+			AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+			AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+			AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+			AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+			ArchiveProject             *bool   `json:"archive_project,omitempty"`
+			BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+			Description                *string `json:"description,omitempty"`
+			GroupId                    *int32  `json:"group_id,omitempty"`
+			Id                         *int32  `json:"id,omitempty"`
+			ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+			ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+			ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+			ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+			ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+			ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+			Name                       *string `json:"name,omitempty"`
+			ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+			ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+			ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+			ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+			ReadCode                   *bool   `json:"read_code,omitempty"`
+			ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+			ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+			ReadDependency             *bool   `json:"read_dependency,omitempty"`
+			ReadRunners                *bool   `json:"read_runners,omitempty"`
+			ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+			RemoveGroup                *bool   `json:"remove_group,omitempty"`
+			RemoveProject              *bool   `json:"remove_project,omitempty"`
 		} `json:"member_role,omitempty"`
 		MembershipState *string `json:"membership_state,omitempty"`
 		Name            *string `json:"name,omitempty"`
@@ -8519,7 +7747,6 @@ type GetApiV4GroupsIdMembersAllResponse struct {
 		WebUrl          *string `json:"web_url,omitempty"`
 	}
 }
-type GetApiV4GroupsIdMembersAll200MemberRoleBaseAccessLevel int32
 type GetApiV4GroupsIdMembersAllUserIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -8560,43 +7787,43 @@ type GetApiV4GroupsIdMembersAllUserIdResponse struct {
 		IsUsingSeat *string `json:"is_using_seat,omitempty"`
 		Locked      *bool   `json:"locked,omitempty"`
 		MemberRole  *struct {
-			AdminCicdVariables         *bool                                                         `json:"admin_cicd_variables,omitempty"`
-			AdminComplianceFramework   *bool                                                         `json:"admin_compliance_framework,omitempty"`
-			AdminGroupMember           *bool                                                         `json:"admin_group_member,omitempty"`
-			AdminIntegrations          *bool                                                         `json:"admin_integrations,omitempty"`
-			AdminMergeRequest          *bool                                                         `json:"admin_merge_request,omitempty"`
-			AdminProtectedBranch       *bool                                                         `json:"admin_protected_branch,omitempty"`
-			AdminProtectedEnvironments *bool                                                         `json:"admin_protected_environments,omitempty"`
-			AdminPushRules             *bool                                                         `json:"admin_push_rules,omitempty"`
-			AdminRunners               *bool                                                         `json:"admin_runners,omitempty"`
-			AdminSecurityTesting       *bool                                                         `json:"admin_security_testing,omitempty"`
-			AdminTerraformState        *bool                                                         `json:"admin_terraform_state,omitempty"`
-			AdminVulnerability         *bool                                                         `json:"admin_vulnerability,omitempty"`
-			AdminWebHook               *bool                                                         `json:"admin_web_hook,omitempty"`
-			ArchiveProject             *bool                                                         `json:"archive_project,omitempty"`
-			BaseAccessLevel            *GetApiV4GroupsIdMembersAllUserId200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-			Description                *string                                                       `json:"description,omitempty"`
-			GroupId                    *int32                                                        `json:"group_id,omitempty"`
-			Id                         *int32                                                        `json:"id,omitempty"`
-			ManageDeployTokens         *bool                                                         `json:"manage_deploy_tokens,omitempty"`
-			ManageGroupAccessTokens    *bool                                                         `json:"manage_group_access_tokens,omitempty"`
-			ManageMergeRequestSettings *bool                                                         `json:"manage_merge_request_settings,omitempty"`
-			ManageProjectAccessTokens  *bool                                                         `json:"manage_project_access_tokens,omitempty"`
-			ManageProtectedTags        *bool                                                         `json:"manage_protected_tags,omitempty"`
-			ManageSecurityPolicyLink   *bool                                                         `json:"manage_security_policy_link,omitempty"`
-			Name                       *string                                                       `json:"name,omitempty"`
-			ReadAdminCicd              *bool                                                         `json:"read_admin_cicd,omitempty"`
-			ReadAdminMonitoring        *bool                                                         `json:"read_admin_monitoring,omitempty"`
-			ReadAdminSubscription      *bool                                                         `json:"read_admin_subscription,omitempty"`
-			ReadAdminUsers             *bool                                                         `json:"read_admin_users,omitempty"`
-			ReadCode                   *bool                                                         `json:"read_code,omitempty"`
-			ReadComplianceDashboard    *bool                                                         `json:"read_compliance_dashboard,omitempty"`
-			ReadCrmContact             *bool                                                         `json:"read_crm_contact,omitempty"`
-			ReadDependency             *bool                                                         `json:"read_dependency,omitempty"`
-			ReadRunners                *bool                                                         `json:"read_runners,omitempty"`
-			ReadVulnerability          *bool                                                         `json:"read_vulnerability,omitempty"`
-			RemoveGroup                *bool                                                         `json:"remove_group,omitempty"`
-			RemoveProject              *bool                                                         `json:"remove_project,omitempty"`
+			AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+			AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+			AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+			AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+			AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+			AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+			AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+			AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+			AdminRunners               *bool   `json:"admin_runners,omitempty"`
+			AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+			AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+			AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+			AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+			ArchiveProject             *bool   `json:"archive_project,omitempty"`
+			BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+			Description                *string `json:"description,omitempty"`
+			GroupId                    *int32  `json:"group_id,omitempty"`
+			Id                         *int32  `json:"id,omitempty"`
+			ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+			ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+			ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+			ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+			ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+			ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+			Name                       *string `json:"name,omitempty"`
+			ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+			ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+			ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+			ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+			ReadCode                   *bool   `json:"read_code,omitempty"`
+			ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+			ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+			ReadDependency             *bool   `json:"read_dependency,omitempty"`
+			ReadRunners                *bool   `json:"read_runners,omitempty"`
+			ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+			RemoveGroup                *bool   `json:"remove_group,omitempty"`
+			RemoveProject              *bool   `json:"remove_project,omitempty"`
 		} `json:"member_role,omitempty"`
 		MembershipState *string `json:"membership_state,omitempty"`
 		Name            *string `json:"name,omitempty"`
@@ -8607,7 +7834,6 @@ type GetApiV4GroupsIdMembersAllUserIdResponse struct {
 		WebUrl          *string `json:"web_url,omitempty"`
 	}
 }
-type GetApiV4GroupsIdMembersAllUserId200MemberRoleBaseAccessLevel int32
 type PostApiV4GroupsIdMembersApproveAllResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -8660,43 +7886,43 @@ type GetApiV4GroupsIdMembersUserIdResponse struct {
 		IsUsingSeat *string `json:"is_using_seat,omitempty"`
 		Locked      *bool   `json:"locked,omitempty"`
 		MemberRole  *struct {
-			AdminCicdVariables         *bool                                                      `json:"admin_cicd_variables,omitempty"`
-			AdminComplianceFramework   *bool                                                      `json:"admin_compliance_framework,omitempty"`
-			AdminGroupMember           *bool                                                      `json:"admin_group_member,omitempty"`
-			AdminIntegrations          *bool                                                      `json:"admin_integrations,omitempty"`
-			AdminMergeRequest          *bool                                                      `json:"admin_merge_request,omitempty"`
-			AdminProtectedBranch       *bool                                                      `json:"admin_protected_branch,omitempty"`
-			AdminProtectedEnvironments *bool                                                      `json:"admin_protected_environments,omitempty"`
-			AdminPushRules             *bool                                                      `json:"admin_push_rules,omitempty"`
-			AdminRunners               *bool                                                      `json:"admin_runners,omitempty"`
-			AdminSecurityTesting       *bool                                                      `json:"admin_security_testing,omitempty"`
-			AdminTerraformState        *bool                                                      `json:"admin_terraform_state,omitempty"`
-			AdminVulnerability         *bool                                                      `json:"admin_vulnerability,omitempty"`
-			AdminWebHook               *bool                                                      `json:"admin_web_hook,omitempty"`
-			ArchiveProject             *bool                                                      `json:"archive_project,omitempty"`
-			BaseAccessLevel            *GetApiV4GroupsIdMembersUserId200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-			Description                *string                                                    `json:"description,omitempty"`
-			GroupId                    *int32                                                     `json:"group_id,omitempty"`
-			Id                         *int32                                                     `json:"id,omitempty"`
-			ManageDeployTokens         *bool                                                      `json:"manage_deploy_tokens,omitempty"`
-			ManageGroupAccessTokens    *bool                                                      `json:"manage_group_access_tokens,omitempty"`
-			ManageMergeRequestSettings *bool                                                      `json:"manage_merge_request_settings,omitempty"`
-			ManageProjectAccessTokens  *bool                                                      `json:"manage_project_access_tokens,omitempty"`
-			ManageProtectedTags        *bool                                                      `json:"manage_protected_tags,omitempty"`
-			ManageSecurityPolicyLink   *bool                                                      `json:"manage_security_policy_link,omitempty"`
-			Name                       *string                                                    `json:"name,omitempty"`
-			ReadAdminCicd              *bool                                                      `json:"read_admin_cicd,omitempty"`
-			ReadAdminMonitoring        *bool                                                      `json:"read_admin_monitoring,omitempty"`
-			ReadAdminSubscription      *bool                                                      `json:"read_admin_subscription,omitempty"`
-			ReadAdminUsers             *bool                                                      `json:"read_admin_users,omitempty"`
-			ReadCode                   *bool                                                      `json:"read_code,omitempty"`
-			ReadComplianceDashboard    *bool                                                      `json:"read_compliance_dashboard,omitempty"`
-			ReadCrmContact             *bool                                                      `json:"read_crm_contact,omitempty"`
-			ReadDependency             *bool                                                      `json:"read_dependency,omitempty"`
-			ReadRunners                *bool                                                      `json:"read_runners,omitempty"`
-			ReadVulnerability          *bool                                                      `json:"read_vulnerability,omitempty"`
-			RemoveGroup                *bool                                                      `json:"remove_group,omitempty"`
-			RemoveProject              *bool                                                      `json:"remove_project,omitempty"`
+			AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+			AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+			AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+			AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+			AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+			AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+			AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+			AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+			AdminRunners               *bool   `json:"admin_runners,omitempty"`
+			AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+			AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+			AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+			AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+			ArchiveProject             *bool   `json:"archive_project,omitempty"`
+			BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+			Description                *string `json:"description,omitempty"`
+			GroupId                    *int32  `json:"group_id,omitempty"`
+			Id                         *int32  `json:"id,omitempty"`
+			ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+			ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+			ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+			ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+			ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+			ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+			Name                       *string `json:"name,omitempty"`
+			ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+			ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+			ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+			ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+			ReadCode                   *bool   `json:"read_code,omitempty"`
+			ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+			ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+			ReadDependency             *bool   `json:"read_dependency,omitempty"`
+			ReadRunners                *bool   `json:"read_runners,omitempty"`
+			ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+			RemoveGroup                *bool   `json:"remove_group,omitempty"`
+			RemoveProject              *bool   `json:"remove_project,omitempty"`
 		} `json:"member_role,omitempty"`
 		MembershipState *string `json:"membership_state,omitempty"`
 		Name            *string `json:"name,omitempty"`
@@ -8707,7 +7933,6 @@ type GetApiV4GroupsIdMembersUserIdResponse struct {
 		WebUrl          *string `json:"web_url,omitempty"`
 	}
 }
-type GetApiV4GroupsIdMembersUserId200MemberRoleBaseAccessLevel int32
 type PutApiV4GroupsIdMembersUserIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -8748,43 +7973,43 @@ type PutApiV4GroupsIdMembersUserIdResponse struct {
 		IsUsingSeat *string `json:"is_using_seat,omitempty"`
 		Locked      *bool   `json:"locked,omitempty"`
 		MemberRole  *struct {
-			AdminCicdVariables         *bool                                                      `json:"admin_cicd_variables,omitempty"`
-			AdminComplianceFramework   *bool                                                      `json:"admin_compliance_framework,omitempty"`
-			AdminGroupMember           *bool                                                      `json:"admin_group_member,omitempty"`
-			AdminIntegrations          *bool                                                      `json:"admin_integrations,omitempty"`
-			AdminMergeRequest          *bool                                                      `json:"admin_merge_request,omitempty"`
-			AdminProtectedBranch       *bool                                                      `json:"admin_protected_branch,omitempty"`
-			AdminProtectedEnvironments *bool                                                      `json:"admin_protected_environments,omitempty"`
-			AdminPushRules             *bool                                                      `json:"admin_push_rules,omitempty"`
-			AdminRunners               *bool                                                      `json:"admin_runners,omitempty"`
-			AdminSecurityTesting       *bool                                                      `json:"admin_security_testing,omitempty"`
-			AdminTerraformState        *bool                                                      `json:"admin_terraform_state,omitempty"`
-			AdminVulnerability         *bool                                                      `json:"admin_vulnerability,omitempty"`
-			AdminWebHook               *bool                                                      `json:"admin_web_hook,omitempty"`
-			ArchiveProject             *bool                                                      `json:"archive_project,omitempty"`
-			BaseAccessLevel            *PutApiV4GroupsIdMembersUserId200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-			Description                *string                                                    `json:"description,omitempty"`
-			GroupId                    *int32                                                     `json:"group_id,omitempty"`
-			Id                         *int32                                                     `json:"id,omitempty"`
-			ManageDeployTokens         *bool                                                      `json:"manage_deploy_tokens,omitempty"`
-			ManageGroupAccessTokens    *bool                                                      `json:"manage_group_access_tokens,omitempty"`
-			ManageMergeRequestSettings *bool                                                      `json:"manage_merge_request_settings,omitempty"`
-			ManageProjectAccessTokens  *bool                                                      `json:"manage_project_access_tokens,omitempty"`
-			ManageProtectedTags        *bool                                                      `json:"manage_protected_tags,omitempty"`
-			ManageSecurityPolicyLink   *bool                                                      `json:"manage_security_policy_link,omitempty"`
-			Name                       *string                                                    `json:"name,omitempty"`
-			ReadAdminCicd              *bool                                                      `json:"read_admin_cicd,omitempty"`
-			ReadAdminMonitoring        *bool                                                      `json:"read_admin_monitoring,omitempty"`
-			ReadAdminSubscription      *bool                                                      `json:"read_admin_subscription,omitempty"`
-			ReadAdminUsers             *bool                                                      `json:"read_admin_users,omitempty"`
-			ReadCode                   *bool                                                      `json:"read_code,omitempty"`
-			ReadComplianceDashboard    *bool                                                      `json:"read_compliance_dashboard,omitempty"`
-			ReadCrmContact             *bool                                                      `json:"read_crm_contact,omitempty"`
-			ReadDependency             *bool                                                      `json:"read_dependency,omitempty"`
-			ReadRunners                *bool                                                      `json:"read_runners,omitempty"`
-			ReadVulnerability          *bool                                                      `json:"read_vulnerability,omitempty"`
-			RemoveGroup                *bool                                                      `json:"remove_group,omitempty"`
-			RemoveProject              *bool                                                      `json:"remove_project,omitempty"`
+			AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+			AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+			AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+			AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+			AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+			AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+			AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+			AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+			AdminRunners               *bool   `json:"admin_runners,omitempty"`
+			AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+			AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+			AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+			AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+			ArchiveProject             *bool   `json:"archive_project,omitempty"`
+			BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+			Description                *string `json:"description,omitempty"`
+			GroupId                    *int32  `json:"group_id,omitempty"`
+			Id                         *int32  `json:"id,omitempty"`
+			ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+			ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+			ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+			ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+			ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+			ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+			Name                       *string `json:"name,omitempty"`
+			ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+			ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+			ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+			ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+			ReadCode                   *bool   `json:"read_code,omitempty"`
+			ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+			ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+			ReadDependency             *bool   `json:"read_dependency,omitempty"`
+			ReadRunners                *bool   `json:"read_runners,omitempty"`
+			ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+			RemoveGroup                *bool   `json:"remove_group,omitempty"`
+			RemoveProject              *bool   `json:"remove_project,omitempty"`
 		} `json:"member_role,omitempty"`
 		MembershipState *string `json:"membership_state,omitempty"`
 		Name            *string `json:"name,omitempty"`
@@ -8795,7 +8020,6 @@ type PutApiV4GroupsIdMembersUserIdResponse struct {
 		WebUrl          *string `json:"web_url,omitempty"`
 	}
 }
-type PutApiV4GroupsIdMembersUserId200MemberRoleBaseAccessLevel int32
 type DeleteApiV4GroupsIdMembersUserIdOverrideResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -8836,43 +8060,43 @@ type DeleteApiV4GroupsIdMembersUserIdOverrideResponse struct {
 		IsUsingSeat *string `json:"is_using_seat,omitempty"`
 		Locked      *bool   `json:"locked,omitempty"`
 		MemberRole  *struct {
-			AdminCicdVariables         *bool                                                                 `json:"admin_cicd_variables,omitempty"`
-			AdminComplianceFramework   *bool                                                                 `json:"admin_compliance_framework,omitempty"`
-			AdminGroupMember           *bool                                                                 `json:"admin_group_member,omitempty"`
-			AdminIntegrations          *bool                                                                 `json:"admin_integrations,omitempty"`
-			AdminMergeRequest          *bool                                                                 `json:"admin_merge_request,omitempty"`
-			AdminProtectedBranch       *bool                                                                 `json:"admin_protected_branch,omitempty"`
-			AdminProtectedEnvironments *bool                                                                 `json:"admin_protected_environments,omitempty"`
-			AdminPushRules             *bool                                                                 `json:"admin_push_rules,omitempty"`
-			AdminRunners               *bool                                                                 `json:"admin_runners,omitempty"`
-			AdminSecurityTesting       *bool                                                                 `json:"admin_security_testing,omitempty"`
-			AdminTerraformState        *bool                                                                 `json:"admin_terraform_state,omitempty"`
-			AdminVulnerability         *bool                                                                 `json:"admin_vulnerability,omitempty"`
-			AdminWebHook               *bool                                                                 `json:"admin_web_hook,omitempty"`
-			ArchiveProject             *bool                                                                 `json:"archive_project,omitempty"`
-			BaseAccessLevel            *DeleteApiV4GroupsIdMembersUserIdOverride200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-			Description                *string                                                               `json:"description,omitempty"`
-			GroupId                    *int32                                                                `json:"group_id,omitempty"`
-			Id                         *int32                                                                `json:"id,omitempty"`
-			ManageDeployTokens         *bool                                                                 `json:"manage_deploy_tokens,omitempty"`
-			ManageGroupAccessTokens    *bool                                                                 `json:"manage_group_access_tokens,omitempty"`
-			ManageMergeRequestSettings *bool                                                                 `json:"manage_merge_request_settings,omitempty"`
-			ManageProjectAccessTokens  *bool                                                                 `json:"manage_project_access_tokens,omitempty"`
-			ManageProtectedTags        *bool                                                                 `json:"manage_protected_tags,omitempty"`
-			ManageSecurityPolicyLink   *bool                                                                 `json:"manage_security_policy_link,omitempty"`
-			Name                       *string                                                               `json:"name,omitempty"`
-			ReadAdminCicd              *bool                                                                 `json:"read_admin_cicd,omitempty"`
-			ReadAdminMonitoring        *bool                                                                 `json:"read_admin_monitoring,omitempty"`
-			ReadAdminSubscription      *bool                                                                 `json:"read_admin_subscription,omitempty"`
-			ReadAdminUsers             *bool                                                                 `json:"read_admin_users,omitempty"`
-			ReadCode                   *bool                                                                 `json:"read_code,omitempty"`
-			ReadComplianceDashboard    *bool                                                                 `json:"read_compliance_dashboard,omitempty"`
-			ReadCrmContact             *bool                                                                 `json:"read_crm_contact,omitempty"`
-			ReadDependency             *bool                                                                 `json:"read_dependency,omitempty"`
-			ReadRunners                *bool                                                                 `json:"read_runners,omitempty"`
-			ReadVulnerability          *bool                                                                 `json:"read_vulnerability,omitempty"`
-			RemoveGroup                *bool                                                                 `json:"remove_group,omitempty"`
-			RemoveProject              *bool                                                                 `json:"remove_project,omitempty"`
+			AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+			AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+			AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+			AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+			AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+			AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+			AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+			AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+			AdminRunners               *bool   `json:"admin_runners,omitempty"`
+			AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+			AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+			AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+			AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+			ArchiveProject             *bool   `json:"archive_project,omitempty"`
+			BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+			Description                *string `json:"description,omitempty"`
+			GroupId                    *int32  `json:"group_id,omitempty"`
+			Id                         *int32  `json:"id,omitempty"`
+			ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+			ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+			ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+			ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+			ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+			ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+			Name                       *string `json:"name,omitempty"`
+			ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+			ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+			ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+			ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+			ReadCode                   *bool   `json:"read_code,omitempty"`
+			ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+			ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+			ReadDependency             *bool   `json:"read_dependency,omitempty"`
+			ReadRunners                *bool   `json:"read_runners,omitempty"`
+			ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+			RemoveGroup                *bool   `json:"remove_group,omitempty"`
+			RemoveProject              *bool   `json:"remove_project,omitempty"`
 		} `json:"member_role,omitempty"`
 		MembershipState *string `json:"membership_state,omitempty"`
 		Name            *string `json:"name,omitempty"`
@@ -8883,7 +8107,6 @@ type DeleteApiV4GroupsIdMembersUserIdOverrideResponse struct {
 		WebUrl          *string `json:"web_url,omitempty"`
 	}
 }
-type DeleteApiV4GroupsIdMembersUserIdOverride200MemberRoleBaseAccessLevel int32
 type PostApiV4GroupsIdMembersUserIdOverrideResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -8924,43 +8147,43 @@ type PostApiV4GroupsIdMembersUserIdOverrideResponse struct {
 		IsUsingSeat *string `json:"is_using_seat,omitempty"`
 		Locked      *bool   `json:"locked,omitempty"`
 		MemberRole  *struct {
-			AdminCicdVariables         *bool                                                               `json:"admin_cicd_variables,omitempty"`
-			AdminComplianceFramework   *bool                                                               `json:"admin_compliance_framework,omitempty"`
-			AdminGroupMember           *bool                                                               `json:"admin_group_member,omitempty"`
-			AdminIntegrations          *bool                                                               `json:"admin_integrations,omitempty"`
-			AdminMergeRequest          *bool                                                               `json:"admin_merge_request,omitempty"`
-			AdminProtectedBranch       *bool                                                               `json:"admin_protected_branch,omitempty"`
-			AdminProtectedEnvironments *bool                                                               `json:"admin_protected_environments,omitempty"`
-			AdminPushRules             *bool                                                               `json:"admin_push_rules,omitempty"`
-			AdminRunners               *bool                                                               `json:"admin_runners,omitempty"`
-			AdminSecurityTesting       *bool                                                               `json:"admin_security_testing,omitempty"`
-			AdminTerraformState        *bool                                                               `json:"admin_terraform_state,omitempty"`
-			AdminVulnerability         *bool                                                               `json:"admin_vulnerability,omitempty"`
-			AdminWebHook               *bool                                                               `json:"admin_web_hook,omitempty"`
-			ArchiveProject             *bool                                                               `json:"archive_project,omitempty"`
-			BaseAccessLevel            *PostApiV4GroupsIdMembersUserIdOverride201MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-			Description                *string                                                             `json:"description,omitempty"`
-			GroupId                    *int32                                                              `json:"group_id,omitempty"`
-			Id                         *int32                                                              `json:"id,omitempty"`
-			ManageDeployTokens         *bool                                                               `json:"manage_deploy_tokens,omitempty"`
-			ManageGroupAccessTokens    *bool                                                               `json:"manage_group_access_tokens,omitempty"`
-			ManageMergeRequestSettings *bool                                                               `json:"manage_merge_request_settings,omitempty"`
-			ManageProjectAccessTokens  *bool                                                               `json:"manage_project_access_tokens,omitempty"`
-			ManageProtectedTags        *bool                                                               `json:"manage_protected_tags,omitempty"`
-			ManageSecurityPolicyLink   *bool                                                               `json:"manage_security_policy_link,omitempty"`
-			Name                       *string                                                             `json:"name,omitempty"`
-			ReadAdminCicd              *bool                                                               `json:"read_admin_cicd,omitempty"`
-			ReadAdminMonitoring        *bool                                                               `json:"read_admin_monitoring,omitempty"`
-			ReadAdminSubscription      *bool                                                               `json:"read_admin_subscription,omitempty"`
-			ReadAdminUsers             *bool                                                               `json:"read_admin_users,omitempty"`
-			ReadCode                   *bool                                                               `json:"read_code,omitempty"`
-			ReadComplianceDashboard    *bool                                                               `json:"read_compliance_dashboard,omitempty"`
-			ReadCrmContact             *bool                                                               `json:"read_crm_contact,omitempty"`
-			ReadDependency             *bool                                                               `json:"read_dependency,omitempty"`
-			ReadRunners                *bool                                                               `json:"read_runners,omitempty"`
-			ReadVulnerability          *bool                                                               `json:"read_vulnerability,omitempty"`
-			RemoveGroup                *bool                                                               `json:"remove_group,omitempty"`
-			RemoveProject              *bool                                                               `json:"remove_project,omitempty"`
+			AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+			AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+			AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+			AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+			AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+			AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+			AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+			AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+			AdminRunners               *bool   `json:"admin_runners,omitempty"`
+			AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+			AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+			AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+			AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+			ArchiveProject             *bool   `json:"archive_project,omitempty"`
+			BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+			Description                *string `json:"description,omitempty"`
+			GroupId                    *int32  `json:"group_id,omitempty"`
+			Id                         *int32  `json:"id,omitempty"`
+			ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+			ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+			ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+			ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+			ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+			ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+			Name                       *string `json:"name,omitempty"`
+			ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+			ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+			ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+			ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+			ReadCode                   *bool   `json:"read_code,omitempty"`
+			ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+			ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+			ReadDependency             *bool   `json:"read_dependency,omitempty"`
+			ReadRunners                *bool   `json:"read_runners,omitempty"`
+			ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+			RemoveGroup                *bool   `json:"remove_group,omitempty"`
+			RemoveProject              *bool   `json:"remove_project,omitempty"`
 		} `json:"member_role,omitempty"`
 		MembershipState *string `json:"membership_state,omitempty"`
 		Name            *string `json:"name,omitempty"`
@@ -8971,7 +8194,6 @@ type PostApiV4GroupsIdMembersUserIdOverrideResponse struct {
 		WebUrl          *string `json:"web_url,omitempty"`
 	}
 }
-type PostApiV4GroupsIdMembersUserIdOverride201MemberRoleBaseAccessLevel int32
 type PutApiV4GroupsIdMembersUserIdStateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -10679,18 +9901,17 @@ type GetApiV4GroupsIdRunnersResponse struct {
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
 		} `json:"created_by,omitempty"`
-		Description *string                               `json:"description,omitempty"`
-		Id          *int32                                `json:"id,omitempty"`
-		IpAddress   *string                               `json:"ip_address,omitempty"`
-		IsShared    *bool                                 `json:"is_shared,omitempty"`
-		Name        *string                               `json:"name,omitempty"`
-		Online      *bool                                 `json:"online,omitempty"`
-		Paused      *bool                                 `json:"paused,omitempty"`
-		RunnerType  *GetApiV4GroupsIdRunners200RunnerType `json:"runner_type,omitempty"`
-		Status      *string                               `json:"status,omitempty"`
+		Description *string `json:"description,omitempty"`
+		Id          *int32  `json:"id,omitempty"`
+		IpAddress   *string `json:"ip_address,omitempty"`
+		IsShared    *bool   `json:"is_shared,omitempty"`
+		Name        *string `json:"name,omitempty"`
+		Online      *bool   `json:"online,omitempty"`
+		Paused      *bool   `json:"paused,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty"`
+		Status      *string `json:"status,omitempty"`
 	}
 }
-type GetApiV4GroupsIdRunners200RunnerType string
 type PostApiV4GroupsIdRunnersResetRegistrationTokenResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -14322,7 +13543,7 @@ func (c *Client) PutApiV4GroupsIdIntegrationsZentao(ctx context.Context, id int3
 	}
 	return c.Client.Do(req)
 }
-func (c *Client) DeleteApiV4GroupsIdIntegrationsSlug(ctx context.Context, id int32, slug DeleteApiV4GroupsIdIntegrationsSlugParamsSlug, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) DeleteApiV4GroupsIdIntegrationsSlug(ctx context.Context, id int32, slug string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewDeleteApiV4GroupsIdIntegrationsSlugRequest(c.Server, id, slug)
 	if err != nil {
 		return nil, err
@@ -14333,7 +13554,7 @@ func (c *Client) DeleteApiV4GroupsIdIntegrationsSlug(ctx context.Context, id int
 	}
 	return c.Client.Do(req)
 }
-func (c *Client) GetApiV4GroupsIdIntegrationsSlug(ctx context.Context, id int32, slug GetApiV4GroupsIdIntegrationsSlugParamsSlug, reqEditors ...RequestEditorFn) (*http.Response, error) {
+func (c *Client) GetApiV4GroupsIdIntegrationsSlug(ctx context.Context, id int32, slug string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetApiV4GroupsIdIntegrationsSlugRequest(c.Server, id, slug)
 	if err != nil {
 		return nil, err
@@ -22942,7 +22163,7 @@ func NewPutApiV4GroupsIdIntegrationsZentaoRequestWithBody(server string, id int3
 
 	return req, nil
 }
-func NewDeleteApiV4GroupsIdIntegrationsSlugRequest(server string, id int32, slug DeleteApiV4GroupsIdIntegrationsSlugParamsSlug) (*http.Request, error) {
+func NewDeleteApiV4GroupsIdIntegrationsSlugRequest(server string, id int32, slug string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -22981,7 +22202,7 @@ func NewDeleteApiV4GroupsIdIntegrationsSlugRequest(server string, id int32, slug
 
 	return req, nil
 }
-func NewGetApiV4GroupsIdIntegrationsSlugRequest(server string, id int32, slug GetApiV4GroupsIdIntegrationsSlugParamsSlug) (*http.Request, error) {
+func NewGetApiV4GroupsIdIntegrationsSlugRequest(server string, id int32, slug string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -32703,14 +31924,14 @@ func (c *ClientWithResponses) PutApiV4GroupsIdIntegrationsZentaoWithResponse(ctx
 	}
 	return ParsePutApiV4GroupsIdIntegrationsZentaoResponse(rsp)
 }
-func (c *ClientWithResponses) DeleteApiV4GroupsIdIntegrationsSlugWithResponse(ctx context.Context, id int32, slug DeleteApiV4GroupsIdIntegrationsSlugParamsSlug, reqEditors ...RequestEditorFn) (*DeleteApiV4GroupsIdIntegrationsSlugResponse, error) {
+func (c *ClientWithResponses) DeleteApiV4GroupsIdIntegrationsSlugWithResponse(ctx context.Context, id int32, slug string, reqEditors ...RequestEditorFn) (*DeleteApiV4GroupsIdIntegrationsSlugResponse, error) {
 	rsp, err := c.DeleteApiV4GroupsIdIntegrationsSlug(ctx, id, slug, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseDeleteApiV4GroupsIdIntegrationsSlugResponse(rsp)
 }
-func (c *ClientWithResponses) GetApiV4GroupsIdIntegrationsSlugWithResponse(ctx context.Context, id int32, slug GetApiV4GroupsIdIntegrationsSlugParamsSlug, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdIntegrationsSlugResponse, error) {
+func (c *ClientWithResponses) GetApiV4GroupsIdIntegrationsSlugWithResponse(ctx context.Context, id int32, slug string, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdIntegrationsSlugResponse, error) {
 	rsp, err := c.GetApiV4GroupsIdIntegrationsSlug(ctx, id, slug, reqEditors...)
 	if err != nil {
 		return nil, err
@@ -35178,20 +34399,20 @@ func ParsePostApiV4GroupsIdAccessTokensSelfRotateResponse(rsp *http.Response) (*
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AccessLevel  *PostApiV4GroupsIdAccessTokensSelfRotate200AccessLevel  `json:"access_level,omitempty"`
-			Active       *bool                                                   `json:"active,omitempty"`
-			CreatedAt    *time.Time                                              `json:"created_at,omitempty"`
-			Description  *string                                                 `json:"description,omitempty"`
-			ExpiresAt    *time.Time                                              `json:"expires_at,omitempty"`
-			Id           *int32                                                  `json:"id,omitempty"`
-			LastUsedAt   *time.Time                                              `json:"last_used_at,omitempty"`
-			Name         *string                                                 `json:"name,omitempty"`
-			ResourceId   *int32                                                  `json:"resource_id,omitempty"`
-			ResourceType *PostApiV4GroupsIdAccessTokensSelfRotate200ResourceType `json:"resource_type,omitempty"`
-			Revoked      *bool                                                   `json:"revoked,omitempty"`
-			Scopes       *[]interface{}                                          `json:"scopes,omitempty"`
-			Token        *string                                                 `json:"token,omitempty"`
-			UserId       *int32                                                  `json:"user_id,omitempty"`
+			AccessLevel  *int32         `json:"access_level,omitempty"`
+			Active       *bool          `json:"active,omitempty"`
+			CreatedAt    *time.Time     `json:"created_at,omitempty"`
+			Description  *string        `json:"description,omitempty"`
+			ExpiresAt    *time.Time     `json:"expires_at,omitempty"`
+			Id           *int32         `json:"id,omitempty"`
+			LastUsedAt   *time.Time     `json:"last_used_at,omitempty"`
+			Name         *string        `json:"name,omitempty"`
+			ResourceId   *int32         `json:"resource_id,omitempty"`
+			ResourceType *string        `json:"resource_type,omitempty"`
+			Revoked      *bool          `json:"revoked,omitempty"`
+			Scopes       *[]interface{} `json:"scopes,omitempty"`
+			Token        *string        `json:"token,omitempty"`
+			UserId       *int32         `json:"user_id,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -35637,43 +34858,43 @@ func ParseGetApiV4GroupsIdBillableMembersResponse(rsp *http.Response) (*GetApiV4
 			IsUsingSeat *string `json:"is_using_seat,omitempty"`
 			Locked      *bool   `json:"locked,omitempty"`
 			MemberRole  *struct {
-				AdminCicdVariables         *bool                                                        `json:"admin_cicd_variables,omitempty"`
-				AdminComplianceFramework   *bool                                                        `json:"admin_compliance_framework,omitempty"`
-				AdminGroupMember           *bool                                                        `json:"admin_group_member,omitempty"`
-				AdminIntegrations          *bool                                                        `json:"admin_integrations,omitempty"`
-				AdminMergeRequest          *bool                                                        `json:"admin_merge_request,omitempty"`
-				AdminProtectedBranch       *bool                                                        `json:"admin_protected_branch,omitempty"`
-				AdminProtectedEnvironments *bool                                                        `json:"admin_protected_environments,omitempty"`
-				AdminPushRules             *bool                                                        `json:"admin_push_rules,omitempty"`
-				AdminRunners               *bool                                                        `json:"admin_runners,omitempty"`
-				AdminSecurityTesting       *bool                                                        `json:"admin_security_testing,omitempty"`
-				AdminTerraformState        *bool                                                        `json:"admin_terraform_state,omitempty"`
-				AdminVulnerability         *bool                                                        `json:"admin_vulnerability,omitempty"`
-				AdminWebHook               *bool                                                        `json:"admin_web_hook,omitempty"`
-				ArchiveProject             *bool                                                        `json:"archive_project,omitempty"`
-				BaseAccessLevel            *GetApiV4GroupsIdBillableMembers200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-				Description                *string                                                      `json:"description,omitempty"`
-				GroupId                    *int32                                                       `json:"group_id,omitempty"`
-				Id                         *int32                                                       `json:"id,omitempty"`
-				ManageDeployTokens         *bool                                                        `json:"manage_deploy_tokens,omitempty"`
-				ManageGroupAccessTokens    *bool                                                        `json:"manage_group_access_tokens,omitempty"`
-				ManageMergeRequestSettings *bool                                                        `json:"manage_merge_request_settings,omitempty"`
-				ManageProjectAccessTokens  *bool                                                        `json:"manage_project_access_tokens,omitempty"`
-				ManageProtectedTags        *bool                                                        `json:"manage_protected_tags,omitempty"`
-				ManageSecurityPolicyLink   *bool                                                        `json:"manage_security_policy_link,omitempty"`
-				Name                       *string                                                      `json:"name,omitempty"`
-				ReadAdminCicd              *bool                                                        `json:"read_admin_cicd,omitempty"`
-				ReadAdminMonitoring        *bool                                                        `json:"read_admin_monitoring,omitempty"`
-				ReadAdminSubscription      *bool                                                        `json:"read_admin_subscription,omitempty"`
-				ReadAdminUsers             *bool                                                        `json:"read_admin_users,omitempty"`
-				ReadCode                   *bool                                                        `json:"read_code,omitempty"`
-				ReadComplianceDashboard    *bool                                                        `json:"read_compliance_dashboard,omitempty"`
-				ReadCrmContact             *bool                                                        `json:"read_crm_contact,omitempty"`
-				ReadDependency             *bool                                                        `json:"read_dependency,omitempty"`
-				ReadRunners                *bool                                                        `json:"read_runners,omitempty"`
-				ReadVulnerability          *bool                                                        `json:"read_vulnerability,omitempty"`
-				RemoveGroup                *bool                                                        `json:"remove_group,omitempty"`
-				RemoveProject              *bool                                                        `json:"remove_project,omitempty"`
+				AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+				AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+				AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+				AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+				AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+				AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+				AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+				AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+				AdminRunners               *bool   `json:"admin_runners,omitempty"`
+				AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+				AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+				AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+				AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+				ArchiveProject             *bool   `json:"archive_project,omitempty"`
+				BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+				Description                *string `json:"description,omitempty"`
+				GroupId                    *int32  `json:"group_id,omitempty"`
+				Id                         *int32  `json:"id,omitempty"`
+				ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+				ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+				ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+				ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+				ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+				ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+				Name                       *string `json:"name,omitempty"`
+				ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+				ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+				ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+				ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+				ReadCode                   *bool   `json:"read_code,omitempty"`
+				ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+				ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+				ReadDependency             *bool   `json:"read_dependency,omitempty"`
+				ReadRunners                *bool   `json:"read_runners,omitempty"`
+				ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+				RemoveGroup                *bool   `json:"remove_group,omitempty"`
+				RemoveProject              *bool   `json:"remove_project,omitempty"`
 			} `json:"member_role,omitempty"`
 			MembershipState *string `json:"membership_state,omitempty"`
 			Name            *string `json:"name,omitempty"`
@@ -36927,18 +36148,18 @@ func ParseGetApiV4GroupsIdExportRelationsStatusResponse(rsp *http.Response) (*Ge
 		var dest []struct {
 			Batched *bool `json:"batched,omitempty"`
 			Batches *struct {
-				BatchNumber  *int32                                                 `json:"batch_number,omitempty"`
-				Error        *string                                                `json:"error,omitempty"`
-				ObjectsCount *int32                                                 `json:"objects_count,omitempty"`
-				Status       *GetApiV4GroupsIdExportRelationsStatus200BatchesStatus `json:"status,omitempty"`
-				UpdatedAt    *time.Time                                             `json:"updated_at,omitempty"`
+				BatchNumber  *int32     `json:"batch_number,omitempty"`
+				Error        *string    `json:"error,omitempty"`
+				ObjectsCount *int32     `json:"objects_count,omitempty"`
+				Status       *string    `json:"status,omitempty"`
+				UpdatedAt    *time.Time `json:"updated_at,omitempty"`
 			} `json:"batches,omitempty"`
-			BatchesCount      *int32                                          `json:"batches_count,omitempty"`
-			Error             *string                                         `json:"error,omitempty"`
-			Relation          *string                                         `json:"relation,omitempty"`
-			Status            *GetApiV4GroupsIdExportRelationsStatus200Status `json:"status,omitempty"`
-			TotalObjectsCount *int32                                          `json:"total_objects_count,omitempty"`
-			UpdatedAt         *time.Time                                      `json:"updated_at,omitempty"`
+			BatchesCount      *int32     `json:"batches_count,omitempty"`
+			Error             *string    `json:"error,omitempty"`
+			Relation          *string    `json:"relation,omitempty"`
+			Status            *string    `json:"status,omitempty"`
+			TotalObjectsCount *int32     `json:"total_objects_count,omitempty"`
+			UpdatedAt         *time.Time `json:"updated_at,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -40059,43 +39280,43 @@ func ParseGetApiV4GroupsIdMembersResponse(rsp *http.Response) (*GetApiV4GroupsId
 			IsUsingSeat *string `json:"is_using_seat,omitempty"`
 			Locked      *bool   `json:"locked,omitempty"`
 			MemberRole  *struct {
-				AdminCicdVariables         *bool                                                `json:"admin_cicd_variables,omitempty"`
-				AdminComplianceFramework   *bool                                                `json:"admin_compliance_framework,omitempty"`
-				AdminGroupMember           *bool                                                `json:"admin_group_member,omitempty"`
-				AdminIntegrations          *bool                                                `json:"admin_integrations,omitempty"`
-				AdminMergeRequest          *bool                                                `json:"admin_merge_request,omitempty"`
-				AdminProtectedBranch       *bool                                                `json:"admin_protected_branch,omitempty"`
-				AdminProtectedEnvironments *bool                                                `json:"admin_protected_environments,omitempty"`
-				AdminPushRules             *bool                                                `json:"admin_push_rules,omitempty"`
-				AdminRunners               *bool                                                `json:"admin_runners,omitempty"`
-				AdminSecurityTesting       *bool                                                `json:"admin_security_testing,omitempty"`
-				AdminTerraformState        *bool                                                `json:"admin_terraform_state,omitempty"`
-				AdminVulnerability         *bool                                                `json:"admin_vulnerability,omitempty"`
-				AdminWebHook               *bool                                                `json:"admin_web_hook,omitempty"`
-				ArchiveProject             *bool                                                `json:"archive_project,omitempty"`
-				BaseAccessLevel            *GetApiV4GroupsIdMembers200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-				Description                *string                                              `json:"description,omitempty"`
-				GroupId                    *int32                                               `json:"group_id,omitempty"`
-				Id                         *int32                                               `json:"id,omitempty"`
-				ManageDeployTokens         *bool                                                `json:"manage_deploy_tokens,omitempty"`
-				ManageGroupAccessTokens    *bool                                                `json:"manage_group_access_tokens,omitempty"`
-				ManageMergeRequestSettings *bool                                                `json:"manage_merge_request_settings,omitempty"`
-				ManageProjectAccessTokens  *bool                                                `json:"manage_project_access_tokens,omitempty"`
-				ManageProtectedTags        *bool                                                `json:"manage_protected_tags,omitempty"`
-				ManageSecurityPolicyLink   *bool                                                `json:"manage_security_policy_link,omitempty"`
-				Name                       *string                                              `json:"name,omitempty"`
-				ReadAdminCicd              *bool                                                `json:"read_admin_cicd,omitempty"`
-				ReadAdminMonitoring        *bool                                                `json:"read_admin_monitoring,omitempty"`
-				ReadAdminSubscription      *bool                                                `json:"read_admin_subscription,omitempty"`
-				ReadAdminUsers             *bool                                                `json:"read_admin_users,omitempty"`
-				ReadCode                   *bool                                                `json:"read_code,omitempty"`
-				ReadComplianceDashboard    *bool                                                `json:"read_compliance_dashboard,omitempty"`
-				ReadCrmContact             *bool                                                `json:"read_crm_contact,omitempty"`
-				ReadDependency             *bool                                                `json:"read_dependency,omitempty"`
-				ReadRunners                *bool                                                `json:"read_runners,omitempty"`
-				ReadVulnerability          *bool                                                `json:"read_vulnerability,omitempty"`
-				RemoveGroup                *bool                                                `json:"remove_group,omitempty"`
-				RemoveProject              *bool                                                `json:"remove_project,omitempty"`
+				AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+				AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+				AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+				AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+				AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+				AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+				AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+				AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+				AdminRunners               *bool   `json:"admin_runners,omitempty"`
+				AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+				AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+				AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+				AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+				ArchiveProject             *bool   `json:"archive_project,omitempty"`
+				BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+				Description                *string `json:"description,omitempty"`
+				GroupId                    *int32  `json:"group_id,omitempty"`
+				Id                         *int32  `json:"id,omitempty"`
+				ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+				ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+				ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+				ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+				ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+				ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+				Name                       *string `json:"name,omitempty"`
+				ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+				ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+				ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+				ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+				ReadCode                   *bool   `json:"read_code,omitempty"`
+				ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+				ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+				ReadDependency             *bool   `json:"read_dependency,omitempty"`
+				ReadRunners                *bool   `json:"read_runners,omitempty"`
+				ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+				RemoveGroup                *bool   `json:"remove_group,omitempty"`
+				RemoveProject              *bool   `json:"remove_project,omitempty"`
 			} `json:"member_role,omitempty"`
 			MembershipState *string `json:"membership_state,omitempty"`
 			Name            *string `json:"name,omitempty"`
@@ -40165,43 +39386,43 @@ func ParsePostApiV4GroupsIdMembersResponse(rsp *http.Response) (*PostApiV4Groups
 			IsUsingSeat *string `json:"is_using_seat,omitempty"`
 			Locked      *bool   `json:"locked,omitempty"`
 			MemberRole  *struct {
-				AdminCicdVariables         *bool                                                 `json:"admin_cicd_variables,omitempty"`
-				AdminComplianceFramework   *bool                                                 `json:"admin_compliance_framework,omitempty"`
-				AdminGroupMember           *bool                                                 `json:"admin_group_member,omitempty"`
-				AdminIntegrations          *bool                                                 `json:"admin_integrations,omitempty"`
-				AdminMergeRequest          *bool                                                 `json:"admin_merge_request,omitempty"`
-				AdminProtectedBranch       *bool                                                 `json:"admin_protected_branch,omitempty"`
-				AdminProtectedEnvironments *bool                                                 `json:"admin_protected_environments,omitempty"`
-				AdminPushRules             *bool                                                 `json:"admin_push_rules,omitempty"`
-				AdminRunners               *bool                                                 `json:"admin_runners,omitempty"`
-				AdminSecurityTesting       *bool                                                 `json:"admin_security_testing,omitempty"`
-				AdminTerraformState        *bool                                                 `json:"admin_terraform_state,omitempty"`
-				AdminVulnerability         *bool                                                 `json:"admin_vulnerability,omitempty"`
-				AdminWebHook               *bool                                                 `json:"admin_web_hook,omitempty"`
-				ArchiveProject             *bool                                                 `json:"archive_project,omitempty"`
-				BaseAccessLevel            *PostApiV4GroupsIdMembers201MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-				Description                *string                                               `json:"description,omitempty"`
-				GroupId                    *int32                                                `json:"group_id,omitempty"`
-				Id                         *int32                                                `json:"id,omitempty"`
-				ManageDeployTokens         *bool                                                 `json:"manage_deploy_tokens,omitempty"`
-				ManageGroupAccessTokens    *bool                                                 `json:"manage_group_access_tokens,omitempty"`
-				ManageMergeRequestSettings *bool                                                 `json:"manage_merge_request_settings,omitempty"`
-				ManageProjectAccessTokens  *bool                                                 `json:"manage_project_access_tokens,omitempty"`
-				ManageProtectedTags        *bool                                                 `json:"manage_protected_tags,omitempty"`
-				ManageSecurityPolicyLink   *bool                                                 `json:"manage_security_policy_link,omitempty"`
-				Name                       *string                                               `json:"name,omitempty"`
-				ReadAdminCicd              *bool                                                 `json:"read_admin_cicd,omitempty"`
-				ReadAdminMonitoring        *bool                                                 `json:"read_admin_monitoring,omitempty"`
-				ReadAdminSubscription      *bool                                                 `json:"read_admin_subscription,omitempty"`
-				ReadAdminUsers             *bool                                                 `json:"read_admin_users,omitempty"`
-				ReadCode                   *bool                                                 `json:"read_code,omitempty"`
-				ReadComplianceDashboard    *bool                                                 `json:"read_compliance_dashboard,omitempty"`
-				ReadCrmContact             *bool                                                 `json:"read_crm_contact,omitempty"`
-				ReadDependency             *bool                                                 `json:"read_dependency,omitempty"`
-				ReadRunners                *bool                                                 `json:"read_runners,omitempty"`
-				ReadVulnerability          *bool                                                 `json:"read_vulnerability,omitempty"`
-				RemoveGroup                *bool                                                 `json:"remove_group,omitempty"`
-				RemoveProject              *bool                                                 `json:"remove_project,omitempty"`
+				AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+				AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+				AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+				AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+				AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+				AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+				AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+				AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+				AdminRunners               *bool   `json:"admin_runners,omitempty"`
+				AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+				AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+				AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+				AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+				ArchiveProject             *bool   `json:"archive_project,omitempty"`
+				BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+				Description                *string `json:"description,omitempty"`
+				GroupId                    *int32  `json:"group_id,omitempty"`
+				Id                         *int32  `json:"id,omitempty"`
+				ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+				ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+				ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+				ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+				ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+				ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+				Name                       *string `json:"name,omitempty"`
+				ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+				ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+				ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+				ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+				ReadCode                   *bool   `json:"read_code,omitempty"`
+				ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+				ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+				ReadDependency             *bool   `json:"read_dependency,omitempty"`
+				ReadRunners                *bool   `json:"read_runners,omitempty"`
+				ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+				RemoveGroup                *bool   `json:"remove_group,omitempty"`
+				RemoveProject              *bool   `json:"remove_project,omitempty"`
 			} `json:"member_role,omitempty"`
 			MembershipState *string `json:"membership_state,omitempty"`
 			Name            *string `json:"name,omitempty"`
@@ -40271,43 +39492,43 @@ func ParseGetApiV4GroupsIdMembersAllResponse(rsp *http.Response) (*GetApiV4Group
 			IsUsingSeat *string `json:"is_using_seat,omitempty"`
 			Locked      *bool   `json:"locked,omitempty"`
 			MemberRole  *struct {
-				AdminCicdVariables         *bool                                                   `json:"admin_cicd_variables,omitempty"`
-				AdminComplianceFramework   *bool                                                   `json:"admin_compliance_framework,omitempty"`
-				AdminGroupMember           *bool                                                   `json:"admin_group_member,omitempty"`
-				AdminIntegrations          *bool                                                   `json:"admin_integrations,omitempty"`
-				AdminMergeRequest          *bool                                                   `json:"admin_merge_request,omitempty"`
-				AdminProtectedBranch       *bool                                                   `json:"admin_protected_branch,omitempty"`
-				AdminProtectedEnvironments *bool                                                   `json:"admin_protected_environments,omitempty"`
-				AdminPushRules             *bool                                                   `json:"admin_push_rules,omitempty"`
-				AdminRunners               *bool                                                   `json:"admin_runners,omitempty"`
-				AdminSecurityTesting       *bool                                                   `json:"admin_security_testing,omitempty"`
-				AdminTerraformState        *bool                                                   `json:"admin_terraform_state,omitempty"`
-				AdminVulnerability         *bool                                                   `json:"admin_vulnerability,omitempty"`
-				AdminWebHook               *bool                                                   `json:"admin_web_hook,omitempty"`
-				ArchiveProject             *bool                                                   `json:"archive_project,omitempty"`
-				BaseAccessLevel            *GetApiV4GroupsIdMembersAll200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-				Description                *string                                                 `json:"description,omitempty"`
-				GroupId                    *int32                                                  `json:"group_id,omitempty"`
-				Id                         *int32                                                  `json:"id,omitempty"`
-				ManageDeployTokens         *bool                                                   `json:"manage_deploy_tokens,omitempty"`
-				ManageGroupAccessTokens    *bool                                                   `json:"manage_group_access_tokens,omitempty"`
-				ManageMergeRequestSettings *bool                                                   `json:"manage_merge_request_settings,omitempty"`
-				ManageProjectAccessTokens  *bool                                                   `json:"manage_project_access_tokens,omitempty"`
-				ManageProtectedTags        *bool                                                   `json:"manage_protected_tags,omitempty"`
-				ManageSecurityPolicyLink   *bool                                                   `json:"manage_security_policy_link,omitempty"`
-				Name                       *string                                                 `json:"name,omitempty"`
-				ReadAdminCicd              *bool                                                   `json:"read_admin_cicd,omitempty"`
-				ReadAdminMonitoring        *bool                                                   `json:"read_admin_monitoring,omitempty"`
-				ReadAdminSubscription      *bool                                                   `json:"read_admin_subscription,omitempty"`
-				ReadAdminUsers             *bool                                                   `json:"read_admin_users,omitempty"`
-				ReadCode                   *bool                                                   `json:"read_code,omitempty"`
-				ReadComplianceDashboard    *bool                                                   `json:"read_compliance_dashboard,omitempty"`
-				ReadCrmContact             *bool                                                   `json:"read_crm_contact,omitempty"`
-				ReadDependency             *bool                                                   `json:"read_dependency,omitempty"`
-				ReadRunners                *bool                                                   `json:"read_runners,omitempty"`
-				ReadVulnerability          *bool                                                   `json:"read_vulnerability,omitempty"`
-				RemoveGroup                *bool                                                   `json:"remove_group,omitempty"`
-				RemoveProject              *bool                                                   `json:"remove_project,omitempty"`
+				AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+				AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+				AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+				AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+				AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+				AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+				AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+				AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+				AdminRunners               *bool   `json:"admin_runners,omitempty"`
+				AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+				AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+				AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+				AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+				ArchiveProject             *bool   `json:"archive_project,omitempty"`
+				BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+				Description                *string `json:"description,omitempty"`
+				GroupId                    *int32  `json:"group_id,omitempty"`
+				Id                         *int32  `json:"id,omitempty"`
+				ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+				ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+				ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+				ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+				ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+				ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+				Name                       *string `json:"name,omitempty"`
+				ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+				ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+				ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+				ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+				ReadCode                   *bool   `json:"read_code,omitempty"`
+				ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+				ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+				ReadDependency             *bool   `json:"read_dependency,omitempty"`
+				ReadRunners                *bool   `json:"read_runners,omitempty"`
+				ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+				RemoveGroup                *bool   `json:"remove_group,omitempty"`
+				RemoveProject              *bool   `json:"remove_project,omitempty"`
 			} `json:"member_role,omitempty"`
 			MembershipState *string `json:"membership_state,omitempty"`
 			Name            *string `json:"name,omitempty"`
@@ -40377,43 +39598,43 @@ func ParseGetApiV4GroupsIdMembersAllUserIdResponse(rsp *http.Response) (*GetApiV
 			IsUsingSeat *string `json:"is_using_seat,omitempty"`
 			Locked      *bool   `json:"locked,omitempty"`
 			MemberRole  *struct {
-				AdminCicdVariables         *bool                                                         `json:"admin_cicd_variables,omitempty"`
-				AdminComplianceFramework   *bool                                                         `json:"admin_compliance_framework,omitempty"`
-				AdminGroupMember           *bool                                                         `json:"admin_group_member,omitempty"`
-				AdminIntegrations          *bool                                                         `json:"admin_integrations,omitempty"`
-				AdminMergeRequest          *bool                                                         `json:"admin_merge_request,omitempty"`
-				AdminProtectedBranch       *bool                                                         `json:"admin_protected_branch,omitempty"`
-				AdminProtectedEnvironments *bool                                                         `json:"admin_protected_environments,omitempty"`
-				AdminPushRules             *bool                                                         `json:"admin_push_rules,omitempty"`
-				AdminRunners               *bool                                                         `json:"admin_runners,omitempty"`
-				AdminSecurityTesting       *bool                                                         `json:"admin_security_testing,omitempty"`
-				AdminTerraformState        *bool                                                         `json:"admin_terraform_state,omitempty"`
-				AdminVulnerability         *bool                                                         `json:"admin_vulnerability,omitempty"`
-				AdminWebHook               *bool                                                         `json:"admin_web_hook,omitempty"`
-				ArchiveProject             *bool                                                         `json:"archive_project,omitempty"`
-				BaseAccessLevel            *GetApiV4GroupsIdMembersAllUserId200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-				Description                *string                                                       `json:"description,omitempty"`
-				GroupId                    *int32                                                        `json:"group_id,omitempty"`
-				Id                         *int32                                                        `json:"id,omitempty"`
-				ManageDeployTokens         *bool                                                         `json:"manage_deploy_tokens,omitempty"`
-				ManageGroupAccessTokens    *bool                                                         `json:"manage_group_access_tokens,omitempty"`
-				ManageMergeRequestSettings *bool                                                         `json:"manage_merge_request_settings,omitempty"`
-				ManageProjectAccessTokens  *bool                                                         `json:"manage_project_access_tokens,omitempty"`
-				ManageProtectedTags        *bool                                                         `json:"manage_protected_tags,omitempty"`
-				ManageSecurityPolicyLink   *bool                                                         `json:"manage_security_policy_link,omitempty"`
-				Name                       *string                                                       `json:"name,omitempty"`
-				ReadAdminCicd              *bool                                                         `json:"read_admin_cicd,omitempty"`
-				ReadAdminMonitoring        *bool                                                         `json:"read_admin_monitoring,omitempty"`
-				ReadAdminSubscription      *bool                                                         `json:"read_admin_subscription,omitempty"`
-				ReadAdminUsers             *bool                                                         `json:"read_admin_users,omitempty"`
-				ReadCode                   *bool                                                         `json:"read_code,omitempty"`
-				ReadComplianceDashboard    *bool                                                         `json:"read_compliance_dashboard,omitempty"`
-				ReadCrmContact             *bool                                                         `json:"read_crm_contact,omitempty"`
-				ReadDependency             *bool                                                         `json:"read_dependency,omitempty"`
-				ReadRunners                *bool                                                         `json:"read_runners,omitempty"`
-				ReadVulnerability          *bool                                                         `json:"read_vulnerability,omitempty"`
-				RemoveGroup                *bool                                                         `json:"remove_group,omitempty"`
-				RemoveProject              *bool                                                         `json:"remove_project,omitempty"`
+				AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+				AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+				AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+				AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+				AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+				AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+				AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+				AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+				AdminRunners               *bool   `json:"admin_runners,omitempty"`
+				AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+				AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+				AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+				AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+				ArchiveProject             *bool   `json:"archive_project,omitempty"`
+				BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+				Description                *string `json:"description,omitempty"`
+				GroupId                    *int32  `json:"group_id,omitempty"`
+				Id                         *int32  `json:"id,omitempty"`
+				ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+				ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+				ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+				ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+				ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+				ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+				Name                       *string `json:"name,omitempty"`
+				ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+				ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+				ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+				ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+				ReadCode                   *bool   `json:"read_code,omitempty"`
+				ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+				ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+				ReadDependency             *bool   `json:"read_dependency,omitempty"`
+				ReadRunners                *bool   `json:"read_runners,omitempty"`
+				ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+				RemoveGroup                *bool   `json:"remove_group,omitempty"`
+				RemoveProject              *bool   `json:"remove_project,omitempty"`
 			} `json:"member_role,omitempty"`
 			MembershipState *string `json:"membership_state,omitempty"`
 			Name            *string `json:"name,omitempty"`
@@ -40525,43 +39746,43 @@ func ParseGetApiV4GroupsIdMembersUserIdResponse(rsp *http.Response) (*GetApiV4Gr
 			IsUsingSeat *string `json:"is_using_seat,omitempty"`
 			Locked      *bool   `json:"locked,omitempty"`
 			MemberRole  *struct {
-				AdminCicdVariables         *bool                                                      `json:"admin_cicd_variables,omitempty"`
-				AdminComplianceFramework   *bool                                                      `json:"admin_compliance_framework,omitempty"`
-				AdminGroupMember           *bool                                                      `json:"admin_group_member,omitempty"`
-				AdminIntegrations          *bool                                                      `json:"admin_integrations,omitempty"`
-				AdminMergeRequest          *bool                                                      `json:"admin_merge_request,omitempty"`
-				AdminProtectedBranch       *bool                                                      `json:"admin_protected_branch,omitempty"`
-				AdminProtectedEnvironments *bool                                                      `json:"admin_protected_environments,omitempty"`
-				AdminPushRules             *bool                                                      `json:"admin_push_rules,omitempty"`
-				AdminRunners               *bool                                                      `json:"admin_runners,omitempty"`
-				AdminSecurityTesting       *bool                                                      `json:"admin_security_testing,omitempty"`
-				AdminTerraformState        *bool                                                      `json:"admin_terraform_state,omitempty"`
-				AdminVulnerability         *bool                                                      `json:"admin_vulnerability,omitempty"`
-				AdminWebHook               *bool                                                      `json:"admin_web_hook,omitempty"`
-				ArchiveProject             *bool                                                      `json:"archive_project,omitempty"`
-				BaseAccessLevel            *GetApiV4GroupsIdMembersUserId200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-				Description                *string                                                    `json:"description,omitempty"`
-				GroupId                    *int32                                                     `json:"group_id,omitempty"`
-				Id                         *int32                                                     `json:"id,omitempty"`
-				ManageDeployTokens         *bool                                                      `json:"manage_deploy_tokens,omitempty"`
-				ManageGroupAccessTokens    *bool                                                      `json:"manage_group_access_tokens,omitempty"`
-				ManageMergeRequestSettings *bool                                                      `json:"manage_merge_request_settings,omitempty"`
-				ManageProjectAccessTokens  *bool                                                      `json:"manage_project_access_tokens,omitempty"`
-				ManageProtectedTags        *bool                                                      `json:"manage_protected_tags,omitempty"`
-				ManageSecurityPolicyLink   *bool                                                      `json:"manage_security_policy_link,omitempty"`
-				Name                       *string                                                    `json:"name,omitempty"`
-				ReadAdminCicd              *bool                                                      `json:"read_admin_cicd,omitempty"`
-				ReadAdminMonitoring        *bool                                                      `json:"read_admin_monitoring,omitempty"`
-				ReadAdminSubscription      *bool                                                      `json:"read_admin_subscription,omitempty"`
-				ReadAdminUsers             *bool                                                      `json:"read_admin_users,omitempty"`
-				ReadCode                   *bool                                                      `json:"read_code,omitempty"`
-				ReadComplianceDashboard    *bool                                                      `json:"read_compliance_dashboard,omitempty"`
-				ReadCrmContact             *bool                                                      `json:"read_crm_contact,omitempty"`
-				ReadDependency             *bool                                                      `json:"read_dependency,omitempty"`
-				ReadRunners                *bool                                                      `json:"read_runners,omitempty"`
-				ReadVulnerability          *bool                                                      `json:"read_vulnerability,omitempty"`
-				RemoveGroup                *bool                                                      `json:"remove_group,omitempty"`
-				RemoveProject              *bool                                                      `json:"remove_project,omitempty"`
+				AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+				AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+				AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+				AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+				AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+				AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+				AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+				AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+				AdminRunners               *bool   `json:"admin_runners,omitempty"`
+				AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+				AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+				AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+				AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+				ArchiveProject             *bool   `json:"archive_project,omitempty"`
+				BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+				Description                *string `json:"description,omitempty"`
+				GroupId                    *int32  `json:"group_id,omitempty"`
+				Id                         *int32  `json:"id,omitempty"`
+				ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+				ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+				ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+				ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+				ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+				ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+				Name                       *string `json:"name,omitempty"`
+				ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+				ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+				ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+				ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+				ReadCode                   *bool   `json:"read_code,omitempty"`
+				ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+				ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+				ReadDependency             *bool   `json:"read_dependency,omitempty"`
+				ReadRunners                *bool   `json:"read_runners,omitempty"`
+				ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+				RemoveGroup                *bool   `json:"remove_group,omitempty"`
+				RemoveProject              *bool   `json:"remove_project,omitempty"`
 			} `json:"member_role,omitempty"`
 			MembershipState *string `json:"membership_state,omitempty"`
 			Name            *string `json:"name,omitempty"`
@@ -40631,43 +39852,43 @@ func ParsePutApiV4GroupsIdMembersUserIdResponse(rsp *http.Response) (*PutApiV4Gr
 			IsUsingSeat *string `json:"is_using_seat,omitempty"`
 			Locked      *bool   `json:"locked,omitempty"`
 			MemberRole  *struct {
-				AdminCicdVariables         *bool                                                      `json:"admin_cicd_variables,omitempty"`
-				AdminComplianceFramework   *bool                                                      `json:"admin_compliance_framework,omitempty"`
-				AdminGroupMember           *bool                                                      `json:"admin_group_member,omitempty"`
-				AdminIntegrations          *bool                                                      `json:"admin_integrations,omitempty"`
-				AdminMergeRequest          *bool                                                      `json:"admin_merge_request,omitempty"`
-				AdminProtectedBranch       *bool                                                      `json:"admin_protected_branch,omitempty"`
-				AdminProtectedEnvironments *bool                                                      `json:"admin_protected_environments,omitempty"`
-				AdminPushRules             *bool                                                      `json:"admin_push_rules,omitempty"`
-				AdminRunners               *bool                                                      `json:"admin_runners,omitempty"`
-				AdminSecurityTesting       *bool                                                      `json:"admin_security_testing,omitempty"`
-				AdminTerraformState        *bool                                                      `json:"admin_terraform_state,omitempty"`
-				AdminVulnerability         *bool                                                      `json:"admin_vulnerability,omitempty"`
-				AdminWebHook               *bool                                                      `json:"admin_web_hook,omitempty"`
-				ArchiveProject             *bool                                                      `json:"archive_project,omitempty"`
-				BaseAccessLevel            *PutApiV4GroupsIdMembersUserId200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-				Description                *string                                                    `json:"description,omitempty"`
-				GroupId                    *int32                                                     `json:"group_id,omitempty"`
-				Id                         *int32                                                     `json:"id,omitempty"`
-				ManageDeployTokens         *bool                                                      `json:"manage_deploy_tokens,omitempty"`
-				ManageGroupAccessTokens    *bool                                                      `json:"manage_group_access_tokens,omitempty"`
-				ManageMergeRequestSettings *bool                                                      `json:"manage_merge_request_settings,omitempty"`
-				ManageProjectAccessTokens  *bool                                                      `json:"manage_project_access_tokens,omitempty"`
-				ManageProtectedTags        *bool                                                      `json:"manage_protected_tags,omitempty"`
-				ManageSecurityPolicyLink   *bool                                                      `json:"manage_security_policy_link,omitempty"`
-				Name                       *string                                                    `json:"name,omitempty"`
-				ReadAdminCicd              *bool                                                      `json:"read_admin_cicd,omitempty"`
-				ReadAdminMonitoring        *bool                                                      `json:"read_admin_monitoring,omitempty"`
-				ReadAdminSubscription      *bool                                                      `json:"read_admin_subscription,omitempty"`
-				ReadAdminUsers             *bool                                                      `json:"read_admin_users,omitempty"`
-				ReadCode                   *bool                                                      `json:"read_code,omitempty"`
-				ReadComplianceDashboard    *bool                                                      `json:"read_compliance_dashboard,omitempty"`
-				ReadCrmContact             *bool                                                      `json:"read_crm_contact,omitempty"`
-				ReadDependency             *bool                                                      `json:"read_dependency,omitempty"`
-				ReadRunners                *bool                                                      `json:"read_runners,omitempty"`
-				ReadVulnerability          *bool                                                      `json:"read_vulnerability,omitempty"`
-				RemoveGroup                *bool                                                      `json:"remove_group,omitempty"`
-				RemoveProject              *bool                                                      `json:"remove_project,omitempty"`
+				AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+				AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+				AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+				AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+				AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+				AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+				AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+				AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+				AdminRunners               *bool   `json:"admin_runners,omitempty"`
+				AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+				AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+				AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+				AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+				ArchiveProject             *bool   `json:"archive_project,omitempty"`
+				BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+				Description                *string `json:"description,omitempty"`
+				GroupId                    *int32  `json:"group_id,omitempty"`
+				Id                         *int32  `json:"id,omitempty"`
+				ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+				ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+				ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+				ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+				ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+				ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+				Name                       *string `json:"name,omitempty"`
+				ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+				ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+				ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+				ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+				ReadCode                   *bool   `json:"read_code,omitempty"`
+				ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+				ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+				ReadDependency             *bool   `json:"read_dependency,omitempty"`
+				ReadRunners                *bool   `json:"read_runners,omitempty"`
+				ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+				RemoveGroup                *bool   `json:"remove_group,omitempty"`
+				RemoveProject              *bool   `json:"remove_project,omitempty"`
 			} `json:"member_role,omitempty"`
 			MembershipState *string `json:"membership_state,omitempty"`
 			Name            *string `json:"name,omitempty"`
@@ -40737,43 +39958,43 @@ func ParseDeleteApiV4GroupsIdMembersUserIdOverrideResponse(rsp *http.Response) (
 			IsUsingSeat *string `json:"is_using_seat,omitempty"`
 			Locked      *bool   `json:"locked,omitempty"`
 			MemberRole  *struct {
-				AdminCicdVariables         *bool                                                                 `json:"admin_cicd_variables,omitempty"`
-				AdminComplianceFramework   *bool                                                                 `json:"admin_compliance_framework,omitempty"`
-				AdminGroupMember           *bool                                                                 `json:"admin_group_member,omitempty"`
-				AdminIntegrations          *bool                                                                 `json:"admin_integrations,omitempty"`
-				AdminMergeRequest          *bool                                                                 `json:"admin_merge_request,omitempty"`
-				AdminProtectedBranch       *bool                                                                 `json:"admin_protected_branch,omitempty"`
-				AdminProtectedEnvironments *bool                                                                 `json:"admin_protected_environments,omitempty"`
-				AdminPushRules             *bool                                                                 `json:"admin_push_rules,omitempty"`
-				AdminRunners               *bool                                                                 `json:"admin_runners,omitempty"`
-				AdminSecurityTesting       *bool                                                                 `json:"admin_security_testing,omitempty"`
-				AdminTerraformState        *bool                                                                 `json:"admin_terraform_state,omitempty"`
-				AdminVulnerability         *bool                                                                 `json:"admin_vulnerability,omitempty"`
-				AdminWebHook               *bool                                                                 `json:"admin_web_hook,omitempty"`
-				ArchiveProject             *bool                                                                 `json:"archive_project,omitempty"`
-				BaseAccessLevel            *DeleteApiV4GroupsIdMembersUserIdOverride200MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-				Description                *string                                                               `json:"description,omitempty"`
-				GroupId                    *int32                                                                `json:"group_id,omitempty"`
-				Id                         *int32                                                                `json:"id,omitempty"`
-				ManageDeployTokens         *bool                                                                 `json:"manage_deploy_tokens,omitempty"`
-				ManageGroupAccessTokens    *bool                                                                 `json:"manage_group_access_tokens,omitempty"`
-				ManageMergeRequestSettings *bool                                                                 `json:"manage_merge_request_settings,omitempty"`
-				ManageProjectAccessTokens  *bool                                                                 `json:"manage_project_access_tokens,omitempty"`
-				ManageProtectedTags        *bool                                                                 `json:"manage_protected_tags,omitempty"`
-				ManageSecurityPolicyLink   *bool                                                                 `json:"manage_security_policy_link,omitempty"`
-				Name                       *string                                                               `json:"name,omitempty"`
-				ReadAdminCicd              *bool                                                                 `json:"read_admin_cicd,omitempty"`
-				ReadAdminMonitoring        *bool                                                                 `json:"read_admin_monitoring,omitempty"`
-				ReadAdminSubscription      *bool                                                                 `json:"read_admin_subscription,omitempty"`
-				ReadAdminUsers             *bool                                                                 `json:"read_admin_users,omitempty"`
-				ReadCode                   *bool                                                                 `json:"read_code,omitempty"`
-				ReadComplianceDashboard    *bool                                                                 `json:"read_compliance_dashboard,omitempty"`
-				ReadCrmContact             *bool                                                                 `json:"read_crm_contact,omitempty"`
-				ReadDependency             *bool                                                                 `json:"read_dependency,omitempty"`
-				ReadRunners                *bool                                                                 `json:"read_runners,omitempty"`
-				ReadVulnerability          *bool                                                                 `json:"read_vulnerability,omitempty"`
-				RemoveGroup                *bool                                                                 `json:"remove_group,omitempty"`
-				RemoveProject              *bool                                                                 `json:"remove_project,omitempty"`
+				AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+				AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+				AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+				AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+				AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+				AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+				AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+				AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+				AdminRunners               *bool   `json:"admin_runners,omitempty"`
+				AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+				AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+				AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+				AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+				ArchiveProject             *bool   `json:"archive_project,omitempty"`
+				BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+				Description                *string `json:"description,omitempty"`
+				GroupId                    *int32  `json:"group_id,omitempty"`
+				Id                         *int32  `json:"id,omitempty"`
+				ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+				ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+				ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+				ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+				ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+				ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+				Name                       *string `json:"name,omitempty"`
+				ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+				ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+				ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+				ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+				ReadCode                   *bool   `json:"read_code,omitempty"`
+				ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+				ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+				ReadDependency             *bool   `json:"read_dependency,omitempty"`
+				ReadRunners                *bool   `json:"read_runners,omitempty"`
+				ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+				RemoveGroup                *bool   `json:"remove_group,omitempty"`
+				RemoveProject              *bool   `json:"remove_project,omitempty"`
 			} `json:"member_role,omitempty"`
 			MembershipState *string `json:"membership_state,omitempty"`
 			Name            *string `json:"name,omitempty"`
@@ -40843,43 +40064,43 @@ func ParsePostApiV4GroupsIdMembersUserIdOverrideResponse(rsp *http.Response) (*P
 			IsUsingSeat *string `json:"is_using_seat,omitempty"`
 			Locked      *bool   `json:"locked,omitempty"`
 			MemberRole  *struct {
-				AdminCicdVariables         *bool                                                               `json:"admin_cicd_variables,omitempty"`
-				AdminComplianceFramework   *bool                                                               `json:"admin_compliance_framework,omitempty"`
-				AdminGroupMember           *bool                                                               `json:"admin_group_member,omitempty"`
-				AdminIntegrations          *bool                                                               `json:"admin_integrations,omitempty"`
-				AdminMergeRequest          *bool                                                               `json:"admin_merge_request,omitempty"`
-				AdminProtectedBranch       *bool                                                               `json:"admin_protected_branch,omitempty"`
-				AdminProtectedEnvironments *bool                                                               `json:"admin_protected_environments,omitempty"`
-				AdminPushRules             *bool                                                               `json:"admin_push_rules,omitempty"`
-				AdminRunners               *bool                                                               `json:"admin_runners,omitempty"`
-				AdminSecurityTesting       *bool                                                               `json:"admin_security_testing,omitempty"`
-				AdminTerraformState        *bool                                                               `json:"admin_terraform_state,omitempty"`
-				AdminVulnerability         *bool                                                               `json:"admin_vulnerability,omitempty"`
-				AdminWebHook               *bool                                                               `json:"admin_web_hook,omitempty"`
-				ArchiveProject             *bool                                                               `json:"archive_project,omitempty"`
-				BaseAccessLevel            *PostApiV4GroupsIdMembersUserIdOverride201MemberRoleBaseAccessLevel `json:"base_access_level,omitempty"`
-				Description                *string                                                             `json:"description,omitempty"`
-				GroupId                    *int32                                                              `json:"group_id,omitempty"`
-				Id                         *int32                                                              `json:"id,omitempty"`
-				ManageDeployTokens         *bool                                                               `json:"manage_deploy_tokens,omitempty"`
-				ManageGroupAccessTokens    *bool                                                               `json:"manage_group_access_tokens,omitempty"`
-				ManageMergeRequestSettings *bool                                                               `json:"manage_merge_request_settings,omitempty"`
-				ManageProjectAccessTokens  *bool                                                               `json:"manage_project_access_tokens,omitempty"`
-				ManageProtectedTags        *bool                                                               `json:"manage_protected_tags,omitempty"`
-				ManageSecurityPolicyLink   *bool                                                               `json:"manage_security_policy_link,omitempty"`
-				Name                       *string                                                             `json:"name,omitempty"`
-				ReadAdminCicd              *bool                                                               `json:"read_admin_cicd,omitempty"`
-				ReadAdminMonitoring        *bool                                                               `json:"read_admin_monitoring,omitempty"`
-				ReadAdminSubscription      *bool                                                               `json:"read_admin_subscription,omitempty"`
-				ReadAdminUsers             *bool                                                               `json:"read_admin_users,omitempty"`
-				ReadCode                   *bool                                                               `json:"read_code,omitempty"`
-				ReadComplianceDashboard    *bool                                                               `json:"read_compliance_dashboard,omitempty"`
-				ReadCrmContact             *bool                                                               `json:"read_crm_contact,omitempty"`
-				ReadDependency             *bool                                                               `json:"read_dependency,omitempty"`
-				ReadRunners                *bool                                                               `json:"read_runners,omitempty"`
-				ReadVulnerability          *bool                                                               `json:"read_vulnerability,omitempty"`
-				RemoveGroup                *bool                                                               `json:"remove_group,omitempty"`
-				RemoveProject              *bool                                                               `json:"remove_project,omitempty"`
+				AdminCicdVariables         *bool   `json:"admin_cicd_variables,omitempty"`
+				AdminComplianceFramework   *bool   `json:"admin_compliance_framework,omitempty"`
+				AdminGroupMember           *bool   `json:"admin_group_member,omitempty"`
+				AdminIntegrations          *bool   `json:"admin_integrations,omitempty"`
+				AdminMergeRequest          *bool   `json:"admin_merge_request,omitempty"`
+				AdminProtectedBranch       *bool   `json:"admin_protected_branch,omitempty"`
+				AdminProtectedEnvironments *bool   `json:"admin_protected_environments,omitempty"`
+				AdminPushRules             *bool   `json:"admin_push_rules,omitempty"`
+				AdminRunners               *bool   `json:"admin_runners,omitempty"`
+				AdminSecurityTesting       *bool   `json:"admin_security_testing,omitempty"`
+				AdminTerraformState        *bool   `json:"admin_terraform_state,omitempty"`
+				AdminVulnerability         *bool   `json:"admin_vulnerability,omitempty"`
+				AdminWebHook               *bool   `json:"admin_web_hook,omitempty"`
+				ArchiveProject             *bool   `json:"archive_project,omitempty"`
+				BaseAccessLevel            *int32  `json:"base_access_level,omitempty"`
+				Description                *string `json:"description,omitempty"`
+				GroupId                    *int32  `json:"group_id,omitempty"`
+				Id                         *int32  `json:"id,omitempty"`
+				ManageDeployTokens         *bool   `json:"manage_deploy_tokens,omitempty"`
+				ManageGroupAccessTokens    *bool   `json:"manage_group_access_tokens,omitempty"`
+				ManageMergeRequestSettings *bool   `json:"manage_merge_request_settings,omitempty"`
+				ManageProjectAccessTokens  *bool   `json:"manage_project_access_tokens,omitempty"`
+				ManageProtectedTags        *bool   `json:"manage_protected_tags,omitempty"`
+				ManageSecurityPolicyLink   *bool   `json:"manage_security_policy_link,omitempty"`
+				Name                       *string `json:"name,omitempty"`
+				ReadAdminCicd              *bool   `json:"read_admin_cicd,omitempty"`
+				ReadAdminMonitoring        *bool   `json:"read_admin_monitoring,omitempty"`
+				ReadAdminSubscription      *bool   `json:"read_admin_subscription,omitempty"`
+				ReadAdminUsers             *bool   `json:"read_admin_users,omitempty"`
+				ReadCode                   *bool   `json:"read_code,omitempty"`
+				ReadComplianceDashboard    *bool   `json:"read_compliance_dashboard,omitempty"`
+				ReadCrmContact             *bool   `json:"read_crm_contact,omitempty"`
+				ReadDependency             *bool   `json:"read_dependency,omitempty"`
+				ReadRunners                *bool   `json:"read_runners,omitempty"`
+				ReadVulnerability          *bool   `json:"read_vulnerability,omitempty"`
+				RemoveGroup                *bool   `json:"remove_group,omitempty"`
+				RemoveProject              *bool   `json:"remove_project,omitempty"`
 			} `json:"member_role,omitempty"`
 			MembershipState *string `json:"membership_state,omitempty"`
 			Name            *string `json:"name,omitempty"`
@@ -42828,15 +42049,15 @@ func ParseGetApiV4GroupsIdRunnersResponse(rsp *http.Response) (*GetApiV4GroupsId
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
 			} `json:"created_by,omitempty"`
-			Description *string                               `json:"description,omitempty"`
-			Id          *int32                                `json:"id,omitempty"`
-			IpAddress   *string                               `json:"ip_address,omitempty"`
-			IsShared    *bool                                 `json:"is_shared,omitempty"`
-			Name        *string                               `json:"name,omitempty"`
-			Online      *bool                                 `json:"online,omitempty"`
-			Paused      *bool                                 `json:"paused,omitempty"`
-			RunnerType  *GetApiV4GroupsIdRunners200RunnerType `json:"runner_type,omitempty"`
-			Status      *string                               `json:"status,omitempty"`
+			Description *string `json:"description,omitempty"`
+			Id          *int32  `json:"id,omitempty"`
+			IpAddress   *string `json:"ip_address,omitempty"`
+			IsShared    *bool   `json:"is_shared,omitempty"`
+			Name        *string `json:"name,omitempty"`
+			Online      *bool   `json:"online,omitempty"`
+			Paused      *bool   `json:"paused,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty"`
+			Status      *string `json:"status,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

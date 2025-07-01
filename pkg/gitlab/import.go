@@ -11,18 +11,6 @@ import (
 	"strings"
 )
 
-// Defines values for PostApiV4ImportBitbucketServerJSONBodyTimeoutStrategy.
-const (
-	PostApiV4ImportBitbucketServerJSONBodyTimeoutStrategyOptimistic  PostApiV4ImportBitbucketServerJSONBodyTimeoutStrategy = "optimistic"
-	PostApiV4ImportBitbucketServerJSONBodyTimeoutStrategyPessimistic PostApiV4ImportBitbucketServerJSONBodyTimeoutStrategy = "pessimistic"
-)
-
-// Defines values for PostApiV4ImportGithubJSONBodyTimeoutStrategy.
-const (
-	PostApiV4ImportGithubJSONBodyTimeoutStrategyOptimistic  PostApiV4ImportGithubJSONBodyTimeoutStrategy = "optimistic"
-	PostApiV4ImportGithubJSONBodyTimeoutStrategyPessimistic PostApiV4ImportGithubJSONBodyTimeoutStrategy = "pessimistic"
-)
-
 type PostApiV4ImportBitbucketJSONBody struct {
 	// BitbucketAppPassword BitBucket app password
 	BitbucketAppPassword string `json:"bitbucket_app_password"`
@@ -62,9 +50,8 @@ type PostApiV4ImportBitbucketServerJSONBody struct {
 	PersonalAccessToken string `json:"personal_access_token"`
 
 	// TimeoutStrategy Strategy for behavior on timeouts
-	TimeoutStrategy *PostApiV4ImportBitbucketServerJSONBodyTimeoutStrategy `json:"timeout_strategy,omitempty"`
+	TimeoutStrategy *string `json:"timeout_strategy,omitempty"`
 }
-type PostApiV4ImportBitbucketServerJSONBodyTimeoutStrategy string
 type PostApiV4ImportGithubJSONBody struct {
 	// GithubHostname Custom GitHub enterprise hostname. For example: https://github.example.com. From GitLab 16.5 to GitLab 17.1, you must include the path `/api/v3`.
 	GithubHostname *string `json:"github_hostname,omitempty"`
@@ -88,9 +75,8 @@ type PostApiV4ImportGithubJSONBody struct {
 	TargetNamespace string `json:"target_namespace"`
 
 	// TimeoutStrategy Strategy for behavior on timeouts
-	TimeoutStrategy *PostApiV4ImportGithubJSONBodyTimeoutStrategy `json:"timeout_strategy,omitempty"`
+	TimeoutStrategy *string `json:"timeout_strategy,omitempty"`
 }
-type PostApiV4ImportGithubJSONBodyTimeoutStrategy string
 type PostApiV4ImportGithubCancelJSONBody struct {
 	// ProjectId ID of importing project to be canceled
 	ProjectId int32 `json:"project_id"`
@@ -108,22 +94,21 @@ type PostApiV4ImportBitbucketResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		Forked                *bool                                    `json:"forked,omitempty"`
-		FullName              *string                                  `json:"full_name,omitempty"`
-		FullPath              *string                                  `json:"full_path,omitempty"`
-		HumanImportStatusName *string                                  `json:"human_import_status_name,omitempty"`
-		Id                    *int32                                   `json:"id,omitempty"`
-		ImportError           *string                                  `json:"import_error,omitempty"`
-		ImportSource          *string                                  `json:"import_source,omitempty"`
-		ImportStatus          *PostApiV4ImportBitbucket201ImportStatus `json:"import_status,omitempty"`
-		ImportWarning         *string                                  `json:"import_warning,omitempty"`
-		Name                  *string                                  `json:"name,omitempty"`
-		ProviderLink          *string                                  `json:"provider_link,omitempty"`
-		RefsUrl               *string                                  `json:"refs_url,omitempty"`
-		RelationType          *string                                  `json:"relation_type,omitempty"`
+		Forked                *bool   `json:"forked,omitempty"`
+		FullName              *string `json:"full_name,omitempty"`
+		FullPath              *string `json:"full_path,omitempty"`
+		HumanImportStatusName *string `json:"human_import_status_name,omitempty"`
+		Id                    *int32  `json:"id,omitempty"`
+		ImportError           *string `json:"import_error,omitempty"`
+		ImportSource          *string `json:"import_source,omitempty"`
+		ImportStatus          *string `json:"import_status,omitempty"`
+		ImportWarning         *string `json:"import_warning,omitempty"`
+		Name                  *string `json:"name,omitempty"`
+		ProviderLink          *string `json:"provider_link,omitempty"`
+		RefsUrl               *string `json:"refs_url,omitempty"`
+		RelationType          *string `json:"relation_type,omitempty"`
 	}
 }
-type PostApiV4ImportBitbucket201ImportStatus string
 type PostApiV4ImportBitbucketServerResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -152,22 +137,21 @@ type PostApiV4ImportGithubCancelResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Forked                *bool                                       `json:"forked,omitempty"`
-		FullName              *string                                     `json:"full_name,omitempty"`
-		FullPath              *string                                     `json:"full_path,omitempty"`
-		HumanImportStatusName *string                                     `json:"human_import_status_name,omitempty"`
-		Id                    *int32                                      `json:"id,omitempty"`
-		ImportError           *string                                     `json:"import_error,omitempty"`
-		ImportSource          *string                                     `json:"import_source,omitempty"`
-		ImportStatus          *PostApiV4ImportGithubCancel200ImportStatus `json:"import_status,omitempty"`
-		ImportWarning         *string                                     `json:"import_warning,omitempty"`
-		Name                  *string                                     `json:"name,omitempty"`
-		ProviderLink          *string                                     `json:"provider_link,omitempty"`
-		RefsUrl               *string                                     `json:"refs_url,omitempty"`
-		RelationType          *string                                     `json:"relation_type,omitempty"`
+		Forked                *bool   `json:"forked,omitempty"`
+		FullName              *string `json:"full_name,omitempty"`
+		FullPath              *string `json:"full_path,omitempty"`
+		HumanImportStatusName *string `json:"human_import_status_name,omitempty"`
+		Id                    *int32  `json:"id,omitempty"`
+		ImportError           *string `json:"import_error,omitempty"`
+		ImportSource          *string `json:"import_source,omitempty"`
+		ImportStatus          *string `json:"import_status,omitempty"`
+		ImportWarning         *string `json:"import_warning,omitempty"`
+		Name                  *string `json:"name,omitempty"`
+		ProviderLink          *string `json:"provider_link,omitempty"`
+		RefsUrl               *string `json:"refs_url,omitempty"`
+		RelationType          *string `json:"relation_type,omitempty"`
 	}
 }
-type PostApiV4ImportGithubCancel200ImportStatus string
 type PostApiV4ImportGithubGistsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -608,19 +592,19 @@ func ParsePostApiV4ImportBitbucketResponse(rsp *http.Response) (*PostApiV4Import
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			Forked                *bool                                    `json:"forked,omitempty"`
-			FullName              *string                                  `json:"full_name,omitempty"`
-			FullPath              *string                                  `json:"full_path,omitempty"`
-			HumanImportStatusName *string                                  `json:"human_import_status_name,omitempty"`
-			Id                    *int32                                   `json:"id,omitempty"`
-			ImportError           *string                                  `json:"import_error,omitempty"`
-			ImportSource          *string                                  `json:"import_source,omitempty"`
-			ImportStatus          *PostApiV4ImportBitbucket201ImportStatus `json:"import_status,omitempty"`
-			ImportWarning         *string                                  `json:"import_warning,omitempty"`
-			Name                  *string                                  `json:"name,omitempty"`
-			ProviderLink          *string                                  `json:"provider_link,omitempty"`
-			RefsUrl               *string                                  `json:"refs_url,omitempty"`
-			RelationType          *string                                  `json:"relation_type,omitempty"`
+			Forked                *bool   `json:"forked,omitempty"`
+			FullName              *string `json:"full_name,omitempty"`
+			FullPath              *string `json:"full_path,omitempty"`
+			HumanImportStatusName *string `json:"human_import_status_name,omitempty"`
+			Id                    *int32  `json:"id,omitempty"`
+			ImportError           *string `json:"import_error,omitempty"`
+			ImportSource          *string `json:"import_source,omitempty"`
+			ImportStatus          *string `json:"import_status,omitempty"`
+			ImportWarning         *string `json:"import_warning,omitempty"`
+			Name                  *string `json:"name,omitempty"`
+			ProviderLink          *string `json:"provider_link,omitempty"`
+			RefsUrl               *string `json:"refs_url,omitempty"`
+			RelationType          *string `json:"relation_type,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -708,19 +692,19 @@ func ParsePostApiV4ImportGithubCancelResponse(rsp *http.Response) (*PostApiV4Imp
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Forked                *bool                                       `json:"forked,omitempty"`
-			FullName              *string                                     `json:"full_name,omitempty"`
-			FullPath              *string                                     `json:"full_path,omitempty"`
-			HumanImportStatusName *string                                     `json:"human_import_status_name,omitempty"`
-			Id                    *int32                                      `json:"id,omitempty"`
-			ImportError           *string                                     `json:"import_error,omitempty"`
-			ImportSource          *string                                     `json:"import_source,omitempty"`
-			ImportStatus          *PostApiV4ImportGithubCancel200ImportStatus `json:"import_status,omitempty"`
-			ImportWarning         *string                                     `json:"import_warning,omitempty"`
-			Name                  *string                                     `json:"name,omitempty"`
-			ProviderLink          *string                                     `json:"provider_link,omitempty"`
-			RefsUrl               *string                                     `json:"refs_url,omitempty"`
-			RelationType          *string                                     `json:"relation_type,omitempty"`
+			Forked                *bool   `json:"forked,omitempty"`
+			FullName              *string `json:"full_name,omitempty"`
+			FullPath              *string `json:"full_path,omitempty"`
+			HumanImportStatusName *string `json:"human_import_status_name,omitempty"`
+			Id                    *int32  `json:"id,omitempty"`
+			ImportError           *string `json:"import_error,omitempty"`
+			ImportSource          *string `json:"import_source,omitempty"`
+			ImportStatus          *string `json:"import_status,omitempty"`
+			ImportWarning         *string `json:"import_warning,omitempty"`
+			Name                  *string `json:"name,omitempty"`
+			ProviderLink          *string `json:"provider_link,omitempty"`
+			RefsUrl               *string `json:"refs_url,omitempty"`
+			RelationType          *string `json:"relation_type,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

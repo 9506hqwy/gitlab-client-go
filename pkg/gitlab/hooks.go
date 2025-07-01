@@ -14,20 +14,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-// Defines values for PostApiV4HooksJSONBodyBranchFilterStrategy.
-const (
-	PostApiV4HooksJSONBodyBranchFilterStrategyAllBranches PostApiV4HooksJSONBodyBranchFilterStrategy = "all_branches"
-	PostApiV4HooksJSONBodyBranchFilterStrategyRegex       PostApiV4HooksJSONBodyBranchFilterStrategy = "regex"
-	PostApiV4HooksJSONBodyBranchFilterStrategyWildcard    PostApiV4HooksJSONBodyBranchFilterStrategy = "wildcard"
-)
-
-// Defines values for PutApiV4HooksHookIdJSONBodyBranchFilterStrategy.
-const (
-	PutApiV4HooksHookIdJSONBodyBranchFilterStrategyAllBranches PutApiV4HooksHookIdJSONBodyBranchFilterStrategy = "all_branches"
-	PutApiV4HooksHookIdJSONBodyBranchFilterStrategyRegex       PutApiV4HooksHookIdJSONBodyBranchFilterStrategy = "regex"
-	PutApiV4HooksHookIdJSONBodyBranchFilterStrategyWildcard    PutApiV4HooksHookIdJSONBodyBranchFilterStrategy = "wildcard"
-)
-
 type GetApiV4HooksParams struct {
 	// Page Current page number
 	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
@@ -37,7 +23,7 @@ type GetApiV4HooksParams struct {
 }
 type PostApiV4HooksJSONBody struct {
 	// BranchFilterStrategy Filter push events by branch. Possible values are `wildcard` (default), `regex`, and `all_branches`
-	BranchFilterStrategy *PostApiV4HooksJSONBodyBranchFilterStrategy `json:"branch_filter_strategy,omitempty"`
+	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty"`
 
 	// CustomHeaders Custom headers
 	CustomHeaders *[]struct {
@@ -87,10 +73,9 @@ type PostApiV4HooksJSONBody struct {
 		Value string `json:"value"`
 	} `json:"url_variables,omitempty"`
 }
-type PostApiV4HooksJSONBodyBranchFilterStrategy string
 type PutApiV4HooksHookIdJSONBody struct {
 	// BranchFilterStrategy Filter push events by branch. Possible values are `wildcard` (default), `regex`, and `all_branches`
-	BranchFilterStrategy *PutApiV4HooksHookIdJSONBodyBranchFilterStrategy `json:"branch_filter_strategy,omitempty"`
+	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty"`
 
 	// CustomHeaders Custom headers
 	CustomHeaders *[]struct {
@@ -140,7 +125,6 @@ type PutApiV4HooksHookIdJSONBody struct {
 		Value string `json:"value"`
 	} `json:"url_variables,omitempty"`
 }
-type PutApiV4HooksHookIdJSONBodyBranchFilterStrategy string
 type PutApiV4HooksHookIdCustomHeadersKeyJSONBody struct {
 	// Value The value of the custom header
 	Value string `json:"value"`

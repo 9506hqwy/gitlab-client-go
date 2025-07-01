@@ -14,85 +14,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-// Defines values for PostApiV4JobsIdArtifactsJSONBodyArtifactFormat.
-const (
-	Gzip PostApiV4JobsIdArtifactsJSONBodyArtifactFormat = "gzip"
-	Raw  PostApiV4JobsIdArtifactsJSONBodyArtifactFormat = "raw"
-	Zip  PostApiV4JobsIdArtifactsJSONBodyArtifactFormat = "zip"
-)
-
-// Defines values for PostApiV4JobsIdArtifactsJSONBodyArtifactType.
-const (
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeAccessibility        PostApiV4JobsIdArtifactsJSONBodyArtifactType = "accessibility"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeAnnotations          PostApiV4JobsIdArtifactsJSONBodyArtifactType = "annotations"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeApiFuzzing           PostApiV4JobsIdArtifactsJSONBodyArtifactType = "api_fuzzing"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeArchive              PostApiV4JobsIdArtifactsJSONBodyArtifactType = "archive"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeBrowserPerformance   PostApiV4JobsIdArtifactsJSONBodyArtifactType = "browser_performance"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeClusterApplications  PostApiV4JobsIdArtifactsJSONBodyArtifactType = "cluster_applications"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeClusterImageScanning PostApiV4JobsIdArtifactsJSONBodyArtifactType = "cluster_image_scanning"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeCobertura            PostApiV4JobsIdArtifactsJSONBodyArtifactType = "cobertura"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeCodequality          PostApiV4JobsIdArtifactsJSONBodyArtifactType = "codequality"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeContainerScanning    PostApiV4JobsIdArtifactsJSONBodyArtifactType = "container_scanning"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeCoverageFuzzing      PostApiV4JobsIdArtifactsJSONBodyArtifactType = "coverage_fuzzing"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeCyclonedx            PostApiV4JobsIdArtifactsJSONBodyArtifactType = "cyclonedx"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeDast                 PostApiV4JobsIdArtifactsJSONBodyArtifactType = "dast"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeDependencyScanning   PostApiV4JobsIdArtifactsJSONBodyArtifactType = "dependency_scanning"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeDotenv               PostApiV4JobsIdArtifactsJSONBodyArtifactType = "dotenv"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeJacoco               PostApiV4JobsIdArtifactsJSONBodyArtifactType = "jacoco"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeJunit                PostApiV4JobsIdArtifactsJSONBodyArtifactType = "junit"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeLicenseScanning      PostApiV4JobsIdArtifactsJSONBodyArtifactType = "license_scanning"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeLoadPerformance      PostApiV4JobsIdArtifactsJSONBodyArtifactType = "load_performance"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeLsif                 PostApiV4JobsIdArtifactsJSONBodyArtifactType = "lsif"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeMetadata             PostApiV4JobsIdArtifactsJSONBodyArtifactType = "metadata"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeMetrics              PostApiV4JobsIdArtifactsJSONBodyArtifactType = "metrics"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeMetricsReferee       PostApiV4JobsIdArtifactsJSONBodyArtifactType = "metrics_referee"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeNetworkReferee       PostApiV4JobsIdArtifactsJSONBodyArtifactType = "network_referee"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypePerformance          PostApiV4JobsIdArtifactsJSONBodyArtifactType = "performance"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeRepositoryXray       PostApiV4JobsIdArtifactsJSONBodyArtifactType = "repository_xray"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeRequirements         PostApiV4JobsIdArtifactsJSONBodyArtifactType = "requirements"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeRequirementsV2       PostApiV4JobsIdArtifactsJSONBodyArtifactType = "requirements_v2"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeSast                 PostApiV4JobsIdArtifactsJSONBodyArtifactType = "sast"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeSecretDetection      PostApiV4JobsIdArtifactsJSONBodyArtifactType = "secret_detection"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeTerraform            PostApiV4JobsIdArtifactsJSONBodyArtifactType = "terraform"
-	PostApiV4JobsIdArtifactsJSONBodyArtifactTypeTrace                PostApiV4JobsIdArtifactsJSONBodyArtifactType = "trace"
-)
-
-// Defines values for PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType.
-const (
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeAccessibility        PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "accessibility"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeAnnotations          PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "annotations"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeApiFuzzing           PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "api_fuzzing"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeArchive              PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "archive"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeBrowserPerformance   PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "browser_performance"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeClusterApplications  PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "cluster_applications"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeClusterImageScanning PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "cluster_image_scanning"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeCobertura            PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "cobertura"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeCodequality          PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "codequality"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeContainerScanning    PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "container_scanning"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeCoverageFuzzing      PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "coverage_fuzzing"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeCyclonedx            PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "cyclonedx"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeDast                 PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "dast"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeDependencyScanning   PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "dependency_scanning"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeDotenv               PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "dotenv"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeJacoco               PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "jacoco"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeJunit                PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "junit"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeLicenseScanning      PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "license_scanning"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeLoadPerformance      PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "load_performance"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeLsif                 PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "lsif"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeMetadata             PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "metadata"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeMetrics              PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "metrics"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeMetricsReferee       PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "metrics_referee"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeNetworkReferee       PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "network_referee"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypePerformance          PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "performance"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeRepositoryXray       PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "repository_xray"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeRequirements         PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "requirements"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeRequirementsV2       PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "requirements_v2"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeSast                 PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "sast"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeSecretDetection      PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "secret_detection"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeTerraform            PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "terraform"
-	PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactTypeTrace                PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType = "trace"
-)
-
 type PostApiV4JobsRequestJSONBody struct {
 	// Info Runner's metadata
 	Info *struct {
@@ -182,10 +103,10 @@ type PostApiV4JobsIdArtifactsJSONBody struct {
 	Accessibility *string `json:"accessibility,omitempty"`
 
 	// ArtifactFormat The format of artifact
-	ArtifactFormat *PostApiV4JobsIdArtifactsJSONBodyArtifactFormat `json:"artifact_format,omitempty"`
+	ArtifactFormat *string `json:"artifact_format,omitempty"`
 
 	// ArtifactType The type of artifact
-	ArtifactType *PostApiV4JobsIdArtifactsJSONBodyArtifactType `json:"artifact_type,omitempty"`
+	ArtifactType *string `json:"artifact_type,omitempty"`
 
 	// ExpireIn Specify when artifact should expire
 	ExpireIn *string `json:"expire_in,omitempty"`
@@ -199,11 +120,9 @@ type PostApiV4JobsIdArtifactsJSONBody struct {
 	// Token Job's authentication token
 	Token *string `json:"token,omitempty"`
 }
-type PostApiV4JobsIdArtifactsJSONBodyArtifactFormat string
-type PostApiV4JobsIdArtifactsJSONBodyArtifactType string
 type PostApiV4JobsIdArtifactsAuthorizeJSONBody struct {
 	// ArtifactType The type of artifact
-	ArtifactType *PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType `json:"artifact_type,omitempty"`
+	ArtifactType *string `json:"artifact_type,omitempty"`
 
 	// Filesize Size of artifact file
 	Filesize *int32 `json:"filesize,omitempty"`
@@ -211,7 +130,6 @@ type PostApiV4JobsIdArtifactsAuthorizeJSONBody struct {
 	// Token Job's authentication token
 	Token *string `json:"token,omitempty"`
 }
-type PostApiV4JobsIdArtifactsAuthorizeJSONBodyArtifactType string
 type PatchApiV4JobsIdTraceJSONBody struct {
 	// DebugTrace Enable or Disable the debug trace
 	DebugTrace *bool `json:"debug_trace,omitempty"`
@@ -231,10 +149,10 @@ type GetApiV4JobResponse struct {
 		AllowFailure *bool `json:"allow_failure,omitempty"`
 		Archived     *bool `json:"archived,omitempty"`
 		Artifacts    *[]struct {
-			FileFormat *GetApiV4Job200ArtifactsFileFormat `json:"file_format,omitempty"`
-			FileType   *GetApiV4Job200ArtifactsFileType   `json:"file_type,omitempty"`
-			Filename   *string                            `json:"filename,omitempty"`
-			Size       *int32                             `json:"size,omitempty"`
+			FileFormat *string `json:"file_format,omitempty"`
+			FileType   *string `json:"file_type,omitempty"`
+			Filename   *string `json:"filename,omitempty"`
+			Size       *int32  `json:"size,omitempty"`
 		} `json:"artifacts,omitempty"`
 		ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
 		ArtifactsFile     *struct {
@@ -313,15 +231,15 @@ type GetApiV4JobResponse struct {
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
 			} `json:"created_by,omitempty"`
-			Description *string                         `json:"description,omitempty"`
-			Id          *int32                          `json:"id,omitempty"`
-			IpAddress   *string                         `json:"ip_address,omitempty"`
-			IsShared    *bool                           `json:"is_shared,omitempty"`
-			Name        *string                         `json:"name,omitempty"`
-			Online      *bool                           `json:"online,omitempty"`
-			Paused      *bool                           `json:"paused,omitempty"`
-			RunnerType  *GetApiV4Job200RunnerRunnerType `json:"runner_type,omitempty"`
-			Status      *string                         `json:"status,omitempty"`
+			Description *string `json:"description,omitempty"`
+			Id          *int32  `json:"id,omitempty"`
+			IpAddress   *string `json:"ip_address,omitempty"`
+			IsShared    *bool   `json:"is_shared,omitempty"`
+			Name        *string `json:"name,omitempty"`
+			Online      *bool   `json:"online,omitempty"`
+			Paused      *bool   `json:"paused,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty"`
+			Status      *string `json:"status,omitempty"`
 		} `json:"runner,omitempty"`
 
 		// RunnerManager API_Entities_Ci_RunnerManager model
@@ -378,9 +296,6 @@ type GetApiV4JobResponse struct {
 		WebUrl *string `json:"web_url,omitempty"`
 	}
 }
-type GetApiV4Job200ArtifactsFileFormat string
-type GetApiV4Job200ArtifactsFileType string
-type GetApiV4Job200RunnerRunnerType string
 type GetApiV4JobAllowedAgentsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -388,10 +303,10 @@ type GetApiV4JobAllowedAgentsResponse struct {
 		AllowFailure *bool `json:"allow_failure,omitempty"`
 		Archived     *bool `json:"archived,omitempty"`
 		Artifacts    *[]struct {
-			FileFormat *GetApiV4JobAllowedAgents200ArtifactsFileFormat `json:"file_format,omitempty"`
-			FileType   *GetApiV4JobAllowedAgents200ArtifactsFileType   `json:"file_type,omitempty"`
-			Filename   *string                                         `json:"filename,omitempty"`
-			Size       *int32                                          `json:"size,omitempty"`
+			FileFormat *string `json:"file_format,omitempty"`
+			FileType   *string `json:"file_type,omitempty"`
+			Filename   *string `json:"filename,omitempty"`
+			Size       *int32  `json:"size,omitempty"`
 		} `json:"artifacts,omitempty"`
 		ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
 		ArtifactsFile     *struct {
@@ -470,15 +385,15 @@ type GetApiV4JobAllowedAgentsResponse struct {
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
 			} `json:"created_by,omitempty"`
-			Description *string                                      `json:"description,omitempty"`
-			Id          *int32                                       `json:"id,omitempty"`
-			IpAddress   *string                                      `json:"ip_address,omitempty"`
-			IsShared    *bool                                        `json:"is_shared,omitempty"`
-			Name        *string                                      `json:"name,omitempty"`
-			Online      *bool                                        `json:"online,omitempty"`
-			Paused      *bool                                        `json:"paused,omitempty"`
-			RunnerType  *GetApiV4JobAllowedAgents200RunnerRunnerType `json:"runner_type,omitempty"`
-			Status      *string                                      `json:"status,omitempty"`
+			Description *string `json:"description,omitempty"`
+			Id          *int32  `json:"id,omitempty"`
+			IpAddress   *string `json:"ip_address,omitempty"`
+			IsShared    *bool   `json:"is_shared,omitempty"`
+			Name        *string `json:"name,omitempty"`
+			Online      *bool   `json:"online,omitempty"`
+			Paused      *bool   `json:"paused,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty"`
+			Status      *string `json:"status,omitempty"`
 		} `json:"runner,omitempty"`
 
 		// RunnerManager API_Entities_Ci_RunnerManager model
@@ -535,9 +450,6 @@ type GetApiV4JobAllowedAgentsResponse struct {
 		WebUrl *string `json:"web_url,omitempty"`
 	}
 }
-type GetApiV4JobAllowedAgents200ArtifactsFileFormat string
-type GetApiV4JobAllowedAgents200ArtifactsFileType string
-type GetApiV4JobAllowedAgents200RunnerRunnerType string
 type PostApiV4JobsRequestResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -1239,10 +1151,10 @@ func ParseGetApiV4JobResponse(rsp *http.Response) (*GetApiV4JobResponse, error) 
 			AllowFailure *bool `json:"allow_failure,omitempty"`
 			Archived     *bool `json:"archived,omitempty"`
 			Artifacts    *[]struct {
-				FileFormat *GetApiV4Job200ArtifactsFileFormat `json:"file_format,omitempty"`
-				FileType   *GetApiV4Job200ArtifactsFileType   `json:"file_type,omitempty"`
-				Filename   *string                            `json:"filename,omitempty"`
-				Size       *int32                             `json:"size,omitempty"`
+				FileFormat *string `json:"file_format,omitempty"`
+				FileType   *string `json:"file_type,omitempty"`
+				Filename   *string `json:"filename,omitempty"`
+				Size       *int32  `json:"size,omitempty"`
 			} `json:"artifacts,omitempty"`
 			ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
 			ArtifactsFile     *struct {
@@ -1321,15 +1233,15 @@ func ParseGetApiV4JobResponse(rsp *http.Response) (*GetApiV4JobResponse, error) 
 					Username    *string `json:"username,omitempty"`
 					WebUrl      *string `json:"web_url,omitempty"`
 				} `json:"created_by,omitempty"`
-				Description *string                         `json:"description,omitempty"`
-				Id          *int32                          `json:"id,omitempty"`
-				IpAddress   *string                         `json:"ip_address,omitempty"`
-				IsShared    *bool                           `json:"is_shared,omitempty"`
-				Name        *string                         `json:"name,omitempty"`
-				Online      *bool                           `json:"online,omitempty"`
-				Paused      *bool                           `json:"paused,omitempty"`
-				RunnerType  *GetApiV4Job200RunnerRunnerType `json:"runner_type,omitempty"`
-				Status      *string                         `json:"status,omitempty"`
+				Description *string `json:"description,omitempty"`
+				Id          *int32  `json:"id,omitempty"`
+				IpAddress   *string `json:"ip_address,omitempty"`
+				IsShared    *bool   `json:"is_shared,omitempty"`
+				Name        *string `json:"name,omitempty"`
+				Online      *bool   `json:"online,omitempty"`
+				Paused      *bool   `json:"paused,omitempty"`
+				RunnerType  *string `json:"runner_type,omitempty"`
+				Status      *string `json:"status,omitempty"`
 			} `json:"runner,omitempty"`
 
 			// RunnerManager API_Entities_Ci_RunnerManager model
@@ -1412,10 +1324,10 @@ func ParseGetApiV4JobAllowedAgentsResponse(rsp *http.Response) (*GetApiV4JobAllo
 			AllowFailure *bool `json:"allow_failure,omitempty"`
 			Archived     *bool `json:"archived,omitempty"`
 			Artifacts    *[]struct {
-				FileFormat *GetApiV4JobAllowedAgents200ArtifactsFileFormat `json:"file_format,omitempty"`
-				FileType   *GetApiV4JobAllowedAgents200ArtifactsFileType   `json:"file_type,omitempty"`
-				Filename   *string                                         `json:"filename,omitempty"`
-				Size       *int32                                          `json:"size,omitempty"`
+				FileFormat *string `json:"file_format,omitempty"`
+				FileType   *string `json:"file_type,omitempty"`
+				Filename   *string `json:"filename,omitempty"`
+				Size       *int32  `json:"size,omitempty"`
 			} `json:"artifacts,omitempty"`
 			ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
 			ArtifactsFile     *struct {
@@ -1494,15 +1406,15 @@ func ParseGetApiV4JobAllowedAgentsResponse(rsp *http.Response) (*GetApiV4JobAllo
 					Username    *string `json:"username,omitempty"`
 					WebUrl      *string `json:"web_url,omitempty"`
 				} `json:"created_by,omitempty"`
-				Description *string                                      `json:"description,omitempty"`
-				Id          *int32                                       `json:"id,omitempty"`
-				IpAddress   *string                                      `json:"ip_address,omitempty"`
-				IsShared    *bool                                        `json:"is_shared,omitempty"`
-				Name        *string                                      `json:"name,omitempty"`
-				Online      *bool                                        `json:"online,omitempty"`
-				Paused      *bool                                        `json:"paused,omitempty"`
-				RunnerType  *GetApiV4JobAllowedAgents200RunnerRunnerType `json:"runner_type,omitempty"`
-				Status      *string                                      `json:"status,omitempty"`
+				Description *string `json:"description,omitempty"`
+				Id          *int32  `json:"id,omitempty"`
+				IpAddress   *string `json:"ip_address,omitempty"`
+				IsShared    *bool   `json:"is_shared,omitempty"`
+				Name        *string `json:"name,omitempty"`
+				Online      *bool   `json:"online,omitempty"`
+				Paused      *bool   `json:"paused,omitempty"`
+				RunnerType  *string `json:"runner_type,omitempty"`
+				Status      *string `json:"status,omitempty"`
 			} `json:"runner,omitempty"`
 
 			// RunnerManager API_Entities_Ci_RunnerManager model

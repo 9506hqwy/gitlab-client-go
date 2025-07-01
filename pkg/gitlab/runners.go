@@ -14,126 +14,22 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-// Defines values for GetApiV4RunnersParamsScope.
-const (
-	GetApiV4RunnersParamsScopeActive         GetApiV4RunnersParamsScope = "active"
-	GetApiV4RunnersParamsScopeGroupType      GetApiV4RunnersParamsScope = "group_type"
-	GetApiV4RunnersParamsScopeInstanceType   GetApiV4RunnersParamsScope = "instance_type"
-	GetApiV4RunnersParamsScopeNeverContacted GetApiV4RunnersParamsScope = "never_contacted"
-	GetApiV4RunnersParamsScopeOffline        GetApiV4RunnersParamsScope = "offline"
-	GetApiV4RunnersParamsScopeOnline         GetApiV4RunnersParamsScope = "online"
-	GetApiV4RunnersParamsScopePaused         GetApiV4RunnersParamsScope = "paused"
-	GetApiV4RunnersParamsScopeProjectType    GetApiV4RunnersParamsScope = "project_type"
-	GetApiV4RunnersParamsScopeShared         GetApiV4RunnersParamsScope = "shared"
-	GetApiV4RunnersParamsScopeSpecific       GetApiV4RunnersParamsScope = "specific"
-	GetApiV4RunnersParamsScopeStale          GetApiV4RunnersParamsScope = "stale"
-)
-
-// Defines values for GetApiV4RunnersParamsType.
-const (
-	GetApiV4RunnersParamsTypeGroupType    GetApiV4RunnersParamsType = "group_type"
-	GetApiV4RunnersParamsTypeInstanceType GetApiV4RunnersParamsType = "instance_type"
-	GetApiV4RunnersParamsTypeProjectType  GetApiV4RunnersParamsType = "project_type"
-)
-
-// Defines values for GetApiV4RunnersParamsStatus.
-const (
-	GetApiV4RunnersParamsStatusActive         GetApiV4RunnersParamsStatus = "active"
-	GetApiV4RunnersParamsStatusNeverContacted GetApiV4RunnersParamsStatus = "never_contacted"
-	GetApiV4RunnersParamsStatusOffline        GetApiV4RunnersParamsStatus = "offline"
-	GetApiV4RunnersParamsStatusOnline         GetApiV4RunnersParamsStatus = "online"
-	GetApiV4RunnersParamsStatusPaused         GetApiV4RunnersParamsStatus = "paused"
-	GetApiV4RunnersParamsStatusStale          GetApiV4RunnersParamsStatus = "stale"
-)
-
-// Defines values for PostApiV4RunnersJSONBodyAccessLevel.
-const (
-	PostApiV4RunnersJSONBodyAccessLevelNotProtected PostApiV4RunnersJSONBodyAccessLevel = "not_protected"
-	PostApiV4RunnersJSONBodyAccessLevelRefProtected PostApiV4RunnersJSONBodyAccessLevel = "ref_protected"
-)
-
-// Defines values for GetApiV4RunnersAllParamsScope.
-const (
-	GetApiV4RunnersAllParamsScopeActive         GetApiV4RunnersAllParamsScope = "active"
-	GetApiV4RunnersAllParamsScopeGroupType      GetApiV4RunnersAllParamsScope = "group_type"
-	GetApiV4RunnersAllParamsScopeInstanceType   GetApiV4RunnersAllParamsScope = "instance_type"
-	GetApiV4RunnersAllParamsScopeNeverContacted GetApiV4RunnersAllParamsScope = "never_contacted"
-	GetApiV4RunnersAllParamsScopeOffline        GetApiV4RunnersAllParamsScope = "offline"
-	GetApiV4RunnersAllParamsScopeOnline         GetApiV4RunnersAllParamsScope = "online"
-	GetApiV4RunnersAllParamsScopePaused         GetApiV4RunnersAllParamsScope = "paused"
-	GetApiV4RunnersAllParamsScopeProjectType    GetApiV4RunnersAllParamsScope = "project_type"
-	GetApiV4RunnersAllParamsScopeShared         GetApiV4RunnersAllParamsScope = "shared"
-	GetApiV4RunnersAllParamsScopeSpecific       GetApiV4RunnersAllParamsScope = "specific"
-	GetApiV4RunnersAllParamsScopeStale          GetApiV4RunnersAllParamsScope = "stale"
-)
-
-// Defines values for GetApiV4RunnersAllParamsType.
-const (
-	GetApiV4RunnersAllParamsTypeGroupType    GetApiV4RunnersAllParamsType = "group_type"
-	GetApiV4RunnersAllParamsTypeInstanceType GetApiV4RunnersAllParamsType = "instance_type"
-	GetApiV4RunnersAllParamsTypeProjectType  GetApiV4RunnersAllParamsType = "project_type"
-)
-
-// Defines values for GetApiV4RunnersAllParamsStatus.
-const (
-	Active         GetApiV4RunnersAllParamsStatus = "active"
-	NeverContacted GetApiV4RunnersAllParamsStatus = "never_contacted"
-	Offline        GetApiV4RunnersAllParamsStatus = "offline"
-	Online         GetApiV4RunnersAllParamsStatus = "online"
-	Paused         GetApiV4RunnersAllParamsStatus = "paused"
-	Stale          GetApiV4RunnersAllParamsStatus = "stale"
-)
-
-// Defines values for PutApiV4RunnersIdJSONBodyAccessLevel.
-const (
-	PutApiV4RunnersIdJSONBodyAccessLevelNotProtected PutApiV4RunnersIdJSONBodyAccessLevel = "not_protected"
-	PutApiV4RunnersIdJSONBodyAccessLevelRefProtected PutApiV4RunnersIdJSONBodyAccessLevel = "ref_protected"
-)
-
-// Defines values for GetApiV4RunnersIdJobsParamsStatus.
-const (
-	Canceled           GetApiV4RunnersIdJobsParamsStatus = "canceled"
-	Canceling          GetApiV4RunnersIdJobsParamsStatus = "canceling"
-	Created            GetApiV4RunnersIdJobsParamsStatus = "created"
-	Failed             GetApiV4RunnersIdJobsParamsStatus = "failed"
-	Manual             GetApiV4RunnersIdJobsParamsStatus = "manual"
-	Pending            GetApiV4RunnersIdJobsParamsStatus = "pending"
-	Preparing          GetApiV4RunnersIdJobsParamsStatus = "preparing"
-	Running            GetApiV4RunnersIdJobsParamsStatus = "running"
-	Scheduled          GetApiV4RunnersIdJobsParamsStatus = "scheduled"
-	Skipped            GetApiV4RunnersIdJobsParamsStatus = "skipped"
-	Success            GetApiV4RunnersIdJobsParamsStatus = "success"
-	WaitingForCallback GetApiV4RunnersIdJobsParamsStatus = "waiting_for_callback"
-	WaitingForResource GetApiV4RunnersIdJobsParamsStatus = "waiting_for_resource"
-)
-
-// Defines values for GetApiV4RunnersIdJobsParamsOrderBy.
-const (
-	GetApiV4RunnersIdJobsParamsOrderById GetApiV4RunnersIdJobsParamsOrderBy = "id"
-)
-
-// Defines values for GetApiV4RunnersIdJobsParamsSort.
-const (
-	GetApiV4RunnersIdJobsParamsSortAsc  GetApiV4RunnersIdJobsParamsSort = "asc"
-	GetApiV4RunnersIdJobsParamsSortDesc GetApiV4RunnersIdJobsParamsSort = "desc"
-)
-
 type DeleteApiV4RunnersParams struct {
 	// Token The runner's authentication token
 	Token string `form:"token" json:"token"`
 }
 type GetApiV4RunnersParams struct {
 	// Scope Deprecated: Use `type` or `status` instead. The scope of runners to return
-	Scope *GetApiV4RunnersParamsScope `form:"scope,omitempty" json:"scope,omitempty"`
+	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
 
 	// Type The type of runners to return
-	Type *GetApiV4RunnersParamsType `form:"type,omitempty" json:"type,omitempty"`
+	Type *string `form:"type,omitempty" json:"type,omitempty"`
 
 	// Paused Whether to include only runners that are accepting or ignoring new jobs
 	Paused *bool `form:"paused,omitempty" json:"paused,omitempty"`
 
 	// Status The status of runners to return
-	Status *GetApiV4RunnersParamsStatus `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty"`
 
 	// TagList A list of runner tags
 	TagList *[]string `form:"tag_list,omitempty" json:"tag_list,omitempty"`
@@ -147,12 +43,9 @@ type GetApiV4RunnersParams struct {
 	// PerPage Number of items per page
 	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 }
-type GetApiV4RunnersParamsScope string
-type GetApiV4RunnersParamsType string
-type GetApiV4RunnersParamsStatus string
 type PostApiV4RunnersJSONBody struct {
 	// AccessLevel The access level of the runner
-	AccessLevel *PostApiV4RunnersJSONBodyAccessLevel `json:"access_level,omitempty"`
+	AccessLevel *string `json:"access_level,omitempty"`
 
 	// Active Deprecated: Use `paused` instead. Specifies if the runner is allowed to receive new jobs
 	Active *bool `json:"active,omitempty"`
@@ -202,19 +95,18 @@ type PostApiV4RunnersJSONBody struct {
 	// Token Registration token
 	Token string `json:"token"`
 }
-type PostApiV4RunnersJSONBodyAccessLevel string
 type GetApiV4RunnersAllParams struct {
 	// Scope Deprecated: Use `type` or `status` instead. The scope of runners to return
-	Scope *GetApiV4RunnersAllParamsScope `form:"scope,omitempty" json:"scope,omitempty"`
+	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
 
 	// Type The type of runners to return
-	Type *GetApiV4RunnersAllParamsType `form:"type,omitempty" json:"type,omitempty"`
+	Type *string `form:"type,omitempty" json:"type,omitempty"`
 
 	// Paused Whether to include only runners that are accepting or ignoring new jobs
 	Paused *bool `form:"paused,omitempty" json:"paused,omitempty"`
 
 	// Status The status of runners to return
-	Status *GetApiV4RunnersAllParamsStatus `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty"`
 
 	// TagList A list of runner tags
 	TagList *[]string `form:"tag_list,omitempty" json:"tag_list,omitempty"`
@@ -228,9 +120,6 @@ type GetApiV4RunnersAllParams struct {
 	// PerPage Number of items per page
 	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 }
-type GetApiV4RunnersAllParamsScope string
-type GetApiV4RunnersAllParamsType string
-type GetApiV4RunnersAllParamsStatus string
 type DeleteApiV4RunnersManagersParams struct {
 	// Token The runner's authentication token
 	Token string `form:"token" json:"token"`
@@ -251,7 +140,7 @@ type PostApiV4RunnersVerifyJSONBody struct {
 }
 type PutApiV4RunnersIdJSONBody struct {
 	// AccessLevel The access level of the runner
-	AccessLevel *PutApiV4RunnersIdJSONBodyAccessLevel `json:"access_level,omitempty"`
+	AccessLevel *string `json:"access_level,omitempty"`
 
 	// Active Deprecated: Use `paused` instead. Flag indicating whether the runner is allowed to receive jobs
 	Active *bool `json:"active,omitempty"`
@@ -277,19 +166,18 @@ type PutApiV4RunnersIdJSONBody struct {
 	// TagList The list of tags for a runner
 	TagList *[]string `json:"tag_list,omitempty"`
 }
-type PutApiV4RunnersIdJSONBodyAccessLevel string
 type GetApiV4RunnersIdJobsParams struct {
 	// SystemId System ID associated with the runner manager
 	SystemId *string `form:"system_id,omitempty" json:"system_id,omitempty"`
 
 	// Status Status of the job
-	Status *GetApiV4RunnersIdJobsParamsStatus `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty"`
 
 	// OrderBy Order by `id`
-	OrderBy *GetApiV4RunnersIdJobsParamsOrderBy `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
 	// Sort Sort by `asc` or `desc` order. Specify `order_by` as well, including for `id`
-	Sort *GetApiV4RunnersIdJobsParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// Cursor Cursor for obtaining the next set of records
 	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
@@ -300,9 +188,6 @@ type GetApiV4RunnersIdJobsParams struct {
 	// PerPage Number of items per page
 	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 }
-type GetApiV4RunnersIdJobsParamsStatus string
-type GetApiV4RunnersIdJobsParamsOrderBy string
-type GetApiV4RunnersIdJobsParamsSort string
 type PostApiV4RunnersJSONRequestBody PostApiV4RunnersJSONBody
 type PostApiV4RunnersResetAuthenticationTokenJSONRequestBody PostApiV4RunnersResetAuthenticationTokenJSONBody
 type PostApiV4RunnersVerifyJSONRequestBody PostApiV4RunnersVerifyJSONBody
@@ -334,18 +219,17 @@ type GetApiV4RunnersResponse struct {
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
 		} `json:"created_by,omitempty"`
-		Description *string                       `json:"description,omitempty"`
-		Id          *int32                        `json:"id,omitempty"`
-		IpAddress   *string                       `json:"ip_address,omitempty"`
-		IsShared    *bool                         `json:"is_shared,omitempty"`
-		Name        *string                       `json:"name,omitempty"`
-		Online      *bool                         `json:"online,omitempty"`
-		Paused      *bool                         `json:"paused,omitempty"`
-		RunnerType  *GetApiV4Runners200RunnerType `json:"runner_type,omitempty"`
-		Status      *string                       `json:"status,omitempty"`
+		Description *string `json:"description,omitempty"`
+		Id          *int32  `json:"id,omitempty"`
+		IpAddress   *string `json:"ip_address,omitempty"`
+		IsShared    *bool   `json:"is_shared,omitempty"`
+		Name        *string `json:"name,omitempty"`
+		Online      *bool   `json:"online,omitempty"`
+		Paused      *bool   `json:"paused,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty"`
+		Status      *string `json:"status,omitempty"`
 	}
 }
-type GetApiV4Runners200RunnerType string
 type PostApiV4RunnersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -378,18 +262,17 @@ type GetApiV4RunnersAllResponse struct {
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
 		} `json:"created_by,omitempty"`
-		Description *string                          `json:"description,omitempty"`
-		Id          *int32                           `json:"id,omitempty"`
-		IpAddress   *string                          `json:"ip_address,omitempty"`
-		IsShared    *bool                            `json:"is_shared,omitempty"`
-		Name        *string                          `json:"name,omitempty"`
-		Online      *bool                            `json:"online,omitempty"`
-		Paused      *bool                            `json:"paused,omitempty"`
-		RunnerType  *GetApiV4RunnersAll200RunnerType `json:"runner_type,omitempty"`
-		Status      *string                          `json:"status,omitempty"`
+		Description *string `json:"description,omitempty"`
+		Id          *int32  `json:"id,omitempty"`
+		IpAddress   *string `json:"ip_address,omitempty"`
+		IsShared    *bool   `json:"is_shared,omitempty"`
+		Name        *string `json:"name,omitempty"`
+		Online      *bool   `json:"online,omitempty"`
+		Paused      *bool   `json:"paused,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty"`
+		Status      *string `json:"status,omitempty"`
 	}
 }
-type GetApiV4RunnersAll200RunnerType string
 type DeleteApiV4RunnersManagersResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -437,18 +320,17 @@ type DeleteApiV4RunnersIdResponse struct {
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
 		} `json:"created_by,omitempty"`
-		Description *string                            `json:"description,omitempty"`
-		Id          *int32                             `json:"id,omitempty"`
-		IpAddress   *string                            `json:"ip_address,omitempty"`
-		IsShared    *bool                              `json:"is_shared,omitempty"`
-		Name        *string                            `json:"name,omitempty"`
-		Online      *bool                              `json:"online,omitempty"`
-		Paused      *bool                              `json:"paused,omitempty"`
-		RunnerType  *DeleteApiV4RunnersId204RunnerType `json:"runner_type,omitempty"`
-		Status      *string                            `json:"status,omitempty"`
+		Description *string `json:"description,omitempty"`
+		Id          *int32  `json:"id,omitempty"`
+		IpAddress   *string `json:"ip_address,omitempty"`
+		IsShared    *bool   `json:"is_shared,omitempty"`
+		Name        *string `json:"name,omitempty"`
+		Online      *bool   `json:"online,omitempty"`
+		Paused      *bool   `json:"paused,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty"`
+		Status      *string `json:"status,omitempty"`
 	}
 }
-type DeleteApiV4RunnersId204RunnerType string
 type GetApiV4RunnersIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -540,15 +422,14 @@ type GetApiV4RunnersIdResponse struct {
 			Topics            *[]string `json:"topics,omitempty"`
 			WebUrl            *string   `json:"web_url,omitempty"`
 		} `json:"projects,omitempty"`
-		Revision    *string                         `json:"revision,omitempty"`
-		RunUntagged *string                         `json:"run_untagged,omitempty"`
-		RunnerType  *GetApiV4RunnersId200RunnerType `json:"runner_type,omitempty"`
-		Status      *string                         `json:"status,omitempty"`
-		TagList     *string                         `json:"tag_list,omitempty"`
-		Version     *string                         `json:"version,omitempty"`
+		Revision    *string `json:"revision,omitempty"`
+		RunUntagged *string `json:"run_untagged,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty"`
+		Status      *string `json:"status,omitempty"`
+		TagList     *string `json:"tag_list,omitempty"`
+		Version     *string `json:"version,omitempty"`
 	}
 }
-type GetApiV4RunnersId200RunnerType string
 type PutApiV4RunnersIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -640,15 +521,14 @@ type PutApiV4RunnersIdResponse struct {
 			Topics            *[]string `json:"topics,omitempty"`
 			WebUrl            *string   `json:"web_url,omitempty"`
 		} `json:"projects,omitempty"`
-		Revision    *string                         `json:"revision,omitempty"`
-		RunUntagged *string                         `json:"run_untagged,omitempty"`
-		RunnerType  *PutApiV4RunnersId200RunnerType `json:"runner_type,omitempty"`
-		Status      *string                         `json:"status,omitempty"`
-		TagList     *string                         `json:"tag_list,omitempty"`
-		Version     *string                         `json:"version,omitempty"`
+		Revision    *string `json:"revision,omitempty"`
+		RunUntagged *string `json:"run_untagged,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty"`
+		Status      *string `json:"status,omitempty"`
+		TagList     *string `json:"tag_list,omitempty"`
+		Version     *string `json:"version,omitempty"`
 	}
 }
-type PutApiV4RunnersId200RunnerType string
 type GetApiV4RunnersIdJobsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -2185,15 +2065,15 @@ func ParseGetApiV4RunnersResponse(rsp *http.Response) (*GetApiV4RunnersResponse,
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
 			} `json:"created_by,omitempty"`
-			Description *string                       `json:"description,omitempty"`
-			Id          *int32                        `json:"id,omitempty"`
-			IpAddress   *string                       `json:"ip_address,omitempty"`
-			IsShared    *bool                         `json:"is_shared,omitempty"`
-			Name        *string                       `json:"name,omitempty"`
-			Online      *bool                         `json:"online,omitempty"`
-			Paused      *bool                         `json:"paused,omitempty"`
-			RunnerType  *GetApiV4Runners200RunnerType `json:"runner_type,omitempty"`
-			Status      *string                       `json:"status,omitempty"`
+			Description *string `json:"description,omitempty"`
+			Id          *int32  `json:"id,omitempty"`
+			IpAddress   *string `json:"ip_address,omitempty"`
+			IsShared    *bool   `json:"is_shared,omitempty"`
+			Name        *string `json:"name,omitempty"`
+			Online      *bool   `json:"online,omitempty"`
+			Paused      *bool   `json:"paused,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty"`
+			Status      *string `json:"status,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2266,15 +2146,15 @@ func ParseGetApiV4RunnersAllResponse(rsp *http.Response) (*GetApiV4RunnersAllRes
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
 			} `json:"created_by,omitempty"`
-			Description *string                          `json:"description,omitempty"`
-			Id          *int32                           `json:"id,omitempty"`
-			IpAddress   *string                          `json:"ip_address,omitempty"`
-			IsShared    *bool                            `json:"is_shared,omitempty"`
-			Name        *string                          `json:"name,omitempty"`
-			Online      *bool                            `json:"online,omitempty"`
-			Paused      *bool                            `json:"paused,omitempty"`
-			RunnerType  *GetApiV4RunnersAll200RunnerType `json:"runner_type,omitempty"`
-			Status      *string                          `json:"status,omitempty"`
+			Description *string `json:"description,omitempty"`
+			Id          *int32  `json:"id,omitempty"`
+			IpAddress   *string `json:"ip_address,omitempty"`
+			IsShared    *bool   `json:"is_shared,omitempty"`
+			Name        *string `json:"name,omitempty"`
+			Online      *bool   `json:"online,omitempty"`
+			Paused      *bool   `json:"paused,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty"`
+			Status      *string `json:"status,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2401,15 +2281,15 @@ func ParseDeleteApiV4RunnersIdResponse(rsp *http.Response) (*DeleteApiV4RunnersI
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
 			} `json:"created_by,omitempty"`
-			Description *string                            `json:"description,omitempty"`
-			Id          *int32                             `json:"id,omitempty"`
-			IpAddress   *string                            `json:"ip_address,omitempty"`
-			IsShared    *bool                              `json:"is_shared,omitempty"`
-			Name        *string                            `json:"name,omitempty"`
-			Online      *bool                              `json:"online,omitempty"`
-			Paused      *bool                              `json:"paused,omitempty"`
-			RunnerType  *DeleteApiV4RunnersId204RunnerType `json:"runner_type,omitempty"`
-			Status      *string                            `json:"status,omitempty"`
+			Description *string `json:"description,omitempty"`
+			Id          *int32  `json:"id,omitempty"`
+			IpAddress   *string `json:"ip_address,omitempty"`
+			IsShared    *bool   `json:"is_shared,omitempty"`
+			Name        *string `json:"name,omitempty"`
+			Online      *bool   `json:"online,omitempty"`
+			Paused      *bool   `json:"paused,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty"`
+			Status      *string `json:"status,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2522,12 +2402,12 @@ func ParseGetApiV4RunnersIdResponse(rsp *http.Response) (*GetApiV4RunnersIdRespo
 				Topics            *[]string `json:"topics,omitempty"`
 				WebUrl            *string   `json:"web_url,omitempty"`
 			} `json:"projects,omitempty"`
-			Revision    *string                         `json:"revision,omitempty"`
-			RunUntagged *string                         `json:"run_untagged,omitempty"`
-			RunnerType  *GetApiV4RunnersId200RunnerType `json:"runner_type,omitempty"`
-			Status      *string                         `json:"status,omitempty"`
-			TagList     *string                         `json:"tag_list,omitempty"`
-			Version     *string                         `json:"version,omitempty"`
+			Revision    *string `json:"revision,omitempty"`
+			RunUntagged *string `json:"run_untagged,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty"`
+			Status      *string `json:"status,omitempty"`
+			TagList     *string `json:"tag_list,omitempty"`
+			Version     *string `json:"version,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2640,12 +2520,12 @@ func ParsePutApiV4RunnersIdResponse(rsp *http.Response) (*PutApiV4RunnersIdRespo
 				Topics            *[]string `json:"topics,omitempty"`
 				WebUrl            *string   `json:"web_url,omitempty"`
 			} `json:"projects,omitempty"`
-			Revision    *string                         `json:"revision,omitempty"`
-			RunUntagged *string                         `json:"run_untagged,omitempty"`
-			RunnerType  *PutApiV4RunnersId200RunnerType `json:"runner_type,omitempty"`
-			Status      *string                         `json:"status,omitempty"`
-			TagList     *string                         `json:"tag_list,omitempty"`
-			Version     *string                         `json:"version,omitempty"`
+			Revision    *string `json:"revision,omitempty"`
+			RunUntagged *string `json:"run_untagged,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty"`
+			Status      *string `json:"status,omitempty"`
+			TagList     *string `json:"tag_list,omitempty"`
+			Version     *string `json:"version,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

@@ -14,28 +14,6 @@ import (
 	"github.com/oapi-codegen/runtime"
 )
 
-// Defines values for PostApiV4SnippetsJSONBodyVisibility.
-const (
-	PostApiV4SnippetsJSONBodyVisibilityInternal PostApiV4SnippetsJSONBodyVisibility = "internal"
-	PostApiV4SnippetsJSONBodyVisibilityPrivate  PostApiV4SnippetsJSONBodyVisibility = "private"
-	PostApiV4SnippetsJSONBodyVisibilityPublic   PostApiV4SnippetsJSONBodyVisibility = "public"
-)
-
-// Defines values for PutApiV4SnippetsIdJSONBodyFilesAction.
-const (
-	Create PutApiV4SnippetsIdJSONBodyFilesAction = "create"
-	Delete PutApiV4SnippetsIdJSONBodyFilesAction = "delete"
-	Move   PutApiV4SnippetsIdJSONBodyFilesAction = "move"
-	Update PutApiV4SnippetsIdJSONBodyFilesAction = "update"
-)
-
-// Defines values for PutApiV4SnippetsIdJSONBodyVisibility.
-const (
-	PutApiV4SnippetsIdJSONBodyVisibilityInternal PutApiV4SnippetsIdJSONBodyVisibility = "internal"
-	PutApiV4SnippetsIdJSONBodyVisibilityPrivate  PutApiV4SnippetsIdJSONBodyVisibility = "private"
-	PutApiV4SnippetsIdJSONBodyVisibilityPublic   PutApiV4SnippetsIdJSONBodyVisibility = "public"
-)
-
 type GetApiV4SnippetsParams struct {
 	// CreatedAfter Return snippets created after the specified time
 	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty"`
@@ -72,9 +50,8 @@ type PostApiV4SnippetsJSONBody struct {
 	Title string `json:"title"`
 
 	// Visibility The visibility of the snippet
-	Visibility *PostApiV4SnippetsJSONBodyVisibility `json:"visibility,omitempty"`
+	Visibility *string `json:"visibility,omitempty"`
 }
-type PostApiV4SnippetsJSONBodyVisibility string
 type GetApiV4SnippetsAllParams struct {
 	// CreatedAfter Return snippets created after the specified time
 	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty"`
@@ -117,7 +94,7 @@ type PutApiV4SnippetsIdJSONBody struct {
 	// Files An array of files to update
 	Files *[]struct {
 		// Action The type of action to perform on the file, must be one of: create, update, delete, move
-		Action PutApiV4SnippetsIdJSONBodyFilesAction `json:"action"`
+		Action string `json:"action"`
 
 		// Content The content of a snippet
 		Content *string `json:"content,omitempty"`
@@ -133,10 +110,8 @@ type PutApiV4SnippetsIdJSONBody struct {
 	Title *string `json:"title,omitempty"`
 
 	// Visibility The visibility of the snippet
-	Visibility *PutApiV4SnippetsIdJSONBodyVisibility `json:"visibility,omitempty"`
+	Visibility *string `json:"visibility,omitempty"`
 }
-type PutApiV4SnippetsIdJSONBodyFilesAction string
-type PutApiV4SnippetsIdJSONBodyVisibility string
 type PostApiV4SnippetsJSONRequestBody PostApiV4SnippetsJSONBody
 type PutApiV4SnippetsIdJSONRequestBody PutApiV4SnippetsIdJSONBody
 type GetApiV4SnippetsResponse struct {
