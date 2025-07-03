@@ -15,14 +15,6 @@ import (
 	openapi_types "github.com/oapi-codegen/runtime/types"
 )
 
-type GetApiV4GroupIdPackagesComposerpackageNameParams struct {
-	// PackageName The Composer package name
-	PackageName string `form:"package_name" json:"package_name"`
-}
-type GetApiV4GroupIdPackagesComposerP2packageNameParams struct {
-	// PackageName The Composer package name
-	PackageName string `form:"package_name" json:"package_name"`
-}
 type GetApiV4GroupsParams struct {
 	// Statistics Include project statistics
 	Statistics *bool `form:"statistics,omitempty" json:"statistics,omitempty"`
@@ -518,62 +510,6 @@ type PutApiV4GroupsIdDebianDistributionsCodenameJSONBody struct {
 	// Version The Debian Version
 	Version *string `json:"version,omitempty"`
 }
-type GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseParams struct {
-	// Distribution The Debian Codename or Suite
-	Distribution string `form:"distribution" json:"distribution"`
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseParams struct {
-	// Distribution The Debian Codename or Suite
-	Distribution string `form:"distribution" json:"distribution"`
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgParams struct {
-	// Distribution The Debian Codename or Suite
-	Distribution string `form:"distribution" json:"distribution"`
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesParams struct {
-	// Distribution The Debian Codename or Suite
-	Distribution string `form:"distribution" json:"distribution"`
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Params struct {
-	// Distribution The Debian Codename or Suite
-	Distribution string `form:"distribution" json:"distribution"`
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesParams struct {
-	// Distribution The Debian Codename or Suite
-	Distribution string `form:"distribution" json:"distribution"`
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Params struct {
-	// Distribution The Debian Codename or Suite
-	Distribution string `form:"distribution" json:"distribution"`
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesParams struct {
-	// Distribution The Debian Codename or Suite
-	Distribution string `form:"distribution" json:"distribution"`
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Params struct {
-	// Distribution The Debian Codename or Suite
-	Distribution string `form:"distribution" json:"distribution"`
-}
-type GetApiV4GroupsIdPackagesMavenpathFileNameParams struct {
-	// Path Package path
-	Path string `form:"path" json:"path"`
-}
-type GetApiV4GroupsIdPackagesNpmpackageNameParams struct {
-	// PackageName Package name
-	PackageName string `form:"package_name" json:"package_name"`
-}
-type GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsParams struct {
-	// PackageName Package name
-	PackageName string `form:"package_name" json:"package_name"`
-}
-type DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagParams struct {
-	// PackageName Package name
-	PackageName string `form:"package_name" json:"package_name"`
-}
-type PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagJSONBody struct {
-	// PackageName Package name
-	PackageName string `json:"package_name"`
-}
 type GetApiV4GroupsIdPackagesNugetQueryParams struct {
 	// Q The search term
 	Q *string `form:"q,omitempty" json:"q,omitempty"`
@@ -586,23 +522,6 @@ type GetApiV4GroupsIdPackagesNugetQueryParams struct {
 
 	// Prerelease Include prerelease versions
 	Prerelease *bool `form:"prerelease,omitempty" json:"prerelease,omitempty"`
-}
-type GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameParams struct {
-	// FileName The symbol file name
-	FileName string `form:"file_name" json:"file_name"`
-
-	// Signature The symbol file signature
-	Signature      string `form:"signature" json:"signature"`
-	SameFileName   string `form:"same_file_name" json:"same_file_name"`
-	Symbolchecksum string `json:"Symbolchecksum"`
-}
-type GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierParams struct {
-	// FileIdentifier The PyPi package file identifier
-	FileIdentifier string `form:"file_identifier" json:"file_identifier"`
-}
-type GetApiV4GroupsIdPackagesPypiSimplepackageNameParams struct {
-	// PackageName The PyPi package name
-	PackageName string `form:"package_name" json:"package_name"`
 }
 type GetApiV4GroupsIdAccessRequestsParams struct {
 	// Page Current page number
@@ -2352,85 +2271,85 @@ type GetApiV4GroupsIdInvitedGroupsParams struct {
 	WithCustomAttributes *bool `form:"with_custom_attributes,omitempty" json:"with_custom_attributes,omitempty"`
 }
 type GetApiV4GroupsIdIssuesParams struct {
-	// AssigneeId Return issues assigned to the given user
+	// AssigneeId Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.
 	AssigneeId *int `form:"assignee_id,omitempty" json:"assignee_id,omitempty"`
 
-	// AssigneeUsername Return issues assigned to the given
+	// AssigneeUsername Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
 	AssigneeUsername *[]string `form:"assignee_username,omitempty" json:"assignee_username,omitempty"`
 
-	// AuthorId Return issues created by the given user
+	// AuthorId Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me.
 	AuthorId *int `form:"author_id,omitempty" json:"author_id,omitempty"`
 
-	// AuthorUsername Return issues created by the given
+	// AuthorUsername Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.
 	AuthorUsername *string `form:"author_username,omitempty" json:"author_username,omitempty"`
 
 	// Confidential Filter confidential or public issues.
 	Confidential *bool `form:"confidential,omitempty" json:"confidential,omitempty"`
 
-	// CreatedAfter Return issues created on or after the given time. Expected in ISO 8601 format (
+	// CreatedAfter Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
 	CreatedAfter *string `form:"created_after,omitempty" json:"created_after,omitempty"`
 
-	// CreatedBefore Return issues created on or before the given time. Expected in ISO 8601 format (
+	// CreatedBefore Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
 	CreatedBefore *string `form:"created_before,omitempty" json:"created_before,omitempty"`
 
-	// DueDate Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts:
+	// DueDate Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next_month_and_previous_two_weeks.
 	DueDate *string `form:"due_date,omitempty" json:"due_date,omitempty"`
 
-	// EpicId Return issues associated with the given epic ID.
+	// EpicId Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. Premium and Ultimate only.
 	EpicId *int `form:"epic_id,omitempty" json:"epic_id,omitempty"`
 
-	// Iids Return only the issues having the given
+	// Iids Return only the issues having the given iid.
 	Iids *[]int `form:"iids[],omitempty" json:"iids[],omitempty"`
 
-	// IssueType Filter to a given type of issue. One of
+	// IssueType Filter to a given type of issue. One of issue, incident, test_case or task.
 	IssueType *string `form:"issue_type,omitempty" json:"issue_type,omitempty"`
 
-	// IterationId Return issues assigned to the given iteration ID.
+	// IterationId Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. Premium and Ultimate only.
 	IterationId *int `form:"iteration_id,omitempty" json:"iteration_id,omitempty"`
 
-	// IterationTitle Return issues assigned to the iteration with the given title. Similar to
+	// IterationTitle Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive with iteration_id. Premium and Ultimate only.
 	IterationTitle *string `form:"iteration_title,omitempty" json:"iteration_title,omitempty"`
 
-	// Labels Comma-separated list of label names, issues must have all labels to be returned.
+	// Labels Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
 	Labels *string `form:"labels,omitempty" json:"labels,omitempty"`
 
-	// Milestone The milestone title.
+	// Milestone The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
 	Milestone *string `form:"milestone,omitempty" json:"milestone,omitempty"`
 
-	// MyReactionEmoji Return issues reacted by the authenticated user by the given
+	// MyReactionEmoji Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
 	MyReactionEmoji *string `form:"my_reaction_emoji,omitempty" json:"my_reaction_emoji,omitempty"`
 
 	// NonArchived Return issues from non archived projects. Default is true.
 	NonArchived *bool `form:"non_archived,omitempty" json:"non_archived,omitempty"`
 
-	// Not Return issues that do not match the parameters supplied. Accepts:
+	// Not Return issues that do not match the parameters supplied. Accepts: labels, milestone, author_id, author_username, assignee_id, assignee_username, my_reaction_emoji, search, in.
 	Not *string `form:"not,omitempty" json:"not,omitempty"`
 
-	// OrderBy Return issues ordered by
+	// OrderBy Return issues ordered by created_at, updated_at, priority, due_date, relative_position, label_priority, milestone_due, popularity, weight fields. Default is created_at
 	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
-	// Scope Return issues for the given scope:
+	// Scope Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to all.
 	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
 
-	// Search Search group issues against their
+	// Search Search group issues against their title and description.
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
-	// Sort Return issues sorted in
+	// Sort Return issues sorted in asc or desc order. Default is desc.
 	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
-	// State Return all issues or just those that are
+	// State Return all issues or just those that are opened or closed.
 	State *string `form:"state,omitempty" json:"state,omitempty"`
 
-	// UpdatedAfter Return issues updated on or after the given time. Expected in ISO 8601 format (
+	// UpdatedAfter Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
 	UpdatedAfter *string `form:"updated_after,omitempty" json:"updated_after,omitempty"`
 
-	// UpdatedBefore Return issues updated on or before the given time. Expected in ISO 8601 format (
+	// UpdatedBefore Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
 	UpdatedBefore *string `form:"updated_before,omitempty" json:"updated_before,omitempty"`
 
-	// Weight Return issues with the specified
+	// Weight Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned. Premium and Ultimate only.
 	Weight *int `form:"weight,omitempty" json:"weight,omitempty"`
 
-	// WithLabelsDetails If
+	// WithLabelsDetails If true, the response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false.
 	WithLabelsDetails *bool `form:"with_labels_details,omitempty" json:"with_labels_details,omitempty"`
 }
 type GetApiV4GroupsIdMembersParams struct {
@@ -2642,6 +2561,8 @@ type GetApiV4GroupsIdMergeRequestsParams struct {
 	ApprovedByIds *string `form:"approved_by_ids,omitempty" json:"approved_by_ids,omitempty"`
 
 	// ApprovedByUsernames Return merge requests which have been approved by the specified users with the given
+	//
+	//
 	//
 	//
 	//             usernames
@@ -3117,7 +3038,6 @@ type PostApiV4GroupsImportMultipartRequestBody PostApiV4GroupsImportMultipartBod
 type PutApiV4GroupsIdJSONRequestBody PutApiV4GroupsIdJSONBody
 type PostApiV4GroupsIdDebianDistributionsJSONRequestBody PostApiV4GroupsIdDebianDistributionsJSONBody
 type PutApiV4GroupsIdDebianDistributionsCodenameJSONRequestBody PutApiV4GroupsIdDebianDistributionsCodenameJSONBody
-type PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagJSONRequestBody PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagJSONBody
 type PutApiV4GroupsIdAccessRequestsUserIdApproveJSONRequestBody PutApiV4GroupsIdAccessRequestsUserIdApproveJSONBody
 type PostApiV4GroupsIdAccessTokensSelfRotateJSONRequestBody PostApiV4GroupsIdAccessTokensSelfRotateJSONBody
 type PostApiV4GroupsIdBadgesJSONRequestBody PostApiV4GroupsIdBadgesJSONBody
@@ -3195,15 +3115,7 @@ type PutApiV4GroupsIdVariablesKeyJSONRequestBody PutApiV4GroupsIdVariablesKeyJSO
 type PostApiV4GroupsIdWikisJSONRequestBody PostApiV4GroupsIdWikisJSONBody
 type PostApiV4GroupsIdWikisAttachmentsJSONRequestBody PostApiV4GroupsIdWikisAttachmentsJSONBody
 type PutApiV4GroupsIdWikisSlugJSONRequestBody PutApiV4GroupsIdWikisSlugJSONBody
-type GetApiV4GroupIdPackagesComposerpackageNameResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
 type GetApiV4GroupIdPackagesComposerPShaResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupIdPackagesComposerP2packageNameResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 }
@@ -4293,79 +4205,15 @@ type GetApiV4GroupsIdDebianDistributionsCodenameKeyAscResponse struct {
 		Version                  *string   `json:"version,omitempty"`
 	}
 }
-type GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Response struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Response struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Response struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
 type GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesMavenpathFileNameResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesNpmpackageNameResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *struct {
-		DistTags *map[string]interface{} `json:"dist-tags,omitempty"`
-		Name     *string                 `json:"name,omitempty"`
-		Versions *map[string]interface{} `json:"versions,omitempty"`
-	}
 }
 type PostApiV4GroupsIdPackagesNpmNpmV1SecurityAdvisoriesBulkResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 }
 type PostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuickResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-	JSON200      *struct {
-		DistTags *map[string]interface{} `json:"dist_tags,omitempty"`
-	}
-}
-type DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 }
@@ -4404,10 +4252,6 @@ type GetApiV4GroupsIdPackagesNugetQueryResponse struct {
 		TotalHits *int32 `json:"totalHits,omitempty"`
 	}
 }
-type GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
 type GetApiV4GroupsIdPackagesNugetV2Response struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -4416,15 +4260,7 @@ type GetApiV4GroupsIdPackagesNugetV2MetadataResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 }
-type GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
 type GetApiV4GroupsIdPackagesPypiSimpleResponse struct {
-	Body         []byte
-	HTTPResponse *http.Response
-}
-type GetApiV4GroupsIdPackagesPypiSimplepackageNameResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 }
@@ -11244,30 +11080,8 @@ type PutApiV4GroupsIdWikisSlugResponse struct {
 	}
 }
 
-func (c *Client) GetApiV4GroupIdPackagesComposerpackageName(ctx context.Context, id string, params *GetApiV4GroupIdPackagesComposerpackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupIdPackagesComposerpackageNameRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
 func (c *Client) GetApiV4GroupIdPackagesComposerPSha(ctx context.Context, id string, sha string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetApiV4GroupIdPackagesComposerPShaRequest(c.Server, id, sha)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupIdPackagesComposerP2packageName(ctx context.Context, id string, params *GetApiV4GroupIdPackagesComposerP2packageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupIdPackagesComposerP2packageNameRequest(c.Server, id, params)
 	if err != nil {
 		return nil, err
 	}
@@ -11475,129 +11289,8 @@ func (c *Client) GetApiV4GroupsIdDebianDistributionsCodenameKeyAsc(ctx context.C
 	}
 	return c.Client.Do(req)
 }
-func (c *Client) GetApiV4GroupsIdPackagesDebianDistsdistributionInrelease(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesDebianDistsdistributionRelease(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesDebianDistsdistributionReleaseRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpg(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackages(ctx context.Context, id string, component string, architecture string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesRequest(c.Server, id, component, architecture, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Request(c.Server, id, component, architecture, fileSha256, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackages(ctx context.Context, id string, component string, architecture string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesRequest(c.Server, id, component, architecture, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Request(c.Server, id, component, architecture, fileSha256, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSources(ctx context.Context, id string, component string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesRequest(c.Server, id, component, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256(ctx context.Context, id string, component string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Request(c.Server, id, component, fileSha256, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
 func (c *Client) GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileName(ctx context.Context, id string, distribution string, projectId int32, letter string, packageName string, packageVersion string, fileName string, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameRequest(c.Server, id, distribution, projectId, letter, packageName, packageVersion, fileName)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesMavenpathFileName(ctx context.Context, id string, fileName string, params *GetApiV4GroupsIdPackagesMavenpathFileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesMavenpathFileNameRequest(c.Server, id, fileName, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesNpmpackageName(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesNpmpackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesNpmpackageNameRequest(c.Server, id, params)
 	if err != nil {
 		return nil, err
 	}
@@ -11629,50 +11322,6 @@ func (c *Client) PostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuick(ctx contex
 	}
 	return c.Client.Do(req)
 }
-func (c *Client) GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTags(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTag(ctx context.Context, id string, tag string, params *DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewDeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagRequest(c.Server, id, tag, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithBody(ctx context.Context, id string, tag string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewPutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagRequestWithBody(c.Server, id, tag, contentType, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTag(ctx context.Context, id string, tag string, body PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewPutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagRequest(c.Server, id, tag, body)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
 func (c *Client) GetApiV4GroupsIdPackagesNugetIndex(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetApiV4GroupsIdPackagesNugetIndexRequest(c.Server, id)
 	if err != nil {
@@ -11686,17 +11335,6 @@ func (c *Client) GetApiV4GroupsIdPackagesNugetIndex(ctx context.Context, id int3
 }
 func (c *Client) GetApiV4GroupsIdPackagesNugetQuery(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesNugetQueryParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetApiV4GroupsIdPackagesNugetQueryRequest(c.Server, id, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileName(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameRequest(c.Server, id, params)
 	if err != nil {
 		return nil, err
 	}
@@ -11728,30 +11366,8 @@ func (c *Client) GetApiV4GroupsIdPackagesNugetV2Metadata(ctx context.Context, id
 	}
 	return c.Client.Do(req)
 }
-func (c *Client) GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifier(ctx context.Context, id int32, sha256 string, params *GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierRequest(c.Server, id, sha256, params)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
 func (c *Client) GetApiV4GroupsIdPackagesPypiSimple(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetApiV4GroupsIdPackagesPypiSimpleRequest(c.Server, id)
-	if err != nil {
-		return nil, err
-	}
-	req = req.WithContext(ctx)
-	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
-		return nil, err
-	}
-	return c.Client.Do(req)
-}
-func (c *Client) GetApiV4GroupsIdPackagesPypiSimplepackageName(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesPypiSimplepackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetApiV4GroupsIdPackagesPypiSimplepackageNameRequest(c.Server, id, params)
 	if err != nil {
 		return nil, err
 	}
@@ -14412,56 +14028,6 @@ func (c *Client) PutApiV4GroupsIdWikisSlug(ctx context.Context, id int32, slug i
 	}
 	return c.Client.Do(req)
 }
-func NewGetApiV4GroupIdPackagesComposerpackageNameRequest(server string, id string, params *GetApiV4GroupIdPackagesComposerpackageNameParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/group/%s/-/packages/composer/*package_name", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "package_name", runtime.ParamLocationQuery, params.PackageName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
 func NewGetApiV4GroupIdPackagesComposerPShaRequest(server string, id string, sha string) (*http.Request, error) {
 	var err error
 
@@ -14492,56 +14058,6 @@ func NewGetApiV4GroupIdPackagesComposerPShaRequest(server string, id string, sha
 	queryURL, err := serverURL.Parse(operationPath)
 	if err != nil {
 		return nil, err
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupIdPackagesComposerP2packageNameRequest(server string, id string, params *GetApiV4GroupIdPackagesComposerP2packageNameParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/group/%s/-/packages/composer/p2/*package_name", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "package_name", runtime.ParamLocationQuery, params.PackageName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
 	}
 
 	req, err := http.NewRequest("GET", queryURL.String(), nil)
@@ -15677,547 +15193,6 @@ func NewGetApiV4GroupsIdDebianDistributionsCodenameKeyAscRequest(server string, 
 
 	return req, nil
 }
-func NewGetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseRequest(server string, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/debian/dists/*distribution/InRelease", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "distribution", runtime.ParamLocationQuery, params.Distribution); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesDebianDistsdistributionReleaseRequest(server string, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/debian/dists/*distribution/Release", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "distribution", runtime.ParamLocationQuery, params.Distribution); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgRequest(server string, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/debian/dists/*distribution/Release.gpg", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "distribution", runtime.ParamLocationQuery, params.Distribution); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesRequest(server string, id string, component string, architecture string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "component", runtime.ParamLocationPath, component)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "architecture", runtime.ParamLocationPath, architecture)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/debian/dists/*distribution/%s/binary-%s/Packages", pathParam0, pathParam1, pathParam2)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "distribution", runtime.ParamLocationQuery, params.Distribution); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Request(server string, id string, component string, architecture string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Params) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "component", runtime.ParamLocationPath, component)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "architecture", runtime.ParamLocationPath, architecture)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam3 string
-
-	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "file_sha256", runtime.ParamLocationPath, fileSha256)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/debian/dists/*distribution/%s/binary-%s/by-hash/SHA256/%s", pathParam0, pathParam1, pathParam2, pathParam3)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "distribution", runtime.ParamLocationQuery, params.Distribution); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesRequest(server string, id string, component string, architecture string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "component", runtime.ParamLocationPath, component)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "architecture", runtime.ParamLocationPath, architecture)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/debian/dists/*distribution/%s/debian-installer/binary-%s/Packages", pathParam0, pathParam1, pathParam2)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "distribution", runtime.ParamLocationQuery, params.Distribution); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Request(server string, id string, component string, architecture string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Params) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "component", runtime.ParamLocationPath, component)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "architecture", runtime.ParamLocationPath, architecture)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam3 string
-
-	pathParam3, err = runtime.StyleParamWithLocation("simple", false, "file_sha256", runtime.ParamLocationPath, fileSha256)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/debian/dists/*distribution/%s/debian-installer/binary-%s/by-hash/SHA256/%s", pathParam0, pathParam1, pathParam2, pathParam3)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "distribution", runtime.ParamLocationQuery, params.Distribution); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesRequest(server string, id string, component string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "component", runtime.ParamLocationPath, component)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/debian/dists/*distribution/%s/source/Sources", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "distribution", runtime.ParamLocationQuery, params.Distribution); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Request(server string, id string, component string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Params) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "component", runtime.ParamLocationPath, component)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam2 string
-
-	pathParam2, err = runtime.StyleParamWithLocation("simple", false, "file_sha256", runtime.ParamLocationPath, fileSha256)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/debian/dists/*distribution/%s/source/by-hash/SHA256/%s", pathParam0, pathParam1, pathParam2)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "distribution", runtime.ParamLocationQuery, params.Distribution); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
 func NewGetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameRequest(server string, id string, distribution string, projectId int32, letter string, packageName string, packageVersion string, fileName string) (*http.Request, error) {
 	var err error
 
@@ -16292,113 +15267,6 @@ func NewGetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageName
 
 	return req, nil
 }
-func NewGetApiV4GroupsIdPackagesMavenpathFileNameRequest(server string, id string, fileName string, params *GetApiV4GroupsIdPackagesMavenpathFileNameParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "file_name", runtime.ParamLocationPath, fileName)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/maven/*path/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "path", runtime.ParamLocationQuery, params.Path); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesNpmpackageNameRequest(server string, id string, params *GetApiV4GroupsIdPackagesNpmpackageNameParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/npm/*package_name", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "package_name", runtime.ParamLocationQuery, params.PackageName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
 func NewPostApiV4GroupsIdPackagesNpmNpmV1SecurityAdvisoriesBulkRequest(server string, id string) (*http.Request, error) {
 	var err error
 
@@ -16460,163 +15328,6 @@ func NewPostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuickRequest(server strin
 	if err != nil {
 		return nil, err
 	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsRequest(server string, id string, params *GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/npm/-/package/*package_name/dist-tags", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "package_name", runtime.ParamLocationQuery, params.PackageName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewDeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagRequest(server string, id string, tag string, params *DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "tag", runtime.ParamLocationPath, tag)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/npm/-/package/*package_name/dist-tags/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "package_name", runtime.ParamLocationQuery, params.PackageName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewPutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagRequest(server string, id string, tag string, body PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagJSONRequestBody) (*http.Request, error) {
-	var bodyReader io.Reader
-	buf, err := json.Marshal(body)
-	if err != nil {
-		return nil, err
-	}
-	bodyReader = bytes.NewReader(buf)
-	return NewPutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagRequestWithBody(server, id, tag, "application/json", bodyReader)
-}
-func NewPutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagRequestWithBody(server string, id string, tag string, contentType string, body io.Reader) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "tag", runtime.ParamLocationPath, tag)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/npm/-/package/*package_name/dist-tags/%s", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	req, err := http.NewRequest("PUT", queryURL.String(), body)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Add("Content-Type", contentType)
 
 	return req, nil
 }
@@ -16754,93 +15465,6 @@ func NewGetApiV4GroupsIdPackagesNugetQueryRequest(server string, id int32, param
 
 	return req, nil
 }
-func NewGetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameRequest(server string, id int32, params *GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/nuget/symbolfiles/*file_name/*signature/*same_file_name", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "file_name", runtime.ParamLocationQuery, params.FileName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "signature", runtime.ParamLocationQuery, params.Signature); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "same_file_name", runtime.ParamLocationQuery, params.SameFileName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithLocation("simple", false, "Symbolchecksum", runtime.ParamLocationHeader, params.Symbolchecksum)
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Symbolchecksum", headerParam0)
-
-	}
-
-	return req, nil
-}
 func NewGetApiV4GroupsIdPackagesNugetV2Request(server string, id int32) (*http.Request, error) {
 	var err error
 
@@ -16905,63 +15529,6 @@ func NewGetApiV4GroupsIdPackagesNugetV2MetadataRequest(server string, id int32) 
 
 	return req, nil
 }
-func NewGetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierRequest(server string, id int32, sha256 string, params *GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	var pathParam1 string
-
-	pathParam1, err = runtime.StyleParamWithLocation("simple", false, "sha256", runtime.ParamLocationPath, sha256)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/pypi/files/%s/*file_identifier", pathParam0, pathParam1)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "file_identifier", runtime.ParamLocationQuery, params.FileIdentifier); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
 func NewGetApiV4GroupsIdPackagesPypiSimpleRequest(server string, id int32) (*http.Request, error) {
 	var err error
 
@@ -16985,56 +15552,6 @@ func NewGetApiV4GroupsIdPackagesPypiSimpleRequest(server string, id int32) (*htt
 	queryURL, err := serverURL.Parse(operationPath)
 	if err != nil {
 		return nil, err
-	}
-
-	req, err := http.NewRequest("GET", queryURL.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	return req, nil
-}
-func NewGetApiV4GroupsIdPackagesPypiSimplepackageNameRequest(server string, id int32, params *GetApiV4GroupsIdPackagesPypiSimplepackageNameParams) (*http.Request, error) {
-	var err error
-
-	var pathParam0 string
-
-	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
-	if err != nil {
-		return nil, err
-	}
-
-	serverURL, err := url.Parse(server)
-	if err != nil {
-		return nil, err
-	}
-
-	operationPath := fmt.Sprintf("/api/v4/groups/%s/-/packages/pypi/simple/*package_name", pathParam0)
-	if operationPath[0] == '/' {
-		operationPath = "." + operationPath
-	}
-
-	queryURL, err := serverURL.Parse(operationPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if params != nil {
-		queryValues := queryURL.Query()
-
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "package_name", runtime.ParamLocationQuery, params.PackageName); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
-				}
-			}
-		}
-
-		queryURL.RawQuery = queryValues.Encode()
 	}
 
 	req, err := http.NewRequest("GET", queryURL.String(), nil)
@@ -27989,18 +26506,6 @@ func NewPutApiV4GroupsIdWikisSlugRequestWithBody(server string, id int32, slug i
 
 	return req, nil
 }
-func (r GetApiV4GroupIdPackagesComposerpackageNameResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupIdPackagesComposerpackageNameResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
 func (r GetApiV4GroupIdPackagesComposerPShaResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
@@ -28008,18 +26513,6 @@ func (r GetApiV4GroupIdPackagesComposerPShaResponse) Status() string {
 	return http.StatusText(0)
 }
 func (r GetApiV4GroupIdPackagesComposerPShaResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupIdPackagesComposerP2packageNameResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupIdPackagesComposerP2packageNameResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -28193,114 +26686,6 @@ func (r GetApiV4GroupsIdDebianDistributionsCodenameKeyAscResponse) StatusCode() 
 	}
 	return 0
 }
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Response) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Response) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Response) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Response) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Response) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Response) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
 func (r GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
@@ -28308,30 +26693,6 @@ func (r GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageName
 	return http.StatusText(0)
 }
 func (r GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesMavenpathFileNameResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesMavenpathFileNameResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesNpmpackageNameResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesNpmpackageNameResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -28361,42 +26722,6 @@ func (r PostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuickResponse) StatusCode
 	}
 	return 0
 }
-func (r GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
 func (r GetApiV4GroupsIdPackagesNugetIndexResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
@@ -28416,18 +26741,6 @@ func (r GetApiV4GroupsIdPackagesNugetQueryResponse) Status() string {
 	return http.StatusText(0)
 }
 func (r GetApiV4GroupsIdPackagesNugetQueryResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -28457,18 +26770,6 @@ func (r GetApiV4GroupsIdPackagesNugetV2MetadataResponse) StatusCode() int {
 	}
 	return 0
 }
-func (r GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
 func (r GetApiV4GroupsIdPackagesPypiSimpleResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
@@ -28476,18 +26777,6 @@ func (r GetApiV4GroupsIdPackagesPypiSimpleResponse) Status() string {
 	return http.StatusText(0)
 }
 func (r GetApiV4GroupsIdPackagesPypiSimpleResponse) StatusCode() int {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.StatusCode
-	}
-	return 0
-}
-func (r GetApiV4GroupsIdPackagesPypiSimplepackageNameResponse) Status() string {
-	if r.HTTPResponse != nil {
-		return r.HTTPResponse.Status
-	}
-	return http.StatusText(0)
-}
-func (r GetApiV4GroupsIdPackagesPypiSimplepackageNameResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -30461,26 +28750,12 @@ func (r PutApiV4GroupsIdWikisSlugResponse) StatusCode() int {
 	}
 	return 0
 }
-func (c *ClientWithResponses) GetApiV4GroupIdPackagesComposerpackageNameWithResponse(ctx context.Context, id string, params *GetApiV4GroupIdPackagesComposerpackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupIdPackagesComposerpackageNameResponse, error) {
-	rsp, err := c.GetApiV4GroupIdPackagesComposerpackageName(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupIdPackagesComposerpackageNameResponse(rsp)
-}
 func (c *ClientWithResponses) GetApiV4GroupIdPackagesComposerPShaWithResponse(ctx context.Context, id string, sha string, reqEditors ...RequestEditorFn) (*GetApiV4GroupIdPackagesComposerPShaResponse, error) {
 	rsp, err := c.GetApiV4GroupIdPackagesComposerPSha(ctx, id, sha, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseGetApiV4GroupIdPackagesComposerPShaResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupIdPackagesComposerP2packageNameWithResponse(ctx context.Context, id string, params *GetApiV4GroupIdPackagesComposerP2packageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupIdPackagesComposerP2packageNameResponse, error) {
-	rsp, err := c.GetApiV4GroupIdPackagesComposerP2packageName(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupIdPackagesComposerP2packageNameResponse(rsp)
 }
 func (c *ClientWithResponses) GetApiV4GroupIdPackagesComposerPackagesWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetApiV4GroupIdPackagesComposerPackagesResponse, error) {
 	rsp, err := c.GetApiV4GroupIdPackagesComposerPackages(ctx, id, reqEditors...)
@@ -30608,89 +28883,12 @@ func (c *ClientWithResponses) GetApiV4GroupsIdDebianDistributionsCodenameKeyAscW
 	}
 	return ParseGetApiV4GroupsIdDebianDistributionsCodenameKeyAscResponse(rsp)
 }
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesDebianDistsdistributionInrelease(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesDebianDistsdistributionRelease(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesDebianDistsdistributionReleaseResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpg(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesWithResponse(ctx context.Context, id string, component string, architecture string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackages(ctx, id, component, architecture, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256WithResponse(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Response, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256(ctx, id, component, architecture, fileSha256, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Response(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesWithResponse(ctx context.Context, id string, component string, architecture string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackages(ctx, id, component, architecture, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256WithResponse(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Response, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256(ctx, id, component, architecture, fileSha256, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Response(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesWithResponse(ctx context.Context, id string, component string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSources(ctx, id, component, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256WithResponse(ctx context.Context, id string, component string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Response, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256(ctx, id, component, fileSha256, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Response(rsp)
-}
 func (c *ClientWithResponses) GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameWithResponse(ctx context.Context, id string, distribution string, projectId int32, letter string, packageName string, packageVersion string, fileName string, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameResponse, error) {
 	rsp, err := c.GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileName(ctx, id, distribution, projectId, letter, packageName, packageVersion, fileName, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseGetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesMavenpathFileNameWithResponse(ctx context.Context, id string, fileName string, params *GetApiV4GroupsIdPackagesMavenpathFileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesMavenpathFileNameResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesMavenpathFileName(ctx, id, fileName, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesMavenpathFileNameResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesNpmpackageNameWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesNpmpackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNpmpackageNameResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesNpmpackageName(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesNpmpackageNameResponse(rsp)
 }
 func (c *ClientWithResponses) PostApiV4GroupsIdPackagesNpmNpmV1SecurityAdvisoriesBulkWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*PostApiV4GroupsIdPackagesNpmNpmV1SecurityAdvisoriesBulkResponse, error) {
 	rsp, err := c.PostApiV4GroupsIdPackagesNpmNpmV1SecurityAdvisoriesBulk(ctx, id, reqEditors...)
@@ -30706,34 +28904,6 @@ func (c *ClientWithResponses) PostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQui
 	}
 	return ParsePostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuickResponse(rsp)
 }
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTags(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsResponse(rsp)
-}
-func (c *ClientWithResponses) DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithResponse(ctx context.Context, id string, tag string, params *DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagParams, reqEditors ...RequestEditorFn) (*DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error) {
-	rsp, err := c.DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTag(ctx, id, tag, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseDeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse(rsp)
-}
-func (c *ClientWithResponses) PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithBodyWithResponse(ctx context.Context, id string, tag string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error) {
-	rsp, err := c.PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithBody(ctx, id, tag, contentType, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParsePutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse(rsp)
-}
-func (c *ClientWithResponses) PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithResponse(ctx context.Context, id string, tag string, body PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error) {
-	rsp, err := c.PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTag(ctx, id, tag, body, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParsePutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse(rsp)
-}
 func (c *ClientWithResponses) GetApiV4GroupsIdPackagesNugetIndexWithResponse(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNugetIndexResponse, error) {
 	rsp, err := c.GetApiV4GroupsIdPackagesNugetIndex(ctx, id, reqEditors...)
 	if err != nil {
@@ -30747,13 +28917,6 @@ func (c *ClientWithResponses) GetApiV4GroupsIdPackagesNugetQueryWithResponse(ctx
 		return nil, err
 	}
 	return ParseGetApiV4GroupsIdPackagesNugetQueryResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameWithResponse(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileName(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameResponse(rsp)
 }
 func (c *ClientWithResponses) GetApiV4GroupsIdPackagesNugetV2WithResponse(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNugetV2Response, error) {
 	rsp, err := c.GetApiV4GroupsIdPackagesNugetV2(ctx, id, reqEditors...)
@@ -30769,26 +28932,12 @@ func (c *ClientWithResponses) GetApiV4GroupsIdPackagesNugetV2MetadataWithRespons
 	}
 	return ParseGetApiV4GroupsIdPackagesNugetV2MetadataResponse(rsp)
 }
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierWithResponse(ctx context.Context, id int32, sha256 string, params *GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifier(ctx, id, sha256, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierResponse(rsp)
-}
 func (c *ClientWithResponses) GetApiV4GroupsIdPackagesPypiSimpleWithResponse(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesPypiSimpleResponse, error) {
 	rsp, err := c.GetApiV4GroupsIdPackagesPypiSimple(ctx, id, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
 	return ParseGetApiV4GroupsIdPackagesPypiSimpleResponse(rsp)
-}
-func (c *ClientWithResponses) GetApiV4GroupsIdPackagesPypiSimplepackageNameWithResponse(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesPypiSimplepackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesPypiSimplepackageNameResponse, error) {
-	rsp, err := c.GetApiV4GroupsIdPackagesPypiSimplepackageName(ctx, id, params, reqEditors...)
-	if err != nil {
-		return nil, err
-	}
-	return ParseGetApiV4GroupsIdPackagesPypiSimplepackageNameResponse(rsp)
 }
 func (c *ClientWithResponses) GetApiV4GroupsIdAccessRequestsWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdAccessRequestsParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdAccessRequestsResponse, error) {
 	rsp, err := c.GetApiV4GroupsIdAccessRequests(ctx, id, params, reqEditors...)
@@ -32477,20 +30626,6 @@ func (c *ClientWithResponses) PutApiV4GroupsIdWikisSlugWithResponse(ctx context.
 	}
 	return ParsePutApiV4GroupsIdWikisSlugResponse(rsp)
 }
-func ParseGetApiV4GroupIdPackagesComposerpackageNameResponse(rsp *http.Response) (*GetApiV4GroupIdPackagesComposerpackageNameResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupIdPackagesComposerpackageNameResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
 func ParseGetApiV4GroupIdPackagesComposerPShaResponse(rsp *http.Response) (*GetApiV4GroupIdPackagesComposerPShaResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
@@ -32499,20 +30634,6 @@ func ParseGetApiV4GroupIdPackagesComposerPShaResponse(rsp *http.Response) (*GetA
 	}
 
 	response := &GetApiV4GroupIdPackagesComposerPShaResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupIdPackagesComposerP2packageNameResponse(rsp *http.Response) (*GetApiV4GroupIdPackagesComposerP2packageNameResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupIdPackagesComposerP2packageNameResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -33826,132 +31947,6 @@ func ParseGetApiV4GroupsIdDebianDistributionsCodenameKeyAscResponse(rsp *http.Re
 
 	return response, nil
 }
-func ParseGetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesDebianDistsdistributionReleaseResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Response(rsp *http.Response) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Response, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Response{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Response(rsp *http.Response) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Response, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Response{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Response(rsp *http.Response) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Response, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Response{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
 func ParseGetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
@@ -33962,48 +31957,6 @@ func ParseGetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNa
 	response := &GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesMavenpathFileNameResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesMavenpathFileNameResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesMavenpathFileNameResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesNpmpackageNameResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesNpmpackageNameResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesNpmpackageNameResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			DistTags *map[string]interface{} `json:"dist-tags,omitempty"`
-			Name     *string                 `json:"name,omitempty"`
-			Versions *map[string]interface{} `json:"versions,omitempty"`
-		}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
 	}
 
 	return response, nil
@@ -34030,60 +31983,6 @@ func ParsePostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuickResponse(rsp *http
 	}
 
 	response := &PostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuickResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			DistTags *map[string]interface{} `json:"dist_tags,omitempty"`
-		}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	}
-
-	return response, nil
-}
-func ParseDeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse(rsp *http.Response) (*DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParsePutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse(rsp *http.Response) (*PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
@@ -34163,20 +32062,6 @@ func ParseGetApiV4GroupsIdPackagesNugetQueryResponse(rsp *http.Response) (*GetAp
 
 	return response, nil
 }
-func ParseGetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
 func ParseGetApiV4GroupsIdPackagesNugetV2Response(rsp *http.Response) (*GetApiV4GroupsIdPackagesNugetV2Response, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
@@ -34205,20 +32090,6 @@ func ParseGetApiV4GroupsIdPackagesNugetV2MetadataResponse(rsp *http.Response) (*
 
 	return response, nil
 }
-func ParseGetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
 func ParseGetApiV4GroupsIdPackagesPypiSimpleResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesPypiSimpleResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
@@ -34227,20 +32098,6 @@ func ParseGetApiV4GroupsIdPackagesPypiSimpleResponse(rsp *http.Response) (*GetAp
 	}
 
 	response := &GetApiV4GroupsIdPackagesPypiSimpleResponse{
-		Body:         bodyBytes,
-		HTTPResponse: rsp,
-	}
-
-	return response, nil
-}
-func ParseGetApiV4GroupsIdPackagesPypiSimplepackageNameResponse(rsp *http.Response) (*GetApiV4GroupsIdPackagesPypiSimplepackageNameResponse, error) {
-	bodyBytes, err := io.ReadAll(rsp.Body)
-	defer func() { _ = rsp.Body.Close() }()
-	if err != nil {
-		return nil, err
-	}
-
-	response := &GetApiV4GroupsIdPackagesPypiSimplepackageNameResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}

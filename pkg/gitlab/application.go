@@ -143,6 +143,8 @@ type PostApiV4ApplicationsJSONBody struct {
 	// Confidential The application is used where the client secret can be kept confidential. Native mobile apps \
 	//
 	//
+	//
+	//
 	//                         and Single Page Apps are considered non-confidential. Defaults to true if not supplied
 	Confidential *bool `json:"confidential,omitempty"`
 
@@ -153,6 +155,8 @@ type PostApiV4ApplicationsJSONBody struct {
 	RedirectUri string `json:"redirect_uri"`
 
 	// Scopes Scopes of the application. You can specify multiple scopes by separating\
+	//
+	//
 	//
 	//
 	//                                  each scope using a space

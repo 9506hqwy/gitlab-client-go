@@ -260,14 +260,8 @@ type ClientInterface interface {
 
 	PostApiV4GeoStatus(ctx context.Context, body PostApiV4GeoStatusJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4GroupIdPackagesComposerpackageName request
-	GetApiV4GroupIdPackagesComposerpackageName(ctx context.Context, id string, params *GetApiV4GroupIdPackagesComposerpackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetApiV4GroupIdPackagesComposerPSha request
 	GetApiV4GroupIdPackagesComposerPSha(ctx context.Context, id string, sha string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupIdPackagesComposerP2packageName request
-	GetApiV4GroupIdPackagesComposerP2packageName(ctx context.Context, id string, params *GetApiV4GroupIdPackagesComposerP2packageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetApiV4GroupIdPackagesComposerPackages request
 	GetApiV4GroupIdPackagesComposerPackages(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -319,41 +313,8 @@ type ClientInterface interface {
 	// GetApiV4GroupsIdDebianDistributionsCodenameKeyAsc request
 	GetApiV4GroupsIdDebianDistributionsCodenameKeyAsc(ctx context.Context, id string, codename string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionInrelease request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionInrelease(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionRelease request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionRelease(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpg request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpg(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackages request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackages(ctx context.Context, id string, component string, architecture string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256 request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackages request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackages(ctx context.Context, id string, component string, architecture string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256 request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSources request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSources(ctx context.Context, id string, component string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256 request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256(ctx context.Context, id string, component string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileName request
 	GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileName(ctx context.Context, id string, distribution string, projectId int32, letter string, packageName string, packageVersion string, fileName string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesMavenpathFileName request
-	GetApiV4GroupsIdPackagesMavenpathFileName(ctx context.Context, id string, fileName string, params *GetApiV4GroupsIdPackagesMavenpathFileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesNpmpackageName request
-	GetApiV4GroupsIdPackagesNpmpackageName(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesNpmpackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostApiV4GroupsIdPackagesNpmNpmV1SecurityAdvisoriesBulk request
 	PostApiV4GroupsIdPackagesNpmNpmV1SecurityAdvisoriesBulk(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -361,25 +322,11 @@ type ClientInterface interface {
 	// PostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuick request
 	PostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuick(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTags request
-	GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTags(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTag request
-	DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTag(ctx context.Context, id string, tag string, params *DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithBody request with any body
-	PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithBody(ctx context.Context, id string, tag string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTag(ctx context.Context, id string, tag string, body PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetApiV4GroupsIdPackagesNugetIndex request
 	GetApiV4GroupsIdPackagesNugetIndex(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetApiV4GroupsIdPackagesNugetQuery request
 	GetApiV4GroupsIdPackagesNugetQuery(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesNugetQueryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileName request
-	GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileName(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetApiV4GroupsIdPackagesNugetV2 request
 	GetApiV4GroupsIdPackagesNugetV2(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -387,14 +334,8 @@ type ClientInterface interface {
 	// GetApiV4GroupsIdPackagesNugetV2Metadata request
 	GetApiV4GroupsIdPackagesNugetV2Metadata(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifier request
-	GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifier(ctx context.Context, id int32, sha256 string, params *GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetApiV4GroupsIdPackagesPypiSimple request
 	GetApiV4GroupsIdPackagesPypiSimple(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4GroupsIdPackagesPypiSimplepackageName request
-	GetApiV4GroupsIdPackagesPypiSimplepackageName(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesPypiSimplepackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetApiV4GroupsIdAccessRequests request
 	GetApiV4GroupsIdAccessRequests(ctx context.Context, id string, params *GetApiV4GroupsIdAccessRequestsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -1275,40 +1216,14 @@ type ClientInterface interface {
 	// GetApiV4PackagesConanV1UsersCheckCredentials request
 	GetApiV4PackagesConanV1UsersCheckCredentials(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4PackagesMavenpathFileName request
-	GetApiV4PackagesMavenpathFileName(ctx context.Context, fileName string, params *GetApiV4PackagesMavenpathFileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4PackagesNpmpackageName request
-	GetApiV4PackagesNpmpackageName(ctx context.Context, params *GetApiV4PackagesNpmpackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulk request
 	PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulk(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostApiV4PackagesNpmNpmV1SecurityAuditsQuick request
 	PostApiV4PackagesNpmNpmV1SecurityAuditsQuick(ctx context.Context, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4PackagesNpmPackagepackageNameDistTags request
-	GetApiV4PackagesNpmPackagepackageNameDistTags(ctx context.Context, params *GetApiV4PackagesNpmPackagepackageNameDistTagsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteApiV4PackagesNpmPackagepackageNameDistTagsTag request
-	DeleteApiV4PackagesNpmPackagepackageNameDistTagsTag(ctx context.Context, tag string, params *DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4PackagesNpmPackagepackageNameDistTagsTagWithBody request with any body
-	PutApiV4PackagesNpmPackagepackageNameDistTagsTagWithBody(ctx context.Context, tag string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	PutApiV4PackagesNpmPackagepackageNameDistTagsTag(ctx context.Context, tag string, body PutApiV4PackagesNpmPackagepackageNameDistTagsTagJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystem request
 	GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystem(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersion request
-	GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersion(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownload request
-	GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownload(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFile request
-	GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFile(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownload request
 	GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownload(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2128,6 +2043,9 @@ type ClientInterface interface {
 	// GetApiV4ProjectsIdInvitedGroups request
 	GetApiV4ProjectsIdInvitedGroups(ctx context.Context, id string, params *GetApiV4ProjectsIdInvitedGroupsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetApiV4ProjectsIdIssues request
+	GetApiV4ProjectsIdIssues(ctx context.Context, id string, params *GetApiV4ProjectsIdIssuesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// PostApiV4ProjectsIdIssues request
 	PostApiV4ProjectsIdIssues(ctx context.Context, id string, params *PostApiV4ProjectsIdIssuesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -2139,6 +2057,12 @@ type ClientInterface interface {
 
 	// DeleteApiV4ProjectsIdIssuesIssueIid request
 	DeleteApiV4ProjectsIdIssuesIssueIid(ctx context.Context, id string, issueIid int, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetApiV4ProjectsIdIssuesIssueIid request
+	GetApiV4ProjectsIdIssuesIssueIid(ctx context.Context, id string, issueIid int, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PutApiV4ProjectsIdIssuesIssueIid request
+	PutApiV4ProjectsIdIssuesIssueIid(ctx context.Context, id string, issueIid int, params *PutApiV4ProjectsIdIssuesIssueIidParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostApiV4ProjectsIdIssuesIssueIidAddSpentTime request
 	PostApiV4ProjectsIdIssuesIssueIidAddSpentTime(ctx context.Context, id string, issueIid int, params *PostApiV4ProjectsIdIssuesIssueIidAddSpentTimeParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2180,8 +2104,18 @@ type ClientInterface interface {
 	// GetApiV4ProjectsIdIssuesIssueIidMetricImages request
 	GetApiV4ProjectsIdIssuesIssueIidMetricImages(ctx context.Context, id string, issueIid int, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// PostApiV4ProjectsIdIssuesIssueIidMetricImagesWithBody request with any body
+	PostApiV4ProjectsIdIssuesIssueIidMetricImagesWithBody(ctx context.Context, id string, issueIid int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PostApiV4ProjectsIdIssuesIssueIidMetricImagesWithFormdataBody(ctx context.Context, id string, issueIid int, body PostApiV4ProjectsIdIssuesIssueIidMetricImagesFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// DeleteApiV4ProjectsIdIssuesIssueIidMetricImagesImageId request
 	DeleteApiV4ProjectsIdIssuesIssueIidMetricImagesImageId(ctx context.Context, id string, issueIid int, imageId int, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// PutApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdWithBody request with any body
+	PutApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdWithBody(ctx context.Context, id string, issueIid int, imageId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PutApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdWithFormdataBody(ctx context.Context, id string, issueIid int, imageId int, body PutApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostApiV4ProjectsIdIssuesIssueIidMoveWithBody request with any body
 	PostApiV4ProjectsIdIssuesIssueIidMoveWithBody(ctx context.Context, id string, issueIid int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2274,9 +2208,6 @@ type ClientInterface interface {
 	// GetApiV4ProjectsIdJobsArtifactsRefNameDownload request
 	GetApiV4ProjectsIdJobsArtifactsRefNameDownload(ctx context.Context, id string, refName string, params *GetApiV4ProjectsIdJobsArtifactsRefNameDownloadParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4ProjectsIdJobsArtifactsRefNameRawartifactPath request
-	GetApiV4ProjectsIdJobsArtifactsRefNameRawartifactPath(ctx context.Context, id string, refName string, params *GetApiV4ProjectsIdJobsArtifactsRefNameRawartifactPathParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetApiV4ProjectsIdJobsJobId request
 	GetApiV4ProjectsIdJobsJobId(ctx context.Context, id int32, jobId int32, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -2285,9 +2216,6 @@ type ClientInterface interface {
 
 	// GetApiV4ProjectsIdJobsJobIdArtifacts request
 	GetApiV4ProjectsIdJobsJobIdArtifacts(ctx context.Context, id string, jobId int32, params *GetApiV4ProjectsIdJobsJobIdArtifactsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdJobsJobIdArtifactsartifactPath request
-	GetApiV4ProjectsIdJobsJobIdArtifactsartifactPath(ctx context.Context, id string, jobId int32, params *GetApiV4ProjectsIdJobsJobIdArtifactsartifactPathParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostApiV4ProjectsIdJobsJobIdArtifactsKeep request
 	PostApiV4ProjectsIdJobsJobIdArtifactsKeep(ctx context.Context, id string, jobId int32, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2534,9 +2462,6 @@ type ClientInterface interface {
 
 	PostApiV4ProjectsIdPackagesComposer(ctx context.Context, id string, body PostApiV4ProjectsIdPackagesComposerJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4ProjectsIdPackagesComposerArchivespackageName request
-	GetApiV4ProjectsIdPackagesComposerArchivespackageName(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesComposerArchivespackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetApiV4ProjectsIdPackagesConanV1ConansSearch request
 	GetApiV4ProjectsIdPackagesConanV1ConansSearch(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesConanV1ConansSearchParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -2662,33 +2587,6 @@ type ClientInterface interface {
 	// GetApiV4ProjectsIdPackagesConanV2UsersCheckCredentials request
 	GetApiV4ProjectsIdPackagesConanV2UsersCheckCredentials(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionInrelease request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionInrelease(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionInreleaseParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionRelease request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionRelease(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseGpg request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseGpg(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseGpgParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackages request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackages(ctx context.Context, id string, component string, architecture string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256 request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackages request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackages(ctx context.Context, id string, component string, architecture string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256 request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceSources request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceSources(ctx context.Context, id string, component string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceSourcesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256 request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256(ctx context.Context, id string, component string, fileSha256 int32, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetApiV4ProjectsIdPackagesDebianPoolDistributionLetterPackageNamePackageVersionFileName request
 	GetApiV4ProjectsIdPackagesDebianPoolDistributionLetterPackageNamePackageVersionFileName(ctx context.Context, id string, distribution string, letter string, packageName string, packageVersion string, fileName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -2701,31 +2599,6 @@ type ClientInterface interface {
 	PutApiV4ProjectsIdPackagesDebianFileNameAuthorizeWithBody(ctx context.Context, id string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	PutApiV4ProjectsIdPackagesDebianFileNameAuthorize(ctx context.Context, id string, fileName string, body PutApiV4ProjectsIdPackagesDebianFileNameAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileName request
-	GetApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileName(ctx context.Context, id string, packageName string, fileName string, params *GetApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameWithBody request with any body
-	PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameWithBody(ctx context.Context, id string, packageName string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileName(ctx context.Context, id string, packageName string, fileName string, body PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameAuthorizeWithBody request with any body
-	PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameAuthorizeWithBody(ctx context.Context, id string, packageName string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameAuthorize(ctx context.Context, id string, packageName string, fileName string, body PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesGomoduleNameVList request
-	GetApiV4ProjectsIdPackagesGomoduleNameVList(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesGomoduleNameVListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionInfo request
-	GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionInfo(ctx context.Context, id string, moduleVersion string, params *GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionInfoParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionMod request
-	GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionMod(ctx context.Context, id string, moduleVersion string, params *GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionModParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionZip request
-	GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionZip(ctx context.Context, id string, moduleVersion string, params *GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionZipParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostApiV4ProjectsIdPackagesHelmApiChannelChartsWithBody request with any body
 	PostApiV4ProjectsIdPackagesHelmApiChannelChartsWithBody(ctx context.Context, id int32, channel string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2741,54 +2614,11 @@ type ClientInterface interface {
 	// GetApiV4ProjectsIdPackagesHelmChannelIndexYaml request
 	GetApiV4ProjectsIdPackagesHelmChannelIndexYaml(ctx context.Context, id int32, channel string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4ProjectsIdPackagesMavenpathFileName request
-	GetApiV4ProjectsIdPackagesMavenpathFileName(ctx context.Context, id string, fileName string, params *GetApiV4ProjectsIdPackagesMavenpathFileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4ProjectsIdPackagesMavenpathFileNameWithBody request with any body
-	PutApiV4ProjectsIdPackagesMavenpathFileNameWithBody(ctx context.Context, id string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	PutApiV4ProjectsIdPackagesMavenpathFileName(ctx context.Context, id string, fileName string, body PutApiV4ProjectsIdPackagesMavenpathFileNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4ProjectsIdPackagesMavenpathFileNameAuthorizeWithBody request with any body
-	PutApiV4ProjectsIdPackagesMavenpathFileNameAuthorizeWithBody(ctx context.Context, id string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	PutApiV4ProjectsIdPackagesMavenpathFileNameAuthorize(ctx context.Context, id string, fileName string, body PutApiV4ProjectsIdPackagesMavenpathFileNameAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileName request
-	GetApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileName(ctx context.Context, id string, modelVersionId string, fileName string, params *GetApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameWithBody request with any body
-	PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameWithBody(ctx context.Context, id string, modelVersionId string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileName(ctx context.Context, id string, modelVersionId string, fileName string, body PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameAuthorizeWithBody request with any body
-	PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameAuthorizeWithBody(ctx context.Context, id string, modelVersionId string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameAuthorize(ctx context.Context, id string, modelVersionId string, fileName string, body PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesNpmpackageName request
-	GetApiV4ProjectsIdPackagesNpmpackageName(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNpmpackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesNpmpackageNamefileName request
-	GetApiV4ProjectsIdPackagesNpmpackageNamefileName(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNpmpackageNamefileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// PostApiV4ProjectsIdPackagesNpmNpmV1SecurityAdvisoriesBulk request
 	PostApiV4ProjectsIdPackagesNpmNpmV1SecurityAdvisoriesBulk(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostApiV4ProjectsIdPackagesNpmNpmV1SecurityAuditsQuick request
 	PostApiV4ProjectsIdPackagesNpmNpmV1SecurityAuditsQuick(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesNpmPackagepackageNameDistTags request
-	GetApiV4ProjectsIdPackagesNpmPackagepackageNameDistTags(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// DeleteApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTag request
-	DeleteApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTag(ctx context.Context, id string, tag string, params *DeleteApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagWithBody request with any body
-	PutApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagWithBody(ctx context.Context, id string, tag string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	PutApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTag(ctx context.Context, id string, tag string, body PutApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PutApiV4ProjectsIdPackagesNpmPackageNameWithBody request with any body
 	PutApiV4ProjectsIdPackagesNpmPackageNameWithBody(ctx context.Context, id string, packageName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2800,26 +2630,14 @@ type ClientInterface interface {
 
 	PutApiV4ProjectsIdPackagesNuget(ctx context.Context, id string, body PutApiV4ProjectsIdPackagesNugetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// DeleteApiV4ProjectsIdPackagesNugetpackageNamepackageVersion request
-	DeleteApiV4ProjectsIdPackagesNugetpackageNamepackageVersion(ctx context.Context, id string, params *DeleteApiV4ProjectsIdPackagesNugetpackageNamepackageVersionParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// PutApiV4ProjectsIdPackagesNugetAuthorize request
 	PutApiV4ProjectsIdPackagesNugetAuthorize(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesNugetDownloadpackageNamepackageVersionpackageFilename request
-	GetApiV4ProjectsIdPackagesNugetDownloadpackageNamepackageVersionpackageFilename(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNugetDownloadpackageNamepackageVersionpackageFilenameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesNugetDownloadpackageNameIndex request
-	GetApiV4ProjectsIdPackagesNugetDownloadpackageNameIndex(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNugetDownloadpackageNameIndexParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetApiV4ProjectsIdPackagesNugetIndex request
 	GetApiV4ProjectsIdPackagesNugetIndex(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetApiV4ProjectsIdPackagesNugetQuery request
 	GetApiV4ProjectsIdPackagesNugetQuery(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNugetQueryParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesNugetSymbolfilesfileNamesignaturesameFileName request
-	GetApiV4ProjectsIdPackagesNugetSymbolfilesfileNamesignaturesameFileName(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PutApiV4ProjectsIdPackagesNugetSymbolpackageWithBody request with any body
 	PutApiV4ProjectsIdPackagesNugetSymbolpackageWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2867,26 +2685,14 @@ type ClientInterface interface {
 	// PostApiV4ProjectsIdPackagesPypiAuthorize request
 	PostApiV4ProjectsIdPackagesPypiAuthorize(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4ProjectsIdPackagesPypiFilesSha256fileIdentifier request
-	GetApiV4ProjectsIdPackagesPypiFilesSha256fileIdentifier(ctx context.Context, id string, sha256 string, params *GetApiV4ProjectsIdPackagesPypiFilesSha256fileIdentifierParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// GetApiV4ProjectsIdPackagesPypiSimple request
 	GetApiV4ProjectsIdPackagesPypiSimple(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesPypiSimplepackageName request
-	GetApiV4ProjectsIdPackagesPypiSimplepackageName(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesPypiSimplepackageNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostApiV4ProjectsIdPackagesRpm request
 	PostApiV4ProjectsIdPackagesRpm(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4ProjectsIdPackagesRpmpackageFileIdfileName request
-	GetApiV4ProjectsIdPackagesRpmpackageFileIdfileName(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesRpmpackageFileIdfileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// PostApiV4ProjectsIdPackagesRpmAuthorize request
 	PostApiV4ProjectsIdPackagesRpmAuthorize(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesRpmRepodatafileName request
-	GetApiV4ProjectsIdPackagesRpmRepodatafileName(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesRpmRepodatafileNameParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// GetApiV4ProjectsIdPackagesRubygemsApiV1Dependencies request
 	GetApiV4ProjectsIdPackagesRubygemsApiV1Dependencies(ctx context.Context, id int32, params *GetApiV4ProjectsIdPackagesRubygemsApiV1DependenciesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -2910,17 +2716,6 @@ type ClientInterface interface {
 
 	// GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystem request
 	GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystem(ctx context.Context, id string, moduleName string, moduleSystem string, params *GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersion request
-	GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersion(ctx context.Context, id string, moduleName string, moduleSystem string, params *GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileWithBody request with any body
-	PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileWithBody(ctx context.Context, id string, moduleName string, moduleSystem string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileAuthorizeWithBody request with any body
-	PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileAuthorizeWithBody(ctx context.Context, id string, moduleName string, moduleSystem string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileAuthorize(ctx context.Context, id string, moduleName string, moduleSystem string, body PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// DeleteApiV4ProjectsIdPackagesPackageId request
 	DeleteApiV4ProjectsIdPackagesPackageId(ctx context.Context, id string, packageId int32, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -3135,9 +2930,6 @@ type ClientInterface interface {
 
 	PostApiV4ProjectsIdReleases(ctx context.Context, id string, body PostApiV4ProjectsIdReleasesJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetApiV4ProjectsIdReleasesPermalinkLatestsuffixPath request
-	GetApiV4ProjectsIdReleasesPermalinkLatestsuffixPath(ctx context.Context, id string, params *GetApiV4ProjectsIdReleasesPermalinkLatestsuffixPathParams, reqEditors ...RequestEditorFn) (*http.Response, error)
-
 	// DeleteApiV4ProjectsIdReleasesTagName request
 	DeleteApiV4ProjectsIdReleasesTagName(ctx context.Context, id string, tagName string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -3167,9 +2959,6 @@ type ClientInterface interface {
 	PutApiV4ProjectsIdReleasesTagNameAssetsLinksLinkIdWithBody(ctx context.Context, id string, tagName string, linkId int32, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	PutApiV4ProjectsIdReleasesTagNameAssetsLinksLinkId(ctx context.Context, id string, tagName string, linkId int32, body PutApiV4ProjectsIdReleasesTagNameAssetsLinksLinkIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
-
-	// GetApiV4ProjectsIdReleasesTagNameDownloadsdirectAssetPath request
-	GetApiV4ProjectsIdReleasesTagNameDownloadsdirectAssetPath(ctx context.Context, id string, tagName string, params *GetApiV4ProjectsIdReleasesTagNameDownloadsdirectAssetPathParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostApiV4ProjectsIdReleasesTagNameEvidence request
 	PostApiV4ProjectsIdReleasesTagNameEvidence(ctx context.Context, id int32, tagName string, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -4318,14 +4107,8 @@ type ClientWithResponsesInterface interface {
 
 	PostApiV4GeoStatusWithResponse(ctx context.Context, body PostApiV4GeoStatusJSONRequestBody, reqEditors ...RequestEditorFn) (*PostApiV4GeoStatusResponse, error)
 
-	// GetApiV4GroupIdPackagesComposerpackageNameWithResponse request
-	GetApiV4GroupIdPackagesComposerpackageNameWithResponse(ctx context.Context, id string, params *GetApiV4GroupIdPackagesComposerpackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupIdPackagesComposerpackageNameResponse, error)
-
 	// GetApiV4GroupIdPackagesComposerPShaWithResponse request
 	GetApiV4GroupIdPackagesComposerPShaWithResponse(ctx context.Context, id string, sha string, reqEditors ...RequestEditorFn) (*GetApiV4GroupIdPackagesComposerPShaResponse, error)
-
-	// GetApiV4GroupIdPackagesComposerP2packageNameWithResponse request
-	GetApiV4GroupIdPackagesComposerP2packageNameWithResponse(ctx context.Context, id string, params *GetApiV4GroupIdPackagesComposerP2packageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupIdPackagesComposerP2packageNameResponse, error)
 
 	// GetApiV4GroupIdPackagesComposerPackagesWithResponse request
 	GetApiV4GroupIdPackagesComposerPackagesWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetApiV4GroupIdPackagesComposerPackagesResponse, error)
@@ -4377,41 +4160,8 @@ type ClientWithResponsesInterface interface {
 	// GetApiV4GroupsIdDebianDistributionsCodenameKeyAscWithResponse request
 	GetApiV4GroupsIdDebianDistributionsCodenameKeyAscWithResponse(ctx context.Context, id string, codename string, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdDebianDistributionsCodenameKeyAscResponse, error)
 
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseWithResponse request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionInreleaseResponse, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseWithResponse request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseResponse, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgWithResponse request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionReleaseGpgResponse, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesWithResponse request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesWithResponse(ctx context.Context, id string, component string, architecture string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesResponse, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256WithResponse request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256WithResponse(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Response, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesWithResponse request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesWithResponse(ctx context.Context, id string, component string, architecture string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesResponse, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256WithResponse request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256WithResponse(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Response, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesWithResponse request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesWithResponse(ctx context.Context, id string, component string, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceSourcesResponse, error)
-
-	// GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256WithResponse request
-	GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256WithResponse(ctx context.Context, id string, component string, fileSha256 int32, params *GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Response, error)
-
 	// GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameWithResponse request
 	GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameWithResponse(ctx context.Context, id string, distribution string, projectId int32, letter string, packageName string, packageVersion string, fileName string, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesDebianPoolDistributionProjectIdLetterPackageNamePackageVersionFileNameResponse, error)
-
-	// GetApiV4GroupsIdPackagesMavenpathFileNameWithResponse request
-	GetApiV4GroupsIdPackagesMavenpathFileNameWithResponse(ctx context.Context, id string, fileName string, params *GetApiV4GroupsIdPackagesMavenpathFileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesMavenpathFileNameResponse, error)
-
-	// GetApiV4GroupsIdPackagesNpmpackageNameWithResponse request
-	GetApiV4GroupsIdPackagesNpmpackageNameWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesNpmpackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNpmpackageNameResponse, error)
 
 	// PostApiV4GroupsIdPackagesNpmNpmV1SecurityAdvisoriesBulkWithResponse request
 	PostApiV4GroupsIdPackagesNpmNpmV1SecurityAdvisoriesBulkWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*PostApiV4GroupsIdPackagesNpmNpmV1SecurityAdvisoriesBulkResponse, error)
@@ -4419,25 +4169,11 @@ type ClientWithResponsesInterface interface {
 	// PostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuickWithResponse request
 	PostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuickWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*PostApiV4GroupsIdPackagesNpmNpmV1SecurityAuditsQuickResponse, error)
 
-	// GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsWithResponse request
-	GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsResponse, error)
-
-	// DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithResponse request
-	DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithResponse(ctx context.Context, id string, tag string, params *DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagParams, reqEditors ...RequestEditorFn) (*DeleteApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error)
-
-	// PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithBodyWithResponse request with any body
-	PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithBodyWithResponse(ctx context.Context, id string, tag string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error)
-
-	PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagWithResponse(ctx context.Context, id string, tag string, body PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4GroupsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error)
-
 	// GetApiV4GroupsIdPackagesNugetIndexWithResponse request
 	GetApiV4GroupsIdPackagesNugetIndexWithResponse(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNugetIndexResponse, error)
 
 	// GetApiV4GroupsIdPackagesNugetQueryWithResponse request
 	GetApiV4GroupsIdPackagesNugetQueryWithResponse(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesNugetQueryParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNugetQueryResponse, error)
-
-	// GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameWithResponse request
-	GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameWithResponse(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameResponse, error)
 
 	// GetApiV4GroupsIdPackagesNugetV2WithResponse request
 	GetApiV4GroupsIdPackagesNugetV2WithResponse(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNugetV2Response, error)
@@ -4445,14 +4181,8 @@ type ClientWithResponsesInterface interface {
 	// GetApiV4GroupsIdPackagesNugetV2MetadataWithResponse request
 	GetApiV4GroupsIdPackagesNugetV2MetadataWithResponse(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesNugetV2MetadataResponse, error)
 
-	// GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierWithResponse request
-	GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierWithResponse(ctx context.Context, id int32, sha256 string, params *GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesPypiFilesSha256fileIdentifierResponse, error)
-
 	// GetApiV4GroupsIdPackagesPypiSimpleWithResponse request
 	GetApiV4GroupsIdPackagesPypiSimpleWithResponse(ctx context.Context, id int32, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesPypiSimpleResponse, error)
-
-	// GetApiV4GroupsIdPackagesPypiSimplepackageNameWithResponse request
-	GetApiV4GroupsIdPackagesPypiSimplepackageNameWithResponse(ctx context.Context, id int32, params *GetApiV4GroupsIdPackagesPypiSimplepackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdPackagesPypiSimplepackageNameResponse, error)
 
 	// GetApiV4GroupsIdAccessRequestsWithResponse request
 	GetApiV4GroupsIdAccessRequestsWithResponse(ctx context.Context, id string, params *GetApiV4GroupsIdAccessRequestsParams, reqEditors ...RequestEditorFn) (*GetApiV4GroupsIdAccessRequestsResponse, error)
@@ -5333,40 +5063,14 @@ type ClientWithResponsesInterface interface {
 	// GetApiV4PackagesConanV1UsersCheckCredentialsWithResponse request
 	GetApiV4PackagesConanV1UsersCheckCredentialsWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*GetApiV4PackagesConanV1UsersCheckCredentialsResponse, error)
 
-	// GetApiV4PackagesMavenpathFileNameWithResponse request
-	GetApiV4PackagesMavenpathFileNameWithResponse(ctx context.Context, fileName string, params *GetApiV4PackagesMavenpathFileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesMavenpathFileNameResponse, error)
-
-	// GetApiV4PackagesNpmpackageNameWithResponse request
-	GetApiV4PackagesNpmpackageNameWithResponse(ctx context.Context, params *GetApiV4PackagesNpmpackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesNpmpackageNameResponse, error)
-
 	// PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkWithResponse request
 	PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostApiV4PackagesNpmNpmV1SecurityAdvisoriesBulkResponse, error)
 
 	// PostApiV4PackagesNpmNpmV1SecurityAuditsQuickWithResponse request
 	PostApiV4PackagesNpmNpmV1SecurityAuditsQuickWithResponse(ctx context.Context, reqEditors ...RequestEditorFn) (*PostApiV4PackagesNpmNpmV1SecurityAuditsQuickResponse, error)
 
-	// GetApiV4PackagesNpmPackagepackageNameDistTagsWithResponse request
-	GetApiV4PackagesNpmPackagepackageNameDistTagsWithResponse(ctx context.Context, params *GetApiV4PackagesNpmPackagepackageNameDistTagsParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesNpmPackagepackageNameDistTagsResponse, error)
-
-	// DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagWithResponse request
-	DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagWithResponse(ctx context.Context, tag string, params *DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagParams, reqEditors ...RequestEditorFn) (*DeleteApiV4PackagesNpmPackagepackageNameDistTagsTagResponse, error)
-
-	// PutApiV4PackagesNpmPackagepackageNameDistTagsTagWithBodyWithResponse request with any body
-	PutApiV4PackagesNpmPackagepackageNameDistTagsTagWithBodyWithResponse(ctx context.Context, tag string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse, error)
-
-	PutApiV4PackagesNpmPackagepackageNameDistTagsTagWithResponse(ctx context.Context, tag string, body PutApiV4PackagesNpmPackagepackageNameDistTagsTagJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4PackagesNpmPackagepackageNameDistTagsTagResponse, error)
-
 	// GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemWithResponse request
 	GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemResponse, error)
-
-	// GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionWithResponse request
-	GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionResponse, error)
-
-	// GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadWithResponse request
-	GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionDownloadResponse, error)
-
-	// GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileWithResponse request
-	GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, params *GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileParams, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemmoduleVersionFileResponse, error)
 
 	// GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadWithResponse request
 	GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadWithResponse(ctx context.Context, moduleNamespace string, moduleName string, moduleSystem string, reqEditors ...RequestEditorFn) (*GetApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownloadResponse, error)
@@ -6186,6 +5890,9 @@ type ClientWithResponsesInterface interface {
 	// GetApiV4ProjectsIdInvitedGroupsWithResponse request
 	GetApiV4ProjectsIdInvitedGroupsWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdInvitedGroupsParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdInvitedGroupsResponse, error)
 
+	// GetApiV4ProjectsIdIssuesWithResponse request
+	GetApiV4ProjectsIdIssuesWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdIssuesParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdIssuesResponse, error)
+
 	// PostApiV4ProjectsIdIssuesWithResponse request
 	PostApiV4ProjectsIdIssuesWithResponse(ctx context.Context, id string, params *PostApiV4ProjectsIdIssuesParams, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdIssuesResponse, error)
 
@@ -6197,6 +5904,12 @@ type ClientWithResponsesInterface interface {
 
 	// DeleteApiV4ProjectsIdIssuesIssueIidWithResponse request
 	DeleteApiV4ProjectsIdIssuesIssueIidWithResponse(ctx context.Context, id string, issueIid int, reqEditors ...RequestEditorFn) (*DeleteApiV4ProjectsIdIssuesIssueIidResponse, error)
+
+	// GetApiV4ProjectsIdIssuesIssueIidWithResponse request
+	GetApiV4ProjectsIdIssuesIssueIidWithResponse(ctx context.Context, id string, issueIid int, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdIssuesIssueIidResponse, error)
+
+	// PutApiV4ProjectsIdIssuesIssueIidWithResponse request
+	PutApiV4ProjectsIdIssuesIssueIidWithResponse(ctx context.Context, id string, issueIid int, params *PutApiV4ProjectsIdIssuesIssueIidParams, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdIssuesIssueIidResponse, error)
 
 	// PostApiV4ProjectsIdIssuesIssueIidAddSpentTimeWithResponse request
 	PostApiV4ProjectsIdIssuesIssueIidAddSpentTimeWithResponse(ctx context.Context, id string, issueIid int, params *PostApiV4ProjectsIdIssuesIssueIidAddSpentTimeParams, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdIssuesIssueIidAddSpentTimeResponse, error)
@@ -6238,8 +5951,18 @@ type ClientWithResponsesInterface interface {
 	// GetApiV4ProjectsIdIssuesIssueIidMetricImagesWithResponse request
 	GetApiV4ProjectsIdIssuesIssueIidMetricImagesWithResponse(ctx context.Context, id string, issueIid int, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdIssuesIssueIidMetricImagesResponse, error)
 
+	// PostApiV4ProjectsIdIssuesIssueIidMetricImagesWithBodyWithResponse request with any body
+	PostApiV4ProjectsIdIssuesIssueIidMetricImagesWithBodyWithResponse(ctx context.Context, id string, issueIid int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdIssuesIssueIidMetricImagesResponse, error)
+
+	PostApiV4ProjectsIdIssuesIssueIidMetricImagesWithFormdataBodyWithResponse(ctx context.Context, id string, issueIid int, body PostApiV4ProjectsIdIssuesIssueIidMetricImagesFormdataRequestBody, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdIssuesIssueIidMetricImagesResponse, error)
+
 	// DeleteApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdWithResponse request
 	DeleteApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdWithResponse(ctx context.Context, id string, issueIid int, imageId int, reqEditors ...RequestEditorFn) (*DeleteApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdResponse, error)
+
+	// PutApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdWithBodyWithResponse request with any body
+	PutApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdWithBodyWithResponse(ctx context.Context, id string, issueIid int, imageId int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdResponse, error)
+
+	PutApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdWithFormdataBodyWithResponse(ctx context.Context, id string, issueIid int, imageId int, body PutApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdFormdataRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdIssuesIssueIidMetricImagesImageIdResponse, error)
 
 	// PostApiV4ProjectsIdIssuesIssueIidMoveWithBodyWithResponse request with any body
 	PostApiV4ProjectsIdIssuesIssueIidMoveWithBodyWithResponse(ctx context.Context, id string, issueIid int, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdIssuesIssueIidMoveResponse, error)
@@ -6332,9 +6055,6 @@ type ClientWithResponsesInterface interface {
 	// GetApiV4ProjectsIdJobsArtifactsRefNameDownloadWithResponse request
 	GetApiV4ProjectsIdJobsArtifactsRefNameDownloadWithResponse(ctx context.Context, id string, refName string, params *GetApiV4ProjectsIdJobsArtifactsRefNameDownloadParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdJobsArtifactsRefNameDownloadResponse, error)
 
-	// GetApiV4ProjectsIdJobsArtifactsRefNameRawartifactPathWithResponse request
-	GetApiV4ProjectsIdJobsArtifactsRefNameRawartifactPathWithResponse(ctx context.Context, id string, refName string, params *GetApiV4ProjectsIdJobsArtifactsRefNameRawartifactPathParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdJobsArtifactsRefNameRawartifactPathResponse, error)
-
 	// GetApiV4ProjectsIdJobsJobIdWithResponse request
 	GetApiV4ProjectsIdJobsJobIdWithResponse(ctx context.Context, id int32, jobId int32, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdJobsJobIdResponse, error)
 
@@ -6343,9 +6063,6 @@ type ClientWithResponsesInterface interface {
 
 	// GetApiV4ProjectsIdJobsJobIdArtifactsWithResponse request
 	GetApiV4ProjectsIdJobsJobIdArtifactsWithResponse(ctx context.Context, id string, jobId int32, params *GetApiV4ProjectsIdJobsJobIdArtifactsParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdJobsJobIdArtifactsResponse, error)
-
-	// GetApiV4ProjectsIdJobsJobIdArtifactsartifactPathWithResponse request
-	GetApiV4ProjectsIdJobsJobIdArtifactsartifactPathWithResponse(ctx context.Context, id string, jobId int32, params *GetApiV4ProjectsIdJobsJobIdArtifactsartifactPathParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdJobsJobIdArtifactsartifactPathResponse, error)
 
 	// PostApiV4ProjectsIdJobsJobIdArtifactsKeepWithResponse request
 	PostApiV4ProjectsIdJobsJobIdArtifactsKeepWithResponse(ctx context.Context, id string, jobId int32, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdJobsJobIdArtifactsKeepResponse, error)
@@ -6592,9 +6309,6 @@ type ClientWithResponsesInterface interface {
 
 	PostApiV4ProjectsIdPackagesComposerWithResponse(ctx context.Context, id string, body PostApiV4ProjectsIdPackagesComposerJSONRequestBody, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdPackagesComposerResponse, error)
 
-	// GetApiV4ProjectsIdPackagesComposerArchivespackageNameWithResponse request
-	GetApiV4ProjectsIdPackagesComposerArchivespackageNameWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesComposerArchivespackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesComposerArchivespackageNameResponse, error)
-
 	// GetApiV4ProjectsIdPackagesConanV1ConansSearchWithResponse request
 	GetApiV4ProjectsIdPackagesConanV1ConansSearchWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesConanV1ConansSearchParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesConanV1ConansSearchResponse, error)
 
@@ -6720,33 +6434,6 @@ type ClientWithResponsesInterface interface {
 	// GetApiV4ProjectsIdPackagesConanV2UsersCheckCredentialsWithResponse request
 	GetApiV4ProjectsIdPackagesConanV2UsersCheckCredentialsWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesConanV2UsersCheckCredentialsResponse, error)
 
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionInreleaseWithResponse request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionInreleaseWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionInreleaseParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesDebianDistsdistributionInreleaseResponse, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseWithResponse request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseResponse, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseGpgWithResponse request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseGpgWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseGpgParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesDebianDistsdistributionReleaseGpgResponse, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesWithResponse request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesWithResponse(ctx context.Context, id string, component string, architecture string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitecturePackagesResponse, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256WithResponse request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256WithResponse(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentBinaryArchitectureByHashSha256FileSha256Response, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesWithResponse request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesWithResponse(ctx context.Context, id string, component string, architecture string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitecturePackagesResponse, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256WithResponse request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256WithResponse(ctx context.Context, id string, component string, architecture string, fileSha256 int32, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentDebianInstallerBinaryArchitectureByHashSha256FileSha256Response, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceSourcesWithResponse request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceSourcesWithResponse(ctx context.Context, id string, component string, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceSourcesParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceSourcesResponse, error)
-
-	// GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256WithResponse request
-	GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256WithResponse(ctx context.Context, id string, component string, fileSha256 int32, params *GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Params, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesDebianDistsdistributionComponentSourceByHashSha256FileSha256Response, error)
-
 	// GetApiV4ProjectsIdPackagesDebianPoolDistributionLetterPackageNamePackageVersionFileNameWithResponse request
 	GetApiV4ProjectsIdPackagesDebianPoolDistributionLetterPackageNamePackageVersionFileNameWithResponse(ctx context.Context, id string, distribution string, letter string, packageName string, packageVersion string, fileName string, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesDebianPoolDistributionLetterPackageNamePackageVersionFileNameResponse, error)
 
@@ -6759,31 +6446,6 @@ type ClientWithResponsesInterface interface {
 	PutApiV4ProjectsIdPackagesDebianFileNameAuthorizeWithBodyWithResponse(ctx context.Context, id string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesDebianFileNameAuthorizeResponse, error)
 
 	PutApiV4ProjectsIdPackagesDebianFileNameAuthorizeWithResponse(ctx context.Context, id string, fileName string, body PutApiV4ProjectsIdPackagesDebianFileNameAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesDebianFileNameAuthorizeResponse, error)
-
-	// GetApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameWithResponse request
-	GetApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameWithResponse(ctx context.Context, id string, packageName string, fileName string, params *GetApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameResponse, error)
-
-	// PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameWithBodyWithResponse request with any body
-	PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameWithBodyWithResponse(ctx context.Context, id string, packageName string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameResponse, error)
-
-	PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameWithResponse(ctx context.Context, id string, packageName string, fileName string, body PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameResponse, error)
-
-	// PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameAuthorizeWithBodyWithResponse request with any body
-	PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameAuthorizeWithBodyWithResponse(ctx context.Context, id string, packageName string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameAuthorizeResponse, error)
-
-	PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameAuthorizeWithResponse(ctx context.Context, id string, packageName string, fileName string, body PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesGenericPackageNamepackageVersionpathFileNameAuthorizeResponse, error)
-
-	// GetApiV4ProjectsIdPackagesGomoduleNameVListWithResponse request
-	GetApiV4ProjectsIdPackagesGomoduleNameVListWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesGomoduleNameVListParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesGomoduleNameVListResponse, error)
-
-	// GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionInfoWithResponse request
-	GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionInfoWithResponse(ctx context.Context, id string, moduleVersion string, params *GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionInfoParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionInfoResponse, error)
-
-	// GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionModWithResponse request
-	GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionModWithResponse(ctx context.Context, id string, moduleVersion string, params *GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionModParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionModResponse, error)
-
-	// GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionZipWithResponse request
-	GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionZipWithResponse(ctx context.Context, id string, moduleVersion string, params *GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionZipParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesGomoduleNameVModuleVersionZipResponse, error)
 
 	// PostApiV4ProjectsIdPackagesHelmApiChannelChartsWithBodyWithResponse request with any body
 	PostApiV4ProjectsIdPackagesHelmApiChannelChartsWithBodyWithResponse(ctx context.Context, id int32, channel string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdPackagesHelmApiChannelChartsResponse, error)
@@ -6799,54 +6461,11 @@ type ClientWithResponsesInterface interface {
 	// GetApiV4ProjectsIdPackagesHelmChannelIndexYamlWithResponse request
 	GetApiV4ProjectsIdPackagesHelmChannelIndexYamlWithResponse(ctx context.Context, id int32, channel string, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesHelmChannelIndexYamlResponse, error)
 
-	// GetApiV4ProjectsIdPackagesMavenpathFileNameWithResponse request
-	GetApiV4ProjectsIdPackagesMavenpathFileNameWithResponse(ctx context.Context, id string, fileName string, params *GetApiV4ProjectsIdPackagesMavenpathFileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesMavenpathFileNameResponse, error)
-
-	// PutApiV4ProjectsIdPackagesMavenpathFileNameWithBodyWithResponse request with any body
-	PutApiV4ProjectsIdPackagesMavenpathFileNameWithBodyWithResponse(ctx context.Context, id string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesMavenpathFileNameResponse, error)
-
-	PutApiV4ProjectsIdPackagesMavenpathFileNameWithResponse(ctx context.Context, id string, fileName string, body PutApiV4ProjectsIdPackagesMavenpathFileNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesMavenpathFileNameResponse, error)
-
-	// PutApiV4ProjectsIdPackagesMavenpathFileNameAuthorizeWithBodyWithResponse request with any body
-	PutApiV4ProjectsIdPackagesMavenpathFileNameAuthorizeWithBodyWithResponse(ctx context.Context, id string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesMavenpathFileNameAuthorizeResponse, error)
-
-	PutApiV4ProjectsIdPackagesMavenpathFileNameAuthorizeWithResponse(ctx context.Context, id string, fileName string, body PutApiV4ProjectsIdPackagesMavenpathFileNameAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesMavenpathFileNameAuthorizeResponse, error)
-
-	// GetApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameWithResponse request
-	GetApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameWithResponse(ctx context.Context, id string, modelVersionId string, fileName string, params *GetApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameResponse, error)
-
-	// PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameWithBodyWithResponse request with any body
-	PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameWithBodyWithResponse(ctx context.Context, id string, modelVersionId string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameResponse, error)
-
-	PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameWithResponse(ctx context.Context, id string, modelVersionId string, fileName string, body PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameResponse, error)
-
-	// PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameAuthorizeWithBodyWithResponse request with any body
-	PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameAuthorizeWithBodyWithResponse(ctx context.Context, id string, modelVersionId string, fileName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameAuthorizeResponse, error)
-
-	PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameAuthorizeWithResponse(ctx context.Context, id string, modelVersionId string, fileName string, body PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilespathFileNameAuthorizeResponse, error)
-
-	// GetApiV4ProjectsIdPackagesNpmpackageNameWithResponse request
-	GetApiV4ProjectsIdPackagesNpmpackageNameWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNpmpackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesNpmpackageNameResponse, error)
-
-	// GetApiV4ProjectsIdPackagesNpmpackageNamefileNameWithResponse request
-	GetApiV4ProjectsIdPackagesNpmpackageNamefileNameWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNpmpackageNamefileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesNpmpackageNamefileNameResponse, error)
-
 	// PostApiV4ProjectsIdPackagesNpmNpmV1SecurityAdvisoriesBulkWithResponse request
 	PostApiV4ProjectsIdPackagesNpmNpmV1SecurityAdvisoriesBulkWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdPackagesNpmNpmV1SecurityAdvisoriesBulkResponse, error)
 
 	// PostApiV4ProjectsIdPackagesNpmNpmV1SecurityAuditsQuickWithResponse request
 	PostApiV4ProjectsIdPackagesNpmNpmV1SecurityAuditsQuickWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdPackagesNpmNpmV1SecurityAuditsQuickResponse, error)
-
-	// GetApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsWithResponse request
-	GetApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsResponse, error)
-
-	// DeleteApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagWithResponse request
-	DeleteApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagWithResponse(ctx context.Context, id string, tag string, params *DeleteApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagParams, reqEditors ...RequestEditorFn) (*DeleteApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error)
-
-	// PutApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagWithBodyWithResponse request with any body
-	PutApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagWithBodyWithResponse(ctx context.Context, id string, tag string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error)
-
-	PutApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagWithResponse(ctx context.Context, id string, tag string, body PutApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesNpmPackagepackageNameDistTagsTagResponse, error)
 
 	// PutApiV4ProjectsIdPackagesNpmPackageNameWithBodyWithResponse request with any body
 	PutApiV4ProjectsIdPackagesNpmPackageNameWithBodyWithResponse(ctx context.Context, id string, packageName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesNpmPackageNameResponse, error)
@@ -6858,26 +6477,14 @@ type ClientWithResponsesInterface interface {
 
 	PutApiV4ProjectsIdPackagesNugetWithResponse(ctx context.Context, id string, body PutApiV4ProjectsIdPackagesNugetJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesNugetResponse, error)
 
-	// DeleteApiV4ProjectsIdPackagesNugetpackageNamepackageVersionWithResponse request
-	DeleteApiV4ProjectsIdPackagesNugetpackageNamepackageVersionWithResponse(ctx context.Context, id string, params *DeleteApiV4ProjectsIdPackagesNugetpackageNamepackageVersionParams, reqEditors ...RequestEditorFn) (*DeleteApiV4ProjectsIdPackagesNugetpackageNamepackageVersionResponse, error)
-
 	// PutApiV4ProjectsIdPackagesNugetAuthorizeWithResponse request
 	PutApiV4ProjectsIdPackagesNugetAuthorizeWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesNugetAuthorizeResponse, error)
-
-	// GetApiV4ProjectsIdPackagesNugetDownloadpackageNamepackageVersionpackageFilenameWithResponse request
-	GetApiV4ProjectsIdPackagesNugetDownloadpackageNamepackageVersionpackageFilenameWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNugetDownloadpackageNamepackageVersionpackageFilenameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesNugetDownloadpackageNamepackageVersionpackageFilenameResponse, error)
-
-	// GetApiV4ProjectsIdPackagesNugetDownloadpackageNameIndexWithResponse request
-	GetApiV4ProjectsIdPackagesNugetDownloadpackageNameIndexWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNugetDownloadpackageNameIndexParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesNugetDownloadpackageNameIndexResponse, error)
 
 	// GetApiV4ProjectsIdPackagesNugetIndexWithResponse request
 	GetApiV4ProjectsIdPackagesNugetIndexWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesNugetIndexResponse, error)
 
 	// GetApiV4ProjectsIdPackagesNugetQueryWithResponse request
 	GetApiV4ProjectsIdPackagesNugetQueryWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNugetQueryParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesNugetQueryResponse, error)
-
-	// GetApiV4ProjectsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameWithResponse request
-	GetApiV4ProjectsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesNugetSymbolfilesfileNamesignaturesameFileNameResponse, error)
 
 	// PutApiV4ProjectsIdPackagesNugetSymbolpackageWithBodyWithResponse request with any body
 	PutApiV4ProjectsIdPackagesNugetSymbolpackageWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesNugetSymbolpackageResponse, error)
@@ -6925,26 +6532,14 @@ type ClientWithResponsesInterface interface {
 	// PostApiV4ProjectsIdPackagesPypiAuthorizeWithResponse request
 	PostApiV4ProjectsIdPackagesPypiAuthorizeWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdPackagesPypiAuthorizeResponse, error)
 
-	// GetApiV4ProjectsIdPackagesPypiFilesSha256fileIdentifierWithResponse request
-	GetApiV4ProjectsIdPackagesPypiFilesSha256fileIdentifierWithResponse(ctx context.Context, id string, sha256 string, params *GetApiV4ProjectsIdPackagesPypiFilesSha256fileIdentifierParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesPypiFilesSha256fileIdentifierResponse, error)
-
 	// GetApiV4ProjectsIdPackagesPypiSimpleWithResponse request
 	GetApiV4ProjectsIdPackagesPypiSimpleWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesPypiSimpleResponse, error)
-
-	// GetApiV4ProjectsIdPackagesPypiSimplepackageNameWithResponse request
-	GetApiV4ProjectsIdPackagesPypiSimplepackageNameWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesPypiSimplepackageNameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesPypiSimplepackageNameResponse, error)
 
 	// PostApiV4ProjectsIdPackagesRpmWithResponse request
 	PostApiV4ProjectsIdPackagesRpmWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdPackagesRpmResponse, error)
 
-	// GetApiV4ProjectsIdPackagesRpmpackageFileIdfileNameWithResponse request
-	GetApiV4ProjectsIdPackagesRpmpackageFileIdfileNameWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesRpmpackageFileIdfileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesRpmpackageFileIdfileNameResponse, error)
-
 	// PostApiV4ProjectsIdPackagesRpmAuthorizeWithResponse request
 	PostApiV4ProjectsIdPackagesRpmAuthorizeWithResponse(ctx context.Context, id string, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdPackagesRpmAuthorizeResponse, error)
-
-	// GetApiV4ProjectsIdPackagesRpmRepodatafileNameWithResponse request
-	GetApiV4ProjectsIdPackagesRpmRepodatafileNameWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdPackagesRpmRepodatafileNameParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesRpmRepodatafileNameResponse, error)
 
 	// GetApiV4ProjectsIdPackagesRubygemsApiV1DependenciesWithResponse request
 	GetApiV4ProjectsIdPackagesRubygemsApiV1DependenciesWithResponse(ctx context.Context, id int32, params *GetApiV4ProjectsIdPackagesRubygemsApiV1DependenciesParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesRubygemsApiV1DependenciesResponse, error)
@@ -6968,17 +6563,6 @@ type ClientWithResponsesInterface interface {
 
 	// GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemWithResponse request
 	GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemWithResponse(ctx context.Context, id string, moduleName string, moduleSystem string, params *GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemResponse, error)
-
-	// GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionWithResponse request
-	GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionWithResponse(ctx context.Context, id string, moduleName string, moduleSystem string, params *GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionResponse, error)
-
-	// PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileWithBodyWithResponse request with any body
-	PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileWithBodyWithResponse(ctx context.Context, id string, moduleName string, moduleSystem string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileResponse, error)
-
-	// PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileAuthorizeWithBodyWithResponse request with any body
-	PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileAuthorizeWithBodyWithResponse(ctx context.Context, id string, moduleName string, moduleSystem string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileAuthorizeResponse, error)
-
-	PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileAuthorizeWithResponse(ctx context.Context, id string, moduleName string, moduleSystem string, body PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileAuthorizeJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemmoduleVersionFileAuthorizeResponse, error)
 
 	// DeleteApiV4ProjectsIdPackagesPackageIdWithResponse request
 	DeleteApiV4ProjectsIdPackagesPackageIdWithResponse(ctx context.Context, id string, packageId int32, reqEditors ...RequestEditorFn) (*DeleteApiV4ProjectsIdPackagesPackageIdResponse, error)
@@ -7193,9 +6777,6 @@ type ClientWithResponsesInterface interface {
 
 	PostApiV4ProjectsIdReleasesWithResponse(ctx context.Context, id string, body PostApiV4ProjectsIdReleasesJSONRequestBody, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdReleasesResponse, error)
 
-	// GetApiV4ProjectsIdReleasesPermalinkLatestsuffixPathWithResponse request
-	GetApiV4ProjectsIdReleasesPermalinkLatestsuffixPathWithResponse(ctx context.Context, id string, params *GetApiV4ProjectsIdReleasesPermalinkLatestsuffixPathParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdReleasesPermalinkLatestsuffixPathResponse, error)
-
 	// DeleteApiV4ProjectsIdReleasesTagNameWithResponse request
 	DeleteApiV4ProjectsIdReleasesTagNameWithResponse(ctx context.Context, id string, tagName string, reqEditors ...RequestEditorFn) (*DeleteApiV4ProjectsIdReleasesTagNameResponse, error)
 
@@ -7225,9 +6806,6 @@ type ClientWithResponsesInterface interface {
 	PutApiV4ProjectsIdReleasesTagNameAssetsLinksLinkIdWithBodyWithResponse(ctx context.Context, id string, tagName string, linkId int32, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdReleasesTagNameAssetsLinksLinkIdResponse, error)
 
 	PutApiV4ProjectsIdReleasesTagNameAssetsLinksLinkIdWithResponse(ctx context.Context, id string, tagName string, linkId int32, body PutApiV4ProjectsIdReleasesTagNameAssetsLinksLinkIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PutApiV4ProjectsIdReleasesTagNameAssetsLinksLinkIdResponse, error)
-
-	// GetApiV4ProjectsIdReleasesTagNameDownloadsdirectAssetPathWithResponse request
-	GetApiV4ProjectsIdReleasesTagNameDownloadsdirectAssetPathWithResponse(ctx context.Context, id string, tagName string, params *GetApiV4ProjectsIdReleasesTagNameDownloadsdirectAssetPathParams, reqEditors ...RequestEditorFn) (*GetApiV4ProjectsIdReleasesTagNameDownloadsdirectAssetPathResponse, error)
 
 	// PostApiV4ProjectsIdReleasesTagNameEvidenceWithResponse request
 	PostApiV4ProjectsIdReleasesTagNameEvidenceWithResponse(ctx context.Context, id int32, tagName string, reqEditors ...RequestEditorFn) (*PostApiV4ProjectsIdReleasesTagNameEvidenceResponse, error)

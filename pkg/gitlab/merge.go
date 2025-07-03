@@ -146,6 +146,8 @@ type GetApiV4MergeRequestsParams struct {
 	// ApprovedByUsernames Return merge requests which have been approved by the specified users with the given
 	//
 	//
+	//
+	//
 	//             usernames
 	ApprovedByUsernames *string `form:"approved_by_usernames,omitempty" json:"approved_by_usernames,omitempty"`
 

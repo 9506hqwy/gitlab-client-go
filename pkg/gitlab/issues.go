@@ -13,94 +13,94 @@ import (
 )
 
 type GetApiV4IssuesParams struct {
-	// AssigneeId Return issues assigned to the given user
+	// AssigneeId Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.
 	AssigneeId *int `form:"assignee_id,omitempty" json:"assignee_id,omitempty"`
 
-	// AssigneeUsername Return issues assigned to the given
+	// AssigneeUsername Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
 	AssigneeUsername *[]string `form:"assignee_username,omitempty" json:"assignee_username,omitempty"`
 
-	// AuthorId Return issues created by the given user
+	// AuthorId Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me.
 	AuthorId *int `form:"author_id,omitempty" json:"author_id,omitempty"`
 
-	// AuthorUsername Return issues created by the given
+	// AuthorUsername Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.
 	AuthorUsername *string `form:"author_username,omitempty" json:"author_username,omitempty"`
 
 	// Confidential Filter confidential or public issues.
 	Confidential *bool `form:"confidential,omitempty" json:"confidential,omitempty"`
 
-	// CreatedAfter Return issues created on or after the given time. Expected in ISO 8601 format (
+	// CreatedAfter Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
 	CreatedAfter *string `form:"created_after,omitempty" json:"created_after,omitempty"`
 
-	// CreatedBefore Return issues created on or before the given time. Expected in ISO 8601 format (
+	// CreatedBefore Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
 	CreatedBefore *string `form:"created_before,omitempty" json:"created_before,omitempty"`
 
-	// DueDate Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts:
+	// DueDate Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next_month_and_previous_two_weeks.
 	DueDate *string `form:"due_date,omitempty" json:"due_date,omitempty"`
 
-	// EpicId Return issues associated with the given epic ID.
+	// EpicId Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. Premium and Ultimate only.
 	EpicId *int `form:"epic_id,omitempty" json:"epic_id,omitempty"`
 
-	// HealthStatus Return issues with the specified
+	// HealthStatus Return issues with the specified health_status. (Introduced in GitLab 15.4). In GitLab 15.5 and later, None returns issues with no health status assigned, and Any returns issues with a health status assigned. Ultimate only.
 	HealthStatus *string `form:"health_status,omitempty" json:"health_status,omitempty"`
 
-	// Iids Return only the issues having the given
+	// Iids Return only the issues having the given iid.
 	Iids *[]int `form:"iids[],omitempty" json:"iids[],omitempty"`
 
-	// In Modify the scope of the
+	// In Modify the scope of the search attribute. title, description, or a string joining them with comma. Default is title,description.
 	In *string `form:"in,omitempty" json:"in,omitempty"`
 
-	// IssueType Filter to a given type of issue. One of
+	// IssueType Filter to a given type of issue. One of issue, incident, test_case or task.
 	IssueType *string `form:"issue_type,omitempty" json:"issue_type,omitempty"`
 
-	// IterationId Return issues assigned to the given iteration ID.
+	// IterationId Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. Premium and Ultimate only.
 	IterationId *int `form:"iteration_id,omitempty" json:"iteration_id,omitempty"`
 
-	// IterationTitle Return issues assigned to the iteration with the given title. Similar to
+	// IterationTitle Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive with iteration_id. Premium and Ultimate only.
 	IterationTitle *string `form:"iteration_title,omitempty" json:"iteration_title,omitempty"`
 
-	// Labels Comma-separated list of label names, issues must have all labels to be returned.
+	// Labels Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
 	Labels *string `form:"labels,omitempty" json:"labels,omitempty"`
 
-	// MilestoneId Returns issues assigned to milestones with a given timebox value (
+	// MilestoneId Returns issues assigned to milestones with a given timebox value (None, Any, Upcoming, and Started). None lists all issues with no milestone. Any lists all issues that have an assigned milestone. Upcoming lists all issues assigned to milestones due in the future. Started lists all issues assigned to open, started milestones. The logic for Upcoming and Started differs from the logic used in the GraphQL API. milestone and milestone_id are mutually exclusive.
 	MilestoneId *string `form:"milestone_id,omitempty" json:"milestone_id,omitempty"`
 
-	// Milestone The milestone title.
+	// Milestone The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone. Using None or Any will be deprecated in the future. Use milestone_id attribute instead. milestone and milestone_id are mutually exclusive.
 	Milestone *string `form:"milestone,omitempty" json:"milestone,omitempty"`
 
-	// MyReactionEmoji Return issues reacted by the authenticated user by the given
+	// MyReactionEmoji Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
 	MyReactionEmoji *string `form:"my_reaction_emoji,omitempty" json:"my_reaction_emoji,omitempty"`
 
-	// NonArchived Return issues only from non-archived projects. If
+	// NonArchived Return issues only from non-archived projects. If false, the response returns issues from both archived and non-archived projects. Default is true.
 	NonArchived *bool `form:"non_archived,omitempty" json:"non_archived,omitempty"`
 
-	// Not Return issues that do not match the parameters supplied. Accepts:
+	// Not Return issues that do not match the parameters supplied. Accepts: assignee_id, assignee_username, author_id, author_username, iids, iteration_id, iteration_title, labels, milestone, milestone_id and weight.
 	Not *string `form:"not,omitempty" json:"not,omitempty"`
 
-	// OrderBy Return issues ordered by
+	// OrderBy Return issues ordered by created_at, due_date, label_priority, milestone_due, popularity, priority, relative_position, title, updated_at, or weight fields. Default is created_at.
 	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
 
-	// Scope Return issues for the given scope:
+	// Scope Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to created_by_me.
 	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
 
-	// Search Search issues against their
+	// Search Search issues against their title and description.
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
-	// Sort Return issues sorted in
+	// Sort Return issues sorted in asc or desc order. Default is desc.
 	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
 
-	// State Return
+	// State Return all issues or just those that are opened or closed.
 	State *string `form:"state,omitempty" json:"state,omitempty"`
 
-	// UpdatedAfter Return issues updated on or after the given time. Expected in ISO 8601 format (
+	// UpdatedAfter Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
 	UpdatedAfter *string `form:"updated_after,omitempty" json:"updated_after,omitempty"`
 
-	// UpdatedBefore Return issues updated on or before the given time. Expected in ISO 8601 format (
+	// UpdatedBefore Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
 	UpdatedBefore *string `form:"updated_before,omitempty" json:"updated_before,omitempty"`
 
-	// Weight Return issues with the specified
+	// Weight Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned. Premium and Ultimate only.
 	Weight *int `form:"weight,omitempty" json:"weight,omitempty"`
 
-	// WithLabelsDetails If
+	// WithLabelsDetails If true, the response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false.
 	WithLabelsDetails *bool `form:"with_labels_details,omitempty" json:"with_labels_details,omitempty"`
 }
 type GetApiV4IssuesResponse struct {
