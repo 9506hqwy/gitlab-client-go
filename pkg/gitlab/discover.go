@@ -14,7 +14,7 @@ import (
 
 type GetApiV4DiscoverCertBasedClustersParams struct {
 	// GroupId The group ID to find all certificate-based clusters in the hierarchy
-	GroupId int32 `form:"group_id" json:"group_id"`
+	GroupId int32 `form:"group_id" json:"group_id" jsonschema:"description=The group ID to find all certificate-based clusters in the hierarchy,format=int32"`
 }
 type GetApiV4DiscoverCertBasedClustersResponse struct {
 	Body         []byte

@@ -14,10 +14,10 @@ import (
 
 type GetApiV4PagesDomainsParams struct {
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type GetApiV4PagesDomainsResponse struct {
 	Body         []byte

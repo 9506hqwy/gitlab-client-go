@@ -18,124 +18,124 @@ type PostApiV4JobsRequestJSONBody struct {
 	// Info Runner's metadata
 	Info *struct {
 		// Architecture Runner's architecture
-		Architecture *string `json:"architecture,omitempty"`
+		Architecture *string `json:"architecture,omitempty" jsonschema:"description=Runner's architecture"`
 
 		// Config Runner's config
 		Config *struct {
 			// Gpus GPUs enabled
-			Gpus *string `json:"gpus,omitempty"`
-		} `json:"config,omitempty"`
+			Gpus *string `json:"gpus,omitempty" jsonschema:"description=GPUs enabled"`
+		} `json:"config,omitempty" jsonschema:"description=Runner's config"`
 
 		// Executor Runner's executor
-		Executor *string `json:"executor,omitempty"`
+		Executor *string `json:"executor,omitempty" jsonschema:"description=Runner's executor"`
 
 		// Features Runner's features
-		Features *map[string]interface{} `json:"features,omitempty"`
+		Features *map[string]interface{} `json:"features,omitempty" jsonschema:"description=Runner's features"`
 
 		// Name Runner's name
-		Name *string `json:"name,omitempty"`
+		Name *string `json:"name,omitempty" jsonschema:"description=Runner's name"`
 
 		// Platform Runner's platform
-		Platform *string `json:"platform,omitempty"`
+		Platform *string `json:"platform,omitempty" jsonschema:"description=Runner's platform"`
 
 		// Revision Runner's revision
-		Revision *string `json:"revision,omitempty"`
+		Revision *string `json:"revision,omitempty" jsonschema:"description=Runner's revision"`
 
 		// Version Runner's version
-		Version *string `json:"version,omitempty"`
-	} `json:"info,omitempty"`
+		Version *string `json:"version,omitempty" jsonschema:"description=Runner's version"`
+	} `json:"info,omitempty" jsonschema:"description=Runner's metadata"`
 
 	// LastUpdate Runner's queue last_update token
-	LastUpdate *string `json:"last_update,omitempty"`
+	LastUpdate *string `json:"last_update,omitempty" jsonschema:"description=Runner's queue last_update token"`
 
 	// Session Runner's session data
 	Session *struct {
 		// Authorization Session's authorization
-		Authorization *string `json:"authorization,omitempty"`
+		Authorization *string `json:"authorization,omitempty" jsonschema:"description=Session's authorization"`
 
 		// Certificate Session's certificate
-		Certificate *string `json:"certificate,omitempty"`
+		Certificate *string `json:"certificate,omitempty" jsonschema:"description=Session's certificate"`
 
 		// Url Session's url
-		Url *string `json:"url,omitempty"`
-	} `json:"session,omitempty"`
+		Url *string `json:"url,omitempty" jsonschema:"description=Session's url"`
+	} `json:"session,omitempty" jsonschema:"description=Runner's session data"`
 
 	// SystemId Runner's system identifier
-	SystemId *string `json:"system_id,omitempty"`
+	SystemId *string `json:"system_id,omitempty" jsonschema:"description=Runner's system identifier"`
 
 	// Token Runner's authentication token
-	Token string `json:"token"`
+	Token string `json:"token" jsonschema:"description=Runner's authentication token"`
 }
 type PutApiV4JobsIdJSONBody struct {
 	// Checksum Job's trace CRC32 checksum
-	Checksum *string `json:"checksum,omitempty"`
+	Checksum *string `json:"checksum,omitempty" jsonschema:"description=Job's trace CRC32 checksum"`
 
 	// ExitCode Job's exit code
-	ExitCode *int32 `json:"exit_code,omitempty"`
+	ExitCode *int32 `json:"exit_code,omitempty" jsonschema:"description=Job's exit code,format=int32"`
 
 	// FailureReason Job's failure_reason
-	FailureReason *string `json:"failure_reason,omitempty"`
+	FailureReason *string `json:"failure_reason,omitempty" jsonschema:"description=Job's failure_reason"`
 
 	// Output Build log state
 	Output *struct {
 		// Bytesize Job's trace size in bytes
-		Bytesize *int32 `json:"bytesize,omitempty"`
+		Bytesize *int32 `json:"bytesize,omitempty" jsonschema:"description=Job's trace size in bytes,format=int32"`
 
 		// Checksum Job's trace CRC32 checksum
-		Checksum *string `json:"checksum,omitempty"`
-	} `json:"output,omitempty"`
+		Checksum *string `json:"checksum,omitempty" jsonschema:"description=Job's trace CRC32 checksum"`
+	} `json:"output,omitempty" jsonschema:"description=Build log state"`
 
 	// State Job's status: success, failed
-	State *string `json:"state,omitempty"`
+	State *string `json:"state,omitempty" jsonschema:"description=Job's status: success\\, failed"`
 
 	// Token Job token
-	Token string `json:"token"`
+	Token string `json:"token" jsonschema:"description=Job token"`
 }
 type GetApiV4JobsIdArtifactsParams struct {
 	// Token Job's authentication token
-	Token *string `form:"token,omitempty" json:"token,omitempty"`
+	Token *string `form:"token,omitempty" json:"token,omitempty" jsonschema:"description=Job's authentication token"`
 
 	// DirectDownload Perform direct download from remote storage instead of proxying artifacts
-	DirectDownload *bool `form:"direct_download,omitempty" json:"direct_download,omitempty"`
+	DirectDownload *bool `form:"direct_download,omitempty" json:"direct_download,omitempty" jsonschema:"description=Perform direct download from remote storage instead of proxying artifacts,default=false"`
 }
 type PostApiV4JobsIdArtifactsJSONBody struct {
 	// Accessibility Specify accessibility level of artifact private/public
-	Accessibility *string `json:"accessibility,omitempty"`
+	Accessibility *string `json:"accessibility,omitempty" jsonschema:"description=Specify accessibility level of artifact private/public"`
 
 	// ArtifactFormat The format of artifact
-	ArtifactFormat *string `json:"artifact_format,omitempty"`
+	ArtifactFormat *string `json:"artifact_format,omitempty" jsonschema:"description=The format of artifact,default=zip,enum=raw,enum=zip,enum=gzip"`
 
 	// ArtifactType The type of artifact
-	ArtifactType *string `json:"artifact_type,omitempty"`
+	ArtifactType *string `json:"artifact_type,omitempty" jsonschema:"description=The type of artifact,default=archive,enum=archive,enum=metadata,enum=trace,enum=junit,enum=sast,enum=dependency_scanning,enum=container_scanning,enum=dast,enum=codequality,enum=license_scanning,enum=performance,enum=metrics,enum=metrics_referee,enum=network_referee,enum=lsif,enum=dotenv,enum=cobertura,enum=terraform,enum=accessibility,enum=cluster_applications,enum=secret_detection,enum=requirements,enum=coverage_fuzzing,enum=browser_performance,enum=load_performance,enum=api_fuzzing,enum=cluster_image_scanning,enum=cyclonedx,enum=requirements_v2,enum=annotations,enum=repository_xray,enum=jacoco"`
 
 	// ExpireIn Specify when artifact should expire
-	ExpireIn *string `json:"expire_in,omitempty"`
+	ExpireIn *string `json:"expire_in,omitempty" jsonschema:"description=Specify when artifact should expire"`
 
 	// File The artifact file to store (generated by Multipart middleware)
-	File string `json:"file"`
+	File string `json:"file" jsonschema:"description=The artifact file to store (generated by Multipart middleware)"`
 
 	// Metadata The artifact metadata to store (generated by Multipart middleware)
-	Metadata *string `json:"metadata,omitempty"`
+	Metadata *string `json:"metadata,omitempty" jsonschema:"description=The artifact metadata to store (generated by Multipart middleware)"`
 
 	// Token Job's authentication token
-	Token *string `json:"token,omitempty"`
+	Token *string `json:"token,omitempty" jsonschema:"description=Job's authentication token"`
 }
 type PostApiV4JobsIdArtifactsAuthorizeJSONBody struct {
 	// ArtifactType The type of artifact
-	ArtifactType *string `json:"artifact_type,omitempty"`
+	ArtifactType *string `json:"artifact_type,omitempty" jsonschema:"description=The type of artifact,default=archive,enum=archive,enum=metadata,enum=trace,enum=junit,enum=sast,enum=dependency_scanning,enum=container_scanning,enum=dast,enum=codequality,enum=license_scanning,enum=performance,enum=metrics,enum=metrics_referee,enum=network_referee,enum=lsif,enum=dotenv,enum=cobertura,enum=terraform,enum=accessibility,enum=cluster_applications,enum=secret_detection,enum=requirements,enum=coverage_fuzzing,enum=browser_performance,enum=load_performance,enum=api_fuzzing,enum=cluster_image_scanning,enum=cyclonedx,enum=requirements_v2,enum=annotations,enum=repository_xray,enum=jacoco"`
 
 	// Filesize Size of artifact file
-	Filesize *int32 `json:"filesize,omitempty"`
+	Filesize *int32 `json:"filesize,omitempty" jsonschema:"description=Size of artifact file,format=int32"`
 
 	// Token Job's authentication token
-	Token *string `json:"token,omitempty"`
+	Token *string `json:"token,omitempty" jsonschema:"description=Job's authentication token"`
 }
 type PatchApiV4JobsIdTraceJSONBody struct {
 	// DebugTrace Enable or Disable the debug trace
-	DebugTrace *bool `json:"debug_trace,omitempty"`
+	DebugTrace *bool `json:"debug_trace,omitempty" jsonschema:"description=Enable or Disable the debug trace"`
 
 	// Token Job's authentication token
-	Token *string `json:"token,omitempty"`
+	Token *string `json:"token,omitempty" jsonschema:"description=Job's authentication token"`
 }
 type PostApiV4JobsRequestJSONRequestBody PostApiV4JobsRequestJSONBody
 type PutApiV4JobsIdJSONRequestBody PutApiV4JobsIdJSONBody
@@ -149,26 +149,26 @@ type GetApiV4JobResponse struct {
 		AllowFailure *bool `json:"allow_failure,omitempty"`
 		Archived     *bool `json:"archived,omitempty"`
 		Artifacts    *[]struct {
-			FileFormat *string `json:"file_format,omitempty"`
-			FileType   *string `json:"file_type,omitempty"`
+			FileFormat *string `json:"file_format,omitempty" jsonschema:",enum=raw,enum=zip,enum=gzip"`
+			FileType   *string `json:"file_type,omitempty" jsonschema:",enum=archive,enum=metadata,enum=trace,enum=junit,enum=sast,enum=dependency_scanning,enum=container_scanning,enum=dast,enum=codequality,enum=license_scanning,enum=performance,enum=metrics,enum=metrics_referee,enum=network_referee,enum=lsif,enum=dotenv,enum=cobertura,enum=terraform,enum=accessibility,enum=cluster_applications,enum=secret_detection,enum=requirements,enum=coverage_fuzzing,enum=browser_performance,enum=load_performance,enum=api_fuzzing,enum=cluster_image_scanning,enum=cyclonedx,enum=requirements_v2,enum=annotations,enum=repository_xray,enum=jacoco"`
 			Filename   *string `json:"filename,omitempty"`
-			Size       *int32  `json:"size,omitempty"`
+			Size       *int32  `json:"size,omitempty" jsonschema:",format=int32"`
 		} `json:"artifacts,omitempty"`
-		ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
+		ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty" jsonschema:",format=date-time"`
 		ArtifactsFile     *struct {
 			Filename *string `json:"filename,omitempty"`
-			Size     *int32  `json:"size,omitempty"`
+			Size     *int32  `json:"size,omitempty" jsonschema:",format=int32"`
 		} `json:"artifacts_file,omitempty"`
 
 		// Commit API_Entities_Commit model
 		Commit *struct {
 			AuthorEmail      *string                 `json:"author_email,omitempty"`
 			AuthorName       *string                 `json:"author_name,omitempty"`
-			AuthoredDate     *time.Time              `json:"authored_date,omitempty"`
-			CommittedDate    *time.Time              `json:"committed_date,omitempty"`
+			AuthoredDate     *time.Time              `json:"authored_date,omitempty" jsonschema:",format=date-time"`
+			CommittedDate    *time.Time              `json:"committed_date,omitempty" jsonschema:",format=date-time"`
 			CommitterEmail   *string                 `json:"committer_email,omitempty"`
 			CommitterName    *string                 `json:"committer_name,omitempty"`
-			CreatedAt        *time.Time              `json:"created_at,omitempty"`
+			CreatedAt        *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
 			Id               *string                 `json:"id,omitempty"`
 			Message          *string                 `json:"message,omitempty"`
@@ -177,43 +177,43 @@ type GetApiV4JobResponse struct {
 			Title            *string                 `json:"title,omitempty"`
 			Trailers         *map[string]interface{} `json:"trailers,omitempty"`
 			WebUrl           *string                 `json:"web_url,omitempty"`
-		} `json:"commit,omitempty"`
-		Coverage  *float32   `json:"coverage,omitempty"`
-		CreatedAt *time.Time `json:"created_at,omitempty"`
+		} `json:"commit,omitempty" jsonschema:"description=API_Entities_Commit model"`
+		Coverage  *float32   `json:"coverage,omitempty" jsonschema:",format=float"`
+		CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// Duration Time spent running
-		Duration      *float32   `json:"duration,omitempty"`
-		ErasedAt      *time.Time `json:"erased_at,omitempty"`
+		Duration      *float32   `json:"duration,omitempty" jsonschema:"description=Time spent running,format=float"`
+		ErasedAt      *time.Time `json:"erased_at,omitempty" jsonschema:",format=date-time"`
 		FailureReason *string    `json:"failure_reason,omitempty"`
-		FinishedAt    *time.Time `json:"finished_at,omitempty"`
-		Id            *int32     `json:"id,omitempty"`
+		FinishedAt    *time.Time `json:"finished_at,omitempty" jsonschema:",format=date-time"`
+		Id            *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Name          *string    `json:"name,omitempty"`
 
 		// Pipeline API_Entities_Ci_PipelineBasic model
 		Pipeline *struct {
-			CreatedAt *time.Time `json:"created_at,omitempty"`
-			Id        *int32     `json:"id,omitempty"`
-			Iid       *int32     `json:"iid,omitempty"`
-			ProjectId *int32     `json:"project_id,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			Iid       *int32     `json:"iid,omitempty" jsonschema:",format=int32"`
+			ProjectId *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 			Ref       *string    `json:"ref,omitempty"`
 			Sha       *string    `json:"sha,omitempty"`
 			Source    *string    `json:"source,omitempty"`
 			Status    *string    `json:"status,omitempty"`
-			UpdatedAt *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			WebUrl    *string    `json:"web_url,omitempty"`
-		} `json:"pipeline,omitempty"`
+		} `json:"pipeline,omitempty" jsonschema:"description=API_Entities_Ci_PipelineBasic model"`
 		Project *struct {
 			CiJobTokenScopeEnabled *string `json:"ci_job_token_scope_enabled,omitempty"`
 		} `json:"project,omitempty"`
 
 		// QueuedDuration Time spent enqueued
-		QueuedDuration *float32 `json:"queued_duration,omitempty"`
+		QueuedDuration *float32 `json:"queued_duration,omitempty" jsonschema:"description=Time spent enqueued,format=float"`
 		Ref            *string  `json:"ref,omitempty"`
 
 		// Runner API_Entities_Ci_Runner model
 		Runner *struct {
 			Active    *bool      `json:"active,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CreatedBy API_Entities_UserBasic model
 			CreatedBy *struct {
@@ -223,40 +223,40 @@ type GetApiV4JobResponse struct {
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"created_by,omitempty"`
+			} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Description *string `json:"description,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IpAddress   *string `json:"ip_address,omitempty"`
 			IsShared    *bool   `json:"is_shared,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			Online      *bool   `json:"online,omitempty"`
 			Paused      *bool   `json:"paused,omitempty"`
-			RunnerType  *string `json:"runner_type,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 			Status      *string `json:"status,omitempty"`
-		} `json:"runner,omitempty"`
+		} `json:"runner,omitempty" jsonschema:"description=API_Entities_Ci_Runner model"`
 
 		// RunnerManager API_Entities_Ci_RunnerManager model
 		RunnerManager *struct {
 			Architecture *string `json:"architecture,omitempty"`
 			ContactedAt  *string `json:"contacted_at,omitempty"`
 			CreatedAt    *string `json:"created_at,omitempty"`
-			Id           *int32  `json:"id,omitempty"`
+			Id           *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IpAddress    *string `json:"ip_address,omitempty"`
 			Platform     *string `json:"platform,omitempty"`
 			Revision     *string `json:"revision,omitempty"`
 			Status       *string `json:"status,omitempty"`
 			SystemId     *string `json:"system_id,omitempty"`
 			Version      *string `json:"version,omitempty"`
-		} `json:"runner_manager,omitempty"`
+		} `json:"runner_manager,omitempty" jsonschema:"description=API_Entities_Ci_RunnerManager model"`
 		Stage     *string    `json:"stage,omitempty"`
-		StartedAt *time.Time `json:"started_at,omitempty"`
+		StartedAt *time.Time `json:"started_at,omitempty" jsonschema:",format=date-time"`
 		Status    *string    `json:"status,omitempty"`
 		Tag       *bool      `json:"tag,omitempty"`
 		TagList   *[]string  `json:"tag_list,omitempty"`
@@ -274,7 +274,7 @@ type GetApiV4JobResponse struct {
 			Followers       *string `json:"followers,omitempty"`
 			Following       *string `json:"following,omitempty"`
 			Github          *string `json:"github,omitempty"`
-			Id              *int32  `json:"id,omitempty"`
+			Id              *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IsFollowed      *string `json:"is_followed,omitempty"`
 			JobTitle        *string `json:"job_title,omitempty"`
 			Linkedin        *string `json:"linkedin,omitempty"`
@@ -303,26 +303,26 @@ type GetApiV4JobAllowedAgentsResponse struct {
 		AllowFailure *bool `json:"allow_failure,omitempty"`
 		Archived     *bool `json:"archived,omitempty"`
 		Artifacts    *[]struct {
-			FileFormat *string `json:"file_format,omitempty"`
-			FileType   *string `json:"file_type,omitempty"`
+			FileFormat *string `json:"file_format,omitempty" jsonschema:",enum=raw,enum=zip,enum=gzip"`
+			FileType   *string `json:"file_type,omitempty" jsonschema:",enum=archive,enum=metadata,enum=trace,enum=junit,enum=sast,enum=dependency_scanning,enum=container_scanning,enum=dast,enum=codequality,enum=license_scanning,enum=performance,enum=metrics,enum=metrics_referee,enum=network_referee,enum=lsif,enum=dotenv,enum=cobertura,enum=terraform,enum=accessibility,enum=cluster_applications,enum=secret_detection,enum=requirements,enum=coverage_fuzzing,enum=browser_performance,enum=load_performance,enum=api_fuzzing,enum=cluster_image_scanning,enum=cyclonedx,enum=requirements_v2,enum=annotations,enum=repository_xray,enum=jacoco"`
 			Filename   *string `json:"filename,omitempty"`
-			Size       *int32  `json:"size,omitempty"`
+			Size       *int32  `json:"size,omitempty" jsonschema:",format=int32"`
 		} `json:"artifacts,omitempty"`
-		ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
+		ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty" jsonschema:",format=date-time"`
 		ArtifactsFile     *struct {
 			Filename *string `json:"filename,omitempty"`
-			Size     *int32  `json:"size,omitempty"`
+			Size     *int32  `json:"size,omitempty" jsonschema:",format=int32"`
 		} `json:"artifacts_file,omitempty"`
 
 		// Commit API_Entities_Commit model
 		Commit *struct {
 			AuthorEmail      *string                 `json:"author_email,omitempty"`
 			AuthorName       *string                 `json:"author_name,omitempty"`
-			AuthoredDate     *time.Time              `json:"authored_date,omitempty"`
-			CommittedDate    *time.Time              `json:"committed_date,omitempty"`
+			AuthoredDate     *time.Time              `json:"authored_date,omitempty" jsonschema:",format=date-time"`
+			CommittedDate    *time.Time              `json:"committed_date,omitempty" jsonschema:",format=date-time"`
 			CommitterEmail   *string                 `json:"committer_email,omitempty"`
 			CommitterName    *string                 `json:"committer_name,omitempty"`
-			CreatedAt        *time.Time              `json:"created_at,omitempty"`
+			CreatedAt        *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
 			Id               *string                 `json:"id,omitempty"`
 			Message          *string                 `json:"message,omitempty"`
@@ -331,43 +331,43 @@ type GetApiV4JobAllowedAgentsResponse struct {
 			Title            *string                 `json:"title,omitempty"`
 			Trailers         *map[string]interface{} `json:"trailers,omitempty"`
 			WebUrl           *string                 `json:"web_url,omitempty"`
-		} `json:"commit,omitempty"`
-		Coverage  *float32   `json:"coverage,omitempty"`
-		CreatedAt *time.Time `json:"created_at,omitempty"`
+		} `json:"commit,omitempty" jsonschema:"description=API_Entities_Commit model"`
+		Coverage  *float32   `json:"coverage,omitempty" jsonschema:",format=float"`
+		CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// Duration Time spent running
-		Duration      *float32   `json:"duration,omitempty"`
-		ErasedAt      *time.Time `json:"erased_at,omitempty"`
+		Duration      *float32   `json:"duration,omitempty" jsonschema:"description=Time spent running,format=float"`
+		ErasedAt      *time.Time `json:"erased_at,omitempty" jsonschema:",format=date-time"`
 		FailureReason *string    `json:"failure_reason,omitempty"`
-		FinishedAt    *time.Time `json:"finished_at,omitempty"`
-		Id            *int32     `json:"id,omitempty"`
+		FinishedAt    *time.Time `json:"finished_at,omitempty" jsonschema:",format=date-time"`
+		Id            *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Name          *string    `json:"name,omitempty"`
 
 		// Pipeline API_Entities_Ci_PipelineBasic model
 		Pipeline *struct {
-			CreatedAt *time.Time `json:"created_at,omitempty"`
-			Id        *int32     `json:"id,omitempty"`
-			Iid       *int32     `json:"iid,omitempty"`
-			ProjectId *int32     `json:"project_id,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			Iid       *int32     `json:"iid,omitempty" jsonschema:",format=int32"`
+			ProjectId *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 			Ref       *string    `json:"ref,omitempty"`
 			Sha       *string    `json:"sha,omitempty"`
 			Source    *string    `json:"source,omitempty"`
 			Status    *string    `json:"status,omitempty"`
-			UpdatedAt *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			WebUrl    *string    `json:"web_url,omitempty"`
-		} `json:"pipeline,omitempty"`
+		} `json:"pipeline,omitempty" jsonschema:"description=API_Entities_Ci_PipelineBasic model"`
 		Project *struct {
 			CiJobTokenScopeEnabled *string `json:"ci_job_token_scope_enabled,omitempty"`
 		} `json:"project,omitempty"`
 
 		// QueuedDuration Time spent enqueued
-		QueuedDuration *float32 `json:"queued_duration,omitempty"`
+		QueuedDuration *float32 `json:"queued_duration,omitempty" jsonschema:"description=Time spent enqueued,format=float"`
 		Ref            *string  `json:"ref,omitempty"`
 
 		// Runner API_Entities_Ci_Runner model
 		Runner *struct {
 			Active    *bool      `json:"active,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CreatedBy API_Entities_UserBasic model
 			CreatedBy *struct {
@@ -377,40 +377,40 @@ type GetApiV4JobAllowedAgentsResponse struct {
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"created_by,omitempty"`
+			} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Description *string `json:"description,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IpAddress   *string `json:"ip_address,omitempty"`
 			IsShared    *bool   `json:"is_shared,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			Online      *bool   `json:"online,omitempty"`
 			Paused      *bool   `json:"paused,omitempty"`
-			RunnerType  *string `json:"runner_type,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 			Status      *string `json:"status,omitempty"`
-		} `json:"runner,omitempty"`
+		} `json:"runner,omitempty" jsonschema:"description=API_Entities_Ci_Runner model"`
 
 		// RunnerManager API_Entities_Ci_RunnerManager model
 		RunnerManager *struct {
 			Architecture *string `json:"architecture,omitempty"`
 			ContactedAt  *string `json:"contacted_at,omitempty"`
 			CreatedAt    *string `json:"created_at,omitempty"`
-			Id           *int32  `json:"id,omitempty"`
+			Id           *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IpAddress    *string `json:"ip_address,omitempty"`
 			Platform     *string `json:"platform,omitempty"`
 			Revision     *string `json:"revision,omitempty"`
 			Status       *string `json:"status,omitempty"`
 			SystemId     *string `json:"system_id,omitempty"`
 			Version      *string `json:"version,omitempty"`
-		} `json:"runner_manager,omitempty"`
+		} `json:"runner_manager,omitempty" jsonschema:"description=API_Entities_Ci_RunnerManager model"`
 		Stage     *string    `json:"stage,omitempty"`
-		StartedAt *time.Time `json:"started_at,omitempty"`
+		StartedAt *time.Time `json:"started_at,omitempty" jsonschema:",format=date-time"`
 		Status    *string    `json:"status,omitempty"`
 		Tag       *bool      `json:"tag,omitempty"`
 		TagList   *[]string  `json:"tag_list,omitempty"`
@@ -428,7 +428,7 @@ type GetApiV4JobAllowedAgentsResponse struct {
 			Followers       *string `json:"followers,omitempty"`
 			Following       *string `json:"following,omitempty"`
 			Github          *string `json:"github,omitempty"`
-			Id              *int32  `json:"id,omitempty"`
+			Id              *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IsFollowed      *string `json:"is_followed,omitempty"`
 			JobTitle        *string `json:"job_title,omitempty"`
 			Linkedin        *string `json:"linkedin,omitempty"`
@@ -1151,26 +1151,26 @@ func ParseGetApiV4JobResponse(rsp *http.Response) (*GetApiV4JobResponse, error) 
 			AllowFailure *bool `json:"allow_failure,omitempty"`
 			Archived     *bool `json:"archived,omitempty"`
 			Artifacts    *[]struct {
-				FileFormat *string `json:"file_format,omitempty"`
-				FileType   *string `json:"file_type,omitempty"`
+				FileFormat *string `json:"file_format,omitempty" jsonschema:",enum=raw,enum=zip,enum=gzip"`
+				FileType   *string `json:"file_type,omitempty" jsonschema:",enum=archive,enum=metadata,enum=trace,enum=junit,enum=sast,enum=dependency_scanning,enum=container_scanning,enum=dast,enum=codequality,enum=license_scanning,enum=performance,enum=metrics,enum=metrics_referee,enum=network_referee,enum=lsif,enum=dotenv,enum=cobertura,enum=terraform,enum=accessibility,enum=cluster_applications,enum=secret_detection,enum=requirements,enum=coverage_fuzzing,enum=browser_performance,enum=load_performance,enum=api_fuzzing,enum=cluster_image_scanning,enum=cyclonedx,enum=requirements_v2,enum=annotations,enum=repository_xray,enum=jacoco"`
 				Filename   *string `json:"filename,omitempty"`
-				Size       *int32  `json:"size,omitempty"`
+				Size       *int32  `json:"size,omitempty" jsonschema:",format=int32"`
 			} `json:"artifacts,omitempty"`
-			ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
+			ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty" jsonschema:",format=date-time"`
 			ArtifactsFile     *struct {
 				Filename *string `json:"filename,omitempty"`
-				Size     *int32  `json:"size,omitempty"`
+				Size     *int32  `json:"size,omitempty" jsonschema:",format=int32"`
 			} `json:"artifacts_file,omitempty"`
 
 			// Commit API_Entities_Commit model
 			Commit *struct {
 				AuthorEmail      *string                 `json:"author_email,omitempty"`
 				AuthorName       *string                 `json:"author_name,omitempty"`
-				AuthoredDate     *time.Time              `json:"authored_date,omitempty"`
-				CommittedDate    *time.Time              `json:"committed_date,omitempty"`
+				AuthoredDate     *time.Time              `json:"authored_date,omitempty" jsonschema:",format=date-time"`
+				CommittedDate    *time.Time              `json:"committed_date,omitempty" jsonschema:",format=date-time"`
 				CommitterEmail   *string                 `json:"committer_email,omitempty"`
 				CommitterName    *string                 `json:"committer_name,omitempty"`
-				CreatedAt        *time.Time              `json:"created_at,omitempty"`
+				CreatedAt        *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
 				Id               *string                 `json:"id,omitempty"`
 				Message          *string                 `json:"message,omitempty"`
@@ -1179,43 +1179,43 @@ func ParseGetApiV4JobResponse(rsp *http.Response) (*GetApiV4JobResponse, error) 
 				Title            *string                 `json:"title,omitempty"`
 				Trailers         *map[string]interface{} `json:"trailers,omitempty"`
 				WebUrl           *string                 `json:"web_url,omitempty"`
-			} `json:"commit,omitempty"`
-			Coverage  *float32   `json:"coverage,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			} `json:"commit,omitempty" jsonschema:"description=API_Entities_Commit model"`
+			Coverage  *float32   `json:"coverage,omitempty" jsonschema:",format=float"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// Duration Time spent running
-			Duration      *float32   `json:"duration,omitempty"`
-			ErasedAt      *time.Time `json:"erased_at,omitempty"`
+			Duration      *float32   `json:"duration,omitempty" jsonschema:"description=Time spent running,format=float"`
+			ErasedAt      *time.Time `json:"erased_at,omitempty" jsonschema:",format=date-time"`
 			FailureReason *string    `json:"failure_reason,omitempty"`
-			FinishedAt    *time.Time `json:"finished_at,omitempty"`
-			Id            *int32     `json:"id,omitempty"`
+			FinishedAt    *time.Time `json:"finished_at,omitempty" jsonschema:",format=date-time"`
+			Id            *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name          *string    `json:"name,omitempty"`
 
 			// Pipeline API_Entities_Ci_PipelineBasic model
 			Pipeline *struct {
-				CreatedAt *time.Time `json:"created_at,omitempty"`
-				Id        *int32     `json:"id,omitempty"`
-				Iid       *int32     `json:"iid,omitempty"`
-				ProjectId *int32     `json:"project_id,omitempty"`
+				CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+				Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+				Iid       *int32     `json:"iid,omitempty" jsonschema:",format=int32"`
+				ProjectId *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 				Ref       *string    `json:"ref,omitempty"`
 				Sha       *string    `json:"sha,omitempty"`
 				Source    *string    `json:"source,omitempty"`
 				Status    *string    `json:"status,omitempty"`
-				UpdatedAt *time.Time `json:"updated_at,omitempty"`
+				UpdatedAt *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 				WebUrl    *string    `json:"web_url,omitempty"`
-			} `json:"pipeline,omitempty"`
+			} `json:"pipeline,omitempty" jsonschema:"description=API_Entities_Ci_PipelineBasic model"`
 			Project *struct {
 				CiJobTokenScopeEnabled *string `json:"ci_job_token_scope_enabled,omitempty"`
 			} `json:"project,omitempty"`
 
 			// QueuedDuration Time spent enqueued
-			QueuedDuration *float32 `json:"queued_duration,omitempty"`
+			QueuedDuration *float32 `json:"queued_duration,omitempty" jsonschema:"description=Time spent enqueued,format=float"`
 			Ref            *string  `json:"ref,omitempty"`
 
 			// Runner API_Entities_Ci_Runner model
 			Runner *struct {
 				Active    *bool      `json:"active,omitempty"`
-				CreatedAt *time.Time `json:"created_at,omitempty"`
+				CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 				// CreatedBy API_Entities_UserBasic model
 				CreatedBy *struct {
@@ -1225,40 +1225,40 @@ func ParseGetApiV4JobResponse(rsp *http.Response) (*GetApiV4JobResponse, error) 
 						Key   *string `json:"key,omitempty"`
 						Value *string `json:"value,omitempty"`
 					} `json:"custom_attributes,omitempty"`
-					Id          *int32  `json:"id,omitempty"`
+					Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 					Locked      *bool   `json:"locked,omitempty"`
 					Name        *string `json:"name,omitempty"`
 					PublicEmail *string `json:"public_email,omitempty"`
 					State       *string `json:"state,omitempty"`
 					Username    *string `json:"username,omitempty"`
 					WebUrl      *string `json:"web_url,omitempty"`
-				} `json:"created_by,omitempty"`
+				} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 				Description *string `json:"description,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				IpAddress   *string `json:"ip_address,omitempty"`
 				IsShared    *bool   `json:"is_shared,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				Online      *bool   `json:"online,omitempty"`
 				Paused      *bool   `json:"paused,omitempty"`
-				RunnerType  *string `json:"runner_type,omitempty"`
+				RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 				Status      *string `json:"status,omitempty"`
-			} `json:"runner,omitempty"`
+			} `json:"runner,omitempty" jsonschema:"description=API_Entities_Ci_Runner model"`
 
 			// RunnerManager API_Entities_Ci_RunnerManager model
 			RunnerManager *struct {
 				Architecture *string `json:"architecture,omitempty"`
 				ContactedAt  *string `json:"contacted_at,omitempty"`
 				CreatedAt    *string `json:"created_at,omitempty"`
-				Id           *int32  `json:"id,omitempty"`
+				Id           *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				IpAddress    *string `json:"ip_address,omitempty"`
 				Platform     *string `json:"platform,omitempty"`
 				Revision     *string `json:"revision,omitempty"`
 				Status       *string `json:"status,omitempty"`
 				SystemId     *string `json:"system_id,omitempty"`
 				Version      *string `json:"version,omitempty"`
-			} `json:"runner_manager,omitempty"`
+			} `json:"runner_manager,omitempty" jsonschema:"description=API_Entities_Ci_RunnerManager model"`
 			Stage     *string    `json:"stage,omitempty"`
-			StartedAt *time.Time `json:"started_at,omitempty"`
+			StartedAt *time.Time `json:"started_at,omitempty" jsonschema:",format=date-time"`
 			Status    *string    `json:"status,omitempty"`
 			Tag       *bool      `json:"tag,omitempty"`
 			TagList   *[]string  `json:"tag_list,omitempty"`
@@ -1276,7 +1276,7 @@ func ParseGetApiV4JobResponse(rsp *http.Response) (*GetApiV4JobResponse, error) 
 				Followers       *string `json:"followers,omitempty"`
 				Following       *string `json:"following,omitempty"`
 				Github          *string `json:"github,omitempty"`
-				Id              *int32  `json:"id,omitempty"`
+				Id              *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				IsFollowed      *string `json:"is_followed,omitempty"`
 				JobTitle        *string `json:"job_title,omitempty"`
 				Linkedin        *string `json:"linkedin,omitempty"`
@@ -1324,26 +1324,26 @@ func ParseGetApiV4JobAllowedAgentsResponse(rsp *http.Response) (*GetApiV4JobAllo
 			AllowFailure *bool `json:"allow_failure,omitempty"`
 			Archived     *bool `json:"archived,omitempty"`
 			Artifacts    *[]struct {
-				FileFormat *string `json:"file_format,omitempty"`
-				FileType   *string `json:"file_type,omitempty"`
+				FileFormat *string `json:"file_format,omitempty" jsonschema:",enum=raw,enum=zip,enum=gzip"`
+				FileType   *string `json:"file_type,omitempty" jsonschema:",enum=archive,enum=metadata,enum=trace,enum=junit,enum=sast,enum=dependency_scanning,enum=container_scanning,enum=dast,enum=codequality,enum=license_scanning,enum=performance,enum=metrics,enum=metrics_referee,enum=network_referee,enum=lsif,enum=dotenv,enum=cobertura,enum=terraform,enum=accessibility,enum=cluster_applications,enum=secret_detection,enum=requirements,enum=coverage_fuzzing,enum=browser_performance,enum=load_performance,enum=api_fuzzing,enum=cluster_image_scanning,enum=cyclonedx,enum=requirements_v2,enum=annotations,enum=repository_xray,enum=jacoco"`
 				Filename   *string `json:"filename,omitempty"`
-				Size       *int32  `json:"size,omitempty"`
+				Size       *int32  `json:"size,omitempty" jsonschema:",format=int32"`
 			} `json:"artifacts,omitempty"`
-			ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty"`
+			ArtifactsExpireAt *time.Time `json:"artifacts_expire_at,omitempty" jsonschema:",format=date-time"`
 			ArtifactsFile     *struct {
 				Filename *string `json:"filename,omitempty"`
-				Size     *int32  `json:"size,omitempty"`
+				Size     *int32  `json:"size,omitempty" jsonschema:",format=int32"`
 			} `json:"artifacts_file,omitempty"`
 
 			// Commit API_Entities_Commit model
 			Commit *struct {
 				AuthorEmail      *string                 `json:"author_email,omitempty"`
 				AuthorName       *string                 `json:"author_name,omitempty"`
-				AuthoredDate     *time.Time              `json:"authored_date,omitempty"`
-				CommittedDate    *time.Time              `json:"committed_date,omitempty"`
+				AuthoredDate     *time.Time              `json:"authored_date,omitempty" jsonschema:",format=date-time"`
+				CommittedDate    *time.Time              `json:"committed_date,omitempty" jsonschema:",format=date-time"`
 				CommitterEmail   *string                 `json:"committer_email,omitempty"`
 				CommitterName    *string                 `json:"committer_name,omitempty"`
-				CreatedAt        *time.Time              `json:"created_at,omitempty"`
+				CreatedAt        *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
 				Id               *string                 `json:"id,omitempty"`
 				Message          *string                 `json:"message,omitempty"`
@@ -1352,43 +1352,43 @@ func ParseGetApiV4JobAllowedAgentsResponse(rsp *http.Response) (*GetApiV4JobAllo
 				Title            *string                 `json:"title,omitempty"`
 				Trailers         *map[string]interface{} `json:"trailers,omitempty"`
 				WebUrl           *string                 `json:"web_url,omitempty"`
-			} `json:"commit,omitempty"`
-			Coverage  *float32   `json:"coverage,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			} `json:"commit,omitempty" jsonschema:"description=API_Entities_Commit model"`
+			Coverage  *float32   `json:"coverage,omitempty" jsonschema:",format=float"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// Duration Time spent running
-			Duration      *float32   `json:"duration,omitempty"`
-			ErasedAt      *time.Time `json:"erased_at,omitempty"`
+			Duration      *float32   `json:"duration,omitempty" jsonschema:"description=Time spent running,format=float"`
+			ErasedAt      *time.Time `json:"erased_at,omitempty" jsonschema:",format=date-time"`
 			FailureReason *string    `json:"failure_reason,omitempty"`
-			FinishedAt    *time.Time `json:"finished_at,omitempty"`
-			Id            *int32     `json:"id,omitempty"`
+			FinishedAt    *time.Time `json:"finished_at,omitempty" jsonschema:",format=date-time"`
+			Id            *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name          *string    `json:"name,omitempty"`
 
 			// Pipeline API_Entities_Ci_PipelineBasic model
 			Pipeline *struct {
-				CreatedAt *time.Time `json:"created_at,omitempty"`
-				Id        *int32     `json:"id,omitempty"`
-				Iid       *int32     `json:"iid,omitempty"`
-				ProjectId *int32     `json:"project_id,omitempty"`
+				CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+				Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+				Iid       *int32     `json:"iid,omitempty" jsonschema:",format=int32"`
+				ProjectId *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 				Ref       *string    `json:"ref,omitempty"`
 				Sha       *string    `json:"sha,omitempty"`
 				Source    *string    `json:"source,omitempty"`
 				Status    *string    `json:"status,omitempty"`
-				UpdatedAt *time.Time `json:"updated_at,omitempty"`
+				UpdatedAt *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 				WebUrl    *string    `json:"web_url,omitempty"`
-			} `json:"pipeline,omitempty"`
+			} `json:"pipeline,omitempty" jsonschema:"description=API_Entities_Ci_PipelineBasic model"`
 			Project *struct {
 				CiJobTokenScopeEnabled *string `json:"ci_job_token_scope_enabled,omitempty"`
 			} `json:"project,omitempty"`
 
 			// QueuedDuration Time spent enqueued
-			QueuedDuration *float32 `json:"queued_duration,omitempty"`
+			QueuedDuration *float32 `json:"queued_duration,omitempty" jsonschema:"description=Time spent enqueued,format=float"`
 			Ref            *string  `json:"ref,omitempty"`
 
 			// Runner API_Entities_Ci_Runner model
 			Runner *struct {
 				Active    *bool      `json:"active,omitempty"`
-				CreatedAt *time.Time `json:"created_at,omitempty"`
+				CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 				// CreatedBy API_Entities_UserBasic model
 				CreatedBy *struct {
@@ -1398,40 +1398,40 @@ func ParseGetApiV4JobAllowedAgentsResponse(rsp *http.Response) (*GetApiV4JobAllo
 						Key   *string `json:"key,omitempty"`
 						Value *string `json:"value,omitempty"`
 					} `json:"custom_attributes,omitempty"`
-					Id          *int32  `json:"id,omitempty"`
+					Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 					Locked      *bool   `json:"locked,omitempty"`
 					Name        *string `json:"name,omitempty"`
 					PublicEmail *string `json:"public_email,omitempty"`
 					State       *string `json:"state,omitempty"`
 					Username    *string `json:"username,omitempty"`
 					WebUrl      *string `json:"web_url,omitempty"`
-				} `json:"created_by,omitempty"`
+				} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 				Description *string `json:"description,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				IpAddress   *string `json:"ip_address,omitempty"`
 				IsShared    *bool   `json:"is_shared,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				Online      *bool   `json:"online,omitempty"`
 				Paused      *bool   `json:"paused,omitempty"`
-				RunnerType  *string `json:"runner_type,omitempty"`
+				RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 				Status      *string `json:"status,omitempty"`
-			} `json:"runner,omitempty"`
+			} `json:"runner,omitempty" jsonschema:"description=API_Entities_Ci_Runner model"`
 
 			// RunnerManager API_Entities_Ci_RunnerManager model
 			RunnerManager *struct {
 				Architecture *string `json:"architecture,omitempty"`
 				ContactedAt  *string `json:"contacted_at,omitempty"`
 				CreatedAt    *string `json:"created_at,omitempty"`
-				Id           *int32  `json:"id,omitempty"`
+				Id           *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				IpAddress    *string `json:"ip_address,omitempty"`
 				Platform     *string `json:"platform,omitempty"`
 				Revision     *string `json:"revision,omitempty"`
 				Status       *string `json:"status,omitempty"`
 				SystemId     *string `json:"system_id,omitempty"`
 				Version      *string `json:"version,omitempty"`
-			} `json:"runner_manager,omitempty"`
+			} `json:"runner_manager,omitempty" jsonschema:"description=API_Entities_Ci_RunnerManager model"`
 			Stage     *string    `json:"stage,omitempty"`
-			StartedAt *time.Time `json:"started_at,omitempty"`
+			StartedAt *time.Time `json:"started_at,omitempty" jsonschema:",format=date-time"`
 			Status    *string    `json:"status,omitempty"`
 			Tag       *bool      `json:"tag,omitempty"`
 			TagList   *[]string  `json:"tag_list,omitempty"`
@@ -1449,7 +1449,7 @@ func ParseGetApiV4JobAllowedAgentsResponse(rsp *http.Response) (*GetApiV4JobAllo
 				Followers       *string `json:"followers,omitempty"`
 				Following       *string `json:"following,omitempty"`
 				Github          *string `json:"github,omitempty"`
-				Id              *int32  `json:"id,omitempty"`
+				Id              *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				IsFollowed      *string `json:"is_followed,omitempty"`
 				JobTitle        *string `json:"job_title,omitempty"`
 				Linkedin        *string `json:"linkedin,omitempty"`

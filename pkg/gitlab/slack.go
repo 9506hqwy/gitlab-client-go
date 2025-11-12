@@ -12,7 +12,7 @@ import (
 
 type PostApiV4SlackTriggerJSONBody struct {
 	// Text Text of the slack command
-	Text string `json:"text"`
+	Text string `json:"text" jsonschema:"description=Text of the slack command"`
 }
 type PostApiV4SlackTriggerJSONRequestBody PostApiV4SlackTriggerJSONBody
 type PostApiV4SlackTriggerResponse struct {

@@ -13,35 +13,35 @@ import (
 
 type PostApiV4IntegrationsJiraConnectSubscriptionsJSONBody struct {
 	// Jwt JWT token for authorization with the Jira Connect installation
-	Jwt string `json:"jwt"`
+	Jwt string `json:"jwt" jsonschema:"description=JWT token for authorization with the Jira Connect installation"`
 
 	// NamespacePath Path for the namespace that should be subscribed
-	NamespacePath string `json:"namespace_path"`
+	NamespacePath string `json:"namespace_path" jsonschema:"description=Path for the namespace that should be subscribed"`
 }
 type PostApiV4IntegrationsSlackEventsJSONBody struct {
 	// ApiAppId The Slack app ID
-	ApiAppId *string `json:"api_app_id,omitempty"`
+	ApiAppId *string `json:"api_app_id,omitempty" jsonschema:"description=The Slack app ID"`
 
 	// AuthedUsers (Deprecated by Slack) An array of Slack user IDs
-	AuthedUsers *[]string `json:"authed_users,omitempty"`
+	AuthedUsers *[]string `json:"authed_users,omitempty" jsonschema:"description=(Deprecated by Slack) An array of Slack user IDs"`
 
 	// Event The event object with variable properties
-	Event *map[string]interface{} `json:"event,omitempty"`
+	Event *map[string]interface{} `json:"event,omitempty" jsonschema:"description=The event object with variable properties"`
 
 	// EventId A unique identifier for this specific event
-	EventId *string `json:"event_id,omitempty"`
+	EventId *string `json:"event_id,omitempty" jsonschema:"description=A unique identifier for this specific event"`
 
 	// EventTime The epoch timestamp in seconds when this event was dispatched
-	EventTime *int32 `json:"event_time,omitempty"`
+	EventTime *int32 `json:"event_time,omitempty" jsonschema:"description=The epoch timestamp in seconds when this event was dispatched,format=int32"`
 
 	// TeamId The Slack workspace ID of where the event occurred
-	TeamId *string `json:"team_id,omitempty"`
+	TeamId *string `json:"team_id,omitempty" jsonschema:"description=The Slack workspace ID of where the event occurred"`
 
 	// Token (Deprecated by Slack) The request token, unused by GitLab
-	Token *string `json:"token,omitempty"`
+	Token *string `json:"token,omitempty" jsonschema:"description=(Deprecated by Slack) The request token\\, unused by GitLab"`
 
 	// Type The kind of event this is, usually `event_callback`
-	Type *string `json:"type,omitempty"`
+	Type *string `json:"type,omitempty" jsonschema:"description=The kind of event this is\\, usually \"event_callback\""`
 }
 type PostApiV4IntegrationsJiraConnectSubscriptionsJSONRequestBody PostApiV4IntegrationsJiraConnectSubscriptionsJSONBody
 type PostApiV4IntegrationsSlackEventsJSONRequestBody PostApiV4IntegrationsSlackEventsJSONBody

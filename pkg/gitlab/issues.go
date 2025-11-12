@@ -14,100 +14,100 @@ import (
 
 type GetApiV4IssuesParams struct {
 	// AssigneeId Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.
-	AssigneeId *int `form:"assignee_id,omitempty" json:"assignee_id,omitempty"`
+	AssigneeId *int `form:"assignee_id,omitempty" json:"assignee_id,omitempty" jsonschema:"description=Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee."`
 
 	// AssigneeUsername Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.
-	AssigneeUsername *[]string `form:"assignee_username,omitempty" json:"assignee_username,omitempty"`
+	AssigneeUsername *[]string `form:"assignee_username,omitempty" json:"assignee_username,omitempty" jsonschema:"description=Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE\\, the assignee_username array should only contain a single value. Otherwise\\, an invalid parameter error is returned."`
 
 	// AuthorId Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me.
-	AuthorId *int `form:"author_id,omitempty" json:"author_id,omitempty"`
+	AuthorId *int `form:"author_id,omitempty" json:"author_id,omitempty" jsonschema:"description=Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me."`
 
 	// AuthorUsername Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.
-	AuthorUsername *string `form:"author_username,omitempty" json:"author_username,omitempty"`
+	AuthorUsername *string `form:"author_username,omitempty" json:"author_username,omitempty" jsonschema:"description=Return issues created by the given username. Similar to author_id and mutually exclusive with author_id."`
 
 	// Confidential Filter confidential or public issues.
-	Confidential *bool `form:"confidential,omitempty" json:"confidential,omitempty"`
+	Confidential *bool `form:"confidential,omitempty" json:"confidential,omitempty" jsonschema:"description=Filter confidential or public issues."`
 
 	// CreatedAfter Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
-	CreatedAfter *string `form:"created_after,omitempty" json:"created_after,omitempty"`
+	CreatedAfter *string `form:"created_after,omitempty" json:"created_after,omitempty" jsonschema:"description=Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."`
 
 	// CreatedBefore Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
-	CreatedBefore *string `form:"created_before,omitempty" json:"created_before,omitempty"`
+	CreatedBefore *string `form:"created_before,omitempty" json:"created_before,omitempty" jsonschema:"description=Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."`
 
 	// DueDate Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next_month_and_previous_two_weeks.
-	DueDate *string `form:"due_date,omitempty" json:"due_date,omitempty"`
+	DueDate *string `form:"due_date,omitempty" json:"due_date,omitempty" jsonschema:"description=Return issues that have no due date\\, are overdue\\, or whose due date is this week\\, this month\\, or between two weeks ago and next month. Accepts: 0 (no due date)\\, any\\, today\\, tomorrow\\, overdue\\, week\\, month\\, next_month_and_previous_two_weeks."`
 
 	// EpicId Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. Premium and Ultimate only.
-	EpicId *int `form:"epic_id,omitempty" json:"epic_id,omitempty"`
+	EpicId *int `form:"epic_id,omitempty" json:"epic_id,omitempty" jsonschema:"description=Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. Premium and Ultimate only."`
 
 	// HealthStatus Return issues with the specified health_status. (Introduced in GitLab 15.4). In GitLab 15.5 and later, None returns issues with no health status assigned, and Any returns issues with a health status assigned. Ultimate only.
-	HealthStatus *string `form:"health_status,omitempty" json:"health_status,omitempty"`
+	HealthStatus *string `form:"health_status,omitempty" json:"health_status,omitempty" jsonschema:"description=Return issues with the specified health_status. (Introduced in GitLab 15.4). In GitLab 15.5 and later\\, None returns issues with no health status assigned\\, and Any returns issues with a health status assigned. Ultimate only."`
 
 	// Iids Return only the issues having the given iid.
-	Iids *[]int `form:"iids[],omitempty" json:"iids[],omitempty"`
+	Iids *[]int `form:"iids[],omitempty" json:"iids[],omitempty" jsonschema:"description=Return only the issues having the given iid."`
 
 	// In Modify the scope of the search attribute. title, description, or a string joining them with comma. Default is title,description.
-	In *string `form:"in,omitempty" json:"in,omitempty"`
+	In *string `form:"in,omitempty" json:"in,omitempty" jsonschema:"description=Modify the scope of the search attribute. title\\, description\\, or a string joining them with comma. Default is title\\,description."`
 
 	// IssueType Filter to a given type of issue. One of issue, incident, test_case or task.
-	IssueType *string `form:"issue_type,omitempty" json:"issue_type,omitempty"`
+	IssueType *string `form:"issue_type,omitempty" json:"issue_type,omitempty" jsonschema:"description=Filter to a given type of issue. One of issue\\, incident\\, test_case or task."`
 
 	// IterationId Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. Premium and Ultimate only.
-	IterationId *int `form:"iteration_id,omitempty" json:"iteration_id,omitempty"`
+	IterationId *int `form:"iteration_id,omitempty" json:"iteration_id,omitempty" jsonschema:"description=Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. Premium and Ultimate only."`
 
 	// IterationTitle Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive with iteration_id. Premium and Ultimate only.
-	IterationTitle *string `form:"iteration_title,omitempty" json:"iteration_title,omitempty"`
+	IterationTitle *string `form:"iteration_title,omitempty" json:"iteration_title,omitempty" jsonschema:"description=Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive with iteration_id. Premium and Ultimate only."`
 
 	// Labels Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
-	Labels *string `form:"labels,omitempty" json:"labels,omitempty"`
+	Labels *string `form:"labels,omitempty" json:"labels,omitempty" jsonschema:"description=Comma-separated list of label names\\, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive."`
 
 	// MilestoneId Returns issues assigned to milestones with a given timebox value (None, Any, Upcoming, and Started). None lists all issues with no milestone. Any lists all issues that have an assigned milestone. Upcoming lists all issues assigned to milestones due in the future. Started lists all issues assigned to open, started milestones. The logic for Upcoming and Started differs from the logic used in the GraphQL API. milestone and milestone_id are mutually exclusive.
-	MilestoneId *string `form:"milestone_id,omitempty" json:"milestone_id,omitempty"`
+	MilestoneId *string `form:"milestone_id,omitempty" json:"milestone_id,omitempty" jsonschema:"description=Returns issues assigned to milestones with a given timebox value (None\\, Any\\, Upcoming\\, and Started). None lists all issues with no milestone. Any lists all issues that have an assigned milestone. Upcoming lists all issues assigned to milestones due in the future. Started lists all issues assigned to open\\, started milestones. The logic for Upcoming and Started differs from the logic used in the GraphQL API. milestone and milestone_id are mutually exclusive."`
 
 	// Milestone The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone. Using None or Any will be deprecated in the future. Use milestone_id attribute instead. milestone and milestone_id are mutually exclusive.
-	Milestone *string `form:"milestone,omitempty" json:"milestone,omitempty"`
+	Milestone *string `form:"milestone,omitempty" json:"milestone,omitempty" jsonschema:"description=The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone. Using None or Any will be deprecated in the future. Use milestone_id attribute instead. milestone and milestone_id are mutually exclusive."`
 
 	// MyReactionEmoji Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
-	MyReactionEmoji *string `form:"my_reaction_emoji,omitempty" json:"my_reaction_emoji,omitempty"`
+	MyReactionEmoji *string `form:"my_reaction_emoji,omitempty" json:"my_reaction_emoji,omitempty" jsonschema:"description=Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction."`
 
 	// NonArchived Return issues only from non-archived projects. If false, the response returns issues from both archived and non-archived projects. Default is true.
-	NonArchived *bool `form:"non_archived,omitempty" json:"non_archived,omitempty"`
+	NonArchived *bool `form:"non_archived,omitempty" json:"non_archived,omitempty" jsonschema:"description=Return issues only from non-archived projects. If false\\, the response returns issues from both archived and non-archived projects. Default is true."`
 
 	// Not Return issues that do not match the parameters supplied. Accepts: assignee_id, assignee_username, author_id, author_username, iids, iteration_id, iteration_title, labels, milestone, milestone_id and weight.
-	Not *string `form:"not,omitempty" json:"not,omitempty"`
+	Not *string `form:"not,omitempty" json:"not,omitempty" jsonschema:"description=Return issues that do not match the parameters supplied. Accepts: assignee_id\\, assignee_username\\, author_id\\, author_username\\, iids\\, iteration_id\\, iteration_title\\, labels\\, milestone\\, milestone_id and weight."`
 
 	// OrderBy Return issues ordered by created_at, due_date, label_priority, milestone_due, popularity, priority, relative_position, title, updated_at, or weight fields. Default is created_at.
-	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty" jsonschema:"description=Return issues ordered by created_at\\, due_date\\, label_priority\\, milestone_due\\, popularity\\, priority\\, relative_position\\, title\\, updated_at\\, or weight fields. Default is created_at."`
 
 	// Scope Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to created_by_me.
-	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
+	Scope *string `form:"scope,omitempty" json:"scope,omitempty" jsonschema:"description=Return issues for the given scope: created_by_me\\, assigned_to_me or all. Defaults to created_by_me."`
 
 	// Search Search issues against their title and description.
-	Search *string `form:"search,omitempty" json:"search,omitempty"`
+	Search *string `form:"search,omitempty" json:"search,omitempty" jsonschema:"description=Search issues against their title and description."`
 
 	// Sort Return issues sorted in asc or desc order. Default is desc.
-	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty" jsonschema:"description=Return issues sorted in asc or desc order. Default is desc."`
 
 	// State Return all issues or just those that are opened or closed.
-	State *string `form:"state,omitempty" json:"state,omitempty"`
+	State *string `form:"state,omitempty" json:"state,omitempty" jsonschema:"description=Return all issues or just those that are opened or closed."`
 
 	// UpdatedAfter Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
-	UpdatedAfter *string `form:"updated_after,omitempty" json:"updated_after,omitempty"`
+	UpdatedAfter *string `form:"updated_after,omitempty" json:"updated_after,omitempty" jsonschema:"description=Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."`
 
 	// UpdatedBefore Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).
-	UpdatedBefore *string `form:"updated_before,omitempty" json:"updated_before,omitempty"`
+	UpdatedBefore *string `form:"updated_before,omitempty" json:"updated_before,omitempty" jsonschema:"description=Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."`
 
 	// Weight Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned. Premium and Ultimate only.
-	Weight *int `form:"weight,omitempty" json:"weight,omitempty"`
+	Weight *int `form:"weight,omitempty" json:"weight,omitempty" jsonschema:"description=Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned. Premium and Ultimate only."`
 
 	// WithLabelsDetails If true, the response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false.
-	WithLabelsDetails *bool `form:"with_labels_details,omitempty" json:"with_labels_details,omitempty"`
+	WithLabelsDetails *bool `form:"with_labels_details,omitempty" json:"with_labels_details,omitempty" jsonschema:"description=If true\\, the response returns more details for each label in labels field: :name\\, :color\\, :description\\, :description_html\\, :text_color. Default is false."`
 }
 type GetApiV4IssuesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON2XX      *[]struct {
-		Links *struct {
+		UnderscoreLinks *struct {
 			AwardEmoji          *string `json:"award_emoji,omitempty"`
 			ClosedAsDuplicateOf *string `json:"closed_as_duplicate_of,omitempty"`
 			Notes               *string `json:"notes,omitempty"`
@@ -197,7 +197,7 @@ type GetApiV4IssuesIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON2XX      *struct {
-		Links *struct {
+		UnderscoreLinks *struct {
 			AwardEmoji          *string `json:"award_emoji,omitempty"`
 			ClosedAsDuplicateOf *string `json:"closed_as_duplicate_of,omitempty"`
 			Notes               *string `json:"notes,omitempty"`
@@ -904,7 +904,7 @@ func ParseGetApiV4IssuesResponse(rsp *http.Response) (*GetApiV4IssuesResponse, e
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode/100 == 2:
 		var dest []struct {
-			Links *struct {
+			UnderscoreLinks *struct {
 				AwardEmoji          *string `json:"award_emoji,omitempty"`
 				ClosedAsDuplicateOf *string `json:"closed_as_duplicate_of,omitempty"`
 				Notes               *string `json:"notes,omitempty"`
@@ -1013,7 +1013,7 @@ func ParseGetApiV4IssuesIdResponse(rsp *http.Response) (*GetApiV4IssuesIdRespons
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode/100 == 2:
 		var dest struct {
-			Links *struct {
+			UnderscoreLinks *struct {
 				AwardEmoji          *string `json:"award_emoji,omitempty"`
 				ClosedAsDuplicateOf *string `json:"closed_as_duplicate_of,omitempty"`
 				Notes               *string `json:"notes,omitempty"`

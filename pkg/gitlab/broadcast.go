@@ -16,72 +16,72 @@ import (
 
 type GetApiV4BroadcastMessagesParams struct {
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type PostApiV4BroadcastMessagesJSONBody struct {
 	// BroadcastType Broadcast type. Defaults to banner
-	BroadcastType *string `json:"broadcast_type,omitempty"`
+	BroadcastType *string `json:"broadcast_type,omitempty" jsonschema:"description=Broadcast type. Defaults to banner,enum=banner,enum=notification"`
 
 	// Color Background color (Deprecated. Use "theme" instead.)
-	Color *string `json:"color,omitempty"`
+	Color *string `json:"color,omitempty" jsonschema:"description=Background color (Deprecated. Use \"theme\" instead.)"`
 
 	// Dismissable Is dismissable
-	Dismissable *bool `json:"dismissable,omitempty"`
+	Dismissable *bool `json:"dismissable,omitempty" jsonschema:"description=Is dismissable"`
 
 	// EndsAt Ending time
-	EndsAt *time.Time `json:"ends_at,omitempty"`
+	EndsAt *time.Time `json:"ends_at,omitempty" jsonschema:"description=Ending time,format=date-time"`
 
 	// Font Foreground color (Deprecated. Use "theme" instead.)
-	Font *string `json:"font,omitempty"`
+	Font *string `json:"font,omitempty" jsonschema:"description=Foreground color (Deprecated. Use \"theme\" instead.)"`
 
 	// Message Message to display
-	Message string `json:"message"`
+	Message string `json:"message" jsonschema:"description=Message to display"`
 
 	// StartsAt Starting time
-	StartsAt *time.Time `json:"starts_at,omitempty"`
+	StartsAt *time.Time `json:"starts_at,omitempty" jsonschema:"description=Starting time,format=date-time"`
 
 	// TargetAccessLevels Target user roles
-	TargetAccessLevels *[]int32 `json:"target_access_levels,omitempty"`
+	TargetAccessLevels *[]int32 `json:"target_access_levels,omitempty" jsonschema:"description=Target user roles"`
 
 	// TargetPath Target path
-	TargetPath *string `json:"target_path,omitempty"`
+	TargetPath *string `json:"target_path,omitempty" jsonschema:"description=Target path"`
 
 	// Theme The theme for the message
-	Theme *string `json:"theme,omitempty"`
+	Theme *string `json:"theme,omitempty" jsonschema:"description=The theme for the message,enum=indigo,enum=light-indigo,enum=blue,enum=light-blue,enum=green,enum=light-green,enum=red,enum=light-red,enum=dark,enum=light"`
 }
 type PutApiV4BroadcastMessagesIdJSONBody struct {
 	// BroadcastType Broadcast Type
-	BroadcastType *string `json:"broadcast_type,omitempty"`
+	BroadcastType *string `json:"broadcast_type,omitempty" jsonschema:"description=Broadcast Type,enum=banner,enum=notification"`
 
 	// Color Background color (Deprecated. Use "theme" instead.)
-	Color *string `json:"color,omitempty"`
+	Color *string `json:"color,omitempty" jsonschema:"description=Background color (Deprecated. Use \"theme\" instead.)"`
 
 	// Dismissable Is dismissable
-	Dismissable *bool `json:"dismissable,omitempty"`
+	Dismissable *bool `json:"dismissable,omitempty" jsonschema:"description=Is dismissable"`
 
 	// EndsAt Ending time
-	EndsAt *time.Time `json:"ends_at,omitempty"`
+	EndsAt *time.Time `json:"ends_at,omitempty" jsonschema:"description=Ending time,format=date-time"`
 
 	// Font Foreground color (Deprecated. Use "theme" instead.)
-	Font *string `json:"font,omitempty"`
+	Font *string `json:"font,omitempty" jsonschema:"description=Foreground color (Deprecated. Use \"theme\" instead.)"`
 
 	// Message Message to display
-	Message *string `json:"message,omitempty"`
+	Message *string `json:"message,omitempty" jsonschema:"description=Message to display"`
 
 	// StartsAt Starting time
-	StartsAt *time.Time `json:"starts_at,omitempty"`
+	StartsAt *time.Time `json:"starts_at,omitempty" jsonschema:"description=Starting time,format=date-time"`
 
 	// TargetAccessLevels Target user roles
-	TargetAccessLevels *[]int32 `json:"target_access_levels,omitempty"`
+	TargetAccessLevels *[]int32 `json:"target_access_levels,omitempty" jsonschema:"description=Target user roles"`
 
 	// TargetPath Target path
-	TargetPath *string `json:"target_path,omitempty"`
+	TargetPath *string `json:"target_path,omitempty" jsonschema:"description=Target path"`
 
 	// Theme The theme for the message
-	Theme *string `json:"theme,omitempty"`
+	Theme *string `json:"theme,omitempty" jsonschema:"description=The theme for the message,enum=indigo,enum=light-indigo,enum=blue,enum=light-blue,enum=green,enum=light-green,enum=red,enum=light-red,enum=dark,enum=light"`
 }
 type PostApiV4BroadcastMessagesJSONRequestBody PostApiV4BroadcastMessagesJSONBody
 type PutApiV4BroadcastMessagesIdJSONRequestBody PutApiV4BroadcastMessagesIdJSONBody

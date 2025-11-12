@@ -24,14 +24,14 @@ type PostApiV4GeoProxyGitSshInfoRefsReceivePackJSONBody struct {
 type PostApiV4GeoProxyGitSshInfoRefsUploadPackJSONBody struct {
 	Data struct {
 		// GlId GitLab identifier of user that initiated the clone/pull
-		GlId string `json:"gl_id"`
+		GlId string `json:"gl_id" jsonschema:"description=GitLab identifier of user that initiated the clone/pull"`
 
 		// PrimaryRepo Primary repository to clone/pull
-		PrimaryRepo string `json:"primary_repo"`
+		PrimaryRepo string `json:"primary_repo" jsonschema:"description=Primary repository to clone/pull"`
 	} `json:"data"`
 
 	// SecretToken Secret token to authenticate by gitlab shell
-	SecretToken string `json:"secret_token"`
+	SecretToken string `json:"secret_token" jsonschema:"description=Secret token to authenticate by gitlab shell"`
 }
 type PostApiV4GeoProxyGitSshReceivePackJSONBody struct {
 	Data struct {
@@ -40,7 +40,7 @@ type PostApiV4GeoProxyGitSshReceivePackJSONBody struct {
 	} `json:"data"`
 
 	// Output Output from git-receive-pack
-	Output      string `json:"output"`
+	Output      string `json:"output" jsonschema:"description=Output from git-receive-pack"`
 	SecretToken string `json:"secret_token"`
 }
 type PostApiV4GeoProxyGitSshUploadPackJSONBody struct {
@@ -50,428 +50,428 @@ type PostApiV4GeoProxyGitSshUploadPackJSONBody struct {
 	} `json:"data"`
 
 	// Output Output from git-upload-pack
-	Output      string `json:"output"`
+	Output      string `json:"output" jsonschema:"description=Output from git-upload-pack"`
 	SecretToken string `json:"secret_token"`
 }
 type PostApiV4GeoStatusJSONBody struct {
 	Data *struct {
 		// CursorLastEventDate Cursor last event date
-		CursorLastEventDate *time.Time `json:"cursor_last_event_date,omitempty"`
+		CursorLastEventDate *time.Time `json:"cursor_last_event_date,omitempty" jsonschema:"description=Cursor last event date,format=date-time"`
 
 		// CursorLastEventId Cursor last event ID
-		CursorLastEventId *int32 `json:"cursor_last_event_id,omitempty"`
+		CursorLastEventId *int32 `json:"cursor_last_event_id,omitempty" jsonschema:"description=Cursor last event ID,format=int32"`
 
 		// DbReplicationLagSeconds DB replication lag in seconds
-		DbReplicationLagSeconds *int32 `json:"db_replication_lag_seconds,omitempty"`
+		DbReplicationLagSeconds *int32 `json:"db_replication_lag_seconds,omitempty" jsonschema:"description=DB replication lag in seconds,format=int32"`
 
 		// GeoNodeId Geo Node ID to look up its status
-		GeoNodeId int32 `json:"geo_node_id"`
+		GeoNodeId int32 `json:"geo_node_id" jsonschema:"description=Geo Node ID to look up its status,format=int32"`
 
 		// LastEventDate Last event date
-		LastEventDate *time.Time `json:"last_event_date,omitempty"`
+		LastEventDate *time.Time `json:"last_event_date,omitempty" jsonschema:"description=Last event date,format=date-time"`
 
 		// LastEventId Last event ID
-		LastEventId *int32 `json:"last_event_id,omitempty"`
+		LastEventId *int32 `json:"last_event_id,omitempty" jsonschema:"description=Last event ID,format=int32"`
 
 		// LastSuccessfulStatusCheckAt Last successful status check date
-		LastSuccessfulStatusCheckAt *time.Time `json:"last_successful_status_check_at,omitempty"`
+		LastSuccessfulStatusCheckAt *time.Time `json:"last_successful_status_check_at,omitempty" jsonschema:"description=Last successful status check date,format=date-time"`
 
 		// ReplicationSlotsCount Replication slots count
-		ReplicationSlotsCount *int32 `json:"replication_slots_count,omitempty"`
+		ReplicationSlotsCount *int32 `json:"replication_slots_count,omitempty" jsonschema:"description=Replication slots count,format=int32"`
 
 		// ReplicationSlotsMaxRetainedWalBytes Maximum number of bytes retained in the WAL on the primary
-		ReplicationSlotsMaxRetainedWalBytes *int32 `json:"replication_slots_max_retained_wal_bytes,omitempty"`
+		ReplicationSlotsMaxRetainedWalBytes *int32 `json:"replication_slots_max_retained_wal_bytes,omitempty" jsonschema:"description=Maximum number of bytes retained in the WAL on the primary,format=int32"`
 
 		// ReplicationSlotsUsedCount Replication slots used count
-		ReplicationSlotsUsedCount *int32 `json:"replication_slots_used_count,omitempty"`
+		ReplicationSlotsUsedCount *int32 `json:"replication_slots_used_count,omitempty" jsonschema:"description=Replication slots used count,format=int32"`
 
 		// Revision Gitlab revision
-		Revision *string `json:"revision,omitempty"`
+		Revision *string `json:"revision,omitempty" jsonschema:"description=Gitlab revision"`
 		Status   *struct {
 			// CiSecureFilesChecksumFailedCount CI secure files checksum failed count
-			CiSecureFilesChecksumFailedCount *int32 `json:"ci_secure_files_checksum_failed_count,omitempty"`
+			CiSecureFilesChecksumFailedCount *int32 `json:"ci_secure_files_checksum_failed_count,omitempty" jsonschema:"description=CI secure files checksum failed count,format=int32"`
 
 			// CiSecureFilesChecksumTotalCount CI secure files checksum total count
-			CiSecureFilesChecksumTotalCount *int32 `json:"ci_secure_files_checksum_total_count,omitempty"`
+			CiSecureFilesChecksumTotalCount *int32 `json:"ci_secure_files_checksum_total_count,omitempty" jsonschema:"description=CI secure files checksum total count,format=int32"`
 
 			// CiSecureFilesChecksummedCount CI secure files checksummed count
-			CiSecureFilesChecksummedCount *int32 `json:"ci_secure_files_checksummed_count,omitempty"`
+			CiSecureFilesChecksummedCount *int32 `json:"ci_secure_files_checksummed_count,omitempty" jsonschema:"description=CI secure files checksummed count,format=int32"`
 
 			// CiSecureFilesCount CI secure files count
-			CiSecureFilesCount *int32 `json:"ci_secure_files_count,omitempty"`
+			CiSecureFilesCount *int32 `json:"ci_secure_files_count,omitempty" jsonschema:"description=CI secure files count,format=int32"`
 
 			// CiSecureFilesFailedCount CI secure files failed count
-			CiSecureFilesFailedCount *int32 `json:"ci_secure_files_failed_count,omitempty"`
+			CiSecureFilesFailedCount *int32 `json:"ci_secure_files_failed_count,omitempty" jsonschema:"description=CI secure files failed count,format=int32"`
 
 			// CiSecureFilesRegistryCount CI secure files registry count
-			CiSecureFilesRegistryCount *int32 `json:"ci_secure_files_registry_count,omitempty"`
+			CiSecureFilesRegistryCount *int32 `json:"ci_secure_files_registry_count,omitempty" jsonschema:"description=CI secure files registry count,format=int32"`
 
 			// CiSecureFilesSyncedCount CI secure files synced count
-			CiSecureFilesSyncedCount *int32 `json:"ci_secure_files_synced_count,omitempty"`
+			CiSecureFilesSyncedCount *int32 `json:"ci_secure_files_synced_count,omitempty" jsonschema:"description=CI secure files synced count,format=int32"`
 
 			// CiSecureFilesVerificationFailedCount CI secure files verification failed count
-			CiSecureFilesVerificationFailedCount *int32 `json:"ci_secure_files_verification_failed_count,omitempty"`
+			CiSecureFilesVerificationFailedCount *int32 `json:"ci_secure_files_verification_failed_count,omitempty" jsonschema:"description=CI secure files verification failed count,format=int32"`
 
 			// CiSecureFilesVerificationTotalCount CI secure files verification total count
-			CiSecureFilesVerificationTotalCount *int32 `json:"ci_secure_files_verification_total_count,omitempty"`
+			CiSecureFilesVerificationTotalCount *int32 `json:"ci_secure_files_verification_total_count,omitempty" jsonschema:"description=CI secure files verification total count,format=int32"`
 
 			// CiSecureFilesVerifiedCount CI secure files verified count
-			CiSecureFilesVerifiedCount *int32 `json:"ci_secure_files_verified_count,omitempty"`
+			CiSecureFilesVerifiedCount *int32 `json:"ci_secure_files_verified_count,omitempty" jsonschema:"description=CI secure files verified count,format=int32"`
 
 			// ContainerRepositoriesChecksumFailedCount Container repositories checksum failed count
-			ContainerRepositoriesChecksumFailedCount *int32 `json:"container_repositories_checksum_failed_count,omitempty"`
+			ContainerRepositoriesChecksumFailedCount *int32 `json:"container_repositories_checksum_failed_count,omitempty" jsonschema:"description=Container repositories checksum failed count,format=int32"`
 
 			// ContainerRepositoriesChecksumTotalCount Container repositories checksum total count
-			ContainerRepositoriesChecksumTotalCount *int32 `json:"container_repositories_checksum_total_count,omitempty"`
+			ContainerRepositoriesChecksumTotalCount *int32 `json:"container_repositories_checksum_total_count,omitempty" jsonschema:"description=Container repositories checksum total count,format=int32"`
 
 			// ContainerRepositoriesChecksummedCount Container repositories checksummed count
-			ContainerRepositoriesChecksummedCount *int32 `json:"container_repositories_checksummed_count,omitempty"`
+			ContainerRepositoriesChecksummedCount *int32 `json:"container_repositories_checksummed_count,omitempty" jsonschema:"description=Container repositories checksummed count,format=int32"`
 
 			// ContainerRepositoriesCount Container repositories count
-			ContainerRepositoriesCount *int32 `json:"container_repositories_count,omitempty"`
+			ContainerRepositoriesCount *int32 `json:"container_repositories_count,omitempty" jsonschema:"description=Container repositories count,format=int32"`
 
 			// ContainerRepositoriesFailedCount Container repositories failed count
-			ContainerRepositoriesFailedCount *int32 `json:"container_repositories_failed_count,omitempty"`
+			ContainerRepositoriesFailedCount *int32 `json:"container_repositories_failed_count,omitempty" jsonschema:"description=Container repositories failed count,format=int32"`
 
 			// ContainerRepositoriesRegistryCount Container repositories registry count
-			ContainerRepositoriesRegistryCount *int32 `json:"container_repositories_registry_count,omitempty"`
+			ContainerRepositoriesRegistryCount *int32 `json:"container_repositories_registry_count,omitempty" jsonschema:"description=Container repositories registry count,format=int32"`
 
 			// ContainerRepositoriesReplicationEnabled Container repositories replication enabled
-			ContainerRepositoriesReplicationEnabled *bool `json:"container_repositories_replication_enabled,omitempty"`
+			ContainerRepositoriesReplicationEnabled *bool `json:"container_repositories_replication_enabled,omitempty" jsonschema:"description=Container repositories replication enabled"`
 
 			// ContainerRepositoriesSyncedCount Container repositories synced count
-			ContainerRepositoriesSyncedCount *int32 `json:"container_repositories_synced_count,omitempty"`
+			ContainerRepositoriesSyncedCount *int32 `json:"container_repositories_synced_count,omitempty" jsonschema:"description=Container repositories synced count,format=int32"`
 
 			// ContainerRepositoriesVerificationFailedCount Container repositories verification failed count
-			ContainerRepositoriesVerificationFailedCount *int32 `json:"container_repositories_verification_failed_count,omitempty"`
+			ContainerRepositoriesVerificationFailedCount *int32 `json:"container_repositories_verification_failed_count,omitempty" jsonschema:"description=Container repositories verification failed count,format=int32"`
 
 			// ContainerRepositoriesVerificationTotalCount Container repositories verification total count
-			ContainerRepositoriesVerificationTotalCount *int32 `json:"container_repositories_verification_total_count,omitempty"`
+			ContainerRepositoriesVerificationTotalCount *int32 `json:"container_repositories_verification_total_count,omitempty" jsonschema:"description=Container repositories verification total count,format=int32"`
 
 			// ContainerRepositoriesVerifiedCount Container repositories verified count
-			ContainerRepositoriesVerifiedCount *int32 `json:"container_repositories_verified_count,omitempty"`
+			ContainerRepositoriesVerifiedCount *int32 `json:"container_repositories_verified_count,omitempty" jsonschema:"description=Container repositories verified count,format=int32"`
 
 			// GitFetchEventCountWeekly Git fetch event count weekly
-			GitFetchEventCountWeekly *int32 `json:"git_fetch_event_count_weekly,omitempty"`
+			GitFetchEventCountWeekly *int32 `json:"git_fetch_event_count_weekly,omitempty" jsonschema:"description=Git fetch event count weekly,format=int32"`
 
 			// GitPushEventCountWeekly Git push event count weekly
-			GitPushEventCountWeekly *int32 `json:"git_push_event_count_weekly,omitempty"`
+			GitPushEventCountWeekly *int32 `json:"git_push_event_count_weekly,omitempty" jsonschema:"description=Git push event count weekly,format=int32"`
 
 			// GroupWikiRepositoriesChecksumFailedCount Group wiki repositories checksum failed count
-			GroupWikiRepositoriesChecksumFailedCount *int32 `json:"group_wiki_repositories_checksum_failed_count,omitempty"`
+			GroupWikiRepositoriesChecksumFailedCount *int32 `json:"group_wiki_repositories_checksum_failed_count,omitempty" jsonschema:"description=Group wiki repositories checksum failed count,format=int32"`
 
 			// GroupWikiRepositoriesChecksumTotalCount Group wiki repositories checksum total count
-			GroupWikiRepositoriesChecksumTotalCount *int32 `json:"group_wiki_repositories_checksum_total_count,omitempty"`
+			GroupWikiRepositoriesChecksumTotalCount *int32 `json:"group_wiki_repositories_checksum_total_count,omitempty" jsonschema:"description=Group wiki repositories checksum total count,format=int32"`
 
 			// GroupWikiRepositoriesChecksummedCount Group wiki repositories checksummed count
-			GroupWikiRepositoriesChecksummedCount *int32 `json:"group_wiki_repositories_checksummed_count,omitempty"`
+			GroupWikiRepositoriesChecksummedCount *int32 `json:"group_wiki_repositories_checksummed_count,omitempty" jsonschema:"description=Group wiki repositories checksummed count,format=int32"`
 
 			// GroupWikiRepositoriesCount Group wiki repositories count
-			GroupWikiRepositoriesCount *int32 `json:"group_wiki_repositories_count,omitempty"`
+			GroupWikiRepositoriesCount *int32 `json:"group_wiki_repositories_count,omitempty" jsonschema:"description=Group wiki repositories count,format=int32"`
 
 			// GroupWikiRepositoriesFailedCount Group wiki repositories failed count
-			GroupWikiRepositoriesFailedCount *int32 `json:"group_wiki_repositories_failed_count,omitempty"`
+			GroupWikiRepositoriesFailedCount *int32 `json:"group_wiki_repositories_failed_count,omitempty" jsonschema:"description=Group wiki repositories failed count,format=int32"`
 
 			// GroupWikiRepositoriesRegistryCount Group wiki repositories registry count
-			GroupWikiRepositoriesRegistryCount *int32 `json:"group_wiki_repositories_registry_count,omitempty"`
+			GroupWikiRepositoriesRegistryCount *int32 `json:"group_wiki_repositories_registry_count,omitempty" jsonschema:"description=Group wiki repositories registry count,format=int32"`
 
 			// GroupWikiRepositoriesSyncedCount Group wiki repositories synced count
-			GroupWikiRepositoriesSyncedCount *int32 `json:"group_wiki_repositories_synced_count,omitempty"`
+			GroupWikiRepositoriesSyncedCount *int32 `json:"group_wiki_repositories_synced_count,omitempty" jsonschema:"description=Group wiki repositories synced count,format=int32"`
 
 			// GroupWikiRepositoriesVerificationFailedCount Group wiki repositories verification failed count
-			GroupWikiRepositoriesVerificationFailedCount *int32 `json:"group_wiki_repositories_verification_failed_count,omitempty"`
+			GroupWikiRepositoriesVerificationFailedCount *int32 `json:"group_wiki_repositories_verification_failed_count,omitempty" jsonschema:"description=Group wiki repositories verification failed count,format=int32"`
 
 			// GroupWikiRepositoriesVerificationTotalCount Group wiki repositories verification total count
-			GroupWikiRepositoriesVerificationTotalCount *int32 `json:"group_wiki_repositories_verification_total_count,omitempty"`
+			GroupWikiRepositoriesVerificationTotalCount *int32 `json:"group_wiki_repositories_verification_total_count,omitempty" jsonschema:"description=Group wiki repositories verification total count,format=int32"`
 
 			// GroupWikiRepositoriesVerifiedCount Group wiki repositories verified count
-			GroupWikiRepositoriesVerifiedCount *int32 `json:"group_wiki_repositories_verified_count,omitempty"`
+			GroupWikiRepositoriesVerifiedCount *int32 `json:"group_wiki_repositories_verified_count,omitempty" jsonschema:"description=Group wiki repositories verified count,format=int32"`
 
 			// JobArtifactsChecksumFailedCount Job artifacts checksum failed count
-			JobArtifactsChecksumFailedCount *int32 `json:"job_artifacts_checksum_failed_count,omitempty"`
+			JobArtifactsChecksumFailedCount *int32 `json:"job_artifacts_checksum_failed_count,omitempty" jsonschema:"description=Job artifacts checksum failed count,format=int32"`
 
 			// JobArtifactsChecksumTotalCount Job artifacts checksum total count
-			JobArtifactsChecksumTotalCount *int32 `json:"job_artifacts_checksum_total_count,omitempty"`
+			JobArtifactsChecksumTotalCount *int32 `json:"job_artifacts_checksum_total_count,omitempty" jsonschema:"description=Job artifacts checksum total count,format=int32"`
 
 			// JobArtifactsChecksummedCount Job artifacts checksummed count
-			JobArtifactsChecksummedCount *int32 `json:"job_artifacts_checksummed_count,omitempty"`
+			JobArtifactsChecksummedCount *int32 `json:"job_artifacts_checksummed_count,omitempty" jsonschema:"description=Job artifacts checksummed count,format=int32"`
 
 			// JobArtifactsCount Job artifacts count
-			JobArtifactsCount *int32 `json:"job_artifacts_count,omitempty"`
+			JobArtifactsCount *int32 `json:"job_artifacts_count,omitempty" jsonschema:"description=Job artifacts count,format=int32"`
 
 			// JobArtifactsFailedCount Job artifacts failed count
-			JobArtifactsFailedCount *int32 `json:"job_artifacts_failed_count,omitempty"`
+			JobArtifactsFailedCount *int32 `json:"job_artifacts_failed_count,omitempty" jsonschema:"description=Job artifacts failed count,format=int32"`
 
 			// JobArtifactsRegistryCount Job artifacts registry count
-			JobArtifactsRegistryCount *int32 `json:"job_artifacts_registry_count,omitempty"`
+			JobArtifactsRegistryCount *int32 `json:"job_artifacts_registry_count,omitempty" jsonschema:"description=Job artifacts registry count,format=int32"`
 
 			// JobArtifactsSyncedCount Job artifacts synced count
-			JobArtifactsSyncedCount *int32 `json:"job_artifacts_synced_count,omitempty"`
+			JobArtifactsSyncedCount *int32 `json:"job_artifacts_synced_count,omitempty" jsonschema:"description=Job artifacts synced count,format=int32"`
 
 			// JobArtifactsVerificationFailedCount Job artifacts verification failed count
-			JobArtifactsVerificationFailedCount *int32 `json:"job_artifacts_verification_failed_count,omitempty"`
+			JobArtifactsVerificationFailedCount *int32 `json:"job_artifacts_verification_failed_count,omitempty" jsonschema:"description=Job artifacts verification failed count,format=int32"`
 
 			// JobArtifactsVerificationTotalCount Job artifacts verification total count
-			JobArtifactsVerificationTotalCount *int32 `json:"job_artifacts_verification_total_count,omitempty"`
+			JobArtifactsVerificationTotalCount *int32 `json:"job_artifacts_verification_total_count,omitempty" jsonschema:"description=Job artifacts verification total count,format=int32"`
 
 			// JobArtifactsVerifiedCount Job artifacts verified count
-			JobArtifactsVerifiedCount *int32 `json:"job_artifacts_verified_count,omitempty"`
+			JobArtifactsVerifiedCount *int32 `json:"job_artifacts_verified_count,omitempty" jsonschema:"description=Job artifacts verified count,format=int32"`
 
 			// LfsObjectsChecksumFailedCount LFS objects checksum failed count
-			LfsObjectsChecksumFailedCount *int32 `json:"lfs_objects_checksum_failed_count,omitempty"`
+			LfsObjectsChecksumFailedCount *int32 `json:"lfs_objects_checksum_failed_count,omitempty" jsonschema:"description=LFS objects checksum failed count,format=int32"`
 
 			// LfsObjectsChecksumTotalCount LFS objects checksum total count
-			LfsObjectsChecksumTotalCount *int32 `json:"lfs_objects_checksum_total_count,omitempty"`
+			LfsObjectsChecksumTotalCount *int32 `json:"lfs_objects_checksum_total_count,omitempty" jsonschema:"description=LFS objects checksum total count,format=int32"`
 
 			// LfsObjectsChecksummedCount LFS objects checksummed count
-			LfsObjectsChecksummedCount *int32 `json:"lfs_objects_checksummed_count,omitempty"`
+			LfsObjectsChecksummedCount *int32 `json:"lfs_objects_checksummed_count,omitempty" jsonschema:"description=LFS objects checksummed count,format=int32"`
 
 			// LfsObjectsCount LFS objects count
-			LfsObjectsCount *int32 `json:"lfs_objects_count,omitempty"`
+			LfsObjectsCount *int32 `json:"lfs_objects_count,omitempty" jsonschema:"description=LFS objects count,format=int32"`
 
 			// LfsObjectsFailedCount LFS objects failed count
-			LfsObjectsFailedCount *int32 `json:"lfs_objects_failed_count,omitempty"`
+			LfsObjectsFailedCount *int32 `json:"lfs_objects_failed_count,omitempty" jsonschema:"description=LFS objects failed count,format=int32"`
 
 			// LfsObjectsRegistryCount LFS objects registry count
-			LfsObjectsRegistryCount *int32 `json:"lfs_objects_registry_count,omitempty"`
+			LfsObjectsRegistryCount *int32 `json:"lfs_objects_registry_count,omitempty" jsonschema:"description=LFS objects registry count,format=int32"`
 
 			// LfsObjectsSyncedCount LFS objects synced count
-			LfsObjectsSyncedCount *int32 `json:"lfs_objects_synced_count,omitempty"`
+			LfsObjectsSyncedCount *int32 `json:"lfs_objects_synced_count,omitempty" jsonschema:"description=LFS objects synced count,format=int32"`
 
 			// LfsObjectsVerificationFailedCount LFS objects verification failed count
-			LfsObjectsVerificationFailedCount *int32 `json:"lfs_objects_verification_failed_count,omitempty"`
+			LfsObjectsVerificationFailedCount *int32 `json:"lfs_objects_verification_failed_count,omitempty" jsonschema:"description=LFS objects verification failed count,format=int32"`
 
 			// LfsObjectsVerificationTotalCount LFS objects verification total count
-			LfsObjectsVerificationTotalCount *int32 `json:"lfs_objects_verification_total_count,omitempty"`
+			LfsObjectsVerificationTotalCount *int32 `json:"lfs_objects_verification_total_count,omitempty" jsonschema:"description=LFS objects verification total count,format=int32"`
 
 			// LfsObjectsVerifiedCount LFS objects verified count
-			LfsObjectsVerifiedCount *int32 `json:"lfs_objects_verified_count,omitempty"`
+			LfsObjectsVerifiedCount *int32 `json:"lfs_objects_verified_count,omitempty" jsonschema:"description=LFS objects verified count,format=int32"`
 
 			// MergeRequestDiffsChecksumFailedCount Merge request diffs checksum failed count
-			MergeRequestDiffsChecksumFailedCount *int32 `json:"merge_request_diffs_checksum_failed_count,omitempty"`
+			MergeRequestDiffsChecksumFailedCount *int32 `json:"merge_request_diffs_checksum_failed_count,omitempty" jsonschema:"description=Merge request diffs checksum failed count,format=int32"`
 
 			// MergeRequestDiffsChecksumTotalCount Merge request diffs checksum total count
-			MergeRequestDiffsChecksumTotalCount *int32 `json:"merge_request_diffs_checksum_total_count,omitempty"`
+			MergeRequestDiffsChecksumTotalCount *int32 `json:"merge_request_diffs_checksum_total_count,omitempty" jsonschema:"description=Merge request diffs checksum total count,format=int32"`
 
 			// MergeRequestDiffsChecksummedCount Merge request diffs checksummed count
-			MergeRequestDiffsChecksummedCount *int32 `json:"merge_request_diffs_checksummed_count,omitempty"`
+			MergeRequestDiffsChecksummedCount *int32 `json:"merge_request_diffs_checksummed_count,omitempty" jsonschema:"description=Merge request diffs checksummed count,format=int32"`
 
 			// MergeRequestDiffsCount Merge request diffs count
-			MergeRequestDiffsCount *int32 `json:"merge_request_diffs_count,omitempty"`
+			MergeRequestDiffsCount *int32 `json:"merge_request_diffs_count,omitempty" jsonschema:"description=Merge request diffs count,format=int32"`
 
 			// MergeRequestDiffsFailedCount Merge request diffs failed count
-			MergeRequestDiffsFailedCount *int32 `json:"merge_request_diffs_failed_count,omitempty"`
+			MergeRequestDiffsFailedCount *int32 `json:"merge_request_diffs_failed_count,omitempty" jsonschema:"description=Merge request diffs failed count,format=int32"`
 
 			// MergeRequestDiffsRegistryCount Merge request diffs registry count
-			MergeRequestDiffsRegistryCount *int32 `json:"merge_request_diffs_registry_count,omitempty"`
+			MergeRequestDiffsRegistryCount *int32 `json:"merge_request_diffs_registry_count,omitempty" jsonschema:"description=Merge request diffs registry count,format=int32"`
 
 			// MergeRequestDiffsSyncedCount Merge request diffs synced count
-			MergeRequestDiffsSyncedCount *int32 `json:"merge_request_diffs_synced_count,omitempty"`
+			MergeRequestDiffsSyncedCount *int32 `json:"merge_request_diffs_synced_count,omitempty" jsonschema:"description=Merge request diffs synced count,format=int32"`
 
 			// MergeRequestDiffsVerificationFailedCount Merge request diffs verified count
-			MergeRequestDiffsVerificationFailedCount *int32 `json:"merge_request_diffs_verification_failed_count,omitempty"`
+			MergeRequestDiffsVerificationFailedCount *int32 `json:"merge_request_diffs_verification_failed_count,omitempty" jsonschema:"description=Merge request diffs verified count,format=int32"`
 
 			// MergeRequestDiffsVerificationTotalCount Merge request diffs verification total count
-			MergeRequestDiffsVerificationTotalCount *int32 `json:"merge_request_diffs_verification_total_count,omitempty"`
+			MergeRequestDiffsVerificationTotalCount *int32 `json:"merge_request_diffs_verification_total_count,omitempty" jsonschema:"description=Merge request diffs verification total count,format=int32"`
 
 			// MergeRequestDiffsVerifiedCount Merge request diffs verified count
-			MergeRequestDiffsVerifiedCount *int32 `json:"merge_request_diffs_verified_count,omitempty"`
+			MergeRequestDiffsVerifiedCount *int32 `json:"merge_request_diffs_verified_count,omitempty" jsonschema:"description=Merge request diffs verified count,format=int32"`
 
 			// PackageFilesChecksumFailedCount Packages files checksum failed count
-			PackageFilesChecksumFailedCount *int32 `json:"package_files_checksum_failed_count,omitempty"`
+			PackageFilesChecksumFailedCount *int32 `json:"package_files_checksum_failed_count,omitempty" jsonschema:"description=Packages files checksum failed count,format=int32"`
 
 			// PackageFilesChecksumTotalCount Packages files checksum total count
-			PackageFilesChecksumTotalCount *int32 `json:"package_files_checksum_total_count,omitempty"`
+			PackageFilesChecksumTotalCount *int32 `json:"package_files_checksum_total_count,omitempty" jsonschema:"description=Packages files checksum total count,format=int32"`
 
 			// PackageFilesChecksummedCount Packages files checksummed count
-			PackageFilesChecksummedCount *int32 `json:"package_files_checksummed_count,omitempty"`
+			PackageFilesChecksummedCount *int32 `json:"package_files_checksummed_count,omitempty" jsonschema:"description=Packages files checksummed count,format=int32"`
 
 			// PackageFilesCount Packages files count
-			PackageFilesCount *int32 `json:"package_files_count,omitempty"`
+			PackageFilesCount *int32 `json:"package_files_count,omitempty" jsonschema:"description=Packages files count,format=int32"`
 
 			// PackageFilesFailedCount Packages files failed count
-			PackageFilesFailedCount *int32 `json:"package_files_failed_count,omitempty"`
+			PackageFilesFailedCount *int32 `json:"package_files_failed_count,omitempty" jsonschema:"description=Packages files failed count,format=int32"`
 
 			// PackageFilesRegistryCount Packages files registry count
-			PackageFilesRegistryCount *int32 `json:"package_files_registry_count,omitempty"`
+			PackageFilesRegistryCount *int32 `json:"package_files_registry_count,omitempty" jsonschema:"description=Packages files registry count,format=int32"`
 
 			// PackageFilesSyncedCount Packages files synced count
-			PackageFilesSyncedCount *int32 `json:"package_files_synced_count,omitempty"`
+			PackageFilesSyncedCount *int32 `json:"package_files_synced_count,omitempty" jsonschema:"description=Packages files synced count,format=int32"`
 
 			// PackageFilesVerificationFailedCount Packages files verification failed count
-			PackageFilesVerificationFailedCount *int32 `json:"package_files_verification_failed_count,omitempty"`
+			PackageFilesVerificationFailedCount *int32 `json:"package_files_verification_failed_count,omitempty" jsonschema:"description=Packages files verification failed count,format=int32"`
 
 			// PackageFilesVerificationTotalCount Packages files verification total count
-			PackageFilesVerificationTotalCount *int32 `json:"package_files_verification_total_count,omitempty"`
+			PackageFilesVerificationTotalCount *int32 `json:"package_files_verification_total_count,omitempty" jsonschema:"description=Packages files verification total count,format=int32"`
 
 			// PackageFilesVerifiedCount Packages files verified count
-			PackageFilesVerifiedCount *int32 `json:"package_files_verified_count,omitempty"`
+			PackageFilesVerifiedCount *int32 `json:"package_files_verified_count,omitempty" jsonschema:"description=Packages files verified count,format=int32"`
 
 			// PagesDeploymentsChecksumFailedCount Pages deployments checksum failed count
-			PagesDeploymentsChecksumFailedCount *int32 `json:"pages_deployments_checksum_failed_count,omitempty"`
+			PagesDeploymentsChecksumFailedCount *int32 `json:"pages_deployments_checksum_failed_count,omitempty" jsonschema:"description=Pages deployments checksum failed count,format=int32"`
 
 			// PagesDeploymentsChecksumTotalCount Pages deployments checksum total count
-			PagesDeploymentsChecksumTotalCount *int32 `json:"pages_deployments_checksum_total_count,omitempty"`
+			PagesDeploymentsChecksumTotalCount *int32 `json:"pages_deployments_checksum_total_count,omitempty" jsonschema:"description=Pages deployments checksum total count,format=int32"`
 
 			// PagesDeploymentsChecksummedCount Pages deployments checksummed count
-			PagesDeploymentsChecksummedCount *int32 `json:"pages_deployments_checksummed_count,omitempty"`
+			PagesDeploymentsChecksummedCount *int32 `json:"pages_deployments_checksummed_count,omitempty" jsonschema:"description=Pages deployments checksummed count,format=int32"`
 
 			// PagesDeploymentsCount Pages deployments count
-			PagesDeploymentsCount *int32 `json:"pages_deployments_count,omitempty"`
+			PagesDeploymentsCount *int32 `json:"pages_deployments_count,omitempty" jsonschema:"description=Pages deployments count,format=int32"`
 
 			// PagesDeploymentsFailedCount Pages deployments failed count
-			PagesDeploymentsFailedCount *int32 `json:"pages_deployments_failed_count,omitempty"`
+			PagesDeploymentsFailedCount *int32 `json:"pages_deployments_failed_count,omitempty" jsonschema:"description=Pages deployments failed count,format=int32"`
 
 			// PagesDeploymentsRegistryCount Pages deployments registry count
-			PagesDeploymentsRegistryCount *int32 `json:"pages_deployments_registry_count,omitempty"`
+			PagesDeploymentsRegistryCount *int32 `json:"pages_deployments_registry_count,omitempty" jsonschema:"description=Pages deployments registry count,format=int32"`
 
 			// PagesDeploymentsSyncedCount Pages deployments synced count
-			PagesDeploymentsSyncedCount *int32 `json:"pages_deployments_synced_count,omitempty"`
+			PagesDeploymentsSyncedCount *int32 `json:"pages_deployments_synced_count,omitempty" jsonschema:"description=Pages deployments synced count,format=int32"`
 
 			// PagesDeploymentsVerificationFailedCount Pages deployments verification failed count
-			PagesDeploymentsVerificationFailedCount *int32 `json:"pages_deployments_verification_failed_count,omitempty"`
+			PagesDeploymentsVerificationFailedCount *int32 `json:"pages_deployments_verification_failed_count,omitempty" jsonschema:"description=Pages deployments verification failed count,format=int32"`
 
 			// PagesDeploymentsVerificationTotalCount Pages deployments verification total count
-			PagesDeploymentsVerificationTotalCount *int32 `json:"pages_deployments_verification_total_count,omitempty"`
+			PagesDeploymentsVerificationTotalCount *int32 `json:"pages_deployments_verification_total_count,omitempty" jsonschema:"description=Pages deployments verification total count,format=int32"`
 
 			// PagesDeploymentsVerifiedCount Pages deployments verified count
-			PagesDeploymentsVerifiedCount *int32 `json:"pages_deployments_verified_count,omitempty"`
+			PagesDeploymentsVerifiedCount *int32 `json:"pages_deployments_verified_count,omitempty" jsonschema:"description=Pages deployments verified count,format=int32"`
 
 			// PipelineArtifactsChecksumFailedCount Pipeline artifacts checksum failed count
-			PipelineArtifactsChecksumFailedCount *int32 `json:"pipeline_artifacts_checksum_failed_count,omitempty"`
+			PipelineArtifactsChecksumFailedCount *int32 `json:"pipeline_artifacts_checksum_failed_count,omitempty" jsonschema:"description=Pipeline artifacts checksum failed count,format=int32"`
 
 			// PipelineArtifactsChecksumTotalCount Pipeline artifacts checksum total count
-			PipelineArtifactsChecksumTotalCount *int32 `json:"pipeline_artifacts_checksum_total_count,omitempty"`
+			PipelineArtifactsChecksumTotalCount *int32 `json:"pipeline_artifacts_checksum_total_count,omitempty" jsonschema:"description=Pipeline artifacts checksum total count,format=int32"`
 
 			// PipelineArtifactsChecksummedCount Pipeline artifacts checksummed count
-			PipelineArtifactsChecksummedCount *int32 `json:"pipeline_artifacts_checksummed_count,omitempty"`
+			PipelineArtifactsChecksummedCount *int32 `json:"pipeline_artifacts_checksummed_count,omitempty" jsonschema:"description=Pipeline artifacts checksummed count,format=int32"`
 
 			// PipelineArtifactsCount Pipeline artifacts count
-			PipelineArtifactsCount *int32 `json:"pipeline_artifacts_count,omitempty"`
+			PipelineArtifactsCount *int32 `json:"pipeline_artifacts_count,omitempty" jsonschema:"description=Pipeline artifacts count,format=int32"`
 
 			// PipelineArtifactsFailedCount Pipeline artifacts failed count
-			PipelineArtifactsFailedCount *int32 `json:"pipeline_artifacts_failed_count,omitempty"`
+			PipelineArtifactsFailedCount *int32 `json:"pipeline_artifacts_failed_count,omitempty" jsonschema:"description=Pipeline artifacts failed count,format=int32"`
 
 			// PipelineArtifactsRegistryCount Pipeline artifacts registry count
-			PipelineArtifactsRegistryCount *int32 `json:"pipeline_artifacts_registry_count,omitempty"`
+			PipelineArtifactsRegistryCount *int32 `json:"pipeline_artifacts_registry_count,omitempty" jsonschema:"description=Pipeline artifacts registry count,format=int32"`
 
 			// PipelineArtifactsSyncedCount Pipeline artifacts synced count
-			PipelineArtifactsSyncedCount *int32 `json:"pipeline_artifacts_synced_count,omitempty"`
+			PipelineArtifactsSyncedCount *int32 `json:"pipeline_artifacts_synced_count,omitempty" jsonschema:"description=Pipeline artifacts synced count,format=int32"`
 
 			// PipelineArtifactsVerificationFailedCount Pipeline artifacts verification failed count
-			PipelineArtifactsVerificationFailedCount *int32 `json:"pipeline_artifacts_verification_failed_count,omitempty"`
+			PipelineArtifactsVerificationFailedCount *int32 `json:"pipeline_artifacts_verification_failed_count,omitempty" jsonschema:"description=Pipeline artifacts verification failed count,format=int32"`
 
 			// PipelineArtifactsVerificationTotalCount Pipeline artifacts verification total count
-			PipelineArtifactsVerificationTotalCount *int32 `json:"pipeline_artifacts_verification_total_count,omitempty"`
+			PipelineArtifactsVerificationTotalCount *int32 `json:"pipeline_artifacts_verification_total_count,omitempty" jsonschema:"description=Pipeline artifacts verification total count,format=int32"`
 
 			// PipelineArtifactsVerifiedCount Pipeline artifacts verified count
-			PipelineArtifactsVerifiedCount *int32 `json:"pipeline_artifacts_verified_count,omitempty"`
+			PipelineArtifactsVerifiedCount *int32 `json:"pipeline_artifacts_verified_count,omitempty" jsonschema:"description=Pipeline artifacts verified count,format=int32"`
 
 			// ProjectsCount Projects count
-			ProjectsCount *int32 `json:"projects_count,omitempty"`
+			ProjectsCount *int32 `json:"projects_count,omitempty" jsonschema:"description=Projects count,format=int32"`
 
 			// ProxyLocalRequestsEventCountWeekly Proxy local requests event count weekly
-			ProxyLocalRequestsEventCountWeekly *int32 `json:"proxy_local_requests_event_count_weekly,omitempty"`
+			ProxyLocalRequestsEventCountWeekly *int32 `json:"proxy_local_requests_event_count_weekly,omitempty" jsonschema:"description=Proxy local requests event count weekly,format=int32"`
 
 			// ProxyRemoteRequestsEventCountWeekly Proxy remote requests event count weekly
-			ProxyRemoteRequestsEventCountWeekly *int32 `json:"proxy_remote_requests_event_count_weekly,omitempty"`
+			ProxyRemoteRequestsEventCountWeekly *int32 `json:"proxy_remote_requests_event_count_weekly,omitempty" jsonschema:"description=Proxy remote requests event count weekly,format=int32"`
 
 			// SnippetRepositoriesChecksumFailedCount Snippet repositories checksum failed count
-			SnippetRepositoriesChecksumFailedCount *int32 `json:"snippet_repositories_checksum_failed_count,omitempty"`
+			SnippetRepositoriesChecksumFailedCount *int32 `json:"snippet_repositories_checksum_failed_count,omitempty" jsonschema:"description=Snippet repositories checksum failed count,format=int32"`
 
 			// SnippetRepositoriesChecksumTotalCount Snippet repositories checksum total count
-			SnippetRepositoriesChecksumTotalCount *int32 `json:"snippet_repositories_checksum_total_count,omitempty"`
+			SnippetRepositoriesChecksumTotalCount *int32 `json:"snippet_repositories_checksum_total_count,omitempty" jsonschema:"description=Snippet repositories checksum total count,format=int32"`
 
 			// SnippetRepositoriesChecksummedCount Snippet repositories checksummed count
-			SnippetRepositoriesChecksummedCount *int32 `json:"snippet_repositories_checksummed_count,omitempty"`
+			SnippetRepositoriesChecksummedCount *int32 `json:"snippet_repositories_checksummed_count,omitempty" jsonschema:"description=Snippet repositories checksummed count,format=int32"`
 
 			// SnippetRepositoriesCount Snippet repositories count
-			SnippetRepositoriesCount *int32 `json:"snippet_repositories_count,omitempty"`
+			SnippetRepositoriesCount *int32 `json:"snippet_repositories_count,omitempty" jsonschema:"description=Snippet repositories count,format=int32"`
 
 			// SnippetRepositoriesFailedCount Snippet repositories failed count
-			SnippetRepositoriesFailedCount *int32 `json:"snippet_repositories_failed_count,omitempty"`
+			SnippetRepositoriesFailedCount *int32 `json:"snippet_repositories_failed_count,omitempty" jsonschema:"description=Snippet repositories failed count,format=int32"`
 
 			// SnippetRepositoriesRegistryCount Snippet repositories registry count
-			SnippetRepositoriesRegistryCount *int32 `json:"snippet_repositories_registry_count,omitempty"`
+			SnippetRepositoriesRegistryCount *int32 `json:"snippet_repositories_registry_count,omitempty" jsonschema:"description=Snippet repositories registry count,format=int32"`
 
 			// SnippetRepositoriesSyncedCount Snippet repositories synced count
-			SnippetRepositoriesSyncedCount *int32 `json:"snippet_repositories_synced_count,omitempty"`
+			SnippetRepositoriesSyncedCount *int32 `json:"snippet_repositories_synced_count,omitempty" jsonschema:"description=Snippet repositories synced count,format=int32"`
 
 			// SnippetRepositoriesVerificationFailedCount Snippet repositories verification failed count
-			SnippetRepositoriesVerificationFailedCount *int32 `json:"snippet_repositories_verification_failed_count,omitempty"`
+			SnippetRepositoriesVerificationFailedCount *int32 `json:"snippet_repositories_verification_failed_count,omitempty" jsonschema:"description=Snippet repositories verification failed count,format=int32"`
 
 			// SnippetRepositoriesVerificationTotalCount Snippet repositories verification total count
-			SnippetRepositoriesVerificationTotalCount *int32 `json:"snippet_repositories_verification_total_count,omitempty"`
+			SnippetRepositoriesVerificationTotalCount *int32 `json:"snippet_repositories_verification_total_count,omitempty" jsonschema:"description=Snippet repositories verification total count,format=int32"`
 
 			// SnippetRepositoriesVerifiedCount Snippet repositories verified count
-			SnippetRepositoriesVerifiedCount *int32 `json:"snippet_repositories_verified_count,omitempty"`
+			SnippetRepositoriesVerifiedCount *int32 `json:"snippet_repositories_verified_count,omitempty" jsonschema:"description=Snippet repositories verified count,format=int32"`
 
 			// TerraformStateVersionsChecksumFailedCount Terraform state versions checksum failed count
-			TerraformStateVersionsChecksumFailedCount *int32 `json:"terraform_state_versions_checksum_failed_count,omitempty"`
+			TerraformStateVersionsChecksumFailedCount *int32 `json:"terraform_state_versions_checksum_failed_count,omitempty" jsonschema:"description=Terraform state versions checksum failed count,format=int32"`
 
 			// TerraformStateVersionsChecksumTotalCount Terraform state versions checksum total count
-			TerraformStateVersionsChecksumTotalCount *int32 `json:"terraform_state_versions_checksum_total_count,omitempty"`
+			TerraformStateVersionsChecksumTotalCount *int32 `json:"terraform_state_versions_checksum_total_count,omitempty" jsonschema:"description=Terraform state versions checksum total count,format=int32"`
 
 			// TerraformStateVersionsChecksummedCount Terraform state versions checksummed count
-			TerraformStateVersionsChecksummedCount *int32 `json:"terraform_state_versions_checksummed_count,omitempty"`
+			TerraformStateVersionsChecksummedCount *int32 `json:"terraform_state_versions_checksummed_count,omitempty" jsonschema:"description=Terraform state versions checksummed count,format=int32"`
 
 			// TerraformStateVersionsCount Terraform state versions count
-			TerraformStateVersionsCount *int32 `json:"terraform_state_versions_count,omitempty"`
+			TerraformStateVersionsCount *int32 `json:"terraform_state_versions_count,omitempty" jsonschema:"description=Terraform state versions count,format=int32"`
 
 			// TerraformStateVersionsFailedCount Terraform state versions failed count
-			TerraformStateVersionsFailedCount *int32 `json:"terraform_state_versions_failed_count,omitempty"`
+			TerraformStateVersionsFailedCount *int32 `json:"terraform_state_versions_failed_count,omitempty" jsonschema:"description=Terraform state versions failed count,format=int32"`
 
 			// TerraformStateVersionsRegistryCount Terraform state versions registry count
-			TerraformStateVersionsRegistryCount *int32 `json:"terraform_state_versions_registry_count,omitempty"`
+			TerraformStateVersionsRegistryCount *int32 `json:"terraform_state_versions_registry_count,omitempty" jsonschema:"description=Terraform state versions registry count,format=int32"`
 
 			// TerraformStateVersionsSyncedCount Terraform state versions synced count
-			TerraformStateVersionsSyncedCount *int32 `json:"terraform_state_versions_synced_count,omitempty"`
+			TerraformStateVersionsSyncedCount *int32 `json:"terraform_state_versions_synced_count,omitempty" jsonschema:"description=Terraform state versions synced count,format=int32"`
 
 			// TerraformStateVersionsVerificationFailedCount Terraform state versions verification failed count
-			TerraformStateVersionsVerificationFailedCount *int32 `json:"terraform_state_versions_verification_failed_count,omitempty"`
+			TerraformStateVersionsVerificationFailedCount *int32 `json:"terraform_state_versions_verification_failed_count,omitempty" jsonschema:"description=Terraform state versions verification failed count,format=int32"`
 
 			// TerraformStateVersionsVerificationTotalCount Terraform state versions verification total count
-			TerraformStateVersionsVerificationTotalCount *int32 `json:"terraform_state_versions_verification_total_count,omitempty"`
+			TerraformStateVersionsVerificationTotalCount *int32 `json:"terraform_state_versions_verification_total_count,omitempty" jsonschema:"description=Terraform state versions verification total count,format=int32"`
 
 			// TerraformStateVersionsVerifiedCount Terraform state versions verified count
-			TerraformStateVersionsVerifiedCount *int32 `json:"terraform_state_versions_verified_count,omitempty"`
+			TerraformStateVersionsVerifiedCount *int32 `json:"terraform_state_versions_verified_count,omitempty" jsonschema:"description=Terraform state versions verified count,format=int32"`
 
 			// UploadsChecksumFailedCount Uploads checksum failed count
-			UploadsChecksumFailedCount *int32 `json:"uploads_checksum_failed_count,omitempty"`
+			UploadsChecksumFailedCount *int32 `json:"uploads_checksum_failed_count,omitempty" jsonschema:"description=Uploads checksum failed count,format=int32"`
 
 			// UploadsChecksumTotalCount Uploads checksum total count
-			UploadsChecksumTotalCount *int32 `json:"uploads_checksum_total_count,omitempty"`
+			UploadsChecksumTotalCount *int32 `json:"uploads_checksum_total_count,omitempty" jsonschema:"description=Uploads checksum total count,format=int32"`
 
 			// UploadsChecksummedCount Uploads checksummed count
-			UploadsChecksummedCount *int32 `json:"uploads_checksummed_count,omitempty"`
+			UploadsChecksummedCount *int32 `json:"uploads_checksummed_count,omitempty" jsonschema:"description=Uploads checksummed count,format=int32"`
 
 			// UploadsCount Uploads count
-			UploadsCount *int32 `json:"uploads_count,omitempty"`
+			UploadsCount *int32 `json:"uploads_count,omitempty" jsonschema:"description=Uploads count,format=int32"`
 
 			// UploadsFailedCount Uploads failed count
-			UploadsFailedCount *int32 `json:"uploads_failed_count,omitempty"`
+			UploadsFailedCount *int32 `json:"uploads_failed_count,omitempty" jsonschema:"description=Uploads failed count,format=int32"`
 
 			// UploadsRegistryCount Uploads registry count
-			UploadsRegistryCount *int32 `json:"uploads_registry_count,omitempty"`
+			UploadsRegistryCount *int32 `json:"uploads_registry_count,omitempty" jsonschema:"description=Uploads registry count,format=int32"`
 
 			// UploadsSyncedCount Uploads synced count
-			UploadsSyncedCount *int32 `json:"uploads_synced_count,omitempty"`
+			UploadsSyncedCount *int32 `json:"uploads_synced_count,omitempty" jsonschema:"description=Uploads synced count,format=int32"`
 
 			// UploadsVerificationFailedCount Uploads verification failed count
-			UploadsVerificationFailedCount *int32 `json:"uploads_verification_failed_count,omitempty"`
+			UploadsVerificationFailedCount *int32 `json:"uploads_verification_failed_count,omitempty" jsonschema:"description=Uploads verification failed count,format=int32"`
 
 			// UploadsVerificationTotalCount Uploads verification total count
-			UploadsVerificationTotalCount *int32 `json:"uploads_verification_total_count,omitempty"`
+			UploadsVerificationTotalCount *int32 `json:"uploads_verification_total_count,omitempty" jsonschema:"description=Uploads verification total count,format=int32"`
 
 			// UploadsVerifiedCount Uploads verified count
-			UploadsVerifiedCount *int32 `json:"uploads_verified_count,omitempty"`
+			UploadsVerifiedCount *int32 `json:"uploads_verified_count,omitempty" jsonschema:"description=Uploads verified count,format=int32"`
 		} `json:"status,omitempty"`
 
 		// StatusMessage Status message
-		StatusMessage *string `json:"status_message,omitempty"`
+		StatusMessage *string `json:"status_message,omitempty" jsonschema:"description=Status message"`
 
 		// Version Gitlab version
-		Version *string `json:"version,omitempty"`
+		Version *string `json:"version,omitempty" jsonschema:"description=Gitlab version"`
 	} `json:"data,omitempty"`
 }
 type PostApiV4GeoProxyGitSshInfoRefsReceivePackJSONRequestBody PostApiV4GeoProxyGitSshInfoRefsReceivePackJSONBody
@@ -518,7 +518,7 @@ type PostApiV4GeoStatusResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Links *struct {
+		UnderscoreLinks *struct {
 			Node *string `json:"node,omitempty"`
 			Self *string `json:"self,omitempty"`
 		} `json:"_links,omitempty"`
@@ -647,10 +647,10 @@ type PostApiV4GeoStatusResponse struct {
 		Namespaces                                          *struct {
 			AvatarUrl *string `json:"avatar_url,omitempty"`
 			FullPath  *string `json:"full_path,omitempty"`
-			Id        *int32  `json:"id,omitempty"`
+			Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Kind      *string `json:"kind,omitempty"`
 			Name      *string `json:"name,omitempty"`
-			ParentId  *int32  `json:"parent_id,omitempty"`
+			ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 			Path      *string `json:"path,omitempty"`
 			WebUrl    *string `json:"web_url,omitempty"`
 		} `json:"namespaces,omitempty"`
@@ -1579,7 +1579,7 @@ func ParsePostApiV4GeoStatusResponse(rsp *http.Response) (*PostApiV4GeoStatusRes
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Links *struct {
+			UnderscoreLinks *struct {
 				Node *string `json:"node,omitempty"`
 				Self *string `json:"self,omitempty"`
 			} `json:"_links,omitempty"`
@@ -1708,10 +1708,10 @@ func ParsePostApiV4GeoStatusResponse(rsp *http.Response) (*PostApiV4GeoStatusRes
 			Namespaces                                          *struct {
 				AvatarUrl *string `json:"avatar_url,omitempty"`
 				FullPath  *string `json:"full_path,omitempty"`
-				Id        *int32  `json:"id,omitempty"`
+				Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Kind      *string `json:"kind,omitempty"`
 				Name      *string `json:"name,omitempty"`
-				ParentId  *int32  `json:"parent_id,omitempty"`
+				ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 				Path      *string `json:"path,omitempty"`
 				WebUrl    *string `json:"web_url,omitempty"`
 			} `json:"namespaces,omitempty"`

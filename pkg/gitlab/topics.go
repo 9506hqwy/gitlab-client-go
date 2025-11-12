@@ -15,55 +15,55 @@ import (
 
 type GetApiV4TopicsParams struct {
 	// Search Return list of topics matching the search criteria
-	Search *string `form:"search,omitempty" json:"search,omitempty"`
+	Search *string `form:"search,omitempty" json:"search,omitempty" jsonschema:"description=Return list of topics matching the search criteria"`
 
 	// WithoutProjects Return list of topics without assigned projects
-	WithoutProjects *bool `form:"without_projects,omitempty" json:"without_projects,omitempty"`
+	WithoutProjects *bool `form:"without_projects,omitempty" json:"without_projects,omitempty" jsonschema:"description=Return list of topics without assigned projects"`
 
 	// OrganizationId The organization id for the topics
-	OrganizationId *int32 `form:"organization_id,omitempty" json:"organization_id,omitempty"`
+	OrganizationId *int32 `form:"organization_id,omitempty" json:"organization_id,omitempty" jsonschema:"description=The organization id for the topics,format=int32"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type PostApiV4TopicsJSONBody struct {
 	// Avatar Avatar image for topic
-	Avatar *string `json:"avatar,omitempty"`
+	Avatar *string `json:"avatar,omitempty" jsonschema:"description=Avatar image for topic"`
 
 	// Description Description
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=Description"`
 
 	// Name Slug (name)
-	Name string `json:"name"`
+	Name string `json:"name" jsonschema:"description=Slug (name)"`
 
 	// OrganizationId The organization id for the topic
-	OrganizationId *int32 `json:"organization_id,omitempty"`
+	OrganizationId *int32 `json:"organization_id,omitempty" jsonschema:"description=The organization id for the topic,format=int32"`
 
 	// Title Title
-	Title string `json:"title"`
+	Title string `json:"title" jsonschema:"description=Title"`
 }
 type PostApiV4TopicsMergeJSONBody struct {
 	// SourceTopicId ID of source project topic
-	SourceTopicId int32 `json:"source_topic_id"`
+	SourceTopicId int32 `json:"source_topic_id" jsonschema:"description=ID of source project topic,format=int32"`
 
 	// TargetTopicId ID of target project topic
-	TargetTopicId int32 `json:"target_topic_id"`
+	TargetTopicId int32 `json:"target_topic_id" jsonschema:"description=ID of target project topic,format=int32"`
 }
 type PutApiV4TopicsIdJSONBody struct {
 	// Avatar Avatar image for topic
-	Avatar *string `json:"avatar,omitempty"`
+	Avatar *string `json:"avatar,omitempty" jsonschema:"description=Avatar image for topic"`
 
 	// Description Description
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=Description"`
 
 	// Name Slug (name)
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty" jsonschema:"description=Slug (name)"`
 
 	// Title Title
-	Title *string `json:"title,omitempty"`
+	Title *string `json:"title,omitempty" jsonschema:"description=Title"`
 }
 type PostApiV4TopicsJSONRequestBody PostApiV4TopicsJSONBody
 type PostApiV4TopicsMergeJSONRequestBody PostApiV4TopicsMergeJSONBody

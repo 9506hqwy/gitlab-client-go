@@ -15,133 +15,133 @@ import (
 
 type GetApiV4MergeRequestsParams struct {
 	// AuthorId Returns merge requests created by the given user `id`. Mutually exclusive with `author_username`. Combine with `scope=all` or `scope=assigned_to_me`.
-	AuthorId *int32 `form:"author_id,omitempty" json:"author_id,omitempty"`
+	AuthorId *int32 `form:"author_id,omitempty" json:"author_id,omitempty" jsonschema:"description=Returns merge requests created by the given user \"id\". Mutually exclusive with \"author_username\". Combine with \"scope=all\" or \"scope=assigned_to_me\".,format=int32"`
 
 	// AuthorUsername Returns merge requests created by the given `username`. Mutually exclusive with `author_id`.
-	AuthorUsername *string `form:"author_username,omitempty" json:"author_username,omitempty"`
+	AuthorUsername *string `form:"author_username,omitempty" json:"author_username,omitempty" jsonschema:"description=Returns merge requests created by the given \"username\". Mutually exclusive with \"author_id\"."`
 
 	// AssigneeId Returns merge requests assigned to the given user `id`. `None` returns unassigned merge requests. `Any` returns merge requests with an assignee.
-	AssigneeId *int32 `form:"assignee_id,omitempty" json:"assignee_id,omitempty"`
+	AssigneeId *int32 `form:"assignee_id,omitempty" json:"assignee_id,omitempty" jsonschema:"description=Returns merge requests assigned to the given user \"id\". \"None\" returns unassigned merge requests. \"Any\" returns merge requests with an assignee.,format=int32"`
 
 	// AssigneeUsername Returns merge requests created by the given `username`. Mutually exclusive with `author_id`.
-	AssigneeUsername *[]string `form:"assignee_username,omitempty" json:"assignee_username,omitempty"`
+	AssigneeUsername *[]string `form:"assignee_username,omitempty" json:"assignee_username,omitempty" jsonschema:"description=Returns merge requests created by the given \"username\". Mutually exclusive with \"author_id\"."`
 
 	// ReviewerUsername Returns merge requests which have the user as a reviewer with the given `username`. `None` returns merge requests with no reviewers. `Any` returns merge requests with any reviewer. Mutually exclusive with `reviewer_id`. Introduced in GitLab 13.8.
-	ReviewerUsername *string `form:"reviewer_username,omitempty" json:"reviewer_username,omitempty"`
+	ReviewerUsername *string `form:"reviewer_username,omitempty" json:"reviewer_username,omitempty" jsonschema:"description=Returns merge requests which have the user as a reviewer with the given \"username\". \"None\" returns merge requests with no reviewers. \"Any\" returns merge requests with any reviewer. Mutually exclusive with \"reviewer_id\". Introduced in GitLab 13.8."`
 
 	// Labels Returns merge requests matching a comma-separated list of labels. `None` lists all merge requests with no labels. `Any` lists all merge requests with at least one label. Predefined names are case-insensitive.
-	Labels *[]string `form:"labels,omitempty" json:"labels,omitempty"`
+	Labels *[]string `form:"labels,omitempty" json:"labels,omitempty" jsonschema:"description=Returns merge requests matching a comma-separated list of labels. \"None\" lists all merge requests with no labels. \"Any\" lists all merge requests with at least one label. Predefined names are case-insensitive."`
 
 	// Milestone Returns merge requests for a specific milestone. `None` returns merge requests with no milestone. `Any` returns merge requests that have an assigned milestone.
-	Milestone *string `form:"milestone,omitempty" json:"milestone,omitempty"`
+	Milestone *string `form:"milestone,omitempty" json:"milestone,omitempty" jsonschema:"description=Returns merge requests for a specific milestone. \"None\" returns merge requests with no milestone. \"Any\" returns merge requests that have an assigned milestone."`
 
 	// MyReactionEmoji Returns merge requests reacted by the authenticated user by the given `emoji`. `None` returns issues not given a reaction. `Any` returns issues given at least one reaction.
-	MyReactionEmoji *string `form:"my_reaction_emoji,omitempty" json:"my_reaction_emoji,omitempty"`
+	MyReactionEmoji *string `form:"my_reaction_emoji,omitempty" json:"my_reaction_emoji,omitempty" jsonschema:"description=Returns merge requests reacted by the authenticated user by the given \"emoji\". \"None\" returns issues not given a reaction. \"Any\" returns issues given at least one reaction."`
 
 	// ReviewerId Returns merge requests which have the user as a reviewer with the given user `id`. `None` returns merge requests with no reviewers. `Any` returns merge requests with any reviewer. Mutually exclusive with `reviewer_username`.
-	ReviewerId *int32 `form:"reviewer_id,omitempty" json:"reviewer_id,omitempty"`
+	ReviewerId *int32 `form:"reviewer_id,omitempty" json:"reviewer_id,omitempty" jsonschema:"description=Returns merge requests which have the user as a reviewer with the given user \"id\". \"None\" returns merge requests with no reviewers. \"Any\" returns merge requests with any reviewer. Mutually exclusive with \"reviewer_username\".,format=int32"`
 
 	// State Returns `all` merge requests or just those that are `opened`, `closed`, `locked`, or `merged`.
-	State *string `form:"state,omitempty" json:"state,omitempty"`
+	State *string `form:"state,omitempty" json:"state,omitempty" jsonschema:"description=Returns \"all\" merge requests or just those that are \"opened\"\\, \"closed\"\\, \"locked\"\\, or \"merged\".,default=20,enum=opened,enum=closed,enum=locked,enum=merged,enum=all"`
 
 	// OrderBy Returns merge requests ordered by `created_at`, `label_priority`, `milestone_due`, `popularity`, `priority`, `title`, `updated_at` or `merged_at` fields. Introduced in GitLab 14.8.
-	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty" jsonschema:"description=Returns merge requests ordered by \"created_at\"\\, \"label_priority\"\\, \"milestone_due\"\\, \"popularity\"\\, \"priority\"\\, \"title\"\\, \"updated_at\" or \"merged_at\" fields. Introduced in GitLab 14.8.,default=20,enum=created_at,enum=label_priority,enum=milestone_due,enum=popularity,enum=priority,enum=title,enum=updated_at,enum=merged_at"`
 
 	// Sort Returns merge requests sorted in `asc` or `desc` order.
-	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty" jsonschema:"description=Returns merge requests sorted in \"asc\" or \"desc\" order.,default=20,enum=asc,enum=desc"`
 
 	// WithLabelsDetails If `true`, response returns more details for each label in labels field: `:name`,`:color`, `:description`, `:description_html`, `:text_color`
-	WithLabelsDetails *bool `form:"with_labels_details,omitempty" json:"with_labels_details,omitempty"`
+	WithLabelsDetails *bool `form:"with_labels_details,omitempty" json:"with_labels_details,omitempty" jsonschema:"description=If \"true\"\\, response returns more details for each label in labels field: \":name\"\\,\":color\"\\, \":description\"\\, \":description_html\"\\, \":text_color\",default=20"`
 
 	// WithMergeStatusRecheck If `true`, this projection requests (but does not guarantee) that the `merge_status` field be recalculated asynchronously. Introduced in GitLab 13.0.
-	WithMergeStatusRecheck *bool `form:"with_merge_status_recheck,omitempty" json:"with_merge_status_recheck,omitempty"`
+	WithMergeStatusRecheck *bool `form:"with_merge_status_recheck,omitempty" json:"with_merge_status_recheck,omitempty" jsonschema:"description=If \"true\"\\, this projection requests (but does not guarantee) that the \"merge_status\" field be recalculated asynchronously. Introduced in GitLab 13.0.,default=20"`
 
 	// CreatedAfter Returns merge requests created on or after the given time. Expected in ISO 8601 format.
-	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty"`
+	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty" jsonschema:"description=Returns merge requests created on or after the given time. Expected in ISO 8601 format.,format=int32"`
 
 	// CreatedBefore Returns merge requests created on or before the given time. Expected in ISO 8601 format.
-	CreatedBefore *time.Time `form:"created_before,omitempty" json:"created_before,omitempty"`
+	CreatedBefore *time.Time `form:"created_before,omitempty" json:"created_before,omitempty" jsonschema:"description=Returns merge requests created on or before the given time. Expected in ISO 8601 format.,format=int32"`
 
 	// UpdatedAfter Returns merge requests updated on or after the given time. Expected in ISO 8601 format.
-	UpdatedAfter *time.Time `form:"updated_after,omitempty" json:"updated_after,omitempty"`
+	UpdatedAfter *time.Time `form:"updated_after,omitempty" json:"updated_after,omitempty" jsonschema:"description=Returns merge requests updated on or after the given time. Expected in ISO 8601 format.,format=int32"`
 
 	// UpdatedBefore Returns merge requests updated on or before the given time. Expected in ISO 8601 format.
-	UpdatedBefore *time.Time `form:"updated_before,omitempty" json:"updated_before,omitempty"`
+	UpdatedBefore *time.Time `form:"updated_before,omitempty" json:"updated_before,omitempty" jsonschema:"description=Returns merge requests updated on or before the given time. Expected in ISO 8601 format.,format=int32"`
 
 	// View If simple, returns the `iid`, URL, title, description, and basic state of merge request
-	View *string `form:"view,omitempty" json:"view,omitempty"`
+	View *string `form:"view,omitempty" json:"view,omitempty" jsonschema:"description=If simple\\, returns the \"iid\"\\, URL\\, title\\, description\\, and basic state of merge request,enum=simple"`
 
 	// Scope Returns merge requests for the given scope: `created_by_me`, `assigned_to_me` or `all`
-	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
+	Scope *string `form:"scope,omitempty" json:"scope,omitempty" jsonschema:"description=Returns merge requests for the given scope: \"created_by_me\"\\, \"assigned_to_me\" or \"all\",default=20,enum=created-by-me,enum=assigned-to-me,enum=created_by_me,enum=assigned_to_me,enum=all"`
 
 	// SourceBranch Returns merge requests with the given source branch
-	SourceBranch *string `form:"source_branch,omitempty" json:"source_branch,omitempty"`
+	SourceBranch *string `form:"source_branch,omitempty" json:"source_branch,omitempty" jsonschema:"description=Returns merge requests with the given source branch"`
 
 	// SourceProjectId Returns merge requests with the given source project id
-	SourceProjectId *int32 `form:"source_project_id,omitempty" json:"source_project_id,omitempty"`
+	SourceProjectId *int32 `form:"source_project_id,omitempty" json:"source_project_id,omitempty" jsonschema:"description=Returns merge requests with the given source project id,format=int32"`
 
 	// TargetBranch Returns merge requests with the given target branch
-	TargetBranch *string `form:"target_branch,omitempty" json:"target_branch,omitempty"`
+	TargetBranch *string `form:"target_branch,omitempty" json:"target_branch,omitempty" jsonschema:"description=Returns merge requests with the given target branch"`
 
 	// Search Search merge requests against their `title` and `description`.
-	Search *string `form:"search,omitempty" json:"search,omitempty"`
+	Search *string `form:"search,omitempty" json:"search,omitempty" jsonschema:"description=Search merge requests against their \"title\" and \"description\"."`
 
 	// In Modify the scope of the search attribute. `title`, `description`, or a string joining them with comma.
-	In *string `form:"in,omitempty" json:"in,omitempty"`
+	In *string `form:"in,omitempty" json:"in,omitempty" jsonschema:"description=Modify the scope of the search attribute. \"title\"\\, \"description\"\\, or a string joining them with comma."`
 
 	// Wip Filter merge requests against their `wip` status. `yes` to return only draft merge requests, `no` to return non-draft merge requests.
-	Wip *string `form:"wip,omitempty" json:"wip,omitempty"`
+	Wip *string `form:"wip,omitempty" json:"wip,omitempty" jsonschema:"description=Filter merge requests against their \"wip\" status. \"yes\" to return only draft merge requests\\, \"no\" to return non-draft merge requests.,enum=yes,enum=no"`
 
 	// NotAuthorId `<Negated>` Returns merge requests created by the given user `id`. Mutually exclusive with `author_username`. Combine with `scope=all` or `scope=assigned_to_me`.
-	NotAuthorId *int32 `form:"not[author_id],omitempty" json:"not[author_id],omitempty"`
+	NotAuthorId *int32 `form:"not[author_id],omitempty" json:"not[author_id],omitempty" jsonschema:"description=\"<Negated>\" Returns merge requests created by the given user \"id\". Mutually exclusive with \"author_username\". Combine with \"scope=all\" or \"scope=assigned_to_me\".,format=int32"`
 
 	// NotAuthorUsername `<Negated>` Returns merge requests created by the given `username`. Mutually exclusive with `author_id`.
-	NotAuthorUsername *string `form:"not[author_username],omitempty" json:"not[author_username],omitempty"`
+	NotAuthorUsername *string `form:"not[author_username],omitempty" json:"not[author_username],omitempty" jsonschema:"description=\"<Negated>\" Returns merge requests created by the given \"username\". Mutually exclusive with \"author_id\"."`
 
 	// NotAssigneeId `<Negated>` Returns merge requests assigned to the given user `id`. `None` returns unassigned merge requests. `Any` returns merge requests with an assignee.
-	NotAssigneeId *int32 `form:"not[assignee_id],omitempty" json:"not[assignee_id],omitempty"`
+	NotAssigneeId *int32 `form:"not[assignee_id],omitempty" json:"not[assignee_id],omitempty" jsonschema:"description=\"<Negated>\" Returns merge requests assigned to the given user \"id\". \"None\" returns unassigned merge requests. \"Any\" returns merge requests with an assignee.,format=int32"`
 
 	// NotAssigneeUsername `<Negated>` Returns merge requests created by the given `username`. Mutually exclusive with `author_id`.
-	NotAssigneeUsername *[]string `form:"not[assignee_username],omitempty" json:"not[assignee_username],omitempty"`
+	NotAssigneeUsername *[]string `form:"not[assignee_username],omitempty" json:"not[assignee_username],omitempty" jsonschema:"description=\"<Negated>\" Returns merge requests created by the given \"username\". Mutually exclusive with \"author_id\"."`
 
 	// NotReviewerUsername `<Negated>` Returns merge requests which have the user as a reviewer with the given `username`. `None` returns merge requests with no reviewers. `Any` returns merge requests with any reviewer. Mutually exclusive with `reviewer_id`. Introduced in GitLab 13.8.
-	NotReviewerUsername *string `form:"not[reviewer_username],omitempty" json:"not[reviewer_username],omitempty"`
+	NotReviewerUsername *string `form:"not[reviewer_username],omitempty" json:"not[reviewer_username],omitempty" jsonschema:"description=\"<Negated>\" Returns merge requests which have the user as a reviewer with the given \"username\". \"None\" returns merge requests with no reviewers. \"Any\" returns merge requests with any reviewer. Mutually exclusive with \"reviewer_id\". Introduced in GitLab 13.8."`
 
 	// NotLabels `<Negated>` Returns merge requests matching a comma-separated list of labels. `None` lists all merge requests with no labels. `Any` lists all merge requests with at least one label. Predefined names are case-insensitive.
-	NotLabels *[]string `form:"not[labels],omitempty" json:"not[labels],omitempty"`
+	NotLabels *[]string `form:"not[labels],omitempty" json:"not[labels],omitempty" jsonschema:"description=\"<Negated>\" Returns merge requests matching a comma-separated list of labels. \"None\" lists all merge requests with no labels. \"Any\" lists all merge requests with at least one label. Predefined names are case-insensitive."`
 
 	// NotMilestone `<Negated>` Returns merge requests for a specific milestone. `None` returns merge requests with no milestone. `Any` returns merge requests that have an assigned milestone.
-	NotMilestone *string `form:"not[milestone],omitempty" json:"not[milestone],omitempty"`
+	NotMilestone *string `form:"not[milestone],omitempty" json:"not[milestone],omitempty" jsonschema:"description=\"<Negated>\" Returns merge requests for a specific milestone. \"None\" returns merge requests with no milestone. \"Any\" returns merge requests that have an assigned milestone."`
 
 	// NotMyReactionEmoji `<Negated>` Returns merge requests reacted by the authenticated user by the given `emoji`. `None` returns issues not given a reaction. `Any` returns issues given at least one reaction.
-	NotMyReactionEmoji *string `form:"not[my_reaction_emoji],omitempty" json:"not[my_reaction_emoji],omitempty"`
+	NotMyReactionEmoji *string `form:"not[my_reaction_emoji],omitempty" json:"not[my_reaction_emoji],omitempty" jsonschema:"description=\"<Negated>\" Returns merge requests reacted by the authenticated user by the given \"emoji\". \"None\" returns issues not given a reaction. \"Any\" returns issues given at least one reaction."`
 
 	// NotReviewerId `<Negated>` Returns merge requests which have the user as a reviewer with the given user `id`. `None` returns merge requests with no reviewers. `Any` returns merge requests with any reviewer. Mutually exclusive with `reviewer_username`.
-	NotReviewerId *int32 `form:"not[reviewer_id],omitempty" json:"not[reviewer_id],omitempty"`
+	NotReviewerId *int32 `form:"not[reviewer_id],omitempty" json:"not[reviewer_id],omitempty" jsonschema:"description=\"<Negated>\" Returns merge requests which have the user as a reviewer with the given user \"id\". \"None\" returns merge requests with no reviewers. \"Any\" returns merge requests with any reviewer. Mutually exclusive with \"reviewer_username\".,format=int32"`
 
 	// DeployedBefore Returns merge requests deployed before the given date/time. Expected in ISO 8601 format.
-	DeployedBefore *string `form:"deployed_before,omitempty" json:"deployed_before,omitempty"`
+	DeployedBefore *string `form:"deployed_before,omitempty" json:"deployed_before,omitempty" jsonschema:"description=Returns merge requests deployed before the given date/time. Expected in ISO 8601 format."`
 
 	// DeployedAfter Returns merge requests deployed after the given date/time. Expected in ISO 8601 format
-	DeployedAfter *string `form:"deployed_after,omitempty" json:"deployed_after,omitempty"`
+	DeployedAfter *string `form:"deployed_after,omitempty" json:"deployed_after,omitempty" jsonschema:"description=Returns merge requests deployed after the given date/time. Expected in ISO 8601 format"`
 
 	// Environment Returns merge requests deployed to the given environment
-	Environment *string `form:"environment,omitempty" json:"environment,omitempty"`
+	Environment *string `form:"environment,omitempty" json:"environment,omitempty" jsonschema:"description=Returns merge requests deployed to the given environment"`
 
 	// Approved Filters merge requests by their `approved` status. `yes` returns only approved merge requests. `no` returns only non-approved merge requests.
-	Approved *string `form:"approved,omitempty" json:"approved,omitempty"`
+	Approved *string `form:"approved,omitempty" json:"approved,omitempty" jsonschema:"description=Filters merge requests by their \"approved\" status. \"yes\" returns only approved merge requests. \"no\" returns only non-approved merge requests.,enum=yes,enum=no"`
 
 	// MergeUserId Returns merge requests which have been merged by the user with the given user `id`. Mutually exclusive with `merge_user_username`.
-	MergeUserId *int32 `form:"merge_user_id,omitempty" json:"merge_user_id,omitempty"`
+	MergeUserId *int32 `form:"merge_user_id,omitempty" json:"merge_user_id,omitempty" jsonschema:"description=Returns merge requests which have been merged by the user with the given user \"id\". Mutually exclusive with \"merge_user_username\".,format=int32"`
 
 	// MergeUserUsername Returns merge requests which have been merged by the user with the given `username`. Mutually exclusive with `merge_user_id`.
-	MergeUserUsername *string `form:"merge_user_username,omitempty" json:"merge_user_username,omitempty"`
+	MergeUserUsername *string `form:"merge_user_username,omitempty" json:"merge_user_username,omitempty" jsonschema:"description=Returns merge requests which have been merged by the user with the given \"username\". Mutually exclusive with \"merge_user_id\"."`
 
 	// ApproverIds Return merge requests which have specified the users with the given IDs as an individual approver
-	ApproverIds *string `form:"approver_ids,omitempty" json:"approver_ids,omitempty"`
+	ApproverIds *string `form:"approver_ids,omitempty" json:"approver_ids,omitempty" jsonschema:"description=Return merge requests which have specified the users with the given IDs as an individual approver"`
 
 	// ApprovedByIds Return merge requests which have been approved by the specified users with the given IDs
-	ApprovedByIds *string `form:"approved_by_ids,omitempty" json:"approved_by_ids,omitempty"`
+	ApprovedByIds *string `form:"approved_by_ids,omitempty" json:"approved_by_ids,omitempty" jsonschema:"description=Return merge requests which have been approved by the specified users with the given IDs"`
 
 	// ApprovedByUsernames Return merge requests which have been approved by the specified users with the given
 	//
@@ -149,13 +149,13 @@ type GetApiV4MergeRequestsParams struct {
 	//
 	//
 	//             usernames
-	ApprovedByUsernames *string `form:"approved_by_usernames,omitempty" json:"approved_by_usernames,omitempty"`
+	ApprovedByUsernames *string `form:"approved_by_usernames,omitempty" json:"approved_by_usernames,omitempty" jsonschema:"description=Return merge requests which have been approved by the specified users with the given usernames"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type GetApiV4MergeRequestsResponse struct {
 	Body         []byte
@@ -173,14 +173,14 @@ type GetApiV4MergeRequestsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"assignee,omitempty"`
+		} `json:"assignee,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 
 		// Assignees API_Entities_UserBasic model
 		Assignees *struct {
@@ -190,14 +190,14 @@ type GetApiV4MergeRequestsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"assignees,omitempty"`
+		} `json:"assignees,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 
 		// Author API_Entities_UserBasic model
 		Author *struct {
@@ -207,14 +207,14 @@ type GetApiV4MergeRequestsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"author,omitempty"`
+		} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		BlockingDiscussionsResolved *string `json:"blocking_discussions_resolved,omitempty"`
 		ClosedAt                    *string `json:"closed_at,omitempty"`
 
@@ -226,15 +226,15 @@ type GetApiV4MergeRequestsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"closed_by,omitempty"`
-		CreatedAt               *time.Time `json:"created_at,omitempty"`
+		} `json:"closed_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		CreatedAt               *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Description             *string    `json:"description,omitempty"`
 		DescriptionHtml         *string    `json:"description_html,omitempty"`
 		DetailedMergeStatus     *string    `json:"detailed_merge_status,omitempty"`
@@ -243,8 +243,8 @@ type GetApiV4MergeRequestsResponse struct {
 		Draft                   *string    `json:"draft,omitempty"`
 		ForceRemoveSourceBranch *string    `json:"force_remove_source_branch,omitempty"`
 		HasConflicts            *string    `json:"has_conflicts,omitempty"`
-		Id                      *int32     `json:"id,omitempty"`
-		Iid                     *int32     `json:"iid,omitempty"`
+		Id                      *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		Iid                     *int32     `json:"iid,omitempty" jsonschema:",format=int32"`
 		Imported                *string    `json:"imported,omitempty"`
 		ImportedFrom            *string    `json:"imported_from,omitempty"`
 		Labels                  *string    `json:"labels,omitempty"`
@@ -260,14 +260,14 @@ type GetApiV4MergeRequestsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"merge_user,omitempty"`
+		} `json:"merge_user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		MergeWhenPipelineSucceeds *string `json:"merge_when_pipeline_succeeds,omitempty"`
 		MergedAt                  *string `json:"merged_at,omitempty"`
 
@@ -279,14 +279,14 @@ type GetApiV4MergeRequestsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"merged_by,omitempty"`
+		} `json:"merged_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		Milestone *struct {
 			CreatedAt   *string `json:"created_at,omitempty"`
 			Description *string `json:"description,omitempty"`
@@ -303,7 +303,7 @@ type GetApiV4MergeRequestsResponse struct {
 			WebUrl      *string `json:"web_url,omitempty"`
 		} `json:"milestone,omitempty"`
 		PreparedAt *string `json:"prepared_at,omitempty"`
-		ProjectId  *int32  `json:"project_id,omitempty"`
+		ProjectId  *int32  `json:"project_id,omitempty" jsonschema:",format=int32"`
 		Reference  *string `json:"reference,omitempty"`
 		References *struct {
 			Full     *string `json:"full,omitempty"`
@@ -319,14 +319,14 @@ type GetApiV4MergeRequestsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"reviewers,omitempty"`
+		} `json:"reviewers,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		Sha                      *string `json:"sha,omitempty"`
 		ShouldRemoveSourceBranch *string `json:"should_remove_source_branch,omitempty"`
 		SourceBranch             *string `json:"source_branch,omitempty"`
@@ -343,12 +343,12 @@ type GetApiV4MergeRequestsResponse struct {
 		TimeStats *struct {
 			HumanTimeEstimate   *string `json:"human_time_estimate,omitempty"`
 			HumanTotalTimeSpent *string `json:"human_total_time_spent,omitempty"`
-			TimeEstimate        *int32  `json:"time_estimate,omitempty"`
-			TotalTimeSpent      *int32  `json:"total_time_spent,omitempty"`
-		} `json:"time_stats,omitempty"`
+			TimeEstimate        *int32  `json:"time_estimate,omitempty" jsonschema:",format=int32"`
+			TotalTimeSpent      *int32  `json:"total_time_spent,omitempty" jsonschema:",format=int32"`
+		} `json:"time_stats,omitempty" jsonschema:"description=API_Entities_IssuableTimeStats model"`
 		Title          *string    `json:"title,omitempty"`
 		TitleHtml      *string    `json:"title_html,omitempty"`
-		UpdatedAt      *time.Time `json:"updated_at,omitempty"`
+		UpdatedAt      *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		Upvotes        *string    `json:"upvotes,omitempty"`
 		UserNotesCount *string    `json:"user_notes_count,omitempty"`
 		WebUrl         *string    `json:"web_url,omitempty"`
@@ -1180,14 +1180,14 @@ func ParseGetApiV4MergeRequestsResponse(rsp *http.Response) (*GetApiV4MergeReque
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"assignee,omitempty"`
+			} `json:"assignee,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 
 			// Assignees API_Entities_UserBasic model
 			Assignees *struct {
@@ -1197,14 +1197,14 @@ func ParseGetApiV4MergeRequestsResponse(rsp *http.Response) (*GetApiV4MergeReque
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"assignees,omitempty"`
+			} `json:"assignees,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 
 			// Author API_Entities_UserBasic model
 			Author *struct {
@@ -1214,14 +1214,14 @@ func ParseGetApiV4MergeRequestsResponse(rsp *http.Response) (*GetApiV4MergeReque
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			BlockingDiscussionsResolved *string `json:"blocking_discussions_resolved,omitempty"`
 			ClosedAt                    *string `json:"closed_at,omitempty"`
 
@@ -1233,15 +1233,15 @@ func ParseGetApiV4MergeRequestsResponse(rsp *http.Response) (*GetApiV4MergeReque
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"closed_by,omitempty"`
-			CreatedAt               *time.Time `json:"created_at,omitempty"`
+			} `json:"closed_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			CreatedAt               *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description             *string    `json:"description,omitempty"`
 			DescriptionHtml         *string    `json:"description_html,omitempty"`
 			DetailedMergeStatus     *string    `json:"detailed_merge_status,omitempty"`
@@ -1250,8 +1250,8 @@ func ParseGetApiV4MergeRequestsResponse(rsp *http.Response) (*GetApiV4MergeReque
 			Draft                   *string    `json:"draft,omitempty"`
 			ForceRemoveSourceBranch *string    `json:"force_remove_source_branch,omitempty"`
 			HasConflicts            *string    `json:"has_conflicts,omitempty"`
-			Id                      *int32     `json:"id,omitempty"`
-			Iid                     *int32     `json:"iid,omitempty"`
+			Id                      *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			Iid                     *int32     `json:"iid,omitempty" jsonschema:",format=int32"`
 			Imported                *string    `json:"imported,omitempty"`
 			ImportedFrom            *string    `json:"imported_from,omitempty"`
 			Labels                  *string    `json:"labels,omitempty"`
@@ -1267,14 +1267,14 @@ func ParseGetApiV4MergeRequestsResponse(rsp *http.Response) (*GetApiV4MergeReque
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"merge_user,omitempty"`
+			} `json:"merge_user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			MergeWhenPipelineSucceeds *string `json:"merge_when_pipeline_succeeds,omitempty"`
 			MergedAt                  *string `json:"merged_at,omitempty"`
 
@@ -1286,14 +1286,14 @@ func ParseGetApiV4MergeRequestsResponse(rsp *http.Response) (*GetApiV4MergeReque
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"merged_by,omitempty"`
+			} `json:"merged_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Milestone *struct {
 				CreatedAt   *string `json:"created_at,omitempty"`
 				Description *string `json:"description,omitempty"`
@@ -1310,7 +1310,7 @@ func ParseGetApiV4MergeRequestsResponse(rsp *http.Response) (*GetApiV4MergeReque
 				WebUrl      *string `json:"web_url,omitempty"`
 			} `json:"milestone,omitempty"`
 			PreparedAt *string `json:"prepared_at,omitempty"`
-			ProjectId  *int32  `json:"project_id,omitempty"`
+			ProjectId  *int32  `json:"project_id,omitempty" jsonschema:",format=int32"`
 			Reference  *string `json:"reference,omitempty"`
 			References *struct {
 				Full     *string `json:"full,omitempty"`
@@ -1326,14 +1326,14 @@ func ParseGetApiV4MergeRequestsResponse(rsp *http.Response) (*GetApiV4MergeReque
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"reviewers,omitempty"`
+			} `json:"reviewers,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Sha                      *string `json:"sha,omitempty"`
 			ShouldRemoveSourceBranch *string `json:"should_remove_source_branch,omitempty"`
 			SourceBranch             *string `json:"source_branch,omitempty"`
@@ -1350,12 +1350,12 @@ func ParseGetApiV4MergeRequestsResponse(rsp *http.Response) (*GetApiV4MergeReque
 			TimeStats *struct {
 				HumanTimeEstimate   *string `json:"human_time_estimate,omitempty"`
 				HumanTotalTimeSpent *string `json:"human_total_time_spent,omitempty"`
-				TimeEstimate        *int32  `json:"time_estimate,omitempty"`
-				TotalTimeSpent      *int32  `json:"total_time_spent,omitempty"`
-			} `json:"time_stats,omitempty"`
+				TimeEstimate        *int32  `json:"time_estimate,omitempty" jsonschema:",format=int32"`
+				TotalTimeSpent      *int32  `json:"total_time_spent,omitempty" jsonschema:",format=int32"`
+			} `json:"time_stats,omitempty" jsonschema:"description=API_Entities_IssuableTimeStats model"`
 			Title          *string    `json:"title,omitempty"`
 			TitleHtml      *string    `json:"title_html,omitempty"`
-			UpdatedAt      *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt      *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			Upvotes        *string    `json:"upvotes,omitempty"`
 			UserNotesCount *string    `json:"user_notes_count,omitempty"`
 			WebUrl         *string    `json:"web_url,omitempty"`

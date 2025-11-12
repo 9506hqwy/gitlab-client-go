@@ -14,10 +14,10 @@ import (
 
 type GetApiV4AvatarParams struct {
 	// Email Public email address of the user
-	Email string `form:"email" json:"email"`
+	Email string `form:"email" json:"email" jsonschema:"description=Public email address of the user"`
 
 	// Size Single pixel dimension for Gravatar images
-	Size *int32 `form:"size,omitempty" json:"size,omitempty"`
+	Size *int32 `form:"size,omitempty" json:"size,omitempty" jsonschema:"description=Single pixel dimension for Gravatar images,format=int32"`
 }
 type GetApiV4AvatarResponse struct {
 	Body         []byte

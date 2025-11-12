@@ -15,106 +15,106 @@ import (
 
 type GetApiV4BulkImportsParams struct {
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=desc,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=desc,format=int32"`
 
 	// Sort Return GitLab Migrations sorted in created by `asc` or `desc` order.
-	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty" jsonschema:"description=Return GitLab Migrations sorted in created by \"asc\" or \"desc\" order.,default=desc,enum=asc,enum=desc"`
 
 	// Status Return GitLab Migrations with specified status
-	Status *string `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty" jsonschema:"description=Return GitLab Migrations with specified status,enum=created,enum=started,enum=finished,enum=timeout,enum=failed,enum=canceled"`
 }
 type PostApiV4BulkImportsFormdataBody struct {
 	// ConfigurationAccessToken Access token to the source GitLab instance
-	ConfigurationAccessToken string `form:"configuration[access_token]" json:"configuration[access_token]"`
+	ConfigurationAccessToken string `form:"configuration[access_token]" json:"configuration[access_token]" jsonschema:"description=Access token to the source GitLab instance"`
 
 	// ConfigurationUrl Source GitLab instance URL
-	ConfigurationUrl string `form:"configuration[url]" json:"configuration[url]"`
+	ConfigurationUrl string `form:"configuration[url]" json:"configuration[url]" jsonschema:"description=Source GitLab instance URL"`
 
 	// EntitiesDestinationName Deprecated: Use :destination_slug instead. Destination slug for the entity
-	EntitiesDestinationName *[]string `form:"entities[destination_name],omitempty" json:"entities[destination_name],omitempty"`
+	EntitiesDestinationName *[]string `form:"entities[destination_name],omitempty" json:"entities[destination_name],omitempty" jsonschema:"description=Deprecated: Use :destination_slug instead. Destination slug for the entity"`
 
 	// EntitiesDestinationNamespace Destination namespace for the entity
-	EntitiesDestinationNamespace []string `form:"entities[destination_namespace]" json:"entities[destination_namespace]"`
+	EntitiesDestinationNamespace []string `form:"entities[destination_namespace]" json:"entities[destination_namespace]" jsonschema:"description=Destination namespace for the entity"`
 
 	// EntitiesDestinationSlug Destination slug for the entity
-	EntitiesDestinationSlug *[]string `form:"entities[destination_slug],omitempty" json:"entities[destination_slug],omitempty"`
+	EntitiesDestinationSlug *[]string `form:"entities[destination_slug],omitempty" json:"entities[destination_slug],omitempty" jsonschema:"description=Destination slug for the entity"`
 
 	// EntitiesMigrateMemberships The option to migrate memberships or not
-	EntitiesMigrateMemberships *[]bool `form:"entities[migrate_memberships],omitempty" json:"entities[migrate_memberships],omitempty"`
+	EntitiesMigrateMemberships *[]bool `form:"entities[migrate_memberships],omitempty" json:"entities[migrate_memberships],omitempty" jsonschema:"description=The option to migrate memberships or not,default=true"`
 
 	// EntitiesMigrateProjects Indicates group migration should include nested projects
-	EntitiesMigrateProjects *[]bool `form:"entities[migrate_projects],omitempty" json:"entities[migrate_projects],omitempty"`
+	EntitiesMigrateProjects *[]bool `form:"entities[migrate_projects],omitempty" json:"entities[migrate_projects],omitempty" jsonschema:"description=Indicates group migration should include nested projects,default=true"`
 
 	// EntitiesSourceFullPath Relative path of the source entity to import
-	EntitiesSourceFullPath []string `form:"entities[source_full_path]" json:"entities[source_full_path]"`
+	EntitiesSourceFullPath []string `form:"entities[source_full_path]" json:"entities[source_full_path]" jsonschema:"description=Relative path of the source entity to import"`
 
 	// EntitiesSourceType Source entity type
-	EntitiesSourceType []string `form:"entities[source_type]" json:"entities[source_type]"`
+	EntitiesSourceType []string `form:"entities[source_type]" json:"entities[source_type]" jsonschema:"description=Source entity type"`
 }
 type GetApiV4BulkImportsEntitiesParams struct {
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=desc,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=desc,format=int32"`
 
 	// Sort Return GitLab Migrations sorted in created by `asc` or `desc` order.
-	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty" jsonschema:"description=Return GitLab Migrations sorted in created by \"asc\" or \"desc\" order.,default=desc,enum=asc,enum=desc"`
 
 	// Status Return all GitLab Migrations' entities with specified status
-	Status *string `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty" jsonschema:"description=Return all GitLab Migrations' entities with specified status,enum=created,enum=started,enum=finished,enum=timeout,enum=failed,enum=canceled"`
 }
 type GetApiV4BulkImportsImportIdEntitiesParams struct {
 	// Status Return import entities with specified status
-	Status *string `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty" jsonschema:"description=Return import entities with specified status,enum=created,enum=started,enum=finished,enum=timeout,enum=failed,enum=canceled"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type PostApiV4BulkImportsFormdataRequestBody PostApiV4BulkImportsFormdataBody
 type GetApiV4BulkImportsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
-		CreatedAt   *time.Time `json:"created_at,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		HasFailures *bool      `json:"has_failures,omitempty"`
-		Id          *int32     `json:"id,omitempty"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		SourceType  *string    `json:"source_type,omitempty"`
 		SourceUrl   *string    `json:"source_url,omitempty"`
-		Status      *string    `json:"status,omitempty"`
-		UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+		Status      *string    `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+		UpdatedAt   *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 	}
 }
 type PostApiV4BulkImportsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		CreatedAt   *time.Time `json:"created_at,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		HasFailures *bool      `json:"has_failures,omitempty"`
-		Id          *int32     `json:"id,omitempty"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		SourceType  *string    `json:"source_type,omitempty"`
 		SourceUrl   *string    `json:"source_url,omitempty"`
-		Status      *string    `json:"status,omitempty"`
-		UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+		Status      *string    `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+		UpdatedAt   *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 	}
 }
 type GetApiV4BulkImportsEntitiesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
-		BulkImportId         *int32     `json:"bulk_import_id,omitempty"`
-		CreatedAt            *time.Time `json:"created_at,omitempty"`
+		BulkImportId         *int32     `json:"bulk_import_id,omitempty" jsonschema:",format=int32"`
+		CreatedAt            *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		DestinationFullPath  *string    `json:"destination_full_path,omitempty"`
 		DestinationName      *string    `json:"destination_name,omitempty"`
 		DestinationNamespace *string    `json:"destination_namespace,omitempty"`
 		DestinationSlug      *string    `json:"destination_slug,omitempty"`
-		EntityType           *string    `json:"entity_type,omitempty"`
+		EntityType           *string    `json:"entity_type,omitempty" jsonschema:",enum=group,enum=project"`
 		Failures             *[]struct {
 			CorrelationIdValue *string `json:"correlation_id_value,omitempty"`
 			ExceptionClass     *string `json:"exception_class,omitempty"`
@@ -124,55 +124,55 @@ type GetApiV4BulkImportsEntitiesResponse struct {
 			SourceUrl          *string `json:"source_url,omitempty"`
 		} `json:"failures,omitempty"`
 		HasFailures        *bool                   `json:"has_failures,omitempty"`
-		Id                 *int32                  `json:"id,omitempty"`
+		Id                 *int32                  `json:"id,omitempty" jsonschema:",format=int32"`
 		MigrateMemberships *bool                   `json:"migrate_memberships,omitempty"`
 		MigrateProjects    *bool                   `json:"migrate_projects,omitempty"`
-		NamespaceId        *int32                  `json:"namespace_id,omitempty"`
-		ParentId           *int32                  `json:"parent_id,omitempty"`
-		ProjectId          *int32                  `json:"project_id,omitempty"`
+		NamespaceId        *int32                  `json:"namespace_id,omitempty" jsonschema:",format=int32"`
+		ParentId           *int32                  `json:"parent_id,omitempty" jsonschema:",format=int32"`
+		ProjectId          *int32                  `json:"project_id,omitempty" jsonschema:",format=int32"`
 		SourceFullPath     *string                 `json:"source_full_path,omitempty"`
 		Stats              *map[string]interface{} `json:"stats,omitempty"`
-		Status             *string                 `json:"status,omitempty"`
-		UpdatedAt          *time.Time              `json:"updated_at,omitempty"`
+		Status             *string                 `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+		UpdatedAt          *time.Time              `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 	}
 }
 type GetApiV4BulkImportsImportIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		CreatedAt   *time.Time `json:"created_at,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		HasFailures *bool      `json:"has_failures,omitempty"`
-		Id          *int32     `json:"id,omitempty"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		SourceType  *string    `json:"source_type,omitempty"`
 		SourceUrl   *string    `json:"source_url,omitempty"`
-		Status      *string    `json:"status,omitempty"`
-		UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+		Status      *string    `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+		UpdatedAt   *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 	}
 }
 type PostApiV4BulkImportsImportIdCancelResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		CreatedAt   *time.Time `json:"created_at,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		HasFailures *bool      `json:"has_failures,omitempty"`
-		Id          *int32     `json:"id,omitempty"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		SourceType  *string    `json:"source_type,omitempty"`
 		SourceUrl   *string    `json:"source_url,omitempty"`
-		Status      *string    `json:"status,omitempty"`
-		UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+		Status      *string    `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+		UpdatedAt   *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 	}
 }
 type GetApiV4BulkImportsImportIdEntitiesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
-		BulkImportId         *int32     `json:"bulk_import_id,omitempty"`
-		CreatedAt            *time.Time `json:"created_at,omitempty"`
+		BulkImportId         *int32     `json:"bulk_import_id,omitempty" jsonschema:",format=int32"`
+		CreatedAt            *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		DestinationFullPath  *string    `json:"destination_full_path,omitempty"`
 		DestinationName      *string    `json:"destination_name,omitempty"`
 		DestinationNamespace *string    `json:"destination_namespace,omitempty"`
 		DestinationSlug      *string    `json:"destination_slug,omitempty"`
-		EntityType           *string    `json:"entity_type,omitempty"`
+		EntityType           *string    `json:"entity_type,omitempty" jsonschema:",enum=group,enum=project"`
 		Failures             *[]struct {
 			CorrelationIdValue *string `json:"correlation_id_value,omitempty"`
 			ExceptionClass     *string `json:"exception_class,omitempty"`
@@ -182,29 +182,29 @@ type GetApiV4BulkImportsImportIdEntitiesResponse struct {
 			SourceUrl          *string `json:"source_url,omitempty"`
 		} `json:"failures,omitempty"`
 		HasFailures        *bool                   `json:"has_failures,omitempty"`
-		Id                 *int32                  `json:"id,omitempty"`
+		Id                 *int32                  `json:"id,omitempty" jsonschema:",format=int32"`
 		MigrateMemberships *bool                   `json:"migrate_memberships,omitempty"`
 		MigrateProjects    *bool                   `json:"migrate_projects,omitempty"`
-		NamespaceId        *int32                  `json:"namespace_id,omitempty"`
-		ParentId           *int32                  `json:"parent_id,omitempty"`
-		ProjectId          *int32                  `json:"project_id,omitempty"`
+		NamespaceId        *int32                  `json:"namespace_id,omitempty" jsonschema:",format=int32"`
+		ParentId           *int32                  `json:"parent_id,omitempty" jsonschema:",format=int32"`
+		ProjectId          *int32                  `json:"project_id,omitempty" jsonschema:",format=int32"`
 		SourceFullPath     *string                 `json:"source_full_path,omitempty"`
 		Stats              *map[string]interface{} `json:"stats,omitempty"`
-		Status             *string                 `json:"status,omitempty"`
-		UpdatedAt          *time.Time              `json:"updated_at,omitempty"`
+		Status             *string                 `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+		UpdatedAt          *time.Time              `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 	}
 }
 type GetApiV4BulkImportsImportIdEntitiesEntityIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		BulkImportId         *int32     `json:"bulk_import_id,omitempty"`
-		CreatedAt            *time.Time `json:"created_at,omitempty"`
+		BulkImportId         *int32     `json:"bulk_import_id,omitempty" jsonschema:",format=int32"`
+		CreatedAt            *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		DestinationFullPath  *string    `json:"destination_full_path,omitempty"`
 		DestinationName      *string    `json:"destination_name,omitempty"`
 		DestinationNamespace *string    `json:"destination_namespace,omitempty"`
 		DestinationSlug      *string    `json:"destination_slug,omitempty"`
-		EntityType           *string    `json:"entity_type,omitempty"`
+		EntityType           *string    `json:"entity_type,omitempty" jsonschema:",enum=group,enum=project"`
 		Failures             *[]struct {
 			CorrelationIdValue *string `json:"correlation_id_value,omitempty"`
 			ExceptionClass     *string `json:"exception_class,omitempty"`
@@ -214,16 +214,16 @@ type GetApiV4BulkImportsImportIdEntitiesEntityIdResponse struct {
 			SourceUrl          *string `json:"source_url,omitempty"`
 		} `json:"failures,omitempty"`
 		HasFailures        *bool                   `json:"has_failures,omitempty"`
-		Id                 *int32                  `json:"id,omitempty"`
+		Id                 *int32                  `json:"id,omitempty" jsonschema:",format=int32"`
 		MigrateMemberships *bool                   `json:"migrate_memberships,omitempty"`
 		MigrateProjects    *bool                   `json:"migrate_projects,omitempty"`
-		NamespaceId        *int32                  `json:"namespace_id,omitempty"`
-		ParentId           *int32                  `json:"parent_id,omitempty"`
-		ProjectId          *int32                  `json:"project_id,omitempty"`
+		NamespaceId        *int32                  `json:"namespace_id,omitempty" jsonschema:",format=int32"`
+		ParentId           *int32                  `json:"parent_id,omitempty" jsonschema:",format=int32"`
+		ProjectId          *int32                  `json:"project_id,omitempty" jsonschema:",format=int32"`
 		SourceFullPath     *string                 `json:"source_full_path,omitempty"`
 		Stats              *map[string]interface{} `json:"stats,omitempty"`
-		Status             *string                 `json:"status,omitempty"`
-		UpdatedAt          *time.Time              `json:"updated_at,omitempty"`
+		Status             *string                 `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+		UpdatedAt          *time.Time              `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 	}
 }
 type GetApiV4BulkImportsImportIdEntitiesEntityIdFailuresResponse struct {
@@ -966,13 +966,13 @@ func ParseGetApiV4BulkImportsResponse(rsp *http.Response) (*GetApiV4BulkImportsR
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
-			CreatedAt   *time.Time `json:"created_at,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			HasFailures *bool      `json:"has_failures,omitempty"`
-			Id          *int32     `json:"id,omitempty"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			SourceType  *string    `json:"source_type,omitempty"`
 			SourceUrl   *string    `json:"source_url,omitempty"`
-			Status      *string    `json:"status,omitempty"`
-			UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+			Status      *string    `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+			UpdatedAt   *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -998,13 +998,13 @@ func ParsePostApiV4BulkImportsResponse(rsp *http.Response) (*PostApiV4BulkImport
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			CreatedAt   *time.Time `json:"created_at,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			HasFailures *bool      `json:"has_failures,omitempty"`
-			Id          *int32     `json:"id,omitempty"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			SourceType  *string    `json:"source_type,omitempty"`
 			SourceUrl   *string    `json:"source_url,omitempty"`
-			Status      *string    `json:"status,omitempty"`
-			UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+			Status      *string    `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+			UpdatedAt   *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1030,13 +1030,13 @@ func ParseGetApiV4BulkImportsEntitiesResponse(rsp *http.Response) (*GetApiV4Bulk
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
-			BulkImportId         *int32     `json:"bulk_import_id,omitempty"`
-			CreatedAt            *time.Time `json:"created_at,omitempty"`
+			BulkImportId         *int32     `json:"bulk_import_id,omitempty" jsonschema:",format=int32"`
+			CreatedAt            *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			DestinationFullPath  *string    `json:"destination_full_path,omitempty"`
 			DestinationName      *string    `json:"destination_name,omitempty"`
 			DestinationNamespace *string    `json:"destination_namespace,omitempty"`
 			DestinationSlug      *string    `json:"destination_slug,omitempty"`
-			EntityType           *string    `json:"entity_type,omitempty"`
+			EntityType           *string    `json:"entity_type,omitempty" jsonschema:",enum=group,enum=project"`
 			Failures             *[]struct {
 				CorrelationIdValue *string `json:"correlation_id_value,omitempty"`
 				ExceptionClass     *string `json:"exception_class,omitempty"`
@@ -1046,16 +1046,16 @@ func ParseGetApiV4BulkImportsEntitiesResponse(rsp *http.Response) (*GetApiV4Bulk
 				SourceUrl          *string `json:"source_url,omitempty"`
 			} `json:"failures,omitempty"`
 			HasFailures        *bool                   `json:"has_failures,omitempty"`
-			Id                 *int32                  `json:"id,omitempty"`
+			Id                 *int32                  `json:"id,omitempty" jsonschema:",format=int32"`
 			MigrateMemberships *bool                   `json:"migrate_memberships,omitempty"`
 			MigrateProjects    *bool                   `json:"migrate_projects,omitempty"`
-			NamespaceId        *int32                  `json:"namespace_id,omitempty"`
-			ParentId           *int32                  `json:"parent_id,omitempty"`
-			ProjectId          *int32                  `json:"project_id,omitempty"`
+			NamespaceId        *int32                  `json:"namespace_id,omitempty" jsonschema:",format=int32"`
+			ParentId           *int32                  `json:"parent_id,omitempty" jsonschema:",format=int32"`
+			ProjectId          *int32                  `json:"project_id,omitempty" jsonschema:",format=int32"`
 			SourceFullPath     *string                 `json:"source_full_path,omitempty"`
 			Stats              *map[string]interface{} `json:"stats,omitempty"`
-			Status             *string                 `json:"status,omitempty"`
-			UpdatedAt          *time.Time              `json:"updated_at,omitempty"`
+			Status             *string                 `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+			UpdatedAt          *time.Time              `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1081,13 +1081,13 @@ func ParseGetApiV4BulkImportsImportIdResponse(rsp *http.Response) (*GetApiV4Bulk
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			CreatedAt   *time.Time `json:"created_at,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			HasFailures *bool      `json:"has_failures,omitempty"`
-			Id          *int32     `json:"id,omitempty"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			SourceType  *string    `json:"source_type,omitempty"`
 			SourceUrl   *string    `json:"source_url,omitempty"`
-			Status      *string    `json:"status,omitempty"`
-			UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+			Status      *string    `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+			UpdatedAt   *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1113,13 +1113,13 @@ func ParsePostApiV4BulkImportsImportIdCancelResponse(rsp *http.Response) (*PostA
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			CreatedAt   *time.Time `json:"created_at,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			HasFailures *bool      `json:"has_failures,omitempty"`
-			Id          *int32     `json:"id,omitempty"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			SourceType  *string    `json:"source_type,omitempty"`
 			SourceUrl   *string    `json:"source_url,omitempty"`
-			Status      *string    `json:"status,omitempty"`
-			UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+			Status      *string    `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+			UpdatedAt   *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1145,13 +1145,13 @@ func ParseGetApiV4BulkImportsImportIdEntitiesResponse(rsp *http.Response) (*GetA
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
-			BulkImportId         *int32     `json:"bulk_import_id,omitempty"`
-			CreatedAt            *time.Time `json:"created_at,omitempty"`
+			BulkImportId         *int32     `json:"bulk_import_id,omitempty" jsonschema:",format=int32"`
+			CreatedAt            *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			DestinationFullPath  *string    `json:"destination_full_path,omitempty"`
 			DestinationName      *string    `json:"destination_name,omitempty"`
 			DestinationNamespace *string    `json:"destination_namespace,omitempty"`
 			DestinationSlug      *string    `json:"destination_slug,omitempty"`
-			EntityType           *string    `json:"entity_type,omitempty"`
+			EntityType           *string    `json:"entity_type,omitempty" jsonschema:",enum=group,enum=project"`
 			Failures             *[]struct {
 				CorrelationIdValue *string `json:"correlation_id_value,omitempty"`
 				ExceptionClass     *string `json:"exception_class,omitempty"`
@@ -1161,16 +1161,16 @@ func ParseGetApiV4BulkImportsImportIdEntitiesResponse(rsp *http.Response) (*GetA
 				SourceUrl          *string `json:"source_url,omitempty"`
 			} `json:"failures,omitempty"`
 			HasFailures        *bool                   `json:"has_failures,omitempty"`
-			Id                 *int32                  `json:"id,omitempty"`
+			Id                 *int32                  `json:"id,omitempty" jsonschema:",format=int32"`
 			MigrateMemberships *bool                   `json:"migrate_memberships,omitempty"`
 			MigrateProjects    *bool                   `json:"migrate_projects,omitempty"`
-			NamespaceId        *int32                  `json:"namespace_id,omitempty"`
-			ParentId           *int32                  `json:"parent_id,omitempty"`
-			ProjectId          *int32                  `json:"project_id,omitempty"`
+			NamespaceId        *int32                  `json:"namespace_id,omitempty" jsonschema:",format=int32"`
+			ParentId           *int32                  `json:"parent_id,omitempty" jsonschema:",format=int32"`
+			ProjectId          *int32                  `json:"project_id,omitempty" jsonschema:",format=int32"`
 			SourceFullPath     *string                 `json:"source_full_path,omitempty"`
 			Stats              *map[string]interface{} `json:"stats,omitempty"`
-			Status             *string                 `json:"status,omitempty"`
-			UpdatedAt          *time.Time              `json:"updated_at,omitempty"`
+			Status             *string                 `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+			UpdatedAt          *time.Time              `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1196,13 +1196,13 @@ func ParseGetApiV4BulkImportsImportIdEntitiesEntityIdResponse(rsp *http.Response
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			BulkImportId         *int32     `json:"bulk_import_id,omitempty"`
-			CreatedAt            *time.Time `json:"created_at,omitempty"`
+			BulkImportId         *int32     `json:"bulk_import_id,omitempty" jsonschema:",format=int32"`
+			CreatedAt            *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			DestinationFullPath  *string    `json:"destination_full_path,omitempty"`
 			DestinationName      *string    `json:"destination_name,omitempty"`
 			DestinationNamespace *string    `json:"destination_namespace,omitempty"`
 			DestinationSlug      *string    `json:"destination_slug,omitempty"`
-			EntityType           *string    `json:"entity_type,omitempty"`
+			EntityType           *string    `json:"entity_type,omitempty" jsonschema:",enum=group,enum=project"`
 			Failures             *[]struct {
 				CorrelationIdValue *string `json:"correlation_id_value,omitempty"`
 				ExceptionClass     *string `json:"exception_class,omitempty"`
@@ -1212,16 +1212,16 @@ func ParseGetApiV4BulkImportsImportIdEntitiesEntityIdResponse(rsp *http.Response
 				SourceUrl          *string `json:"source_url,omitempty"`
 			} `json:"failures,omitempty"`
 			HasFailures        *bool                   `json:"has_failures,omitempty"`
-			Id                 *int32                  `json:"id,omitempty"`
+			Id                 *int32                  `json:"id,omitempty" jsonschema:",format=int32"`
 			MigrateMemberships *bool                   `json:"migrate_memberships,omitempty"`
 			MigrateProjects    *bool                   `json:"migrate_projects,omitempty"`
-			NamespaceId        *int32                  `json:"namespace_id,omitempty"`
-			ParentId           *int32                  `json:"parent_id,omitempty"`
-			ProjectId          *int32                  `json:"project_id,omitempty"`
+			NamespaceId        *int32                  `json:"namespace_id,omitempty" jsonschema:",format=int32"`
+			ParentId           *int32                  `json:"parent_id,omitempty" jsonschema:",format=int32"`
+			ProjectId          *int32                  `json:"project_id,omitempty" jsonschema:",format=int32"`
 			SourceFullPath     *string                 `json:"source_full_path,omitempty"`
 			Stats              *map[string]interface{} `json:"stats,omitempty"`
-			Status             *string                 `json:"status,omitempty"`
-			UpdatedAt          *time.Time              `json:"updated_at,omitempty"`
+			Status             *string                 `json:"status,omitempty" jsonschema:",enum=created,enum=started,enum=finished,enum=timeout,enum=failed"`
+			UpdatedAt          *time.Time              `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

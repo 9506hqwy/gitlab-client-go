@@ -13,77 +13,77 @@ import (
 
 type PostApiV4ImportBitbucketJSONBody struct {
 	// BitbucketAppPassword BitBucket app password
-	BitbucketAppPassword string `json:"bitbucket_app_password"`
+	BitbucketAppPassword string `json:"bitbucket_app_password" jsonschema:"description=BitBucket app password"`
 
 	// BitbucketUsername BitBucket username
-	BitbucketUsername string `json:"bitbucket_username"`
+	BitbucketUsername string `json:"bitbucket_username" jsonschema:"description=BitBucket username"`
 
 	// NewName New repository name
-	NewName *string `json:"new_name,omitempty"`
+	NewName *string `json:"new_name,omitempty" jsonschema:"description=New repository name"`
 
 	// RepoPath Repository path
-	RepoPath string `json:"repo_path"`
+	RepoPath string `json:"repo_path" jsonschema:"description=Repository path"`
 
 	// TargetNamespace Target namespace
-	TargetNamespace string `json:"target_namespace"`
+	TargetNamespace string `json:"target_namespace" jsonschema:"description=Target namespace"`
 }
 type PostApiV4ImportBitbucketServerJSONBody struct {
 	// BitbucketServerProject BitBucket Server Project Key
-	BitbucketServerProject string `json:"bitbucket_server_project"`
+	BitbucketServerProject string `json:"bitbucket_server_project" jsonschema:"description=BitBucket Server Project Key"`
 
 	// BitbucketServerRepo BitBucket Server Repository Name
-	BitbucketServerRepo string `json:"bitbucket_server_repo"`
+	BitbucketServerRepo string `json:"bitbucket_server_repo" jsonschema:"description=BitBucket Server Repository Name"`
 
 	// BitbucketServerUrl Bitbucket Server URL
-	BitbucketServerUrl string `json:"bitbucket_server_url"`
+	BitbucketServerUrl string `json:"bitbucket_server_url" jsonschema:"description=Bitbucket Server URL"`
 
 	// BitbucketServerUsername BitBucket Server Username
-	BitbucketServerUsername string `json:"bitbucket_server_username"`
+	BitbucketServerUsername string `json:"bitbucket_server_username" jsonschema:"description=BitBucket Server Username"`
 
 	// NewName New repo name
-	NewName *string `json:"new_name,omitempty"`
+	NewName *string `json:"new_name,omitempty" jsonschema:"description=New repo name"`
 
 	// NewNamespace Namespace to import repo into
-	NewNamespace *string `json:"new_namespace,omitempty"`
+	NewNamespace *string `json:"new_namespace,omitempty" jsonschema:"description=Namespace to import repo into"`
 
 	// PersonalAccessToken BitBucket Server personal access token/password
-	PersonalAccessToken string `json:"personal_access_token"`
+	PersonalAccessToken string `json:"personal_access_token" jsonschema:"description=BitBucket Server personal access token/password"`
 
 	// TimeoutStrategy Strategy for behavior on timeouts
-	TimeoutStrategy *string `json:"timeout_strategy,omitempty"`
+	TimeoutStrategy *string `json:"timeout_strategy,omitempty" jsonschema:"description=Strategy for behavior on timeouts,enum=optimistic,enum=pessimistic"`
 }
 type PostApiV4ImportGithubJSONBody struct {
 	// GithubHostname Custom GitHub enterprise hostname. For example: https://github.example.com. From GitLab 16.5 to GitLab 17.1, you must include the path `/api/v3`.
-	GithubHostname *string `json:"github_hostname,omitempty"`
+	GithubHostname *string `json:"github_hostname,omitempty" jsonschema:"description=Custom GitHub enterprise hostname. For example: https://github.example.com. From GitLab 16.5 to GitLab 17.1\\, you must include the path \"/api/v3\"."`
 
 	// NewName New repo name
-	NewName *string `json:"new_name,omitempty"`
+	NewName *string `json:"new_name,omitempty" jsonschema:"description=New repo name"`
 
 	// OptionalStages Optional stages of import to be performed
-	OptionalStages *map[string]interface{} `json:"optional_stages,omitempty"`
+	OptionalStages *map[string]interface{} `json:"optional_stages,omitempty" jsonschema:"description=Optional stages of import to be performed"`
 
 	// PaginationLimit Pagination limit
-	PaginationLimit *int32 `json:"pagination_limit,omitempty"`
+	PaginationLimit *int32 `json:"pagination_limit,omitempty" jsonschema:"description=Pagination limit,format=int32"`
 
 	// PersonalAccessToken GitHub personal access token
-	PersonalAccessToken string `json:"personal_access_token"`
+	PersonalAccessToken string `json:"personal_access_token" jsonschema:"description=GitHub personal access token"`
 
 	// RepoId GitHub repository ID
-	RepoId int32 `json:"repo_id"`
+	RepoId int32 `json:"repo_id" jsonschema:"description=GitHub repository ID,format=int32"`
 
 	// TargetNamespace Namespace or group to import repository into
-	TargetNamespace string `json:"target_namespace"`
+	TargetNamespace string `json:"target_namespace" jsonschema:"description=Namespace or group to import repository into"`
 
 	// TimeoutStrategy Strategy for behavior on timeouts
-	TimeoutStrategy *string `json:"timeout_strategy,omitempty"`
+	TimeoutStrategy *string `json:"timeout_strategy,omitempty" jsonschema:"description=Strategy for behavior on timeouts,enum=optimistic,enum=pessimistic"`
 }
 type PostApiV4ImportGithubCancelJSONBody struct {
 	// ProjectId ID of importing project to be canceled
-	ProjectId int32 `json:"project_id"`
+	ProjectId int32 `json:"project_id" jsonschema:"description=ID of importing project to be canceled,format=int32"`
 }
 type PostApiV4ImportGithubGistsJSONBody struct {
 	// PersonalAccessToken GitHub personal access token
-	PersonalAccessToken string `json:"personal_access_token"`
+	PersonalAccessToken string `json:"personal_access_token" jsonschema:"description=GitHub personal access token"`
 }
 type PostApiV4ImportBitbucketJSONRequestBody PostApiV4ImportBitbucketJSONBody
 type PostApiV4ImportBitbucketServerJSONRequestBody PostApiV4ImportBitbucketServerJSONBody
@@ -98,10 +98,10 @@ type PostApiV4ImportBitbucketResponse struct {
 		FullName              *string `json:"full_name,omitempty"`
 		FullPath              *string `json:"full_path,omitempty"`
 		HumanImportStatusName *string `json:"human_import_status_name,omitempty"`
-		Id                    *int32  `json:"id,omitempty"`
+		Id                    *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		ImportError           *string `json:"import_error,omitempty"`
 		ImportSource          *string `json:"import_source,omitempty"`
-		ImportStatus          *string `json:"import_status,omitempty"`
+		ImportStatus          *string `json:"import_status,omitempty" jsonschema:",enum=scheduled,enum=started,enum=finished,enum=failed,enum=canceled"`
 		ImportWarning         *string `json:"import_warning,omitempty"`
 		Name                  *string `json:"name,omitempty"`
 		ProviderLink          *string `json:"provider_link,omitempty"`
@@ -116,7 +116,7 @@ type PostApiV4ImportBitbucketServerResponse struct {
 		Forked   *bool   `json:"forked,omitempty"`
 		FullName *string `json:"full_name,omitempty"`
 		FullPath *string `json:"full_path,omitempty"`
-		Id       *int32  `json:"id,omitempty"`
+		Id       *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		Name     *string `json:"name,omitempty"`
 		RefsUrl  *string `json:"refs_url,omitempty"`
 	}
@@ -128,7 +128,7 @@ type PostApiV4ImportGithubResponse struct {
 		Forked   *bool   `json:"forked,omitempty"`
 		FullName *string `json:"full_name,omitempty"`
 		FullPath *string `json:"full_path,omitempty"`
-		Id       *int32  `json:"id,omitempty"`
+		Id       *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		Name     *string `json:"name,omitempty"`
 		RefsUrl  *string `json:"refs_url,omitempty"`
 	}
@@ -141,10 +141,10 @@ type PostApiV4ImportGithubCancelResponse struct {
 		FullName              *string `json:"full_name,omitempty"`
 		FullPath              *string `json:"full_path,omitempty"`
 		HumanImportStatusName *string `json:"human_import_status_name,omitempty"`
-		Id                    *int32  `json:"id,omitempty"`
+		Id                    *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		ImportError           *string `json:"import_error,omitempty"`
 		ImportSource          *string `json:"import_source,omitempty"`
-		ImportStatus          *string `json:"import_status,omitempty"`
+		ImportStatus          *string `json:"import_status,omitempty" jsonschema:",enum=scheduled,enum=started,enum=finished,enum=failed,enum=canceled"`
 		ImportWarning         *string `json:"import_warning,omitempty"`
 		Name                  *string `json:"name,omitempty"`
 		ProviderLink          *string `json:"provider_link,omitempty"`
@@ -596,10 +596,10 @@ func ParsePostApiV4ImportBitbucketResponse(rsp *http.Response) (*PostApiV4Import
 			FullName              *string `json:"full_name,omitempty"`
 			FullPath              *string `json:"full_path,omitempty"`
 			HumanImportStatusName *string `json:"human_import_status_name,omitempty"`
-			Id                    *int32  `json:"id,omitempty"`
+			Id                    *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			ImportError           *string `json:"import_error,omitempty"`
 			ImportSource          *string `json:"import_source,omitempty"`
-			ImportStatus          *string `json:"import_status,omitempty"`
+			ImportStatus          *string `json:"import_status,omitempty" jsonschema:",enum=scheduled,enum=started,enum=finished,enum=failed,enum=canceled"`
 			ImportWarning         *string `json:"import_warning,omitempty"`
 			Name                  *string `json:"name,omitempty"`
 			ProviderLink          *string `json:"provider_link,omitempty"`
@@ -633,7 +633,7 @@ func ParsePostApiV4ImportBitbucketServerResponse(rsp *http.Response) (*PostApiV4
 			Forked   *bool   `json:"forked,omitempty"`
 			FullName *string `json:"full_name,omitempty"`
 			FullPath *string `json:"full_path,omitempty"`
-			Id       *int32  `json:"id,omitempty"`
+			Id       *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Name     *string `json:"name,omitempty"`
 			RefsUrl  *string `json:"refs_url,omitempty"`
 		}
@@ -664,7 +664,7 @@ func ParsePostApiV4ImportGithubResponse(rsp *http.Response) (*PostApiV4ImportGit
 			Forked   *bool   `json:"forked,omitempty"`
 			FullName *string `json:"full_name,omitempty"`
 			FullPath *string `json:"full_path,omitempty"`
-			Id       *int32  `json:"id,omitempty"`
+			Id       *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Name     *string `json:"name,omitempty"`
 			RefsUrl  *string `json:"refs_url,omitempty"`
 		}
@@ -696,10 +696,10 @@ func ParsePostApiV4ImportGithubCancelResponse(rsp *http.Response) (*PostApiV4Imp
 			FullName              *string `json:"full_name,omitempty"`
 			FullPath              *string `json:"full_path,omitempty"`
 			HumanImportStatusName *string `json:"human_import_status_name,omitempty"`
-			Id                    *int32  `json:"id,omitempty"`
+			Id                    *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			ImportError           *string `json:"import_error,omitempty"`
 			ImportSource          *string `json:"import_source,omitempty"`
-			ImportStatus          *string `json:"import_status,omitempty"`
+			ImportStatus          *string `json:"import_status,omitempty" jsonschema:",enum=scheduled,enum=started,enum=finished,enum=failed,enum=canceled"`
 			ImportWarning         *string `json:"import_warning,omitempty"`
 			Name                  *string `json:"name,omitempty"`
 			ProviderLink          *string `json:"provider_link,omitempty"`

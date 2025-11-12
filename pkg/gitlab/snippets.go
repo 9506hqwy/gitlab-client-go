@@ -16,101 +16,101 @@ import (
 
 type GetApiV4SnippetsParams struct {
 	// CreatedAfter Return snippets created after the specified time
-	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty"`
+	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty" jsonschema:"description=Return snippets created after the specified time,format=int32"`
 
 	// CreatedBefore Return snippets created before the specified time
-	CreatedBefore *time.Time `form:"created_before,omitempty" json:"created_before,omitempty"`
+	CreatedBefore *time.Time `form:"created_before,omitempty" json:"created_before,omitempty" jsonschema:"description=Return snippets created before the specified time,format=int32"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type PostApiV4SnippetsJSONBody struct {
 	// Content The content of a snippet
-	Content *string `json:"content,omitempty"`
+	Content *string `json:"content,omitempty" jsonschema:"description=The content of a snippet"`
 
 	// Description The description of a snippet
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=The description of a snippet"`
 
 	// FileName The name of a snippet file
-	FileName string `json:"file_name"`
+	FileName string `json:"file_name" jsonschema:"description=The name of a snippet file"`
 
 	// Files An array of files
 	Files *[]struct {
 		// Content The content of a snippet file
-		Content string `json:"content"`
+		Content string `json:"content" jsonschema:"description=The content of a snippet file"`
 
 		// FilePath The path of a snippet file
-		FilePath string `json:"file_path"`
-	} `json:"files,omitempty"`
+		FilePath string `json:"file_path" jsonschema:"description=The path of a snippet file"`
+	} `json:"files,omitempty" jsonschema:"description=An array of files"`
 
 	// Title The title of a snippet
-	Title string `json:"title"`
+	Title string `json:"title" jsonschema:"description=The title of a snippet"`
 
 	// Visibility The visibility of the snippet
-	Visibility *string `json:"visibility,omitempty"`
+	Visibility *string `json:"visibility,omitempty" jsonschema:"description=The visibility of the snippet,default=internal,enum=private,enum=internal,enum=public"`
 }
 type GetApiV4SnippetsAllParams struct {
 	// CreatedAfter Return snippets created after the specified time
-	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty"`
+	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty" jsonschema:"description=Return snippets created after the specified time,format=int32"`
 
 	// CreatedBefore Return snippets created before the specified time
-	CreatedBefore *time.Time `form:"created_before,omitempty" json:"created_before,omitempty"`
+	CreatedBefore *time.Time `form:"created_before,omitempty" json:"created_before,omitempty" jsonschema:"description=Return snippets created before the specified time,format=int32"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 
 	// RepositoryStorage Filter by repository storage used by the snippet
-	RepositoryStorage *string `form:"repository_storage,omitempty" json:"repository_storage,omitempty"`
+	RepositoryStorage *string `form:"repository_storage,omitempty" json:"repository_storage,omitempty" jsonschema:"description=Filter by repository storage used by the snippet"`
 }
 type GetApiV4SnippetsPublicParams struct {
 	// CreatedAfter Return snippets created after the specified time
-	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty"`
+	CreatedAfter *time.Time `form:"created_after,omitempty" json:"created_after,omitempty" jsonschema:"description=Return snippets created after the specified time,format=int32"`
 
 	// CreatedBefore Return snippets created before the specified time
-	CreatedBefore *time.Time `form:"created_before,omitempty" json:"created_before,omitempty"`
+	CreatedBefore *time.Time `form:"created_before,omitempty" json:"created_before,omitempty" jsonschema:"description=Return snippets created before the specified time,format=int32"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type PutApiV4SnippetsIdJSONBody struct {
 	// Content The content of a snippet
-	Content *string `json:"content,omitempty"`
+	Content *string `json:"content,omitempty" jsonschema:"description=The content of a snippet"`
 
 	// Description The description of a snippet
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=The description of a snippet"`
 
 	// FileName The name of a snippet file
-	FileName *string `json:"file_name,omitempty"`
+	FileName *string `json:"file_name,omitempty" jsonschema:"description=The name of a snippet file"`
 
 	// Files An array of files to update
 	Files *[]struct {
 		// Action The type of action to perform on the file, must be one of: create, update, delete, move
-		Action string `json:"action"`
+		Action string `json:"action" jsonschema:"description=The type of action to perform on the file\\, must be one of: create\\, update\\, delete\\, move,enum=create,enum=update,enum=delete,enum=move"`
 
 		// Content The content of a snippet
-		Content *string `json:"content,omitempty"`
+		Content *string `json:"content,omitempty" jsonschema:"description=The content of a snippet"`
 
 		// FilePath The file path of a snippet file
-		FilePath *string `json:"file_path,omitempty"`
+		FilePath *string `json:"file_path,omitempty" jsonschema:"description=The file path of a snippet file"`
 
 		// PreviousPath The previous path of a snippet file
-		PreviousPath *string `json:"previous_path,omitempty"`
-	} `json:"files,omitempty"`
+		PreviousPath *string `json:"previous_path,omitempty" jsonschema:"description=The previous path of a snippet file"`
+	} `json:"files,omitempty" jsonschema:"description=An array of files to update"`
 
 	// Title The title of a snippet
-	Title *string `json:"title,omitempty"`
+	Title *string `json:"title,omitempty" jsonschema:"description=The title of a snippet"`
 
 	// Visibility The visibility of the snippet
-	Visibility *string `json:"visibility,omitempty"`
+	Visibility *string `json:"visibility,omitempty" jsonschema:"description=The visibility of the snippet,enum=private,enum=internal,enum=public"`
 }
 type PostApiV4SnippetsJSONRequestBody PostApiV4SnippetsJSONBody
 type PutApiV4SnippetsIdJSONRequestBody PutApiV4SnippetsIdJSONBody
@@ -126,28 +126,28 @@ type GetApiV4SnippetsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"author,omitempty"`
-		CreatedAt         *time.Time `json:"created_at,omitempty"`
+		} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Description       *string    `json:"description,omitempty"`
 		FileName          *string    `json:"file_name,omitempty"`
 		Files             *[]string  `json:"files,omitempty"`
 		HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-		Id                *int32     `json:"id,omitempty"`
+		Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Imported          *bool      `json:"imported,omitempty"`
 		ImportedFrom      *string    `json:"imported_from,omitempty"`
-		ProjectId         *int32     `json:"project_id,omitempty"`
+		ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 		RawUrl            *string    `json:"raw_url,omitempty"`
 		RepositoryStorage *string    `json:"repository_storage,omitempty"`
 		SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 		Title             *string    `json:"title,omitempty"`
-		UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+		UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		Visibility        *string    `json:"visibility,omitempty"`
 		WebUrl            *string    `json:"web_url,omitempty"`
 	}
@@ -164,28 +164,28 @@ type PostApiV4SnippetsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"author,omitempty"`
-		CreatedAt         *time.Time `json:"created_at,omitempty"`
+		} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Description       *string    `json:"description,omitempty"`
 		FileName          *string    `json:"file_name,omitempty"`
 		Files             *[]string  `json:"files,omitempty"`
 		HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-		Id                *int32     `json:"id,omitempty"`
+		Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Imported          *bool      `json:"imported,omitempty"`
 		ImportedFrom      *string    `json:"imported_from,omitempty"`
-		ProjectId         *int32     `json:"project_id,omitempty"`
+		ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 		RawUrl            *string    `json:"raw_url,omitempty"`
 		RepositoryStorage *string    `json:"repository_storage,omitempty"`
 		SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 		Title             *string    `json:"title,omitempty"`
-		UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+		UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		Visibility        *string    `json:"visibility,omitempty"`
 		WebUrl            *string    `json:"web_url,omitempty"`
 	}
@@ -202,28 +202,28 @@ type GetApiV4SnippetsAllResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"author,omitempty"`
-		CreatedAt         *time.Time `json:"created_at,omitempty"`
+		} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Description       *string    `json:"description,omitempty"`
 		FileName          *string    `json:"file_name,omitempty"`
 		Files             *[]string  `json:"files,omitempty"`
 		HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-		Id                *int32     `json:"id,omitempty"`
+		Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Imported          *bool      `json:"imported,omitempty"`
 		ImportedFrom      *string    `json:"imported_from,omitempty"`
-		ProjectId         *int32     `json:"project_id,omitempty"`
+		ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 		RawUrl            *string    `json:"raw_url,omitempty"`
 		RepositoryStorage *string    `json:"repository_storage,omitempty"`
 		SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 		Title             *string    `json:"title,omitempty"`
-		UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+		UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		Visibility        *string    `json:"visibility,omitempty"`
 		WebUrl            *string    `json:"web_url,omitempty"`
 	}
@@ -240,28 +240,28 @@ type GetApiV4SnippetsPublicResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"author,omitempty"`
-		CreatedAt         *time.Time `json:"created_at,omitempty"`
+		} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Description       *string    `json:"description,omitempty"`
 		FileName          *string    `json:"file_name,omitempty"`
 		Files             *[]string  `json:"files,omitempty"`
 		HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-		Id                *int32     `json:"id,omitempty"`
+		Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Imported          *bool      `json:"imported,omitempty"`
 		ImportedFrom      *string    `json:"imported_from,omitempty"`
-		ProjectId         *int32     `json:"project_id,omitempty"`
+		ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 		RawUrl            *string    `json:"raw_url,omitempty"`
 		RepositoryStorage *string    `json:"repository_storage,omitempty"`
 		SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 		Title             *string    `json:"title,omitempty"`
-		UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+		UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		Visibility        *string    `json:"visibility,omitempty"`
 		WebUrl            *string    `json:"web_url,omitempty"`
 	}
@@ -278,28 +278,28 @@ type DeleteApiV4SnippetsIdResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"author,omitempty"`
-		CreatedAt         *time.Time `json:"created_at,omitempty"`
+		} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Description       *string    `json:"description,omitempty"`
 		FileName          *string    `json:"file_name,omitempty"`
 		Files             *[]string  `json:"files,omitempty"`
 		HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-		Id                *int32     `json:"id,omitempty"`
+		Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Imported          *bool      `json:"imported,omitempty"`
 		ImportedFrom      *string    `json:"imported_from,omitempty"`
-		ProjectId         *int32     `json:"project_id,omitempty"`
+		ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 		RawUrl            *string    `json:"raw_url,omitempty"`
 		RepositoryStorage *string    `json:"repository_storage,omitempty"`
 		SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 		Title             *string    `json:"title,omitempty"`
-		UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+		UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		Visibility        *string    `json:"visibility,omitempty"`
 		WebUrl            *string    `json:"web_url,omitempty"`
 	}
@@ -316,28 +316,28 @@ type GetApiV4SnippetsIdResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"author,omitempty"`
-		CreatedAt         *time.Time `json:"created_at,omitempty"`
+		} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Description       *string    `json:"description,omitempty"`
 		FileName          *string    `json:"file_name,omitempty"`
 		Files             *[]string  `json:"files,omitempty"`
 		HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-		Id                *int32     `json:"id,omitempty"`
+		Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Imported          *bool      `json:"imported,omitempty"`
 		ImportedFrom      *string    `json:"imported_from,omitempty"`
-		ProjectId         *int32     `json:"project_id,omitempty"`
+		ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 		RawUrl            *string    `json:"raw_url,omitempty"`
 		RepositoryStorage *string    `json:"repository_storage,omitempty"`
 		SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 		Title             *string    `json:"title,omitempty"`
-		UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+		UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		Visibility        *string    `json:"visibility,omitempty"`
 		WebUrl            *string    `json:"web_url,omitempty"`
 	}
@@ -354,28 +354,28 @@ type PutApiV4SnippetsIdResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"author,omitempty"`
-		CreatedAt         *time.Time `json:"created_at,omitempty"`
+		} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Description       *string    `json:"description,omitempty"`
 		FileName          *string    `json:"file_name,omitempty"`
 		Files             *[]string  `json:"files,omitempty"`
 		HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-		Id                *int32     `json:"id,omitempty"`
+		Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Imported          *bool      `json:"imported,omitempty"`
 		ImportedFrom      *string    `json:"imported_from,omitempty"`
-		ProjectId         *int32     `json:"project_id,omitempty"`
+		ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 		RawUrl            *string    `json:"raw_url,omitempty"`
 		RepositoryStorage *string    `json:"repository_storage,omitempty"`
 		SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 		Title             *string    `json:"title,omitempty"`
-		UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+		UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		Visibility        *string    `json:"visibility,omitempty"`
 		WebUrl            *string    `json:"web_url,omitempty"`
 	}
@@ -1311,28 +1311,28 @@ func ParseGetApiV4SnippetsResponse(rsp *http.Response) (*GetApiV4SnippetsRespons
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
 			FileName          *string    `json:"file_name,omitempty"`
 			Files             *[]string  `json:"files,omitempty"`
 			HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Imported          *bool      `json:"imported,omitempty"`
 			ImportedFrom      *string    `json:"imported_from,omitempty"`
-			ProjectId         *int32     `json:"project_id,omitempty"`
+			ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 			RawUrl            *string    `json:"raw_url,omitempty"`
 			RepositoryStorage *string    `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 			Title             *string    `json:"title,omitempty"`
-			UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			Visibility        *string    `json:"visibility,omitempty"`
 			WebUrl            *string    `json:"web_url,omitempty"`
 		}
@@ -1368,28 +1368,28 @@ func ParsePostApiV4SnippetsResponse(rsp *http.Response) (*PostApiV4SnippetsRespo
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
 			FileName          *string    `json:"file_name,omitempty"`
 			Files             *[]string  `json:"files,omitempty"`
 			HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Imported          *bool      `json:"imported,omitempty"`
 			ImportedFrom      *string    `json:"imported_from,omitempty"`
-			ProjectId         *int32     `json:"project_id,omitempty"`
+			ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 			RawUrl            *string    `json:"raw_url,omitempty"`
 			RepositoryStorage *string    `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 			Title             *string    `json:"title,omitempty"`
-			UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			Visibility        *string    `json:"visibility,omitempty"`
 			WebUrl            *string    `json:"web_url,omitempty"`
 		}
@@ -1425,28 +1425,28 @@ func ParseGetApiV4SnippetsAllResponse(rsp *http.Response) (*GetApiV4SnippetsAllR
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
 			FileName          *string    `json:"file_name,omitempty"`
 			Files             *[]string  `json:"files,omitempty"`
 			HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Imported          *bool      `json:"imported,omitempty"`
 			ImportedFrom      *string    `json:"imported_from,omitempty"`
-			ProjectId         *int32     `json:"project_id,omitempty"`
+			ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 			RawUrl            *string    `json:"raw_url,omitempty"`
 			RepositoryStorage *string    `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 			Title             *string    `json:"title,omitempty"`
-			UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			Visibility        *string    `json:"visibility,omitempty"`
 			WebUrl            *string    `json:"web_url,omitempty"`
 		}
@@ -1482,28 +1482,28 @@ func ParseGetApiV4SnippetsPublicResponse(rsp *http.Response) (*GetApiV4SnippetsP
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
 			FileName          *string    `json:"file_name,omitempty"`
 			Files             *[]string  `json:"files,omitempty"`
 			HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Imported          *bool      `json:"imported,omitempty"`
 			ImportedFrom      *string    `json:"imported_from,omitempty"`
-			ProjectId         *int32     `json:"project_id,omitempty"`
+			ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 			RawUrl            *string    `json:"raw_url,omitempty"`
 			RepositoryStorage *string    `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 			Title             *string    `json:"title,omitempty"`
-			UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			Visibility        *string    `json:"visibility,omitempty"`
 			WebUrl            *string    `json:"web_url,omitempty"`
 		}
@@ -1539,28 +1539,28 @@ func ParseDeleteApiV4SnippetsIdResponse(rsp *http.Response) (*DeleteApiV4Snippet
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
 			FileName          *string    `json:"file_name,omitempty"`
 			Files             *[]string  `json:"files,omitempty"`
 			HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Imported          *bool      `json:"imported,omitempty"`
 			ImportedFrom      *string    `json:"imported_from,omitempty"`
-			ProjectId         *int32     `json:"project_id,omitempty"`
+			ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 			RawUrl            *string    `json:"raw_url,omitempty"`
 			RepositoryStorage *string    `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 			Title             *string    `json:"title,omitempty"`
-			UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			Visibility        *string    `json:"visibility,omitempty"`
 			WebUrl            *string    `json:"web_url,omitempty"`
 		}
@@ -1596,28 +1596,28 @@ func ParseGetApiV4SnippetsIdResponse(rsp *http.Response) (*GetApiV4SnippetsIdRes
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
 			FileName          *string    `json:"file_name,omitempty"`
 			Files             *[]string  `json:"files,omitempty"`
 			HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Imported          *bool      `json:"imported,omitempty"`
 			ImportedFrom      *string    `json:"imported_from,omitempty"`
-			ProjectId         *int32     `json:"project_id,omitempty"`
+			ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 			RawUrl            *string    `json:"raw_url,omitempty"`
 			RepositoryStorage *string    `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 			Title             *string    `json:"title,omitempty"`
-			UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			Visibility        *string    `json:"visibility,omitempty"`
 			WebUrl            *string    `json:"web_url,omitempty"`
 		}
@@ -1653,28 +1653,28 @@ func ParsePutApiV4SnippetsIdResponse(rsp *http.Response) (*PutApiV4SnippetsIdRes
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
 			FileName          *string    `json:"file_name,omitempty"`
 			Files             *[]string  `json:"files,omitempty"`
 			HttpUrlToRepo     *string    `json:"http_url_to_repo,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Imported          *bool      `json:"imported,omitempty"`
 			ImportedFrom      *string    `json:"imported_from,omitempty"`
-			ProjectId         *int32     `json:"project_id,omitempty"`
+			ProjectId         *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 			RawUrl            *string    `json:"raw_url,omitempty"`
 			RepositoryStorage *string    `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string    `json:"ssh_url_to_repo,omitempty"`
 			Title             *string    `json:"title,omitempty"`
-			UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt         *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			Visibility        *string    `json:"visibility,omitempty"`
 			WebUrl            *string    `json:"web_url,omitempty"`
 		}

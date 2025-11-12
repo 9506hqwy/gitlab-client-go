@@ -14,16 +14,16 @@ import (
 
 type PostApiV4OrganizationsJSONBody struct {
 	// Avatar The avatar image for the organization
-	Avatar *string `json:"avatar,omitempty"`
+	Avatar *string `json:"avatar,omitempty" jsonschema:"description=The avatar image for the organization"`
 
 	// Description The description of the organization
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=The description of the organization"`
 
 	// Name The name of the organization
-	Name string `json:"name"`
+	Name string `json:"name" jsonschema:"description=The name of the organization"`
 
 	// Path The path of the organization
-	Path string `json:"path"`
+	Path string `json:"path" jsonschema:"description=The path of the organization"`
 }
 type PostApiV4OrganizationsJSONRequestBody PostApiV4OrganizationsJSONBody
 type PostApiV4OrganizationsResponse struct {
@@ -31,12 +31,12 @@ type PostApiV4OrganizationsResponse struct {
 	HTTPResponse *http.Response
 	JSON201      *struct {
 		AvatarUrl   *string    `json:"avatar_url,omitempty"`
-		CreatedAt   *time.Time `json:"created_at,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Description *string    `json:"description,omitempty"`
-		Id          *int32     `json:"id,omitempty"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Name        *string    `json:"name,omitempty"`
 		Path        *string    `json:"path,omitempty"`
-		UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+		UpdatedAt   *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 		WebUrl      *string    `json:"web_url,omitempty"`
 	}
 }
@@ -141,12 +141,12 @@ func ParsePostApiV4OrganizationsResponse(rsp *http.Response) (*PostApiV4Organiza
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
 			AvatarUrl   *string    `json:"avatar_url,omitempty"`
-			CreatedAt   *time.Time `json:"created_at,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description *string    `json:"description,omitempty"`
-			Id          *int32     `json:"id,omitempty"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name        *string    `json:"name,omitempty"`
 			Path        *string    `json:"path,omitempty"`
-			UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt   *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			WebUrl      *string    `json:"web_url,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {

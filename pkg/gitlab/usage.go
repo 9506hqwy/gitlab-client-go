@@ -14,50 +14,50 @@ import (
 
 type PostApiV4UsageDataIncrementCounterJSONBody struct {
 	// Event The event name that should be tracked
-	Event string `json:"event"`
+	Event string `json:"event" jsonschema:"description=The event name that should be tracked"`
 }
 type PostApiV4UsageDataIncrementUniqueUsersJSONBody struct {
 	// Event The event name that should be tracked
-	Event string `json:"event"`
+	Event string `json:"event" jsonschema:"description=The event name that should be tracked"`
 }
 type GetApiV4UsageDataMetricDefinitionsParams struct {
 	// IncludePaths Include file paths in the metric definitions
-	IncludePaths *bool `form:"include_paths,omitempty" json:"include_paths,omitempty"`
+	IncludePaths *bool `form:"include_paths,omitempty" json:"include_paths,omitempty" jsonschema:"description=Include file paths in the metric definitions,default=false"`
 }
 type PostApiV4UsageDataTrackEventJSONBody struct {
 	// AdditionalProperties Additional properties to be tracked
-	AdditionalProperties *map[string]interface{} `json:"additional_properties,omitempty"`
+	AdditionalProperties *map[string]interface{} `json:"additional_properties,omitempty" jsonschema:"description=Additional properties to be tracked"`
 
 	// Event The event name that should be tracked
-	Event string `json:"event"`
+	Event string `json:"event" jsonschema:"description=The event name that should be tracked"`
 
 	// NamespaceId Namespace ID
-	NamespaceId *int32 `json:"namespace_id,omitempty"`
+	NamespaceId *int32 `json:"namespace_id,omitempty" jsonschema:"description=Namespace ID,format=int32"`
 
 	// ProjectId Project ID
-	ProjectId *int32 `json:"project_id,omitempty"`
+	ProjectId *int32 `json:"project_id,omitempty" jsonschema:"description=Project ID,format=int32"`
 
 	// SendToSnowplow Send the tracked event to Snowplow
-	SendToSnowplow *bool `json:"send_to_snowplow,omitempty"`
+	SendToSnowplow *bool `json:"send_to_snowplow,omitempty" jsonschema:"description=Send the tracked event to Snowplow,default=false"`
 }
 type PostApiV4UsageDataTrackEventsJSONBody struct {
 	// Events An array of internal events. Maximum 50 events allowed.
 	Events []struct {
 		// AdditionalProperties Additional properties to be tracked
-		AdditionalProperties *map[string]interface{} `json:"additional_properties,omitempty"`
+		AdditionalProperties *map[string]interface{} `json:"additional_properties,omitempty" jsonschema:"description=Additional properties to be tracked"`
 
 		// Event The event name that should be tracked
-		Event string `json:"event"`
+		Event string `json:"event" jsonschema:"description=The event name that should be tracked"`
 
 		// NamespaceId Namespace ID
-		NamespaceId *int32 `json:"namespace_id,omitempty"`
+		NamespaceId *int32 `json:"namespace_id,omitempty" jsonschema:"description=Namespace ID,format=int32"`
 
 		// ProjectId Project ID
-		ProjectId *int32 `json:"project_id,omitempty"`
+		ProjectId *int32 `json:"project_id,omitempty" jsonschema:"description=Project ID,format=int32"`
 
 		// SendToSnowplow Send the tracked event to Snowplow
-		SendToSnowplow *bool `json:"send_to_snowplow,omitempty"`
-	} `json:"events"`
+		SendToSnowplow *bool `json:"send_to_snowplow,omitempty" jsonschema:"description=Send the tracked event to Snowplow,default=false"`
+	} `json:"events" jsonschema:"description=An array of internal events. Maximum 50 events allowed."`
 }
 type PostApiV4UsageDataIncrementCounterJSONRequestBody PostApiV4UsageDataIncrementCounterJSONBody
 type PostApiV4UsageDataIncrementUniqueUsersJSONRequestBody PostApiV4UsageDataIncrementUniqueUsersJSONBody

@@ -15,14 +15,14 @@ import (
 
 type PutApiV4SuggestionsBatchApplyJSONBody struct {
 	// CommitMessage A custom commit message to use instead of the default generated message or the project's default message
-	CommitMessage *string `json:"commit_message,omitempty"`
+	CommitMessage *string `json:"commit_message,omitempty" jsonschema:"description=A custom commit message to use instead of the default generated message or the project's default message"`
 
 	// Ids An array of the suggestion IDs
-	Ids []int32 `json:"ids"`
+	Ids []int32 `json:"ids" jsonschema:"description=An array of the suggestion IDs"`
 }
 type PutApiV4SuggestionsIdApplyJSONBody struct {
 	// CommitMessage A custom commit message to use instead of the default generated message or the project's default message
-	CommitMessage *string `json:"commit_message,omitempty"`
+	CommitMessage *string `json:"commit_message,omitempty" jsonschema:"description=A custom commit message to use instead of the default generated message or the project's default message"`
 }
 type PutApiV4SuggestionsBatchApplyJSONRequestBody PutApiV4SuggestionsBatchApplyJSONBody
 type PutApiV4SuggestionsIdApplyJSONRequestBody PutApiV4SuggestionsIdApplyJSONBody

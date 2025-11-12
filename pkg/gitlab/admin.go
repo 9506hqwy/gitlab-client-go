@@ -16,151 +16,151 @@ import (
 
 type GetApiV4AdminBatchedBackgroundMigrationsParams struct {
 	// Database The name of the database, the default `main`
-	Database *string `form:"database,omitempty" json:"database,omitempty"`
+	Database *string `form:"database,omitempty" json:"database,omitempty" jsonschema:"description=The name of the database\\, the default \"main\",default=main,enum=main,enum=ci,enum=sec,enum=embedding,enum=geo"`
 
 	// JobClassName Filter migrations by job class name.
-	JobClassName *string `form:"job_class_name,omitempty" json:"job_class_name,omitempty"`
+	JobClassName *string `form:"job_class_name,omitempty" json:"job_class_name,omitempty" jsonschema:"description=Filter migrations by job class name."`
 }
 type GetApiV4AdminBatchedBackgroundMigrationsIdParams struct {
 	// Database The name of the database
-	Database *string `form:"database,omitempty" json:"database,omitempty"`
+	Database *string `form:"database,omitempty" json:"database,omitempty" jsonschema:"description=The name of the database,default=main,enum=main,enum=ci,enum=sec,enum=embedding,enum=geo"`
 }
 type PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBody struct {
 	// Database The name of the database
-	Database *string `json:"database,omitempty"`
+	Database *string `json:"database,omitempty" jsonschema:"description=The name of the database,default=main,enum=main,enum=ci,enum=sec,enum=embedding,enum=geo"`
 }
 type PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBody struct {
 	// Database The name of the database
-	Database *string `json:"database,omitempty"`
+	Database *string `json:"database,omitempty" jsonschema:"description=The name of the database,default=main,enum=main,enum=ci,enum=sec,enum=embedding,enum=geo"`
 }
 type GetApiV4AdminCiVariablesParams struct {
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type PostApiV4AdminCiVariablesJSONBody struct {
 	// Description The description of the variable
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=The description of the variable"`
 
 	// Key The key of the variable. Max 255 characters
-	Key string `json:"key"`
+	Key string `json:"key" jsonschema:"description=The key of the variable. Max 255 characters"`
 
 	// Masked Whether the variable is masked
-	Masked *bool `json:"masked,omitempty"`
+	Masked *bool `json:"masked,omitempty" jsonschema:"description=Whether the variable is masked"`
 
 	// Protected Whether the variable is protected
-	Protected *bool `json:"protected,omitempty"`
+	Protected *bool `json:"protected,omitempty" jsonschema:"description=Whether the variable is protected"`
 
 	// Raw Whether the variable will be expanded
-	Raw *bool `json:"raw,omitempty"`
+	Raw *bool `json:"raw,omitempty" jsonschema:"description=Whether the variable will be expanded"`
 
 	// Value The value of a variable
-	Value string `json:"value"`
+	Value string `json:"value" jsonschema:"description=The value of a variable"`
 
 	// VariableType The type of a variable. Available types are: env_var (default) and file
-	VariableType *string `json:"variable_type,omitempty"`
+	VariableType *string `json:"variable_type,omitempty" jsonschema:"description=The type of a variable. Available types are: env_var (default) and file,enum=env_var,enum=file"`
 }
 type PutApiV4AdminCiVariablesKeyJSONBody struct {
 	// Description The description of the variable
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=The description of the variable"`
 
 	// Masked Whether the variable is masked
-	Masked *bool `json:"masked,omitempty"`
+	Masked *bool `json:"masked,omitempty" jsonschema:"description=Whether the variable is masked"`
 
 	// Protected Whether the variable is protected
-	Protected *bool `json:"protected,omitempty"`
+	Protected *bool `json:"protected,omitempty" jsonschema:"description=Whether the variable is protected"`
 
 	// Raw Whether the variable will be expanded
-	Raw *bool `json:"raw,omitempty"`
+	Raw *bool `json:"raw,omitempty" jsonschema:"description=Whether the variable will be expanded"`
 
 	// Value The value of a variable
-	Value *string `json:"value,omitempty"`
+	Value *string `json:"value,omitempty" jsonschema:"description=The value of a variable"`
 
 	// VariableType The type of a variable. Available types are: env_var (default) and file
-	VariableType *string `json:"variable_type,omitempty"`
+	VariableType *string `json:"variable_type,omitempty" jsonschema:"description=The type of a variable. Available types are: env_var (default) and file,enum=env_var,enum=file"`
 }
 type PostApiV4AdminClustersAddJSONBody struct {
 	// Domain Cluster base domain
-	Domain *string `json:"domain,omitempty"`
+	Domain *string `json:"domain,omitempty" jsonschema:"description=Cluster base domain"`
 
 	// Enabled Determines if cluster is active or not, defaults to true
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty" jsonschema:"description=Determines if cluster is active or not\\, defaults to true,default=true"`
 
 	// EnvironmentScope The associated environment to the cluster
-	EnvironmentScope *string `json:"environment_scope,omitempty"`
+	EnvironmentScope *string `json:"environment_scope,omitempty" jsonschema:"description=The associated environment to the cluster,default=*"`
 
 	// Managed Determines if GitLab will manage namespaces and service accounts for this cluster, defaults to true
-	Managed *bool `json:"managed,omitempty"`
+	Managed *bool `json:"managed,omitempty" jsonschema:"description=Determines if GitLab will manage namespaces and service accounts for this cluster\\, defaults to true,default=true"`
 
 	// ManagementProjectId The ID of the management project
-	ManagementProjectId *int32 `json:"management_project_id,omitempty"`
+	ManagementProjectId *int32 `json:"management_project_id,omitempty" jsonschema:"description=The ID of the management project,format=int32"`
 
 	// Name Cluster name
-	Name string `json:"name"`
+	Name string `json:"name" jsonschema:"description=Cluster name"`
 
 	// NamespacePerEnvironment Deploy each environment to a separate Kubernetes namespace
-	NamespacePerEnvironment *bool `json:"namespace_per_environment,omitempty"`
+	NamespacePerEnvironment *bool `json:"namespace_per_environment,omitempty" jsonschema:"description=Deploy each environment to a separate Kubernetes namespace,default=true"`
 
 	// PlatformKubernetesAttributes Platform Kubernetes data
 	PlatformKubernetesAttributes struct {
 		// ApiUrl URL to access the Kubernetes API
-		ApiUrl string `json:"api_url"`
+		ApiUrl string `json:"api_url" jsonschema:"description=URL to access the Kubernetes API"`
 
 		// AuthorizationType Cluster authorization type, defaults to RBAC
-		AuthorizationType *string `json:"authorization_type,omitempty"`
+		AuthorizationType *string `json:"authorization_type,omitempty" jsonschema:"description=Cluster authorization type\\, defaults to RBAC,default=rbac,enum=unknown_authorization,enum=rbac,enum=abac"`
 
 		// CaCert TLS certificate (needed if API is using a self-signed TLS certificate)
-		CaCert *string `json:"ca_cert,omitempty"`
+		CaCert *string `json:"ca_cert,omitempty" jsonschema:"description=TLS certificate (needed if API is using a self-signed TLS certificate)"`
 
 		// Namespace Unique namespace related to Project
-		Namespace *string `json:"namespace,omitempty"`
+		Namespace *string `json:"namespace,omitempty" jsonschema:"description=Unique namespace related to Project"`
 
 		// Token Token to authenticate against Kubernetes
-		Token string `json:"token"`
-	} `json:"platform_kubernetes_attributes"`
+		Token string `json:"token" jsonschema:"description=Token to authenticate against Kubernetes"`
+	} `json:"platform_kubernetes_attributes" jsonschema:"description=Platform Kubernetes data"`
 }
 type PutApiV4AdminClustersClusterIdJSONBody struct {
 	// Domain Cluster base domain
-	Domain *string `json:"domain,omitempty"`
+	Domain *string `json:"domain,omitempty" jsonschema:"description=Cluster base domain"`
 
 	// Enabled Enable or disable Gitlab's connection to your Kubernetes cluster
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty" jsonschema:"description=Enable or disable Gitlab's connection to your Kubernetes cluster"`
 
 	// EnvironmentScope The associated environment to the cluster
-	EnvironmentScope *string `json:"environment_scope,omitempty"`
+	EnvironmentScope *string `json:"environment_scope,omitempty" jsonschema:"description=The associated environment to the cluster"`
 
 	// Managed Determines if GitLab will manage namespaces and service accounts for this cluster
-	Managed *bool `json:"managed,omitempty"`
+	Managed *bool `json:"managed,omitempty" jsonschema:"description=Determines if GitLab will manage namespaces and service accounts for this cluster"`
 
 	// ManagementProjectId The ID of the management project
-	ManagementProjectId *int32 `json:"management_project_id,omitempty"`
+	ManagementProjectId *int32 `json:"management_project_id,omitempty" jsonschema:"description=The ID of the management project,format=int32"`
 
 	// Name Cluster name
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty" jsonschema:"description=Cluster name"`
 
 	// NamespacePerEnvironment Deploy each environment to a separate Kubernetes namespace
-	NamespacePerEnvironment *bool `json:"namespace_per_environment,omitempty"`
+	NamespacePerEnvironment *bool `json:"namespace_per_environment,omitempty" jsonschema:"description=Deploy each environment to a separate Kubernetes namespace,default=true"`
 
 	// PlatformKubernetesAttributes Platform Kubernetes data
 	PlatformKubernetesAttributes *struct {
 		// ApiUrl URL to access the Kubernetes API
-		ApiUrl *string `json:"api_url,omitempty"`
+		ApiUrl *string `json:"api_url,omitempty" jsonschema:"description=URL to access the Kubernetes API"`
 
 		// CaCert TLS certificate (needed if API is using a self-signed TLS certificate)
-		CaCert *string `json:"ca_cert,omitempty"`
+		CaCert *string `json:"ca_cert,omitempty" jsonschema:"description=TLS certificate (needed if API is using a self-signed TLS certificate)"`
 
 		// Namespace Unique namespace related to Project
-		Namespace *string `json:"namespace,omitempty"`
+		Namespace *string `json:"namespace,omitempty" jsonschema:"description=Unique namespace related to Project"`
 
 		// Token Token to authenticate against Kubernetes
-		Token *string `json:"token,omitempty"`
-	} `json:"platform_kubernetes_attributes,omitempty"`
+		Token *string `json:"token,omitempty" jsonschema:"description=Token to authenticate against Kubernetes"`
+	} `json:"platform_kubernetes_attributes,omitempty" jsonschema:"description=Platform Kubernetes data"`
 }
 type PostApiV4AdminMigrationsTimestampMarkJSONBody struct {
 	// Database The name of the database
-	Database *string `json:"database,omitempty"`
+	Database *string `json:"database,omitempty" jsonschema:"description=The name of the database,default=main,enum=main,enum=ci,enum=sec,enum=embedding,enum=geo"`
 }
 type PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONRequestBody PutApiV4AdminBatchedBackgroundMigrationsIdPauseJSONBody
 type PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONRequestBody PutApiV4AdminBatchedBackgroundMigrationsIdResumeJSONBody
@@ -174,10 +174,10 @@ type GetApiV4AdminBatchedBackgroundMigrationsResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
 		ColumnName   *string    `json:"column_name,omitempty"`
-		CreatedAt    *time.Time `json:"created_at,omitempty"`
+		CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Id           *string    `json:"id,omitempty"`
 		JobClassName *string    `json:"job_class_name,omitempty"`
-		Progress     *float32   `json:"progress,omitempty"`
+		Progress     *float32   `json:"progress,omitempty" jsonschema:",format=float"`
 		Status       *string    `json:"status,omitempty"`
 		TableName    *string    `json:"table_name,omitempty"`
 	}
@@ -187,10 +187,10 @@ type GetApiV4AdminBatchedBackgroundMigrationsIdResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		ColumnName   *string    `json:"column_name,omitempty"`
-		CreatedAt    *time.Time `json:"created_at,omitempty"`
+		CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Id           *string    `json:"id,omitempty"`
 		JobClassName *string    `json:"job_class_name,omitempty"`
-		Progress     *float32   `json:"progress,omitempty"`
+		Progress     *float32   `json:"progress,omitempty" jsonschema:",format=float"`
 		Status       *string    `json:"status,omitempty"`
 		TableName    *string    `json:"table_name,omitempty"`
 	}
@@ -200,10 +200,10 @@ type PutApiV4AdminBatchedBackgroundMigrationsIdPauseResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		ColumnName   *string    `json:"column_name,omitempty"`
-		CreatedAt    *time.Time `json:"created_at,omitempty"`
+		CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Id           *string    `json:"id,omitempty"`
 		JobClassName *string    `json:"job_class_name,omitempty"`
-		Progress     *float32   `json:"progress,omitempty"`
+		Progress     *float32   `json:"progress,omitempty" jsonschema:",format=float"`
 		Status       *string    `json:"status,omitempty"`
 		TableName    *string    `json:"table_name,omitempty"`
 	}
@@ -213,10 +213,10 @@ type PutApiV4AdminBatchedBackgroundMigrationsIdResumeResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		ColumnName   *string    `json:"column_name,omitempty"`
-		CreatedAt    *time.Time `json:"created_at,omitempty"`
+		CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		Id           *string    `json:"id,omitempty"`
 		JobClassName *string    `json:"job_class_name,omitempty"`
-		Progress     *float32   `json:"progress,omitempty"`
+		Progress     *float32   `json:"progress,omitempty" jsonschema:",format=float"`
 		Status       *string    `json:"status,omitempty"`
 		TableName    *string    `json:"table_name,omitempty"`
 	}
@@ -297,9 +297,9 @@ type GetApiV4AdminClustersResponse struct {
 		Id                *string `json:"id,omitempty"`
 		Managed           *string `json:"managed,omitempty"`
 		ManagementProject *struct {
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name              *string    `json:"name,omitempty"`
 			NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 			Path              *string    `json:"path,omitempty"`
@@ -333,14 +333,14 @@ type GetApiV4AdminClustersResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"user,omitempty"`
+		} `json:"user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 	}
 }
 type PostApiV4AdminClustersAddResponse struct {
@@ -355,9 +355,9 @@ type PostApiV4AdminClustersAddResponse struct {
 		Id                *string `json:"id,omitempty"`
 		Managed           *string `json:"managed,omitempty"`
 		ManagementProject *struct {
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name              *string    `json:"name,omitempty"`
 			NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 			Path              *string    `json:"path,omitempty"`
@@ -391,14 +391,14 @@ type PostApiV4AdminClustersAddResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"user,omitempty"`
+		} `json:"user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 	}
 }
 type DeleteApiV4AdminClustersClusterIdResponse struct {
@@ -413,9 +413,9 @@ type DeleteApiV4AdminClustersClusterIdResponse struct {
 		Id                *string `json:"id,omitempty"`
 		Managed           *string `json:"managed,omitempty"`
 		ManagementProject *struct {
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name              *string    `json:"name,omitempty"`
 			NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 			Path              *string    `json:"path,omitempty"`
@@ -449,14 +449,14 @@ type DeleteApiV4AdminClustersClusterIdResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"user,omitempty"`
+		} `json:"user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 	}
 }
 type GetApiV4AdminClustersClusterIdResponse struct {
@@ -471,9 +471,9 @@ type GetApiV4AdminClustersClusterIdResponse struct {
 		Id                *string `json:"id,omitempty"`
 		Managed           *string `json:"managed,omitempty"`
 		ManagementProject *struct {
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name              *string    `json:"name,omitempty"`
 			NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 			Path              *string    `json:"path,omitempty"`
@@ -507,14 +507,14 @@ type GetApiV4AdminClustersClusterIdResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"user,omitempty"`
+		} `json:"user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 	}
 }
 type PutApiV4AdminClustersClusterIdResponse struct {
@@ -529,9 +529,9 @@ type PutApiV4AdminClustersClusterIdResponse struct {
 		Id                *string `json:"id,omitempty"`
 		Managed           *string `json:"managed,omitempty"`
 		ManagementProject *struct {
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name              *string    `json:"name,omitempty"`
 			NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 			Path              *string    `json:"path,omitempty"`
@@ -565,14 +565,14 @@ type PutApiV4AdminClustersClusterIdResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"user,omitempty"`
+		} `json:"user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 	}
 }
 type GetApiV4AdminDatabasesDatabaseNameDictionaryTablesTableNameResponse struct {
@@ -1869,10 +1869,10 @@ func ParseGetApiV4AdminBatchedBackgroundMigrationsResponse(rsp *http.Response) (
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
 			ColumnName   *string    `json:"column_name,omitempty"`
-			CreatedAt    *time.Time `json:"created_at,omitempty"`
+			CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Id           *string    `json:"id,omitempty"`
 			JobClassName *string    `json:"job_class_name,omitempty"`
-			Progress     *float32   `json:"progress,omitempty"`
+			Progress     *float32   `json:"progress,omitempty" jsonschema:",format=float"`
 			Status       *string    `json:"status,omitempty"`
 			TableName    *string    `json:"table_name,omitempty"`
 		}
@@ -1901,10 +1901,10 @@ func ParseGetApiV4AdminBatchedBackgroundMigrationsIdResponse(rsp *http.Response)
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			ColumnName   *string    `json:"column_name,omitempty"`
-			CreatedAt    *time.Time `json:"created_at,omitempty"`
+			CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Id           *string    `json:"id,omitempty"`
 			JobClassName *string    `json:"job_class_name,omitempty"`
-			Progress     *float32   `json:"progress,omitempty"`
+			Progress     *float32   `json:"progress,omitempty" jsonschema:",format=float"`
 			Status       *string    `json:"status,omitempty"`
 			TableName    *string    `json:"table_name,omitempty"`
 		}
@@ -1933,10 +1933,10 @@ func ParsePutApiV4AdminBatchedBackgroundMigrationsIdPauseResponse(rsp *http.Resp
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			ColumnName   *string    `json:"column_name,omitempty"`
-			CreatedAt    *time.Time `json:"created_at,omitempty"`
+			CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Id           *string    `json:"id,omitempty"`
 			JobClassName *string    `json:"job_class_name,omitempty"`
-			Progress     *float32   `json:"progress,omitempty"`
+			Progress     *float32   `json:"progress,omitempty" jsonschema:",format=float"`
 			Status       *string    `json:"status,omitempty"`
 			TableName    *string    `json:"table_name,omitempty"`
 		}
@@ -1965,10 +1965,10 @@ func ParsePutApiV4AdminBatchedBackgroundMigrationsIdResumeResponse(rsp *http.Res
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			ColumnName   *string    `json:"column_name,omitempty"`
-			CreatedAt    *time.Time `json:"created_at,omitempty"`
+			CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Id           *string    `json:"id,omitempty"`
 			JobClassName *string    `json:"job_class_name,omitempty"`
-			Progress     *float32   `json:"progress,omitempty"`
+			Progress     *float32   `json:"progress,omitempty" jsonschema:",format=float"`
 			Status       *string    `json:"status,omitempty"`
 			TableName    *string    `json:"table_name,omitempty"`
 		}
@@ -2154,9 +2154,9 @@ func ParseGetApiV4AdminClustersResponse(rsp *http.Response) (*GetApiV4AdminClust
 			Id                *string `json:"id,omitempty"`
 			Managed           *string `json:"managed,omitempty"`
 			ManagementProject *struct {
-				CreatedAt         *time.Time `json:"created_at,omitempty"`
+				CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				Description       *string    `json:"description,omitempty"`
-				Id                *int32     `json:"id,omitempty"`
+				Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 				Name              *string    `json:"name,omitempty"`
 				NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 				Path              *string    `json:"path,omitempty"`
@@ -2190,14 +2190,14 @@ func ParseGetApiV4AdminClustersResponse(rsp *http.Response) (*GetApiV4AdminClust
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"user,omitempty"`
+			} `json:"user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2231,9 +2231,9 @@ func ParsePostApiV4AdminClustersAddResponse(rsp *http.Response) (*PostApiV4Admin
 			Id                *string `json:"id,omitempty"`
 			Managed           *string `json:"managed,omitempty"`
 			ManagementProject *struct {
-				CreatedAt         *time.Time `json:"created_at,omitempty"`
+				CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				Description       *string    `json:"description,omitempty"`
-				Id                *int32     `json:"id,omitempty"`
+				Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 				Name              *string    `json:"name,omitempty"`
 				NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 				Path              *string    `json:"path,omitempty"`
@@ -2267,14 +2267,14 @@ func ParsePostApiV4AdminClustersAddResponse(rsp *http.Response) (*PostApiV4Admin
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"user,omitempty"`
+			} `json:"user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2308,9 +2308,9 @@ func ParseDeleteApiV4AdminClustersClusterIdResponse(rsp *http.Response) (*Delete
 			Id                *string `json:"id,omitempty"`
 			Managed           *string `json:"managed,omitempty"`
 			ManagementProject *struct {
-				CreatedAt         *time.Time `json:"created_at,omitempty"`
+				CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				Description       *string    `json:"description,omitempty"`
-				Id                *int32     `json:"id,omitempty"`
+				Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 				Name              *string    `json:"name,omitempty"`
 				NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 				Path              *string    `json:"path,omitempty"`
@@ -2344,14 +2344,14 @@ func ParseDeleteApiV4AdminClustersClusterIdResponse(rsp *http.Response) (*Delete
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"user,omitempty"`
+			} `json:"user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2385,9 +2385,9 @@ func ParseGetApiV4AdminClustersClusterIdResponse(rsp *http.Response) (*GetApiV4A
 			Id                *string `json:"id,omitempty"`
 			Managed           *string `json:"managed,omitempty"`
 			ManagementProject *struct {
-				CreatedAt         *time.Time `json:"created_at,omitempty"`
+				CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				Description       *string    `json:"description,omitempty"`
-				Id                *int32     `json:"id,omitempty"`
+				Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 				Name              *string    `json:"name,omitempty"`
 				NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 				Path              *string    `json:"path,omitempty"`
@@ -2421,14 +2421,14 @@ func ParseGetApiV4AdminClustersClusterIdResponse(rsp *http.Response) (*GetApiV4A
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"user,omitempty"`
+			} `json:"user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2462,9 +2462,9 @@ func ParsePutApiV4AdminClustersClusterIdResponse(rsp *http.Response) (*PutApiV4A
 			Id                *string `json:"id,omitempty"`
 			Managed           *string `json:"managed,omitempty"`
 			ManagementProject *struct {
-				CreatedAt         *time.Time `json:"created_at,omitempty"`
+				CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				Description       *string    `json:"description,omitempty"`
-				Id                *int32     `json:"id,omitempty"`
+				Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 				Name              *string    `json:"name,omitempty"`
 				NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 				Path              *string    `json:"path,omitempty"`
@@ -2498,14 +2498,14 @@ func ParsePutApiV4AdminClustersClusterIdResponse(rsp *http.Response) (*PutApiV4A
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"user,omitempty"`
+			} `json:"user,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

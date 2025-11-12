@@ -16,81 +16,81 @@ import (
 
 type GetApiV4NamespacesParams struct {
 	// Search Returns a list of namespaces the user is authorized to view based on the search criteria
-	Search *string `form:"search,omitempty" json:"search,omitempty"`
+	Search *string `form:"search,omitempty" json:"search,omitempty" jsonschema:"description=Returns a list of namespaces the user is authorized to view based on the search criteria"`
 
 	// OwnedOnly In GitLab 14.2 and later, returns a list of owned namespaces only
-	OwnedOnly *bool `form:"owned_only,omitempty" json:"owned_only,omitempty"`
+	OwnedOnly *bool `form:"owned_only,omitempty" json:"owned_only,omitempty" jsonschema:"description=In GitLab 14.2 and later\\, returns a list of owned namespaces only"`
 
 	// TopLevelOnly Only include top level namespaces
-	TopLevelOnly *bool `form:"top_level_only,omitempty" json:"top_level_only,omitempty"`
+	TopLevelOnly *bool `form:"top_level_only,omitempty" json:"top_level_only,omitempty" jsonschema:"description=Only include top level namespaces,default=20"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 
 	// RequestedHostedPlan Name of the hosted plan requested by the customer
-	RequestedHostedPlan *string `form:"requested_hosted_plan,omitempty" json:"requested_hosted_plan,omitempty"`
+	RequestedHostedPlan *string `form:"requested_hosted_plan,omitempty" json:"requested_hosted_plan,omitempty" jsonschema:"description=Name of the hosted plan requested by the customer"`
 }
 type GetApiV4NamespacesStorageLimitExclusionsParams struct {
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type PutApiV4NamespacesIdJSONBody struct {
 	// AdditionalPurchasedStorageEndsOn End of subscription of the additional purchased storage
-	AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty"`
+	AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty" jsonschema:"description=End of subscription of the additional purchased storage,format=date"`
 
 	// AdditionalPurchasedStorageSize Additional storage size for this namespace
-	AdditionalPurchasedStorageSize *int32 `json:"additional_purchased_storage_size,omitempty"`
+	AdditionalPurchasedStorageSize *int32 `json:"additional_purchased_storage_size,omitempty" jsonschema:"description=Additional storage size for this namespace,format=int32"`
 
 	// ExtraSharedRunnersMinutesLimit Extra compute minutes for this namespace
-	ExtraSharedRunnersMinutesLimit *int32 `json:"extra_shared_runners_minutes_limit,omitempty"`
+	ExtraSharedRunnersMinutesLimit *int32 `json:"extra_shared_runners_minutes_limit,omitempty" jsonschema:"description=Extra compute minutes for this namespace,format=int32"`
 	GitlabSubscriptionAttributes   *struct {
 		// AutoRenew Whether subscription will auto renew on end date
-		AutoRenew *bool `json:"auto_renew,omitempty"`
+		AutoRenew *bool `json:"auto_renew,omitempty" jsonschema:"description=Whether subscription will auto renew on end date"`
 
 		// EndDate End date of subscription
-		EndDate *openapi_types.Date `json:"end_date,omitempty"`
+		EndDate *openapi_types.Date `json:"end_date,omitempty" jsonschema:"description=End date of subscription,format=date"`
 
 		// MaxSeatsUsed Highest number of active users in the last month
-		MaxSeatsUsed *int32 `json:"max_seats_used,omitempty"`
+		MaxSeatsUsed *int32 `json:"max_seats_used,omitempty" jsonschema:"description=Highest number of active users in the last month,format=int32"`
 
 		// PlanCode Subscription tier code
-		PlanCode *string `json:"plan_code,omitempty"`
+		PlanCode *string `json:"plan_code,omitempty" jsonschema:"description=Subscription tier code"`
 
 		// Seats Number of seats in subscription
-		Seats *int32 `json:"seats,omitempty"`
+		Seats *int32 `json:"seats,omitempty" jsonschema:"description=Number of seats in subscription,format=int32"`
 
 		// StartDate Start date of subscription
-		StartDate *openapi_types.Date `json:"start_date,omitempty"`
+		StartDate *openapi_types.Date `json:"start_date,omitempty" jsonschema:"description=Start date of subscription,format=date"`
 
 		// Trial Whether the subscription is a trial
-		Trial *bool `json:"trial,omitempty"`
+		Trial *bool `json:"trial,omitempty" jsonschema:"description=Whether the subscription is a trial"`
 
 		// TrialEndsOn End date of trial
-		TrialEndsOn *openapi_types.Date `json:"trial_ends_on,omitempty"`
+		TrialEndsOn *openapi_types.Date `json:"trial_ends_on,omitempty" jsonschema:"description=End date of trial,format=date"`
 
 		// TrialExtensionType Whether subscription is an extended or reactivated trial
-		TrialExtensionType *int32 `json:"trial_extension_type,omitempty"`
+		TrialExtensionType *int32 `json:"trial_extension_type,omitempty" jsonschema:"description=Whether subscription is an extended or reactivated trial,format=int32"`
 
 		// TrialStartsOn Start date of trial
-		TrialStartsOn *openapi_types.Date `json:"trial_starts_on,omitempty"`
+		TrialStartsOn *openapi_types.Date `json:"trial_starts_on,omitempty" jsonschema:"description=Start date of trial,format=date"`
 	} `json:"gitlab_subscription_attributes,omitempty"`
 
 	// SharedRunnersMinutesLimit Compute minutes quota for this namespace
-	SharedRunnersMinutesLimit *int32 `json:"shared_runners_minutes_limit,omitempty"`
+	SharedRunnersMinutesLimit *int32 `json:"shared_runners_minutes_limit,omitempty" jsonschema:"description=Compute minutes quota for this namespace,format=int32"`
 }
 type GetApiV4NamespacesIdExistsParams struct {
 	// ParentId The ID of the parent namespace. If no ID is specified, only top-level namespaces are considered.
-	ParentId *int32 `form:"parent_id,omitempty" json:"parent_id,omitempty"`
+	ParentId *int32 `form:"parent_id,omitempty" json:"parent_id,omitempty" jsonschema:"description=The ID of the parent namespace. If no ID is specified\\, only top-level namespaces are considered.,format=int32"`
 }
 type PostApiV4NamespacesIdStorageLimitExclusionJSONBody struct {
 	// Reason The reason the Namespace is being excluded
-	Reason string `json:"reason"`
+	Reason string `json:"reason" jsonschema:"description=The reason the Namespace is being excluded"`
 }
 type PutApiV4NamespacesIdJSONRequestBody PutApiV4NamespacesIdJSONBody
 type PostApiV4NamespacesIdStorageLimitExclusionJSONRequestBody PostApiV4NamespacesIdStorageLimitExclusionJSONBody
@@ -98,28 +98,28 @@ type GetApiV4NamespacesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
-		AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty"`
-		AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty"`
+		AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty" jsonschema:",format=date"`
+		AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty" jsonschema:",format=int32"`
 		AvatarUrl                        *string             `json:"avatar_url,omitempty"`
-		BillableMembersCount             *int32              `json:"billable_members_count,omitempty"`
-		EndDate                          *openapi_types.Date `json:"end_date,omitempty"`
-		ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty"`
+		BillableMembersCount             *int32              `json:"billable_members_count,omitempty" jsonschema:",format=int32"`
+		EndDate                          *openapi_types.Date `json:"end_date,omitempty" jsonschema:",format=date"`
+		ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 		FullPath                         *string             `json:"full_path,omitempty"`
-		Id                               *int32              `json:"id,omitempty"`
+		Id                               *int32              `json:"id,omitempty" jsonschema:",format=int32"`
 		Kind                             *string             `json:"kind,omitempty"`
-		MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty"`
-		MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty"`
-		MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty"`
+		MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty" jsonschema:",format=int32"`
+		MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty" jsonschema:",format=date"`
+		MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty" jsonschema:",format=int32"`
 		Name                             *string             `json:"name,omitempty"`
-		ParentId                         *int32              `json:"parent_id,omitempty"`
+		ParentId                         *int32              `json:"parent_id,omitempty" jsonschema:",format=int32"`
 		Path                             *string             `json:"path,omitempty"`
 		Plan                             *string             `json:"plan,omitempty"`
-		ProjectsCount                    *int32              `json:"projects_count,omitempty"`
-		RootRepositorySize               *int32              `json:"root_repository_size,omitempty"`
-		SeatsInUse                       *int32              `json:"seats_in_use,omitempty"`
-		SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty"`
+		ProjectsCount                    *int32              `json:"projects_count,omitempty" jsonschema:",format=int32"`
+		RootRepositorySize               *int32              `json:"root_repository_size,omitempty" jsonschema:",format=int32"`
+		SeatsInUse                       *int32              `json:"seats_in_use,omitempty" jsonschema:",format=int32"`
+		SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 		Trial                            *bool               `json:"trial,omitempty"`
-		TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty"`
+		TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty" jsonschema:",format=date"`
 		WebUrl                           *string             `json:"web_url,omitempty"`
 	}
 }
@@ -127,8 +127,8 @@ type GetApiV4NamespacesStorageLimitExclusionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Id            *int32  `json:"id,omitempty"`
-		NamespaceId   *int32  `json:"namespace_id,omitempty"`
+		Id            *int32  `json:"id,omitempty" jsonschema:",format=int32"`
+		NamespaceId   *int32  `json:"namespace_id,omitempty" jsonschema:",format=int32"`
 		NamespaceName *string `json:"namespace_name,omitempty"`
 		Reason        *string `json:"reason,omitempty"`
 	}
@@ -137,28 +137,28 @@ type GetApiV4NamespacesIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty"`
-		AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty"`
+		AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty" jsonschema:",format=date"`
+		AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty" jsonschema:",format=int32"`
 		AvatarUrl                        *string             `json:"avatar_url,omitempty"`
-		BillableMembersCount             *int32              `json:"billable_members_count,omitempty"`
-		EndDate                          *openapi_types.Date `json:"end_date,omitempty"`
-		ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty"`
+		BillableMembersCount             *int32              `json:"billable_members_count,omitempty" jsonschema:",format=int32"`
+		EndDate                          *openapi_types.Date `json:"end_date,omitempty" jsonschema:",format=date"`
+		ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 		FullPath                         *string             `json:"full_path,omitempty"`
-		Id                               *int32              `json:"id,omitempty"`
+		Id                               *int32              `json:"id,omitempty" jsonschema:",format=int32"`
 		Kind                             *string             `json:"kind,omitempty"`
-		MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty"`
-		MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty"`
-		MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty"`
+		MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty" jsonschema:",format=int32"`
+		MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty" jsonschema:",format=date"`
+		MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty" jsonschema:",format=int32"`
 		Name                             *string             `json:"name,omitempty"`
-		ParentId                         *int32              `json:"parent_id,omitempty"`
+		ParentId                         *int32              `json:"parent_id,omitempty" jsonschema:",format=int32"`
 		Path                             *string             `json:"path,omitempty"`
 		Plan                             *string             `json:"plan,omitempty"`
-		ProjectsCount                    *int32              `json:"projects_count,omitempty"`
-		RootRepositorySize               *int32              `json:"root_repository_size,omitempty"`
-		SeatsInUse                       *int32              `json:"seats_in_use,omitempty"`
-		SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty"`
+		ProjectsCount                    *int32              `json:"projects_count,omitempty" jsonschema:",format=int32"`
+		RootRepositorySize               *int32              `json:"root_repository_size,omitempty" jsonschema:",format=int32"`
+		SeatsInUse                       *int32              `json:"seats_in_use,omitempty" jsonschema:",format=int32"`
+		SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 		Trial                            *bool               `json:"trial,omitempty"`
-		TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty"`
+		TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty" jsonschema:",format=date"`
 		WebUrl                           *string             `json:"web_url,omitempty"`
 	}
 }
@@ -166,28 +166,28 @@ type PutApiV4NamespacesIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty"`
-		AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty"`
+		AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty" jsonschema:",format=date"`
+		AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty" jsonschema:",format=int32"`
 		AvatarUrl                        *string             `json:"avatar_url,omitempty"`
-		BillableMembersCount             *int32              `json:"billable_members_count,omitempty"`
-		EndDate                          *openapi_types.Date `json:"end_date,omitempty"`
-		ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty"`
+		BillableMembersCount             *int32              `json:"billable_members_count,omitempty" jsonschema:",format=int32"`
+		EndDate                          *openapi_types.Date `json:"end_date,omitempty" jsonschema:",format=date"`
+		ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 		FullPath                         *string             `json:"full_path,omitempty"`
-		Id                               *int32              `json:"id,omitempty"`
+		Id                               *int32              `json:"id,omitempty" jsonschema:",format=int32"`
 		Kind                             *string             `json:"kind,omitempty"`
-		MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty"`
-		MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty"`
-		MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty"`
+		MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty" jsonschema:",format=int32"`
+		MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty" jsonschema:",format=date"`
+		MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty" jsonschema:",format=int32"`
 		Name                             *string             `json:"name,omitempty"`
-		ParentId                         *int32              `json:"parent_id,omitempty"`
+		ParentId                         *int32              `json:"parent_id,omitempty" jsonschema:",format=int32"`
 		Path                             *string             `json:"path,omitempty"`
 		Plan                             *string             `json:"plan,omitempty"`
-		ProjectsCount                    *int32              `json:"projects_count,omitempty"`
-		RootRepositorySize               *int32              `json:"root_repository_size,omitempty"`
-		SeatsInUse                       *int32              `json:"seats_in_use,omitempty"`
-		SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty"`
+		ProjectsCount                    *int32              `json:"projects_count,omitempty" jsonschema:",format=int32"`
+		RootRepositorySize               *int32              `json:"root_repository_size,omitempty" jsonschema:",format=int32"`
+		SeatsInUse                       *int32              `json:"seats_in_use,omitempty" jsonschema:",format=int32"`
+		SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 		Trial                            *bool               `json:"trial,omitempty"`
-		TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty"`
+		TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty" jsonschema:",format=date"`
 		WebUrl                           *string             `json:"web_url,omitempty"`
 	}
 }
@@ -232,8 +232,8 @@ type PostApiV4NamespacesIdStorageLimitExclusionResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		Id            *int32  `json:"id,omitempty"`
-		NamespaceId   *int32  `json:"namespace_id,omitempty"`
+		Id            *int32  `json:"id,omitempty" jsonschema:",format=int32"`
+		NamespaceId   *int32  `json:"namespace_id,omitempty" jsonschema:",format=int32"`
 		NamespaceName *string `json:"namespace_name,omitempty"`
 		Reason        *string `json:"reason,omitempty"`
 	}
@@ -956,28 +956,28 @@ func ParseGetApiV4NamespacesResponse(rsp *http.Response) (*GetApiV4NamespacesRes
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
-			AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty"`
-			AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty"`
+			AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty" jsonschema:",format=date"`
+			AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty" jsonschema:",format=int32"`
 			AvatarUrl                        *string             `json:"avatar_url,omitempty"`
-			BillableMembersCount             *int32              `json:"billable_members_count,omitempty"`
-			EndDate                          *openapi_types.Date `json:"end_date,omitempty"`
-			ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty"`
+			BillableMembersCount             *int32              `json:"billable_members_count,omitempty" jsonschema:",format=int32"`
+			EndDate                          *openapi_types.Date `json:"end_date,omitempty" jsonschema:",format=date"`
+			ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 			FullPath                         *string             `json:"full_path,omitempty"`
-			Id                               *int32              `json:"id,omitempty"`
+			Id                               *int32              `json:"id,omitempty" jsonschema:",format=int32"`
 			Kind                             *string             `json:"kind,omitempty"`
-			MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty"`
-			MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty"`
-			MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty"`
+			MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty" jsonschema:",format=int32"`
+			MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty" jsonschema:",format=date"`
+			MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty" jsonschema:",format=int32"`
 			Name                             *string             `json:"name,omitempty"`
-			ParentId                         *int32              `json:"parent_id,omitempty"`
+			ParentId                         *int32              `json:"parent_id,omitempty" jsonschema:",format=int32"`
 			Path                             *string             `json:"path,omitempty"`
 			Plan                             *string             `json:"plan,omitempty"`
-			ProjectsCount                    *int32              `json:"projects_count,omitempty"`
-			RootRepositorySize               *int32              `json:"root_repository_size,omitempty"`
-			SeatsInUse                       *int32              `json:"seats_in_use,omitempty"`
-			SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty"`
+			ProjectsCount                    *int32              `json:"projects_count,omitempty" jsonschema:",format=int32"`
+			RootRepositorySize               *int32              `json:"root_repository_size,omitempty" jsonschema:",format=int32"`
+			SeatsInUse                       *int32              `json:"seats_in_use,omitempty" jsonschema:",format=int32"`
+			SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 			Trial                            *bool               `json:"trial,omitempty"`
-			TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty"`
+			TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty" jsonschema:",format=date"`
 			WebUrl                           *string             `json:"web_url,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -1004,8 +1004,8 @@ func ParseGetApiV4NamespacesStorageLimitExclusionsResponse(rsp *http.Response) (
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Id            *int32  `json:"id,omitempty"`
-			NamespaceId   *int32  `json:"namespace_id,omitempty"`
+			Id            *int32  `json:"id,omitempty" jsonschema:",format=int32"`
+			NamespaceId   *int32  `json:"namespace_id,omitempty" jsonschema:",format=int32"`
 			NamespaceName *string `json:"namespace_name,omitempty"`
 			Reason        *string `json:"reason,omitempty"`
 		}
@@ -1033,28 +1033,28 @@ func ParseGetApiV4NamespacesIdResponse(rsp *http.Response) (*GetApiV4NamespacesI
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty"`
-			AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty"`
+			AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty" jsonschema:",format=date"`
+			AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty" jsonschema:",format=int32"`
 			AvatarUrl                        *string             `json:"avatar_url,omitempty"`
-			BillableMembersCount             *int32              `json:"billable_members_count,omitempty"`
-			EndDate                          *openapi_types.Date `json:"end_date,omitempty"`
-			ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty"`
+			BillableMembersCount             *int32              `json:"billable_members_count,omitempty" jsonschema:",format=int32"`
+			EndDate                          *openapi_types.Date `json:"end_date,omitempty" jsonschema:",format=date"`
+			ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 			FullPath                         *string             `json:"full_path,omitempty"`
-			Id                               *int32              `json:"id,omitempty"`
+			Id                               *int32              `json:"id,omitempty" jsonschema:",format=int32"`
 			Kind                             *string             `json:"kind,omitempty"`
-			MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty"`
-			MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty"`
-			MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty"`
+			MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty" jsonschema:",format=int32"`
+			MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty" jsonschema:",format=date"`
+			MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty" jsonschema:",format=int32"`
 			Name                             *string             `json:"name,omitempty"`
-			ParentId                         *int32              `json:"parent_id,omitempty"`
+			ParentId                         *int32              `json:"parent_id,omitempty" jsonschema:",format=int32"`
 			Path                             *string             `json:"path,omitempty"`
 			Plan                             *string             `json:"plan,omitempty"`
-			ProjectsCount                    *int32              `json:"projects_count,omitempty"`
-			RootRepositorySize               *int32              `json:"root_repository_size,omitempty"`
-			SeatsInUse                       *int32              `json:"seats_in_use,omitempty"`
-			SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty"`
+			ProjectsCount                    *int32              `json:"projects_count,omitempty" jsonschema:",format=int32"`
+			RootRepositorySize               *int32              `json:"root_repository_size,omitempty" jsonschema:",format=int32"`
+			SeatsInUse                       *int32              `json:"seats_in_use,omitempty" jsonschema:",format=int32"`
+			SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 			Trial                            *bool               `json:"trial,omitempty"`
-			TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty"`
+			TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty" jsonschema:",format=date"`
 			WebUrl                           *string             `json:"web_url,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -1081,28 +1081,28 @@ func ParsePutApiV4NamespacesIdResponse(rsp *http.Response) (*PutApiV4NamespacesI
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty"`
-			AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty"`
+			AdditionalPurchasedStorageEndsOn *openapi_types.Date `json:"additional_purchased_storage_ends_on,omitempty" jsonschema:",format=date"`
+			AdditionalPurchasedStorageSize   *int32              `json:"additional_purchased_storage_size,omitempty" jsonschema:",format=int32"`
 			AvatarUrl                        *string             `json:"avatar_url,omitempty"`
-			BillableMembersCount             *int32              `json:"billable_members_count,omitempty"`
-			EndDate                          *openapi_types.Date `json:"end_date,omitempty"`
-			ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty"`
+			BillableMembersCount             *int32              `json:"billable_members_count,omitempty" jsonschema:",format=int32"`
+			EndDate                          *openapi_types.Date `json:"end_date,omitempty" jsonschema:",format=date"`
+			ExtraSharedRunnersMinutesLimit   *int32              `json:"extra_shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 			FullPath                         *string             `json:"full_path,omitempty"`
-			Id                               *int32              `json:"id,omitempty"`
+			Id                               *int32              `json:"id,omitempty" jsonschema:",format=int32"`
 			Kind                             *string             `json:"kind,omitempty"`
-			MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty"`
-			MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty"`
-			MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty"`
+			MaxSeatsUsed                     *int32              `json:"max_seats_used,omitempty" jsonschema:",format=int32"`
+			MaxSeatsUsedChangedAt            *openapi_types.Date `json:"max_seats_used_changed_at,omitempty" jsonschema:",format=date"`
+			MembersCountWithDescendants      *int32              `json:"members_count_with_descendants,omitempty" jsonschema:",format=int32"`
 			Name                             *string             `json:"name,omitempty"`
-			ParentId                         *int32              `json:"parent_id,omitempty"`
+			ParentId                         *int32              `json:"parent_id,omitempty" jsonschema:",format=int32"`
 			Path                             *string             `json:"path,omitempty"`
 			Plan                             *string             `json:"plan,omitempty"`
-			ProjectsCount                    *int32              `json:"projects_count,omitempty"`
-			RootRepositorySize               *int32              `json:"root_repository_size,omitempty"`
-			SeatsInUse                       *int32              `json:"seats_in_use,omitempty"`
-			SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty"`
+			ProjectsCount                    *int32              `json:"projects_count,omitempty" jsonschema:",format=int32"`
+			RootRepositorySize               *int32              `json:"root_repository_size,omitempty" jsonschema:",format=int32"`
+			SeatsInUse                       *int32              `json:"seats_in_use,omitempty" jsonschema:",format=int32"`
+			SharedRunnersMinutesLimit        *int32              `json:"shared_runners_minutes_limit,omitempty" jsonschema:",format=int32"`
 			Trial                            *bool               `json:"trial,omitempty"`
-			TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty"`
+			TrialEndsOn                      *openapi_types.Date `json:"trial_ends_on,omitempty" jsonschema:",format=date"`
 			WebUrl                           *string             `json:"web_url,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -1214,8 +1214,8 @@ func ParsePostApiV4NamespacesIdStorageLimitExclusionResponse(rsp *http.Response)
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			Id            *int32  `json:"id,omitempty"`
-			NamespaceId   *int32  `json:"namespace_id,omitempty"`
+			Id            *int32  `json:"id,omitempty" jsonschema:",format=int32"`
+			NamespaceId   *int32  `json:"namespace_id,omitempty" jsonschema:",format=int32"`
 			NamespaceName *string `json:"namespace_name,omitempty"`
 			Reason        *string `json:"reason,omitempty"`
 		}

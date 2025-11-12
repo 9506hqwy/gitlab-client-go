@@ -15,66 +15,66 @@ import (
 
 type GetApiV4FeatureFlagsUnleashProjectIdParams struct {
 	// InstanceId The instance ID of Unleash Client
-	InstanceId *string `form:"instance_id,omitempty" json:"instance_id,omitempty"`
+	InstanceId *string `form:"instance_id,omitempty" json:"instance_id,omitempty" jsonschema:"description=The instance ID of Unleash Client"`
 
 	// AppName The application name of Unleash Client
-	AppName *string `form:"app_name,omitempty" json:"app_name,omitempty"`
+	AppName *string `form:"app_name,omitempty" json:"app_name,omitempty" jsonschema:"description=The application name of Unleash Client"`
 }
 type GetApiV4FeatureFlagsUnleashProjectIdClientFeaturesParams struct {
 	// InstanceId The instance ID of Unleash Client
-	InstanceId *string `form:"instance_id,omitempty" json:"instance_id,omitempty"`
+	InstanceId *string `form:"instance_id,omitempty" json:"instance_id,omitempty" jsonschema:"description=The instance ID of Unleash Client"`
 
 	// AppName The application name of Unleash Client
-	AppName *string `form:"app_name,omitempty" json:"app_name,omitempty"`
+	AppName *string `form:"app_name,omitempty" json:"app_name,omitempty" jsonschema:"description=The application name of Unleash Client"`
 }
 type PostApiV4FeatureFlagsUnleashProjectIdClientMetricsJSONBody struct {
 	// AppName The application name of Unleash Client
-	AppName *string `json:"app_name,omitempty"`
+	AppName *string `json:"app_name,omitempty" jsonschema:"description=The application name of Unleash Client"`
 
 	// InstanceId The instance ID of Unleash Client
-	InstanceId *string `json:"instance_id,omitempty"`
+	InstanceId *string `json:"instance_id,omitempty" jsonschema:"description=The instance ID of Unleash Client"`
 }
 type PostApiV4FeatureFlagsUnleashProjectIdClientRegisterJSONBody struct {
 	// AppName The application name of Unleash Client
-	AppName *string `json:"app_name,omitempty"`
+	AppName *string `json:"app_name,omitempty" jsonschema:"description=The application name of Unleash Client"`
 
 	// InstanceId The instance ID of Unleash Client
-	InstanceId *string `json:"instance_id,omitempty"`
+	InstanceId *string `json:"instance_id,omitempty" jsonschema:"description=The instance ID of Unleash Client"`
 }
 type GetApiV4FeatureFlagsUnleashProjectIdFeaturesParams struct {
 	// InstanceId The instance ID of Unleash Client
-	InstanceId *string `form:"instance_id,omitempty" json:"instance_id,omitempty"`
+	InstanceId *string `form:"instance_id,omitempty" json:"instance_id,omitempty" jsonschema:"description=The instance ID of Unleash Client"`
 
 	// AppName The application name of Unleash Client
-	AppName *string `form:"app_name,omitempty" json:"app_name,omitempty"`
+	AppName *string `form:"app_name,omitempty" json:"app_name,omitempty" jsonschema:"description=The application name of Unleash Client"`
 }
 type PostApiV4FeaturesNameJSONBody struct {
 	// FeatureGroup A Feature group name
-	FeatureGroup *string `json:"feature_group,omitempty"`
+	FeatureGroup *string `json:"feature_group,omitempty" jsonschema:"description=A Feature group name"`
 
 	// Force Skip feature flag validation checks, such as a YAML definition
-	Force *bool `json:"force,omitempty"`
+	Force *bool `json:"force,omitempty" jsonschema:"description=Skip feature flag validation checks\\, such as a YAML definition"`
 
 	// Group A GitLab group's path, for example `gitlab-org`, or comma-separated multiple group paths
-	Group *string `json:"group,omitempty"`
+	Group *string `json:"group,omitempty" jsonschema:"description=A GitLab group's path\\, for example \"gitlab-org\"\\, or comma-separated multiple group paths"`
 
 	// Key `percentage_of_actors` or `percentage_of_time` (default)
-	Key *string `json:"key,omitempty"`
+	Key *string `json:"key,omitempty" jsonschema:"description=\"percentage_of_actors\" or \"percentage_of_time\" (default)"`
 
 	// Namespace A GitLab group or user namespace's path, for example `john-doe`, or comma-separated multiple namespace paths. Introduced in GitLab 15.0.
-	Namespace *string `json:"namespace,omitempty"`
+	Namespace *string `json:"namespace,omitempty" jsonschema:"description=A GitLab group or user namespace's path\\, for example \"john-doe\"\\, or comma-separated multiple namespace paths. Introduced in GitLab 15.0."`
 
 	// Project A projects path, for example `gitlab-org/gitlab-foss`, or comma-separated multiple project paths
-	Project *string `json:"project,omitempty"`
+	Project *string `json:"project,omitempty" jsonschema:"description=A projects path\\, for example \"gitlab-org/gitlab-foss\"\\, or comma-separated multiple project paths"`
 
 	// Repository A repository path, for example `gitlab-org/gitlab-test.git`, `gitlab-org/gitlab-test.wiki.git`, `snippets/21.git`, to name a few. Use comma to separate multiple repository paths
-	Repository *string `json:"repository,omitempty"`
+	Repository *string `json:"repository,omitempty" jsonschema:"description=A repository path\\, for example \"gitlab-org/gitlab-test.git\"\\, \"gitlab-org/gitlab-test.wiki.git\"\\, \"snippets/21.git\"\\, to name a few. Use comma to separate multiple repository paths"`
 
 	// User A GitLab username or comma-separated multiple usernames
-	User *string `json:"user,omitempty"`
+	User *string `json:"user,omitempty" jsonschema:"description=A GitLab username or comma-separated multiple usernames"`
 
 	// Value `true` or `false` to enable/disable, or an integer for percentage of time
-	Value string `json:"value"`
+	Value string `json:"value" jsonschema:"description=\"true\" or \"false\" to enable/disable\\, or an integer for percentage of time"`
 }
 type PostApiV4FeatureFlagsUnleashProjectIdClientMetricsJSONRequestBody PostApiV4FeatureFlagsUnleashProjectIdClientMetricsJSONBody
 type PostApiV4FeatureFlagsUnleashProjectIdClientRegisterJSONRequestBody PostApiV4FeatureFlagsUnleashProjectIdClientRegisterJSONBody
@@ -115,10 +115,10 @@ type GetApiV4FeaturesResponse struct {
 			Name                *string `json:"name,omitempty"`
 			RolloutIssueUrl     *string `json:"rollout_issue_url,omitempty"`
 			Type                *string `json:"type,omitempty"`
-		} `json:"definition,omitempty"`
+		} `json:"definition,omitempty" jsonschema:"description=API_Entities_Feature_Definition model"`
 		Gates *struct {
 			Key   *string `json:"key,omitempty"`
-			Value *int32  `json:"value,omitempty"`
+			Value *int32  `json:"value,omitempty" jsonschema:",format=int32"`
 		} `json:"gates,omitempty"`
 		Name  *string `json:"name,omitempty"`
 		State *string `json:"state,omitempty"`
@@ -160,10 +160,10 @@ type PostApiV4FeaturesNameResponse struct {
 			Name                *string `json:"name,omitempty"`
 			RolloutIssueUrl     *string `json:"rollout_issue_url,omitempty"`
 			Type                *string `json:"type,omitempty"`
-		} `json:"definition,omitempty"`
+		} `json:"definition,omitempty" jsonschema:"description=API_Entities_Feature_Definition model"`
 		Gates *struct {
 			Key   *string `json:"key,omitempty"`
-			Value *int32  `json:"value,omitempty"`
+			Value *int32  `json:"value,omitempty" jsonschema:",format=int32"`
 		} `json:"gates,omitempty"`
 		Name  *string `json:"name,omitempty"`
 		State *string `json:"state,omitempty"`
@@ -1012,10 +1012,10 @@ func ParseGetApiV4FeaturesResponse(rsp *http.Response) (*GetApiV4FeaturesRespons
 				Name                *string `json:"name,omitempty"`
 				RolloutIssueUrl     *string `json:"rollout_issue_url,omitempty"`
 				Type                *string `json:"type,omitempty"`
-			} `json:"definition,omitempty"`
+			} `json:"definition,omitempty" jsonschema:"description=API_Entities_Feature_Definition model"`
 			Gates *struct {
 				Key   *string `json:"key,omitempty"`
-				Value *int32  `json:"value,omitempty"`
+				Value *int32  `json:"value,omitempty" jsonschema:",format=int32"`
 			} `json:"gates,omitempty"`
 			Name  *string `json:"name,omitempty"`
 			State *string `json:"state,omitempty"`
@@ -1105,10 +1105,10 @@ func ParsePostApiV4FeaturesNameResponse(rsp *http.Response) (*PostApiV4FeaturesN
 				Name                *string `json:"name,omitempty"`
 				RolloutIssueUrl     *string `json:"rollout_issue_url,omitempty"`
 				Type                *string `json:"type,omitempty"`
-			} `json:"definition,omitempty"`
+			} `json:"definition,omitempty" jsonschema:"description=API_Entities_Feature_Definition model"`
 			Gates *struct {
 				Key   *string `json:"key,omitempty"`
-				Value *int32  `json:"value,omitempty"`
+				Value *int32  `json:"value,omitempty" jsonschema:",format=int32"`
 			} `json:"gates,omitempty"`
 			Name  *string `json:"name,omitempty"`
 			State *string `json:"state,omitempty"`

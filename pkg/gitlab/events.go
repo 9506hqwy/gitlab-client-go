@@ -15,28 +15,28 @@ import (
 
 type GetApiV4EventsParams struct {
 	// Scope Include all events across a user’s projects
-	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
+	Scope *string `form:"scope,omitempty" json:"scope,omitempty" jsonschema:"description=Include all events across a user’s projects"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=desc,format=date"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=desc,format=date"`
 
 	// Action Event action to filter on
-	Action *string `form:"action,omitempty" json:"action,omitempty"`
+	Action *string `form:"action,omitempty" json:"action,omitempty" jsonschema:"description=Event action to filter on"`
 
 	// TargetType Event target type to filter on
-	TargetType *string `form:"target_type,omitempty" json:"target_type,omitempty"`
+	TargetType *string `form:"target_type,omitempty" json:"target_type,omitempty" jsonschema:"description=Event target type to filter on,enum=issue,enum=milestone,enum=merge_request,enum=note,enum=project,enum=snippet,enum=user,enum=wiki,enum=design"`
 
 	// Before Include only events created before this date
-	Before *openapi_types.Date `form:"before,omitempty" json:"before,omitempty"`
+	Before *openapi_types.Date `form:"before,omitempty" json:"before,omitempty" jsonschema:"description=Include only events created before this date,format=date"`
 
 	// After Include only events created after this date
-	After *openapi_types.Date `form:"after,omitempty" json:"after,omitempty"`
+	After *openapi_types.Date `form:"after,omitempty" json:"after,omitempty" jsonschema:"description=Include only events created after this date,format=date"`
 
 	// Sort Return events sorted in ascending and descending order
-	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty" jsonschema:"description=Return events sorted in ascending and descending order,default=desc,enum=asc,enum=desc"`
 }
 type GetApiV4EventsResponse struct {
 	Body         []byte
@@ -52,18 +52,18 @@ type GetApiV4EventsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"author,omitempty"`
-		AuthorId       *int32  `json:"author_id,omitempty"`
+		} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		AuthorId       *int32  `json:"author_id,omitempty" jsonschema:",format=int32"`
 		AuthorUsername *string `json:"author_username,omitempty"`
 		CreatedAt      *string `json:"created_at,omitempty"`
-		Id             *int32  `json:"id,omitempty"`
+		Id             *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		Imported       *bool   `json:"imported,omitempty"`
 		ImportedFrom   *string `json:"imported_from,omitempty"`
 		Note           *struct {
@@ -75,14 +75,14 @@ type GetApiV4EventsResponse struct {
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Body            *string `json:"body,omitempty"`
 			CommandsChanges *string `json:"commands_changes,omitempty"`
 			CommitId        *string `json:"commit_id,omitempty"`
@@ -109,14 +109,14 @@ type GetApiV4EventsResponse struct {
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"resolved_by,omitempty"`
+			} `json:"resolved_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 
 			// Suggestions API_Entities_Suggestion model
 			Suggestions *struct {
@@ -127,24 +127,24 @@ type GetApiV4EventsResponse struct {
 				Id          *string `json:"id,omitempty"`
 				ToContent   *string `json:"to_content,omitempty"`
 				ToLine      *string `json:"to_line,omitempty"`
-			} `json:"suggestions,omitempty"`
+			} `json:"suggestions,omitempty" jsonschema:"description=API_Entities_Suggestion model"`
 			System    *string `json:"system,omitempty"`
 			Type      *string `json:"type,omitempty"`
 			UpdatedAt *string `json:"updated_at,omitempty"`
 		} `json:"note,omitempty"`
-		ProjectId *int32 `json:"project_id,omitempty"`
+		ProjectId *int32 `json:"project_id,omitempty" jsonschema:",format=int32"`
 		PushData  *struct {
 			Action      *string `json:"action,omitempty"`
-			CommitCount *int32  `json:"commit_count,omitempty"`
+			CommitCount *int32  `json:"commit_count,omitempty" jsonschema:",format=int32"`
 			CommitFrom  *string `json:"commit_from,omitempty"`
 			CommitTitle *string `json:"commit_title,omitempty"`
 			CommitTo    *string `json:"commit_to,omitempty"`
 			Ref         *string `json:"ref,omitempty"`
-			RefCount    *int32  `json:"ref_count,omitempty"`
+			RefCount    *int32  `json:"ref_count,omitempty" jsonschema:",format=int32"`
 			RefType     *string `json:"ref_type,omitempty"`
 		} `json:"push_data,omitempty"`
-		TargetId    *int32  `json:"target_id,omitempty"`
-		TargetIid   *int32  `json:"target_iid,omitempty"`
+		TargetId    *int32  `json:"target_id,omitempty" jsonschema:",format=int32"`
+		TargetIid   *int32  `json:"target_iid,omitempty" jsonschema:",format=int32"`
 		TargetTitle *string `json:"target_title,omitempty"`
 		TargetType  *string `json:"target_type,omitempty"`
 
@@ -153,8 +153,8 @@ type GetApiV4EventsResponse struct {
 			Format         *string `json:"format,omitempty"`
 			Slug           *string `json:"slug,omitempty"`
 			Title          *string `json:"title,omitempty"`
-			WikiPageMetaId *int32  `json:"wiki_page_meta_id,omitempty"`
-		} `json:"wiki_page,omitempty"`
+			WikiPageMetaId *int32  `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
+		} `json:"wiki_page,omitempty" jsonschema:"description=API_Entities_WikiPageBasic model"`
 	}
 }
 
@@ -372,18 +372,18 @@ func ParseGetApiV4EventsResponse(rsp *http.Response) (*GetApiV4EventsResponse, e
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
-			AuthorId       *int32  `json:"author_id,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			AuthorId       *int32  `json:"author_id,omitempty" jsonschema:",format=int32"`
 			AuthorUsername *string `json:"author_username,omitempty"`
 			CreatedAt      *string `json:"created_at,omitempty"`
-			Id             *int32  `json:"id,omitempty"`
+			Id             *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Imported       *bool   `json:"imported,omitempty"`
 			ImportedFrom   *string `json:"imported_from,omitempty"`
 			Note           *struct {
@@ -395,14 +395,14 @@ func ParseGetApiV4EventsResponse(rsp *http.Response) (*GetApiV4EventsResponse, e
 						Key   *string `json:"key,omitempty"`
 						Value *string `json:"value,omitempty"`
 					} `json:"custom_attributes,omitempty"`
-					Id          *int32  `json:"id,omitempty"`
+					Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 					Locked      *bool   `json:"locked,omitempty"`
 					Name        *string `json:"name,omitempty"`
 					PublicEmail *string `json:"public_email,omitempty"`
 					State       *string `json:"state,omitempty"`
 					Username    *string `json:"username,omitempty"`
 					WebUrl      *string `json:"web_url,omitempty"`
-				} `json:"author,omitempty"`
+				} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 				Body            *string `json:"body,omitempty"`
 				CommandsChanges *string `json:"commands_changes,omitempty"`
 				CommitId        *string `json:"commit_id,omitempty"`
@@ -429,14 +429,14 @@ func ParseGetApiV4EventsResponse(rsp *http.Response) (*GetApiV4EventsResponse, e
 						Key   *string `json:"key,omitempty"`
 						Value *string `json:"value,omitempty"`
 					} `json:"custom_attributes,omitempty"`
-					Id          *int32  `json:"id,omitempty"`
+					Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 					Locked      *bool   `json:"locked,omitempty"`
 					Name        *string `json:"name,omitempty"`
 					PublicEmail *string `json:"public_email,omitempty"`
 					State       *string `json:"state,omitempty"`
 					Username    *string `json:"username,omitempty"`
 					WebUrl      *string `json:"web_url,omitempty"`
-				} `json:"resolved_by,omitempty"`
+				} `json:"resolved_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 
 				// Suggestions API_Entities_Suggestion model
 				Suggestions *struct {
@@ -447,24 +447,24 @@ func ParseGetApiV4EventsResponse(rsp *http.Response) (*GetApiV4EventsResponse, e
 					Id          *string `json:"id,omitempty"`
 					ToContent   *string `json:"to_content,omitempty"`
 					ToLine      *string `json:"to_line,omitempty"`
-				} `json:"suggestions,omitempty"`
+				} `json:"suggestions,omitempty" jsonschema:"description=API_Entities_Suggestion model"`
 				System    *string `json:"system,omitempty"`
 				Type      *string `json:"type,omitempty"`
 				UpdatedAt *string `json:"updated_at,omitempty"`
 			} `json:"note,omitempty"`
-			ProjectId *int32 `json:"project_id,omitempty"`
+			ProjectId *int32 `json:"project_id,omitempty" jsonschema:",format=int32"`
 			PushData  *struct {
 				Action      *string `json:"action,omitempty"`
-				CommitCount *int32  `json:"commit_count,omitempty"`
+				CommitCount *int32  `json:"commit_count,omitempty" jsonschema:",format=int32"`
 				CommitFrom  *string `json:"commit_from,omitempty"`
 				CommitTitle *string `json:"commit_title,omitempty"`
 				CommitTo    *string `json:"commit_to,omitempty"`
 				Ref         *string `json:"ref,omitempty"`
-				RefCount    *int32  `json:"ref_count,omitempty"`
+				RefCount    *int32  `json:"ref_count,omitempty" jsonschema:",format=int32"`
 				RefType     *string `json:"ref_type,omitempty"`
 			} `json:"push_data,omitempty"`
-			TargetId    *int32  `json:"target_id,omitempty"`
-			TargetIid   *int32  `json:"target_iid,omitempty"`
+			TargetId    *int32  `json:"target_id,omitempty" jsonschema:",format=int32"`
+			TargetIid   *int32  `json:"target_iid,omitempty" jsonschema:",format=int32"`
 			TargetTitle *string `json:"target_title,omitempty"`
 			TargetType  *string `json:"target_type,omitempty"`
 
@@ -473,8 +473,8 @@ func ParseGetApiV4EventsResponse(rsp *http.Response) (*GetApiV4EventsResponse, e
 				Format         *string `json:"format,omitempty"`
 				Slug           *string `json:"slug,omitempty"`
 				Title          *string `json:"title,omitempty"`
-				WikiPageMetaId *int32  `json:"wiki_page_meta_id,omitempty"`
-			} `json:"wiki_page,omitempty"`
+				WikiPageMetaId *int32  `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
+			} `json:"wiki_page,omitempty" jsonschema:"description=API_Entities_WikiPageBasic model"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

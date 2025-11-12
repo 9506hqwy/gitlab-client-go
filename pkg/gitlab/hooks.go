@@ -16,122 +16,122 @@ import (
 
 type GetApiV4HooksParams struct {
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type PostApiV4HooksJSONBody struct {
 	// BranchFilterStrategy Filter push events by branch. Possible values are `wildcard` (default), `regex`, and `all_branches`
-	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty"`
+	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty" jsonschema:"description=Filter push events by branch. Possible values are \"wildcard\" (default)\\, \"regex\"\\, and \"all_branches\",enum=wildcard,enum=regex,enum=all_branches"`
 
 	// CustomHeaders Custom headers
 	CustomHeaders *[]struct {
 		// Key Name of the header
-		Key string `json:"key"`
+		Key string `json:"key" jsonschema:"description=Name of the header"`
 
 		// Value Value of the header
-		Value string `json:"value"`
-	} `json:"custom_headers,omitempty"`
+		Value string `json:"value" jsonschema:"description=Value of the header"`
+	} `json:"custom_headers,omitempty" jsonschema:"description=Custom headers"`
 
 	// Description Description of the hook
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=Description of the hook"`
 
 	// EnableSslVerification Do SSL verification when triggering the hook
-	EnableSslVerification *bool `json:"enable_ssl_verification,omitempty"`
+	EnableSslVerification *bool `json:"enable_ssl_verification,omitempty" jsonschema:"description=Do SSL verification when triggering the hook"`
 
 	// MergeRequestsEvents Trigger hook on merge requests events
-	MergeRequestsEvents *bool `json:"merge_requests_events,omitempty"`
+	MergeRequestsEvents *bool `json:"merge_requests_events,omitempty" jsonschema:"description=Trigger hook on merge requests events"`
 
 	// Name Name of the hook
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty" jsonschema:"description=Name of the hook"`
 
 	// PushEvents When true, the hook fires on push events
-	PushEvents *bool `json:"push_events,omitempty"`
+	PushEvents *bool `json:"push_events,omitempty" jsonschema:"description=When true\\, the hook fires on push events"`
 
 	// PushEventsBranchFilter Trigger hook on specified branch only
-	PushEventsBranchFilter *string `json:"push_events_branch_filter,omitempty"`
+	PushEventsBranchFilter *string `json:"push_events_branch_filter,omitempty" jsonschema:"description=Trigger hook on specified branch only"`
 
 	// RepositoryUpdateEvents Trigger hook on repository update events
-	RepositoryUpdateEvents *bool `json:"repository_update_events,omitempty"`
+	RepositoryUpdateEvents *bool `json:"repository_update_events,omitempty" jsonschema:"description=Trigger hook on repository update events"`
 
 	// TagPushEvents When true, the hook fires on new tags being pushed
-	TagPushEvents *bool `json:"tag_push_events,omitempty"`
+	TagPushEvents *bool `json:"tag_push_events,omitempty" jsonschema:"description=When true\\, the hook fires on new tags being pushed"`
 
 	// Token Secret token to validate received payloads; this isn't returned in the response
-	Token *string `json:"token,omitempty"`
+	Token *string `json:"token,omitempty" jsonschema:"description=Secret token to validate received payloads; this isn't returned in the response"`
 
 	// Url The URL to send the request to
-	Url string `json:"url"`
+	Url string `json:"url" jsonschema:"description=The URL to send the request to"`
 
 	// UrlVariables URL variables for interpolation
 	UrlVariables *[]struct {
 		// Key Name of the variable
-		Key string `json:"key"`
+		Key string `json:"key" jsonschema:"description=Name of the variable"`
 
 		// Value Value of the variable
-		Value string `json:"value"`
-	} `json:"url_variables,omitempty"`
+		Value string `json:"value" jsonschema:"description=Value of the variable"`
+	} `json:"url_variables,omitempty" jsonschema:"description=URL variables for interpolation"`
 }
 type PutApiV4HooksHookIdJSONBody struct {
 	// BranchFilterStrategy Filter push events by branch. Possible values are `wildcard` (default), `regex`, and `all_branches`
-	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty"`
+	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty" jsonschema:"description=Filter push events by branch. Possible values are \"wildcard\" (default)\\, \"regex\"\\, and \"all_branches\",enum=wildcard,enum=regex,enum=all_branches"`
 
 	// CustomHeaders Custom headers
 	CustomHeaders *[]struct {
 		// Key Name of the header
-		Key string `json:"key"`
+		Key string `json:"key" jsonschema:"description=Name of the header"`
 
 		// Value Value of the header
-		Value string `json:"value"`
-	} `json:"custom_headers,omitempty"`
+		Value string `json:"value" jsonschema:"description=Value of the header"`
+	} `json:"custom_headers,omitempty" jsonschema:"description=Custom headers"`
 
 	// Description Description of the hook
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=Description of the hook"`
 
 	// EnableSslVerification Do SSL verification when triggering the hook
-	EnableSslVerification *bool `json:"enable_ssl_verification,omitempty"`
+	EnableSslVerification *bool `json:"enable_ssl_verification,omitempty" jsonschema:"description=Do SSL verification when triggering the hook"`
 
 	// MergeRequestsEvents Trigger hook on merge requests events
-	MergeRequestsEvents *bool `json:"merge_requests_events,omitempty"`
+	MergeRequestsEvents *bool `json:"merge_requests_events,omitempty" jsonschema:"description=Trigger hook on merge requests events"`
 
 	// Name Name of the hook
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty" jsonschema:"description=Name of the hook"`
 
 	// PushEvents When true, the hook fires on push events
-	PushEvents *bool `json:"push_events,omitempty"`
+	PushEvents *bool `json:"push_events,omitempty" jsonschema:"description=When true\\, the hook fires on push events"`
 
 	// PushEventsBranchFilter Trigger hook on specified branch only
-	PushEventsBranchFilter *string `json:"push_events_branch_filter,omitempty"`
+	PushEventsBranchFilter *string `json:"push_events_branch_filter,omitempty" jsonschema:"description=Trigger hook on specified branch only"`
 
 	// RepositoryUpdateEvents Trigger hook on repository update events
-	RepositoryUpdateEvents *bool `json:"repository_update_events,omitempty"`
+	RepositoryUpdateEvents *bool `json:"repository_update_events,omitempty" jsonschema:"description=Trigger hook on repository update events"`
 
 	// TagPushEvents When true, the hook fires on new tags being pushed
-	TagPushEvents *bool `json:"tag_push_events,omitempty"`
+	TagPushEvents *bool `json:"tag_push_events,omitempty" jsonschema:"description=When true\\, the hook fires on new tags being pushed"`
 
 	// Token Secret token to validate received payloads; this isn't returned in the response
-	Token *string `json:"token,omitempty"`
+	Token *string `json:"token,omitempty" jsonschema:"description=Secret token to validate received payloads; this isn't returned in the response"`
 
 	// Url The URL to send the request to
-	Url *string `json:"url,omitempty"`
+	Url *string `json:"url,omitempty" jsonschema:"description=The URL to send the request to"`
 
 	// UrlVariables URL variables for interpolation
 	UrlVariables *[]struct {
 		// Key Name of the variable
-		Key string `json:"key"`
+		Key string `json:"key" jsonschema:"description=Name of the variable"`
 
 		// Value Value of the variable
-		Value string `json:"value"`
-	} `json:"url_variables,omitempty"`
+		Value string `json:"value" jsonschema:"description=Value of the variable"`
+	} `json:"url_variables,omitempty" jsonschema:"description=URL variables for interpolation"`
 }
 type PutApiV4HooksHookIdCustomHeadersKeyJSONBody struct {
 	// Value The value of the custom header
-	Value string `json:"value"`
+	Value string `json:"value" jsonschema:"description=The value of the custom header"`
 }
 type PutApiV4HooksHookIdUrlVariablesKeyJSONBody struct {
 	// Value The value of the variable
-	Value string `json:"value"`
+	Value string `json:"value" jsonschema:"description=The value of the variable"`
 }
 type PostApiV4HooksJSONRequestBody PostApiV4HooksJSONBody
 type PutApiV4HooksHookIdJSONRequestBody PutApiV4HooksHookIdJSONBody
@@ -143,11 +143,11 @@ type GetApiV4HooksResponse struct {
 	JSON200      *[]struct {
 		AlertStatus            *string                   `json:"alert_status,omitempty"`
 		BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-		CreatedAt              *time.Time                `json:"created_at,omitempty"`
+		CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
 		CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
 		Description            *string                   `json:"description,omitempty"`
-		DisabledUntil          *time.Time                `json:"disabled_until,omitempty"`
+		DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
 		EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
 		Id                     *string                   `json:"id,omitempty"`
 		MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
@@ -166,11 +166,11 @@ type PostApiV4HooksResponse struct {
 	JSON201      *struct {
 		AlertStatus            *string                   `json:"alert_status,omitempty"`
 		BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-		CreatedAt              *time.Time                `json:"created_at,omitempty"`
+		CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
 		CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
 		Description            *string                   `json:"description,omitempty"`
-		DisabledUntil          *time.Time                `json:"disabled_until,omitempty"`
+		DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
 		EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
 		Id                     *string                   `json:"id,omitempty"`
 		MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
@@ -189,11 +189,11 @@ type DeleteApiV4HooksHookIdResponse struct {
 	JSON204      *struct {
 		AlertStatus            *string                   `json:"alert_status,omitempty"`
 		BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-		CreatedAt              *time.Time                `json:"created_at,omitempty"`
+		CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
 		CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
 		Description            *string                   `json:"description,omitempty"`
-		DisabledUntil          *time.Time                `json:"disabled_until,omitempty"`
+		DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
 		EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
 		Id                     *string                   `json:"id,omitempty"`
 		MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
@@ -212,11 +212,11 @@ type GetApiV4HooksHookIdResponse struct {
 	JSON200      *struct {
 		AlertStatus            *string                   `json:"alert_status,omitempty"`
 		BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-		CreatedAt              *time.Time                `json:"created_at,omitempty"`
+		CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
 		CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
 		Description            *string                   `json:"description,omitempty"`
-		DisabledUntil          *time.Time                `json:"disabled_until,omitempty"`
+		DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
 		EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
 		Id                     *string                   `json:"id,omitempty"`
 		MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
@@ -239,11 +239,11 @@ type PutApiV4HooksHookIdResponse struct {
 	JSON200      *struct {
 		AlertStatus            *string                   `json:"alert_status,omitempty"`
 		BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-		CreatedAt              *time.Time                `json:"created_at,omitempty"`
+		CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
 		CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
 		Description            *string                   `json:"description,omitempty"`
-		DisabledUntil          *time.Time                `json:"disabled_until,omitempty"`
+		DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
 		EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
 		Id                     *string                   `json:"id,omitempty"`
 		MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
@@ -1078,11 +1078,11 @@ func ParseGetApiV4HooksResponse(rsp *http.Response) (*GetApiV4HooksResponse, err
 		var dest []struct {
 			AlertStatus            *string                   `json:"alert_status,omitempty"`
 			BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-			CreatedAt              *time.Time                `json:"created_at,omitempty"`
+			CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
 			CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
 			Description            *string                   `json:"description,omitempty"`
-			DisabledUntil          *time.Time                `json:"disabled_until,omitempty"`
+			DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
 			EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
 			Id                     *string                   `json:"id,omitempty"`
 			MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
@@ -1120,11 +1120,11 @@ func ParsePostApiV4HooksResponse(rsp *http.Response) (*PostApiV4HooksResponse, e
 		var dest struct {
 			AlertStatus            *string                   `json:"alert_status,omitempty"`
 			BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-			CreatedAt              *time.Time                `json:"created_at,omitempty"`
+			CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
 			CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
 			Description            *string                   `json:"description,omitempty"`
-			DisabledUntil          *time.Time                `json:"disabled_until,omitempty"`
+			DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
 			EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
 			Id                     *string                   `json:"id,omitempty"`
 			MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
@@ -1162,11 +1162,11 @@ func ParseDeleteApiV4HooksHookIdResponse(rsp *http.Response) (*DeleteApiV4HooksH
 		var dest struct {
 			AlertStatus            *string                   `json:"alert_status,omitempty"`
 			BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-			CreatedAt              *time.Time                `json:"created_at,omitempty"`
+			CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
 			CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
 			Description            *string                   `json:"description,omitempty"`
-			DisabledUntil          *time.Time                `json:"disabled_until,omitempty"`
+			DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
 			EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
 			Id                     *string                   `json:"id,omitempty"`
 			MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
@@ -1204,11 +1204,11 @@ func ParseGetApiV4HooksHookIdResponse(rsp *http.Response) (*GetApiV4HooksHookIdR
 		var dest struct {
 			AlertStatus            *string                   `json:"alert_status,omitempty"`
 			BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-			CreatedAt              *time.Time                `json:"created_at,omitempty"`
+			CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
 			CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
 			Description            *string                   `json:"description,omitempty"`
-			DisabledUntil          *time.Time                `json:"disabled_until,omitempty"`
+			DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
 			EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
 			Id                     *string                   `json:"id,omitempty"`
 			MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
@@ -1260,11 +1260,11 @@ func ParsePutApiV4HooksHookIdResponse(rsp *http.Response) (*PutApiV4HooksHookIdR
 		var dest struct {
 			AlertStatus            *string                   `json:"alert_status,omitempty"`
 			BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-			CreatedAt              *time.Time                `json:"created_at,omitempty"`
+			CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
 			CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
 			Description            *string                   `json:"description,omitempty"`
-			DisabledUntil          *time.Time                `json:"disabled_until,omitempty"`
+			DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
 			EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
 			Id                     *string                   `json:"id,omitempty"`
 			MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`

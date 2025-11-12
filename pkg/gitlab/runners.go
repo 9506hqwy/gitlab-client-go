@@ -16,177 +16,177 @@ import (
 
 type DeleteApiV4RunnersParams struct {
 	// Token The runner's authentication token
-	Token string `form:"token" json:"token"`
+	Token string `form:"token" json:"token" jsonschema:"description=The runner's authentication token"`
 }
 type GetApiV4RunnersParams struct {
 	// Scope Deprecated: Use `type` or `status` instead. The scope of runners to return
-	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
+	Scope *string `form:"scope,omitempty" json:"scope,omitempty" jsonschema:"description=Deprecated: Use \"type\" or \"status\" instead. The scope of runners to return,enum=specific,enum=shared,enum=instance_type,enum=group_type,enum=project_type,enum=active,enum=paused,enum=online,enum=offline,enum=never_contacted,enum=stale"`
 
 	// Type The type of runners to return
-	Type *string `form:"type,omitempty" json:"type,omitempty"`
+	Type *string `form:"type,omitempty" json:"type,omitempty" jsonschema:"description=The type of runners to return,enum=instance_type,enum=group_type,enum=project_type"`
 
 	// Paused Whether to include only runners that are accepting or ignoring new jobs
-	Paused *bool `form:"paused,omitempty" json:"paused,omitempty"`
+	Paused *bool `form:"paused,omitempty" json:"paused,omitempty" jsonschema:"description=Whether to include only runners that are accepting or ignoring new jobs"`
 
 	// Status The status of runners to return
-	Status *string `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty" jsonschema:"description=The status of runners to return,enum=active,enum=paused,enum=online,enum=offline,enum=never_contacted,enum=stale"`
 
 	// TagList A list of runner tags
-	TagList *[]string `form:"tag_list,omitempty" json:"tag_list,omitempty"`
+	TagList *[]string `form:"tag_list,omitempty" json:"tag_list,omitempty" jsonschema:"description=A list of runner tags"`
 
 	// VersionPrefix The version prefix of runners to return
-	VersionPrefix *string `form:"version_prefix,omitempty" json:"version_prefix,omitempty"`
+	VersionPrefix *string `form:"version_prefix,omitempty" json:"version_prefix,omitempty" jsonschema:"description=The version prefix of runners to return"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type PostApiV4RunnersJSONBody struct {
 	// AccessLevel The access level of the runner
-	AccessLevel *string `json:"access_level,omitempty"`
+	AccessLevel *string `json:"access_level,omitempty" jsonschema:"description=The access level of the runner,enum=not_protected,enum=ref_protected"`
 
 	// Active Deprecated: Use `paused` instead. Specifies if the runner is allowed to receive new jobs
-	Active *bool `json:"active,omitempty"`
+	Active *bool `json:"active,omitempty" jsonschema:"description=Deprecated: Use \"paused\" instead. Specifies if the runner is allowed to receive new jobs"`
 
 	// Description Description of the runner
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=Description of the runner"`
 
 	// Info Runner's metadata
 	Info *struct {
 		// Architecture Runner's architecture
-		Architecture *string `json:"architecture,omitempty"`
+		Architecture *string `json:"architecture,omitempty" jsonschema:"description=Runner's architecture"`
 
 		// Name Runner's name
-		Name *string `json:"name,omitempty"`
+		Name *string `json:"name,omitempty" jsonschema:"description=Runner's name"`
 
 		// Platform Runner's platform
-		Platform *string `json:"platform,omitempty"`
+		Platform *string `json:"platform,omitempty" jsonschema:"description=Runner's platform"`
 
 		// Revision Runner's revision
-		Revision *string `json:"revision,omitempty"`
+		Revision *string `json:"revision,omitempty" jsonschema:"description=Runner's revision"`
 
 		// Version Runner's version
-		Version *string `json:"version,omitempty"`
-	} `json:"info,omitempty"`
+		Version *string `json:"version,omitempty" jsonschema:"description=Runner's version"`
+	} `json:"info,omitempty" jsonschema:"description=Runner's metadata"`
 
 	// Locked Specifies if the runner should be locked for the current project
-	Locked *bool `json:"locked,omitempty"`
+	Locked *bool `json:"locked,omitempty" jsonschema:"description=Specifies if the runner should be locked for the current project"`
 
 	// MaintainerNote Deprecated: see `maintenance_note`
-	MaintainerNote *string `json:"maintainer_note,omitempty"`
+	MaintainerNote *string `json:"maintainer_note,omitempty" jsonschema:"description=Deprecated: see \"maintenance_note\""`
 
 	// MaintenanceNote Free-form maintenance notes for the runner (1024 characters)
-	MaintenanceNote *string `json:"maintenance_note,omitempty"`
+	MaintenanceNote *string `json:"maintenance_note,omitempty" jsonschema:"description=Free-form maintenance notes for the runner (1024 characters)"`
 
 	// MaximumTimeout Maximum timeout that limits the amount of time (in seconds) that runners can run jobs
-	MaximumTimeout *int32 `json:"maximum_timeout,omitempty"`
+	MaximumTimeout *int32 `json:"maximum_timeout,omitempty" jsonschema:"description=Maximum timeout that limits the amount of time (in seconds) that runners can run jobs,format=int32"`
 
 	// Paused Specifies if the runner should ignore new jobs
-	Paused *bool `json:"paused,omitempty"`
+	Paused *bool `json:"paused,omitempty" jsonschema:"description=Specifies if the runner should ignore new jobs"`
 
 	// RunUntagged Specifies if the runner should handle untagged jobs
-	RunUntagged *bool `json:"run_untagged,omitempty"`
+	RunUntagged *bool `json:"run_untagged,omitempty" jsonschema:"description=Specifies if the runner should handle untagged jobs"`
 
 	// TagList A list of runner tags
-	TagList *[]string `json:"tag_list,omitempty"`
+	TagList *[]string `json:"tag_list,omitempty" jsonschema:"description=A list of runner tags"`
 
 	// Token Registration token
-	Token string `json:"token"`
+	Token string `json:"token" jsonschema:"description=Registration token"`
 }
 type GetApiV4RunnersAllParams struct {
 	// Scope Deprecated: Use `type` or `status` instead. The scope of runners to return
-	Scope *string `form:"scope,omitempty" json:"scope,omitempty"`
+	Scope *string `form:"scope,omitempty" json:"scope,omitempty" jsonschema:"description=Deprecated: Use \"type\" or \"status\" instead. The scope of runners to return,enum=specific,enum=shared,enum=instance_type,enum=group_type,enum=project_type,enum=active,enum=paused,enum=online,enum=offline,enum=never_contacted,enum=stale"`
 
 	// Type The type of runners to return
-	Type *string `form:"type,omitempty" json:"type,omitempty"`
+	Type *string `form:"type,omitempty" json:"type,omitempty" jsonschema:"description=The type of runners to return,enum=instance_type,enum=group_type,enum=project_type"`
 
 	// Paused Whether to include only runners that are accepting or ignoring new jobs
-	Paused *bool `form:"paused,omitempty" json:"paused,omitempty"`
+	Paused *bool `form:"paused,omitempty" json:"paused,omitempty" jsonschema:"description=Whether to include only runners that are accepting or ignoring new jobs"`
 
 	// Status The status of runners to return
-	Status *string `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty" jsonschema:"description=The status of runners to return,enum=active,enum=paused,enum=online,enum=offline,enum=never_contacted,enum=stale"`
 
 	// TagList A list of runner tags
-	TagList *[]string `form:"tag_list,omitempty" json:"tag_list,omitempty"`
+	TagList *[]string `form:"tag_list,omitempty" json:"tag_list,omitempty" jsonschema:"description=A list of runner tags"`
 
 	// VersionPrefix The version prefix of runners to return
-	VersionPrefix *string `form:"version_prefix,omitempty" json:"version_prefix,omitempty"`
+	VersionPrefix *string `form:"version_prefix,omitempty" json:"version_prefix,omitempty" jsonschema:"description=The version prefix of runners to return"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type DeleteApiV4RunnersManagersParams struct {
 	// Token The runner's authentication token
-	Token string `form:"token" json:"token"`
+	Token string `form:"token" json:"token" jsonschema:"description=The runner's authentication token"`
 
 	// SystemId The runner's system identifier.
-	SystemId string `form:"system_id" json:"system_id"`
+	SystemId string `form:"system_id" json:"system_id" jsonschema:"description=The runner's system identifier."`
 }
 type PostApiV4RunnersResetAuthenticationTokenJSONBody struct {
 	// Token The current authentication token of the runner
-	Token string `json:"token"`
+	Token string `json:"token" jsonschema:"description=The current authentication token of the runner"`
 }
 type PostApiV4RunnersVerifyJSONBody struct {
 	// SystemId The runner's system identifier
-	SystemId *string `json:"system_id,omitempty"`
+	SystemId *string `json:"system_id,omitempty" jsonschema:"description=The runner's system identifier"`
 
 	// Token The runner's authentication token
-	Token string `json:"token"`
+	Token string `json:"token" jsonschema:"description=The runner's authentication token"`
 }
 type PutApiV4RunnersIdJSONBody struct {
 	// AccessLevel The access level of the runner
-	AccessLevel *string `json:"access_level,omitempty"`
+	AccessLevel *string `json:"access_level,omitempty" jsonschema:"description=The access level of the runner,enum=not_protected,enum=ref_protected"`
 
 	// Active Deprecated: Use `paused` instead. Flag indicating whether the runner is allowed to receive jobs
-	Active *bool `json:"active,omitempty"`
+	Active *bool `json:"active,omitempty" jsonschema:"description=Deprecated: Use \"paused\" instead. Flag indicating whether the runner is allowed to receive jobs"`
 
 	// Description The description of the runner
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=The description of the runner"`
 
 	// Locked Specifies if the runner is locked
-	Locked *bool `json:"locked,omitempty"`
+	Locked *bool `json:"locked,omitempty" jsonschema:"description=Specifies if the runner is locked"`
 
 	// MaintenanceNote Free-form maintenance notes for the runner (1024 characters)
-	MaintenanceNote *string `json:"maintenance_note,omitempty"`
+	MaintenanceNote *string `json:"maintenance_note,omitempty" jsonschema:"description=Free-form maintenance notes for the runner (1024 characters)"`
 
 	// MaximumTimeout Maximum timeout that limits the amount of time (in seconds) that runners can run jobs
-	MaximumTimeout *int32 `json:"maximum_timeout,omitempty"`
+	MaximumTimeout *int32 `json:"maximum_timeout,omitempty" jsonschema:"description=Maximum timeout that limits the amount of time (in seconds) that runners can run jobs,format=int32"`
 
 	// Paused Specifies if the runner should ignore new jobs
-	Paused *bool `json:"paused,omitempty"`
+	Paused *bool `json:"paused,omitempty" jsonschema:"description=Specifies if the runner should ignore new jobs"`
 
 	// RunUntagged Specifies if the runner can execute untagged jobs
-	RunUntagged *bool `json:"run_untagged,omitempty"`
+	RunUntagged *bool `json:"run_untagged,omitempty" jsonschema:"description=Specifies if the runner can execute untagged jobs"`
 
 	// TagList The list of tags for a runner
-	TagList *[]string `json:"tag_list,omitempty"`
+	TagList *[]string `json:"tag_list,omitempty" jsonschema:"description=The list of tags for a runner"`
 }
 type GetApiV4RunnersIdJobsParams struct {
 	// SystemId System ID associated with the runner manager
-	SystemId *string `form:"system_id,omitempty" json:"system_id,omitempty"`
+	SystemId *string `form:"system_id,omitempty" json:"system_id,omitempty" jsonschema:"description=System ID associated with the runner manager"`
 
 	// Status Status of the job
-	Status *string `form:"status,omitempty" json:"status,omitempty"`
+	Status *string `form:"status,omitempty" json:"status,omitempty" jsonschema:"description=Status of the job,enum=created,enum=waiting_for_resource,enum=preparing,enum=waiting_for_callback,enum=pending,enum=running,enum=success,enum=failed,enum=canceling,enum=canceled,enum=skipped,enum=manual,enum=scheduled"`
 
 	// OrderBy Order by `id`
-	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty" jsonschema:"description=Order by \"id\",enum=id"`
 
 	// Sort Sort by `asc` or `desc` order. Specify `order_by` as well, including for `id`
-	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty" jsonschema:"description=Sort by \"asc\" or \"desc\" order. Specify \"order_by\" as well\\, including for \"id\",default=20,enum=asc,enum=desc"`
 
 	// Cursor Cursor for obtaining the next set of records
-	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty" jsonschema:"description=Cursor for obtaining the next set of records"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 }
 type PostApiV4RunnersJSONRequestBody PostApiV4RunnersJSONBody
 type PostApiV4RunnersResetAuthenticationTokenJSONRequestBody PostApiV4RunnersResetAuthenticationTokenJSONBody
@@ -201,7 +201,7 @@ type GetApiV4RunnersResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Active    *bool      `json:"active,omitempty"`
-		CreatedAt *time.Time `json:"created_at,omitempty"`
+		CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// CreatedBy API_Entities_UserBasic model
 		CreatedBy *struct {
@@ -211,22 +211,22 @@ type GetApiV4RunnersResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"created_by,omitempty"`
+		} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		Description *string `json:"description,omitempty"`
-		Id          *int32  `json:"id,omitempty"`
+		Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		IpAddress   *string `json:"ip_address,omitempty"`
 		IsShared    *bool   `json:"is_shared,omitempty"`
 		Name        *string `json:"name,omitempty"`
 		Online      *bool   `json:"online,omitempty"`
 		Paused      *bool   `json:"paused,omitempty"`
-		RunnerType  *string `json:"runner_type,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 		Status      *string `json:"status,omitempty"`
 	}
 }
@@ -244,7 +244,7 @@ type GetApiV4RunnersAllResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Active    *bool      `json:"active,omitempty"`
-		CreatedAt *time.Time `json:"created_at,omitempty"`
+		CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// CreatedBy API_Entities_UserBasic model
 		CreatedBy *struct {
@@ -254,22 +254,22 @@ type GetApiV4RunnersAllResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"created_by,omitempty"`
+		} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		Description *string `json:"description,omitempty"`
-		Id          *int32  `json:"id,omitempty"`
+		Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		IpAddress   *string `json:"ip_address,omitempty"`
 		IsShared    *bool   `json:"is_shared,omitempty"`
 		Name        *string `json:"name,omitempty"`
 		Online      *bool   `json:"online,omitempty"`
 		Paused      *bool   `json:"paused,omitempty"`
-		RunnerType  *string `json:"runner_type,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 		Status      *string `json:"status,omitempty"`
 	}
 }
@@ -302,7 +302,7 @@ type DeleteApiV4RunnersIdResponse struct {
 	HTTPResponse *http.Response
 	JSON204      *struct {
 		Active    *bool      `json:"active,omitempty"`
-		CreatedAt *time.Time `json:"created_at,omitempty"`
+		CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// CreatedBy API_Entities_UserBasic model
 		CreatedBy *struct {
@@ -312,22 +312,22 @@ type DeleteApiV4RunnersIdResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"created_by,omitempty"`
+		} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		Description *string `json:"description,omitempty"`
-		Id          *int32  `json:"id,omitempty"`
+		Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		IpAddress   *string `json:"ip_address,omitempty"`
 		IsShared    *bool   `json:"is_shared,omitempty"`
 		Name        *string `json:"name,omitempty"`
 		Online      *bool   `json:"online,omitempty"`
 		Paused      *bool   `json:"paused,omitempty"`
-		RunnerType  *string `json:"runner_type,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 		Status      *string `json:"status,omitempty"`
 	}
 }
@@ -339,7 +339,7 @@ type GetApiV4RunnersIdResponse struct {
 		Active       *bool      `json:"active,omitempty"`
 		Architecture *string    `json:"architecture,omitempty"`
 		ContactedAt  *string    `json:"contacted_at,omitempty"`
-		CreatedAt    *time.Time `json:"created_at,omitempty"`
+		CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// CreatedBy API_Entities_UserBasic model
 		CreatedBy *struct {
@@ -349,14 +349,14 @@ type GetApiV4RunnersIdResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"created_by,omitempty"`
+		} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		Description *string `json:"description,omitempty"`
 
 		// Groups API_Entities_BasicGroupDetails model
@@ -364,8 +364,8 @@ type GetApiV4RunnersIdResponse struct {
 			Id     *string `json:"id,omitempty"`
 			Name   *string `json:"name,omitempty"`
 			WebUrl *string `json:"web_url,omitempty"`
-		} `json:"groups,omitempty"`
-		Id              *int32  `json:"id,omitempty"`
+		} `json:"groups,omitempty" jsonschema:"description=API_Entities_BasicGroupDetails model"`
+		Id              *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		IpAddress       *string `json:"ip_address,omitempty"`
 		IsShared        *bool   `json:"is_shared,omitempty"`
 		Locked          *string `json:"locked,omitempty"`
@@ -379,19 +379,19 @@ type GetApiV4RunnersIdResponse struct {
 		// Projects API_Entities_BasicProjectDetails model
 		Projects *struct {
 			AvatarUrl *string    `json:"avatar_url,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CustomAttributes API_Entities_CustomAttribute model
 			CustomAttributes *struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
-			} `json:"custom_attributes,omitempty"`
+			} `json:"custom_attributes,omitempty" jsonschema:"description=API_Entities_CustomAttribute model"`
 			DefaultBranch  *string    `json:"default_branch,omitempty"`
 			Description    *string    `json:"description,omitempty"`
-			ForksCount     *int32     `json:"forks_count,omitempty"`
+			ForksCount     *int32     `json:"forks_count,omitempty" jsonschema:",format=int32"`
 			HttpUrlToRepo  *string    `json:"http_url_to_repo,omitempty"`
-			Id             *int32     `json:"id,omitempty"`
-			LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+			Id             *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastActivityAt *time.Time `json:"last_activity_at,omitempty" jsonschema:",format=date-time"`
 			License        *struct {
 				HtmlUrl   *string `json:"html_url,omitempty"`
 				Key       *string `json:"key,omitempty"`
@@ -405,10 +405,10 @@ type GetApiV4RunnersIdResponse struct {
 			Namespace         *struct {
 				AvatarUrl *string `json:"avatar_url,omitempty"`
 				FullPath  *string `json:"full_path,omitempty"`
-				Id        *int32  `json:"id,omitempty"`
+				Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Kind      *string `json:"kind,omitempty"`
 				Name      *string `json:"name,omitempty"`
-				ParentId  *int32  `json:"parent_id,omitempty"`
+				ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 				Path      *string `json:"path,omitempty"`
 				WebUrl    *string `json:"web_url,omitempty"`
 			} `json:"namespace,omitempty"`
@@ -417,14 +417,14 @@ type GetApiV4RunnersIdResponse struct {
 			ReadmeUrl         *string   `json:"readme_url,omitempty"`
 			RepositoryStorage *string   `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string   `json:"ssh_url_to_repo,omitempty"`
-			StarCount         *int32    `json:"star_count,omitempty"`
+			StarCount         *int32    `json:"star_count,omitempty" jsonschema:",format=int32"`
 			TagList           *[]string `json:"tag_list,omitempty"`
 			Topics            *[]string `json:"topics,omitempty"`
 			WebUrl            *string   `json:"web_url,omitempty"`
-		} `json:"projects,omitempty"`
+		} `json:"projects,omitempty" jsonschema:"description=API_Entities_BasicProjectDetails model"`
 		Revision    *string `json:"revision,omitempty"`
 		RunUntagged *string `json:"run_untagged,omitempty"`
-		RunnerType  *string `json:"runner_type,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 		Status      *string `json:"status,omitempty"`
 		TagList     *string `json:"tag_list,omitempty"`
 		Version     *string `json:"version,omitempty"`
@@ -438,7 +438,7 @@ type PutApiV4RunnersIdResponse struct {
 		Active       *bool      `json:"active,omitempty"`
 		Architecture *string    `json:"architecture,omitempty"`
 		ContactedAt  *string    `json:"contacted_at,omitempty"`
-		CreatedAt    *time.Time `json:"created_at,omitempty"`
+		CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// CreatedBy API_Entities_UserBasic model
 		CreatedBy *struct {
@@ -448,14 +448,14 @@ type PutApiV4RunnersIdResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"created_by,omitempty"`
+		} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 		Description *string `json:"description,omitempty"`
 
 		// Groups API_Entities_BasicGroupDetails model
@@ -463,8 +463,8 @@ type PutApiV4RunnersIdResponse struct {
 			Id     *string `json:"id,omitempty"`
 			Name   *string `json:"name,omitempty"`
 			WebUrl *string `json:"web_url,omitempty"`
-		} `json:"groups,omitempty"`
-		Id              *int32  `json:"id,omitempty"`
+		} `json:"groups,omitempty" jsonschema:"description=API_Entities_BasicGroupDetails model"`
+		Id              *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		IpAddress       *string `json:"ip_address,omitempty"`
 		IsShared        *bool   `json:"is_shared,omitempty"`
 		Locked          *string `json:"locked,omitempty"`
@@ -478,19 +478,19 @@ type PutApiV4RunnersIdResponse struct {
 		// Projects API_Entities_BasicProjectDetails model
 		Projects *struct {
 			AvatarUrl *string    `json:"avatar_url,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CustomAttributes API_Entities_CustomAttribute model
 			CustomAttributes *struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
-			} `json:"custom_attributes,omitempty"`
+			} `json:"custom_attributes,omitempty" jsonschema:"description=API_Entities_CustomAttribute model"`
 			DefaultBranch  *string    `json:"default_branch,omitempty"`
 			Description    *string    `json:"description,omitempty"`
-			ForksCount     *int32     `json:"forks_count,omitempty"`
+			ForksCount     *int32     `json:"forks_count,omitempty" jsonschema:",format=int32"`
 			HttpUrlToRepo  *string    `json:"http_url_to_repo,omitempty"`
-			Id             *int32     `json:"id,omitempty"`
-			LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+			Id             *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastActivityAt *time.Time `json:"last_activity_at,omitempty" jsonschema:",format=date-time"`
 			License        *struct {
 				HtmlUrl   *string `json:"html_url,omitempty"`
 				Key       *string `json:"key,omitempty"`
@@ -504,10 +504,10 @@ type PutApiV4RunnersIdResponse struct {
 			Namespace         *struct {
 				AvatarUrl *string `json:"avatar_url,omitempty"`
 				FullPath  *string `json:"full_path,omitempty"`
-				Id        *int32  `json:"id,omitempty"`
+				Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Kind      *string `json:"kind,omitempty"`
 				Name      *string `json:"name,omitempty"`
-				ParentId  *int32  `json:"parent_id,omitempty"`
+				ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 				Path      *string `json:"path,omitempty"`
 				WebUrl    *string `json:"web_url,omitempty"`
 			} `json:"namespace,omitempty"`
@@ -516,14 +516,14 @@ type PutApiV4RunnersIdResponse struct {
 			ReadmeUrl         *string   `json:"readme_url,omitempty"`
 			RepositoryStorage *string   `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string   `json:"ssh_url_to_repo,omitempty"`
-			StarCount         *int32    `json:"star_count,omitempty"`
+			StarCount         *int32    `json:"star_count,omitempty" jsonschema:",format=int32"`
 			TagList           *[]string `json:"tag_list,omitempty"`
 			Topics            *[]string `json:"topics,omitempty"`
 			WebUrl            *string   `json:"web_url,omitempty"`
-		} `json:"projects,omitempty"`
+		} `json:"projects,omitempty" jsonschema:"description=API_Entities_BasicProjectDetails model"`
 		Revision    *string `json:"revision,omitempty"`
 		RunUntagged *string `json:"run_untagged,omitempty"`
-		RunnerType  *string `json:"runner_type,omitempty"`
+		RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 		Status      *string `json:"status,omitempty"`
 		TagList     *string `json:"tag_list,omitempty"`
 		Version     *string `json:"version,omitempty"`
@@ -539,11 +539,11 @@ type GetApiV4RunnersIdJobsResponse struct {
 		Commit *struct {
 			AuthorEmail      *string                 `json:"author_email,omitempty"`
 			AuthorName       *string                 `json:"author_name,omitempty"`
-			AuthoredDate     *time.Time              `json:"authored_date,omitempty"`
-			CommittedDate    *time.Time              `json:"committed_date,omitempty"`
+			AuthoredDate     *time.Time              `json:"authored_date,omitempty" jsonschema:",format=date-time"`
+			CommittedDate    *time.Time              `json:"committed_date,omitempty" jsonschema:",format=date-time"`
 			CommitterEmail   *string                 `json:"committer_email,omitempty"`
 			CommitterName    *string                 `json:"committer_name,omitempty"`
-			CreatedAt        *time.Time              `json:"created_at,omitempty"`
+			CreatedAt        *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
 			Id               *string                 `json:"id,omitempty"`
 			Message          *string                 `json:"message,omitempty"`
@@ -552,35 +552,35 @@ type GetApiV4RunnersIdJobsResponse struct {
 			Title            *string                 `json:"title,omitempty"`
 			Trailers         *map[string]interface{} `json:"trailers,omitempty"`
 			WebUrl           *string                 `json:"web_url,omitempty"`
-		} `json:"commit,omitempty"`
-		Coverage  *float32   `json:"coverage,omitempty"`
-		CreatedAt *time.Time `json:"created_at,omitempty"`
+		} `json:"commit,omitempty" jsonschema:"description=API_Entities_Commit model"`
+		Coverage  *float32   `json:"coverage,omitempty" jsonschema:",format=float"`
+		CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// Duration Time spent running
-		Duration      *float32   `json:"duration,omitempty"`
-		ErasedAt      *time.Time `json:"erased_at,omitempty"`
+		Duration      *float32   `json:"duration,omitempty" jsonschema:"description=Time spent running,format=float"`
+		ErasedAt      *time.Time `json:"erased_at,omitempty" jsonschema:",format=date-time"`
 		FailureReason *string    `json:"failure_reason,omitempty"`
-		FinishedAt    *time.Time `json:"finished_at,omitempty"`
-		Id            *int32     `json:"id,omitempty"`
+		FinishedAt    *time.Time `json:"finished_at,omitempty" jsonschema:",format=date-time"`
+		Id            *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Name          *string    `json:"name,omitempty"`
 
 		// Pipeline API_Entities_Ci_PipelineBasic model
 		Pipeline *struct {
-			CreatedAt *time.Time `json:"created_at,omitempty"`
-			Id        *int32     `json:"id,omitempty"`
-			Iid       *int32     `json:"iid,omitempty"`
-			ProjectId *int32     `json:"project_id,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			Iid       *int32     `json:"iid,omitempty" jsonschema:",format=int32"`
+			ProjectId *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 			Ref       *string    `json:"ref,omitempty"`
 			Sha       *string    `json:"sha,omitempty"`
 			Source    *string    `json:"source,omitempty"`
 			Status    *string    `json:"status,omitempty"`
-			UpdatedAt *time.Time `json:"updated_at,omitempty"`
+			UpdatedAt *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 			WebUrl    *string    `json:"web_url,omitempty"`
-		} `json:"pipeline,omitempty"`
+		} `json:"pipeline,omitempty" jsonschema:"description=API_Entities_Ci_PipelineBasic model"`
 		Project *struct {
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name              *string    `json:"name,omitempty"`
 			NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 			Path              *string    `json:"path,omitempty"`
@@ -588,10 +588,10 @@ type GetApiV4RunnersIdJobsResponse struct {
 		} `json:"project,omitempty"`
 
 		// QueuedDuration Time spent enqueued
-		QueuedDuration *float32   `json:"queued_duration,omitempty"`
+		QueuedDuration *float32   `json:"queued_duration,omitempty" jsonschema:"description=Time spent enqueued,format=float"`
 		Ref            *string    `json:"ref,omitempty"`
 		Stage          *string    `json:"stage,omitempty"`
-		StartedAt      *time.Time `json:"started_at,omitempty"`
+		StartedAt      *time.Time `json:"started_at,omitempty" jsonschema:",format=date-time"`
 		Status         *string    `json:"status,omitempty"`
 		Tag            *bool      `json:"tag,omitempty"`
 		User           *struct {
@@ -608,7 +608,7 @@ type GetApiV4RunnersIdJobsResponse struct {
 			Followers       *string `json:"followers,omitempty"`
 			Following       *string `json:"following,omitempty"`
 			Github          *string `json:"github,omitempty"`
-			Id              *int32  `json:"id,omitempty"`
+			Id              *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IsFollowed      *string `json:"is_followed,omitempty"`
 			JobTitle        *string `json:"job_title,omitempty"`
 			Linkedin        *string `json:"linkedin,omitempty"`
@@ -637,7 +637,7 @@ type GetApiV4RunnersIdManagersResponse struct {
 		Architecture *string `json:"architecture,omitempty"`
 		ContactedAt  *string `json:"contacted_at,omitempty"`
 		CreatedAt    *string `json:"created_at,omitempty"`
-		Id           *int32  `json:"id,omitempty"`
+		Id           *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		IpAddress    *string `json:"ip_address,omitempty"`
 		Platform     *string `json:"platform,omitempty"`
 		Revision     *string `json:"revision,omitempty"`
@@ -2047,7 +2047,7 @@ func ParseGetApiV4RunnersResponse(rsp *http.Response) (*GetApiV4RunnersResponse,
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Active    *bool      `json:"active,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CreatedBy API_Entities_UserBasic model
 			CreatedBy *struct {
@@ -2057,22 +2057,22 @@ func ParseGetApiV4RunnersResponse(rsp *http.Response) (*GetApiV4RunnersResponse,
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"created_by,omitempty"`
+			} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Description *string `json:"description,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IpAddress   *string `json:"ip_address,omitempty"`
 			IsShared    *bool   `json:"is_shared,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			Online      *bool   `json:"online,omitempty"`
 			Paused      *bool   `json:"paused,omitempty"`
-			RunnerType  *string `json:"runner_type,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 			Status      *string `json:"status,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -2128,7 +2128,7 @@ func ParseGetApiV4RunnersAllResponse(rsp *http.Response) (*GetApiV4RunnersAllRes
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Active    *bool      `json:"active,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CreatedBy API_Entities_UserBasic model
 			CreatedBy *struct {
@@ -2138,22 +2138,22 @@ func ParseGetApiV4RunnersAllResponse(rsp *http.Response) (*GetApiV4RunnersAllRes
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"created_by,omitempty"`
+			} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Description *string `json:"description,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IpAddress   *string `json:"ip_address,omitempty"`
 			IsShared    *bool   `json:"is_shared,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			Online      *bool   `json:"online,omitempty"`
 			Paused      *bool   `json:"paused,omitempty"`
-			RunnerType  *string `json:"runner_type,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 			Status      *string `json:"status,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -2263,7 +2263,7 @@ func ParseDeleteApiV4RunnersIdResponse(rsp *http.Response) (*DeleteApiV4RunnersI
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 204:
 		var dest struct {
 			Active    *bool      `json:"active,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CreatedBy API_Entities_UserBasic model
 			CreatedBy *struct {
@@ -2273,22 +2273,22 @@ func ParseDeleteApiV4RunnersIdResponse(rsp *http.Response) (*DeleteApiV4RunnersI
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"created_by,omitempty"`
+			} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Description *string `json:"description,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IpAddress   *string `json:"ip_address,omitempty"`
 			IsShared    *bool   `json:"is_shared,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			Online      *bool   `json:"online,omitempty"`
 			Paused      *bool   `json:"paused,omitempty"`
-			RunnerType  *string `json:"runner_type,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 			Status      *string `json:"status,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -2319,7 +2319,7 @@ func ParseGetApiV4RunnersIdResponse(rsp *http.Response) (*GetApiV4RunnersIdRespo
 			Active       *bool      `json:"active,omitempty"`
 			Architecture *string    `json:"architecture,omitempty"`
 			ContactedAt  *string    `json:"contacted_at,omitempty"`
-			CreatedAt    *time.Time `json:"created_at,omitempty"`
+			CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CreatedBy API_Entities_UserBasic model
 			CreatedBy *struct {
@@ -2329,14 +2329,14 @@ func ParseGetApiV4RunnersIdResponse(rsp *http.Response) (*GetApiV4RunnersIdRespo
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"created_by,omitempty"`
+			} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Description *string `json:"description,omitempty"`
 
 			// Groups API_Entities_BasicGroupDetails model
@@ -2344,8 +2344,8 @@ func ParseGetApiV4RunnersIdResponse(rsp *http.Response) (*GetApiV4RunnersIdRespo
 				Id     *string `json:"id,omitempty"`
 				Name   *string `json:"name,omitempty"`
 				WebUrl *string `json:"web_url,omitempty"`
-			} `json:"groups,omitempty"`
-			Id              *int32  `json:"id,omitempty"`
+			} `json:"groups,omitempty" jsonschema:"description=API_Entities_BasicGroupDetails model"`
+			Id              *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IpAddress       *string `json:"ip_address,omitempty"`
 			IsShared        *bool   `json:"is_shared,omitempty"`
 			Locked          *string `json:"locked,omitempty"`
@@ -2359,19 +2359,19 @@ func ParseGetApiV4RunnersIdResponse(rsp *http.Response) (*GetApiV4RunnersIdRespo
 			// Projects API_Entities_BasicProjectDetails model
 			Projects *struct {
 				AvatarUrl *string    `json:"avatar_url,omitempty"`
-				CreatedAt *time.Time `json:"created_at,omitempty"`
+				CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 				// CustomAttributes API_Entities_CustomAttribute model
 				CustomAttributes *struct {
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
-				} `json:"custom_attributes,omitempty"`
+				} `json:"custom_attributes,omitempty" jsonschema:"description=API_Entities_CustomAttribute model"`
 				DefaultBranch  *string    `json:"default_branch,omitempty"`
 				Description    *string    `json:"description,omitempty"`
-				ForksCount     *int32     `json:"forks_count,omitempty"`
+				ForksCount     *int32     `json:"forks_count,omitempty" jsonschema:",format=int32"`
 				HttpUrlToRepo  *string    `json:"http_url_to_repo,omitempty"`
-				Id             *int32     `json:"id,omitempty"`
-				LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+				Id             *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+				LastActivityAt *time.Time `json:"last_activity_at,omitempty" jsonschema:",format=date-time"`
 				License        *struct {
 					HtmlUrl   *string `json:"html_url,omitempty"`
 					Key       *string `json:"key,omitempty"`
@@ -2385,10 +2385,10 @@ func ParseGetApiV4RunnersIdResponse(rsp *http.Response) (*GetApiV4RunnersIdRespo
 				Namespace         *struct {
 					AvatarUrl *string `json:"avatar_url,omitempty"`
 					FullPath  *string `json:"full_path,omitempty"`
-					Id        *int32  `json:"id,omitempty"`
+					Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 					Kind      *string `json:"kind,omitempty"`
 					Name      *string `json:"name,omitempty"`
-					ParentId  *int32  `json:"parent_id,omitempty"`
+					ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 					Path      *string `json:"path,omitempty"`
 					WebUrl    *string `json:"web_url,omitempty"`
 				} `json:"namespace,omitempty"`
@@ -2397,14 +2397,14 @@ func ParseGetApiV4RunnersIdResponse(rsp *http.Response) (*GetApiV4RunnersIdRespo
 				ReadmeUrl         *string   `json:"readme_url,omitempty"`
 				RepositoryStorage *string   `json:"repository_storage,omitempty"`
 				SshUrlToRepo      *string   `json:"ssh_url_to_repo,omitempty"`
-				StarCount         *int32    `json:"star_count,omitempty"`
+				StarCount         *int32    `json:"star_count,omitempty" jsonschema:",format=int32"`
 				TagList           *[]string `json:"tag_list,omitempty"`
 				Topics            *[]string `json:"topics,omitempty"`
 				WebUrl            *string   `json:"web_url,omitempty"`
-			} `json:"projects,omitempty"`
+			} `json:"projects,omitempty" jsonschema:"description=API_Entities_BasicProjectDetails model"`
 			Revision    *string `json:"revision,omitempty"`
 			RunUntagged *string `json:"run_untagged,omitempty"`
-			RunnerType  *string `json:"runner_type,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 			Status      *string `json:"status,omitempty"`
 			TagList     *string `json:"tag_list,omitempty"`
 			Version     *string `json:"version,omitempty"`
@@ -2437,7 +2437,7 @@ func ParsePutApiV4RunnersIdResponse(rsp *http.Response) (*PutApiV4RunnersIdRespo
 			Active       *bool      `json:"active,omitempty"`
 			Architecture *string    `json:"architecture,omitempty"`
 			ContactedAt  *string    `json:"contacted_at,omitempty"`
-			CreatedAt    *time.Time `json:"created_at,omitempty"`
+			CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CreatedBy API_Entities_UserBasic model
 			CreatedBy *struct {
@@ -2447,14 +2447,14 @@ func ParsePutApiV4RunnersIdResponse(rsp *http.Response) (*PutApiV4RunnersIdRespo
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"created_by,omitempty"`
+			} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Description *string `json:"description,omitempty"`
 
 			// Groups API_Entities_BasicGroupDetails model
@@ -2462,8 +2462,8 @@ func ParsePutApiV4RunnersIdResponse(rsp *http.Response) (*PutApiV4RunnersIdRespo
 				Id     *string `json:"id,omitempty"`
 				Name   *string `json:"name,omitempty"`
 				WebUrl *string `json:"web_url,omitempty"`
-			} `json:"groups,omitempty"`
-			Id              *int32  `json:"id,omitempty"`
+			} `json:"groups,omitempty" jsonschema:"description=API_Entities_BasicGroupDetails model"`
+			Id              *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IpAddress       *string `json:"ip_address,omitempty"`
 			IsShared        *bool   `json:"is_shared,omitempty"`
 			Locked          *string `json:"locked,omitempty"`
@@ -2477,19 +2477,19 @@ func ParsePutApiV4RunnersIdResponse(rsp *http.Response) (*PutApiV4RunnersIdRespo
 			// Projects API_Entities_BasicProjectDetails model
 			Projects *struct {
 				AvatarUrl *string    `json:"avatar_url,omitempty"`
-				CreatedAt *time.Time `json:"created_at,omitempty"`
+				CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 				// CustomAttributes API_Entities_CustomAttribute model
 				CustomAttributes *struct {
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
-				} `json:"custom_attributes,omitempty"`
+				} `json:"custom_attributes,omitempty" jsonschema:"description=API_Entities_CustomAttribute model"`
 				DefaultBranch  *string    `json:"default_branch,omitempty"`
 				Description    *string    `json:"description,omitempty"`
-				ForksCount     *int32     `json:"forks_count,omitempty"`
+				ForksCount     *int32     `json:"forks_count,omitempty" jsonschema:",format=int32"`
 				HttpUrlToRepo  *string    `json:"http_url_to_repo,omitempty"`
-				Id             *int32     `json:"id,omitempty"`
-				LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+				Id             *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+				LastActivityAt *time.Time `json:"last_activity_at,omitempty" jsonschema:",format=date-time"`
 				License        *struct {
 					HtmlUrl   *string `json:"html_url,omitempty"`
 					Key       *string `json:"key,omitempty"`
@@ -2503,10 +2503,10 @@ func ParsePutApiV4RunnersIdResponse(rsp *http.Response) (*PutApiV4RunnersIdRespo
 				Namespace         *struct {
 					AvatarUrl *string `json:"avatar_url,omitempty"`
 					FullPath  *string `json:"full_path,omitempty"`
-					Id        *int32  `json:"id,omitempty"`
+					Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 					Kind      *string `json:"kind,omitempty"`
 					Name      *string `json:"name,omitempty"`
-					ParentId  *int32  `json:"parent_id,omitempty"`
+					ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 					Path      *string `json:"path,omitempty"`
 					WebUrl    *string `json:"web_url,omitempty"`
 				} `json:"namespace,omitempty"`
@@ -2515,14 +2515,14 @@ func ParsePutApiV4RunnersIdResponse(rsp *http.Response) (*PutApiV4RunnersIdRespo
 				ReadmeUrl         *string   `json:"readme_url,omitempty"`
 				RepositoryStorage *string   `json:"repository_storage,omitempty"`
 				SshUrlToRepo      *string   `json:"ssh_url_to_repo,omitempty"`
-				StarCount         *int32    `json:"star_count,omitempty"`
+				StarCount         *int32    `json:"star_count,omitempty" jsonschema:",format=int32"`
 				TagList           *[]string `json:"tag_list,omitempty"`
 				Topics            *[]string `json:"topics,omitempty"`
 				WebUrl            *string   `json:"web_url,omitempty"`
-			} `json:"projects,omitempty"`
+			} `json:"projects,omitempty" jsonschema:"description=API_Entities_BasicProjectDetails model"`
 			Revision    *string `json:"revision,omitempty"`
 			RunUntagged *string `json:"run_untagged,omitempty"`
-			RunnerType  *string `json:"runner_type,omitempty"`
+			RunnerType  *string `json:"runner_type,omitempty" jsonschema:",enum=instance_type,enum=group_type,enum=project_type"`
 			Status      *string `json:"status,omitempty"`
 			TagList     *string `json:"tag_list,omitempty"`
 			Version     *string `json:"version,omitempty"`
@@ -2557,11 +2557,11 @@ func ParseGetApiV4RunnersIdJobsResponse(rsp *http.Response) (*GetApiV4RunnersIdJ
 			Commit *struct {
 				AuthorEmail      *string                 `json:"author_email,omitempty"`
 				AuthorName       *string                 `json:"author_name,omitempty"`
-				AuthoredDate     *time.Time              `json:"authored_date,omitempty"`
-				CommittedDate    *time.Time              `json:"committed_date,omitempty"`
+				AuthoredDate     *time.Time              `json:"authored_date,omitempty" jsonschema:",format=date-time"`
+				CommittedDate    *time.Time              `json:"committed_date,omitempty" jsonschema:",format=date-time"`
 				CommitterEmail   *string                 `json:"committer_email,omitempty"`
 				CommitterName    *string                 `json:"committer_name,omitempty"`
-				CreatedAt        *time.Time              `json:"created_at,omitempty"`
+				CreatedAt        *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
 				Id               *string                 `json:"id,omitempty"`
 				Message          *string                 `json:"message,omitempty"`
@@ -2570,35 +2570,35 @@ func ParseGetApiV4RunnersIdJobsResponse(rsp *http.Response) (*GetApiV4RunnersIdJ
 				Title            *string                 `json:"title,omitempty"`
 				Trailers         *map[string]interface{} `json:"trailers,omitempty"`
 				WebUrl           *string                 `json:"web_url,omitempty"`
-			} `json:"commit,omitempty"`
-			Coverage  *float32   `json:"coverage,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			} `json:"commit,omitempty" jsonschema:"description=API_Entities_Commit model"`
+			Coverage  *float32   `json:"coverage,omitempty" jsonschema:",format=float"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// Duration Time spent running
-			Duration      *float32   `json:"duration,omitempty"`
-			ErasedAt      *time.Time `json:"erased_at,omitempty"`
+			Duration      *float32   `json:"duration,omitempty" jsonschema:"description=Time spent running,format=float"`
+			ErasedAt      *time.Time `json:"erased_at,omitempty" jsonschema:",format=date-time"`
 			FailureReason *string    `json:"failure_reason,omitempty"`
-			FinishedAt    *time.Time `json:"finished_at,omitempty"`
-			Id            *int32     `json:"id,omitempty"`
+			FinishedAt    *time.Time `json:"finished_at,omitempty" jsonschema:",format=date-time"`
+			Id            *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name          *string    `json:"name,omitempty"`
 
 			// Pipeline API_Entities_Ci_PipelineBasic model
 			Pipeline *struct {
-				CreatedAt *time.Time `json:"created_at,omitempty"`
-				Id        *int32     `json:"id,omitempty"`
-				Iid       *int32     `json:"iid,omitempty"`
-				ProjectId *int32     `json:"project_id,omitempty"`
+				CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+				Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+				Iid       *int32     `json:"iid,omitempty" jsonschema:",format=int32"`
+				ProjectId *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
 				Ref       *string    `json:"ref,omitempty"`
 				Sha       *string    `json:"sha,omitempty"`
 				Source    *string    `json:"source,omitempty"`
 				Status    *string    `json:"status,omitempty"`
-				UpdatedAt *time.Time `json:"updated_at,omitempty"`
+				UpdatedAt *time.Time `json:"updated_at,omitempty" jsonschema:",format=date-time"`
 				WebUrl    *string    `json:"web_url,omitempty"`
-			} `json:"pipeline,omitempty"`
+			} `json:"pipeline,omitempty" jsonschema:"description=API_Entities_Ci_PipelineBasic model"`
 			Project *struct {
-				CreatedAt         *time.Time `json:"created_at,omitempty"`
+				CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				Description       *string    `json:"description,omitempty"`
-				Id                *int32     `json:"id,omitempty"`
+				Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 				Name              *string    `json:"name,omitempty"`
 				NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 				Path              *string    `json:"path,omitempty"`
@@ -2606,10 +2606,10 @@ func ParseGetApiV4RunnersIdJobsResponse(rsp *http.Response) (*GetApiV4RunnersIdJ
 			} `json:"project,omitempty"`
 
 			// QueuedDuration Time spent enqueued
-			QueuedDuration *float32   `json:"queued_duration,omitempty"`
+			QueuedDuration *float32   `json:"queued_duration,omitempty" jsonschema:"description=Time spent enqueued,format=float"`
 			Ref            *string    `json:"ref,omitempty"`
 			Stage          *string    `json:"stage,omitempty"`
-			StartedAt      *time.Time `json:"started_at,omitempty"`
+			StartedAt      *time.Time `json:"started_at,omitempty" jsonschema:",format=date-time"`
 			Status         *string    `json:"status,omitempty"`
 			Tag            *bool      `json:"tag,omitempty"`
 			User           *struct {
@@ -2626,7 +2626,7 @@ func ParseGetApiV4RunnersIdJobsResponse(rsp *http.Response) (*GetApiV4RunnersIdJ
 				Followers       *string `json:"followers,omitempty"`
 				Following       *string `json:"following,omitempty"`
 				Github          *string `json:"github,omitempty"`
-				Id              *int32  `json:"id,omitempty"`
+				Id              *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				IsFollowed      *string `json:"is_followed,omitempty"`
 				JobTitle        *string `json:"job_title,omitempty"`
 				Linkedin        *string `json:"linkedin,omitempty"`
@@ -2674,7 +2674,7 @@ func ParseGetApiV4RunnersIdManagersResponse(rsp *http.Response) (*GetApiV4Runner
 			Architecture *string `json:"architecture,omitempty"`
 			ContactedAt  *string `json:"contacted_at,omitempty"`
 			CreatedAt    *string `json:"created_at,omitempty"`
-			Id           *int32  `json:"id,omitempty"`
+			Id           *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			IpAddress    *string `json:"ip_address,omitempty"`
 			Platform     *string `json:"platform,omitempty"`
 			Revision     *string `json:"revision,omitempty"`

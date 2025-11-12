@@ -17,278 +17,278 @@ import (
 
 type PostApiV4UserRunnersJSONBody struct {
 	// AccessLevel The access level of the runner
-	AccessLevel *string `json:"access_level,omitempty"`
+	AccessLevel *string `json:"access_level,omitempty" jsonschema:"description=The access level of the runner,enum=not_protected,enum=ref_protected"`
 
 	// Description Description of the runner
-	Description *string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" jsonschema:"description=Description of the runner"`
 
 	// GroupId The ID of the group that the runner is created in
-	GroupId int32 `json:"group_id"`
+	GroupId int32 `json:"group_id" jsonschema:"description=The ID of the group that the runner is created in,format=int32"`
 
 	// Locked Specifies if the runner should be locked for the current project (defaults to false)
-	Locked *bool `json:"locked,omitempty"`
+	Locked *bool `json:"locked,omitempty" jsonschema:"description=Specifies if the runner should be locked for the current project (defaults to false)"`
 
 	// MaintenanceNote Free-form maintenance notes for the runner (1024 characters)
-	MaintenanceNote *string `json:"maintenance_note,omitempty"`
+	MaintenanceNote *string `json:"maintenance_note,omitempty" jsonschema:"description=Free-form maintenance notes for the runner (1024 characters)"`
 
 	// MaximumTimeout Maximum timeout that limits the amount of time (in seconds) that runners can run jobs
-	MaximumTimeout *int32 `json:"maximum_timeout,omitempty"`
+	MaximumTimeout *int32 `json:"maximum_timeout,omitempty" jsonschema:"description=Maximum timeout that limits the amount of time (in seconds) that runners can run jobs,format=int32"`
 
 	// Paused Specifies if the runner should ignore new jobs (defaults to false)
-	Paused *bool `json:"paused,omitempty"`
+	Paused *bool `json:"paused,omitempty" jsonschema:"description=Specifies if the runner should ignore new jobs (defaults to false)"`
 
 	// ProjectId The ID of the project that the runner is created in
-	ProjectId int32 `json:"project_id"`
+	ProjectId int32 `json:"project_id" jsonschema:"description=The ID of the project that the runner is created in,format=int32"`
 
 	// RunUntagged Specifies if the runner should handle untagged jobs  (defaults to true)
-	RunUntagged *bool `json:"run_untagged,omitempty"`
+	RunUntagged *bool `json:"run_untagged,omitempty" jsonschema:"description=Specifies if the runner should handle untagged jobs (defaults to true)"`
 
 	// RunnerType Specifies the scope of the runner
-	RunnerType string `json:"runner_type"`
+	RunnerType string `json:"runner_type" jsonschema:"description=Specifies the scope of the runner,enum=instance_type,enum=group_type,enum=project_type"`
 
 	// TagList A list of runner tags
-	TagList *[]string `json:"tag_list,omitempty"`
+	TagList *[]string `json:"tag_list,omitempty" jsonschema:"description=A list of runner tags"`
 }
 type GetApiV4UsersIdEventsParams struct {
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=desc,format=date"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=desc,format=date"`
 
 	// Action Event action to filter on
-	Action *string `form:"action,omitempty" json:"action,omitempty"`
+	Action *string `form:"action,omitempty" json:"action,omitempty" jsonschema:"description=Event action to filter on"`
 
 	// TargetType Event target type to filter on
-	TargetType *string `form:"target_type,omitempty" json:"target_type,omitempty"`
+	TargetType *string `form:"target_type,omitempty" json:"target_type,omitempty" jsonschema:"description=Event target type to filter on,enum=issue,enum=milestone,enum=merge_request,enum=note,enum=project,enum=snippet,enum=user,enum=wiki,enum=design"`
 
 	// Before Include only events created before this date
-	Before *openapi_types.Date `form:"before,omitempty" json:"before,omitempty"`
+	Before *openapi_types.Date `form:"before,omitempty" json:"before,omitempty" jsonschema:"description=Include only events created before this date,format=date"`
 
 	// After Include only events created after this date
-	After *openapi_types.Date `form:"after,omitempty" json:"after,omitempty"`
+	After *openapi_types.Date `form:"after,omitempty" json:"after,omitempty" jsonschema:"description=Include only events created after this date,format=date"`
 
 	// Sort Return events sorted in ascending and descending order
-	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty" jsonschema:"description=Return events sorted in ascending and descending order,default=desc,enum=asc,enum=desc"`
 }
 type GetApiV4UsersUserIdContributedProjectsParams struct {
 	// OrderBy Return projects ordered by field. storage_size, repository_size, wiki_size, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to.
-	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty" jsonschema:"description=Return projects ordered by field. storage_size\\, repository_size\\, wiki_size\\, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to.,default=false,enum=id,enum=name,enum=path,enum=created_at,enum=updated_at,enum=last_activity_at,enum=similarity,enum=star_count,enum=storage_size,enum=repository_size,enum=wiki_size,enum=packages_size"`
 
 	// Sort Return projects sorted in ascending and descending order
-	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty" jsonschema:"description=Return projects sorted in ascending and descending order,default=false,enum=asc,enum=desc"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=false,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=false,format=int32"`
 
 	// Simple Return only the ID, URL, name, and path of each project
-	Simple *bool `form:"simple,omitempty" json:"simple,omitempty"`
+	Simple *bool `form:"simple,omitempty" json:"simple,omitempty" jsonschema:"description=Return only the ID\\, URL\\, name\\, and path of each project,default=false"`
 }
 type GetApiV4UsersUserIdProjectsParams struct {
 	// OrderBy Return projects ordered by field. storage_size, repository_size, wiki_size, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to.
-	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty" jsonschema:"description=Return projects ordered by field. storage_size\\, repository_size\\, wiki_size\\, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to.,default=false,enum=id,enum=name,enum=path,enum=created_at,enum=updated_at,enum=last_activity_at,enum=similarity,enum=star_count,enum=storage_size,enum=repository_size,enum=wiki_size,enum=packages_size"`
 
 	// Sort Return projects sorted in ascending and descending order
-	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty" jsonschema:"description=Return projects sorted in ascending and descending order,default=false,enum=asc,enum=desc"`
 
 	// Archived Limit by archived status
-	Archived *bool `form:"archived,omitempty" json:"archived,omitempty"`
+	Archived *bool `form:"archived,omitempty" json:"archived,omitempty" jsonschema:"description=Limit by archived status"`
 
 	// Visibility Limit by visibility
-	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty"`
+	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty" jsonschema:"description=Limit by visibility,enum=private,enum=internal,enum=public"`
 
 	// Search Return list of projects matching the search criteria
-	Search *string `form:"search,omitempty" json:"search,omitempty"`
+	Search *string `form:"search,omitempty" json:"search,omitempty" jsonschema:"description=Return list of projects matching the search criteria"`
 
 	// SearchNamespaces Include ancestor namespaces when matching search criteria
-	SearchNamespaces *bool `form:"search_namespaces,omitempty" json:"search_namespaces,omitempty"`
+	SearchNamespaces *bool `form:"search_namespaces,omitempty" json:"search_namespaces,omitempty" jsonschema:"description=Include ancestor namespaces when matching search criteria"`
 
 	// Owned Limit by owned by authenticated user
-	Owned *bool `form:"owned,omitempty" json:"owned,omitempty"`
+	Owned *bool `form:"owned,omitempty" json:"owned,omitempty" jsonschema:"description=Limit by owned by authenticated user,default=false"`
 
 	// Starred Limit by starred status
-	Starred *bool `form:"starred,omitempty" json:"starred,omitempty"`
+	Starred *bool `form:"starred,omitempty" json:"starred,omitempty" jsonschema:"description=Limit by starred status,default=false"`
 
 	// Imported Limit by imported by authenticated user
-	Imported *bool `form:"imported,omitempty" json:"imported,omitempty"`
+	Imported *bool `form:"imported,omitempty" json:"imported,omitempty" jsonschema:"description=Limit by imported by authenticated user,default=false"`
 
 	// Membership Limit by projects that the current user is a member of
-	Membership *bool `form:"membership,omitempty" json:"membership,omitempty"`
+	Membership *bool `form:"membership,omitempty" json:"membership,omitempty" jsonschema:"description=Limit by projects that the current user is a member of,default=false"`
 
 	// WithIssuesEnabled Limit by enabled issues feature
-	WithIssuesEnabled *bool `form:"with_issues_enabled,omitempty" json:"with_issues_enabled,omitempty"`
+	WithIssuesEnabled *bool `form:"with_issues_enabled,omitempty" json:"with_issues_enabled,omitempty" jsonschema:"description=Limit by enabled issues feature,default=false"`
 
 	// WithMergeRequestsEnabled Limit by enabled merge requests feature
-	WithMergeRequestsEnabled *bool `form:"with_merge_requests_enabled,omitempty" json:"with_merge_requests_enabled,omitempty"`
+	WithMergeRequestsEnabled *bool `form:"with_merge_requests_enabled,omitempty" json:"with_merge_requests_enabled,omitempty" jsonschema:"description=Limit by enabled merge requests feature,default=false"`
 
 	// WithProgrammingLanguage Limit to repositories which use the given programming language
-	WithProgrammingLanguage *string `form:"with_programming_language,omitempty" json:"with_programming_language,omitempty"`
+	WithProgrammingLanguage *string `form:"with_programming_language,omitempty" json:"with_programming_language,omitempty" jsonschema:"description=Limit to repositories which use the given programming language"`
 
 	// MinAccessLevel Limit by minimum access level of authenticated user
-	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty" jsonschema:"description=Limit by minimum access level of authenticated user,format=int32,enum=10,enum=15,enum=20,enum=30,enum=40,enum=50"`
 
 	// IdAfter Limit results to projects with IDs greater than the specified ID
-	IdAfter *int32 `form:"id_after,omitempty" json:"id_after,omitempty"`
+	IdAfter *int32 `form:"id_after,omitempty" json:"id_after,omitempty" jsonschema:"description=Limit results to projects with IDs greater than the specified ID,format=int32"`
 
 	// IdBefore Limit results to projects with IDs less than the specified ID
-	IdBefore *int32 `form:"id_before,omitempty" json:"id_before,omitempty"`
+	IdBefore *int32 `form:"id_before,omitempty" json:"id_before,omitempty" jsonschema:"description=Limit results to projects with IDs less than the specified ID,format=int32"`
 
 	// LastActivityAfter Limit results to projects with last_activity after specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ
-	LastActivityAfter *time.Time `form:"last_activity_after,omitempty" json:"last_activity_after,omitempty"`
+	LastActivityAfter *time.Time `form:"last_activity_after,omitempty" json:"last_activity_after,omitempty" jsonschema:"description=Limit results to projects with last_activity after specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ,format=int32"`
 
 	// LastActivityBefore Limit results to projects with last_activity before specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ
-	LastActivityBefore *time.Time `form:"last_activity_before,omitempty" json:"last_activity_before,omitempty"`
+	LastActivityBefore *time.Time `form:"last_activity_before,omitempty" json:"last_activity_before,omitempty" jsonschema:"description=Limit results to projects with last_activity before specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ,format=int32"`
 
 	// RepositoryStorage Which storage shard the repository is on. Available only to admins
-	RepositoryStorage *string `form:"repository_storage,omitempty" json:"repository_storage,omitempty"`
+	RepositoryStorage *string `form:"repository_storage,omitempty" json:"repository_storage,omitempty" jsonschema:"description=Which storage shard the repository is on. Available only to admins"`
 
 	// Topic Comma-separated list of topics. Limit results to projects having all topics
-	Topic *[]string `form:"topic,omitempty" json:"topic,omitempty"`
+	Topic *[]string `form:"topic,omitempty" json:"topic,omitempty" jsonschema:"description=Comma-separated list of topics. Limit results to projects having all topics"`
 
 	// TopicId Limit results to projects with the assigned topic given by the topic ID
-	TopicId *int32 `form:"topic_id,omitempty" json:"topic_id,omitempty"`
+	TopicId *int32 `form:"topic_id,omitempty" json:"topic_id,omitempty" jsonschema:"description=Limit results to projects with the assigned topic given by the topic ID,format=int32"`
 
 	// UpdatedBefore Return projects updated before the specified datetime. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ
-	UpdatedBefore *time.Time `form:"updated_before,omitempty" json:"updated_before,omitempty"`
+	UpdatedBefore *time.Time `form:"updated_before,omitempty" json:"updated_before,omitempty" jsonschema:"description=Return projects updated before the specified datetime. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ,format=int32"`
 
 	// UpdatedAfter Return projects updated after the specified datetime. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ
-	UpdatedAfter *time.Time `form:"updated_after,omitempty" json:"updated_after,omitempty"`
+	UpdatedAfter *time.Time `form:"updated_after,omitempty" json:"updated_after,omitempty" jsonschema:"description=Return projects updated after the specified datetime. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ,format=int32"`
 
 	// IncludePendingDelete Include projects in pending delete state. Can only be set by admins
-	IncludePendingDelete *bool `form:"include_pending_delete,omitempty" json:"include_pending_delete,omitempty"`
+	IncludePendingDelete *bool `form:"include_pending_delete,omitempty" json:"include_pending_delete,omitempty" jsonschema:"description=Include projects in pending delete state. Can only be set by admins"`
 
 	// MarkedForDeletionOn Date when the project was marked for deletion
-	MarkedForDeletionOn *openapi_types.Date `form:"marked_for_deletion_on,omitempty" json:"marked_for_deletion_on,omitempty"`
+	MarkedForDeletionOn *openapi_types.Date `form:"marked_for_deletion_on,omitempty" json:"marked_for_deletion_on,omitempty" jsonschema:"description=Date when the project was marked for deletion,format=int32"`
 
 	// Active Limit by projects that are not archived and not marked for deletion
-	Active *bool `form:"active,omitempty" json:"active,omitempty"`
+	Active *bool `form:"active,omitempty" json:"active,omitempty" jsonschema:"description=Limit by projects that are not archived and not marked for deletion"`
 
 	// WikiChecksumFailed Limit by projects where wiki checksum is failed
-	WikiChecksumFailed *bool `form:"wiki_checksum_failed,omitempty" json:"wiki_checksum_failed,omitempty"`
+	WikiChecksumFailed *bool `form:"wiki_checksum_failed,omitempty" json:"wiki_checksum_failed,omitempty" jsonschema:"description=Limit by projects where wiki checksum is failed,default=false"`
 
 	// RepositoryChecksumFailed Limit by projects where repository checksum is failed
-	RepositoryChecksumFailed *bool `form:"repository_checksum_failed,omitempty" json:"repository_checksum_failed,omitempty"`
+	RepositoryChecksumFailed *bool `form:"repository_checksum_failed,omitempty" json:"repository_checksum_failed,omitempty" jsonschema:"description=Limit by projects where repository checksum is failed,default=false"`
 
 	// IncludeHidden Include hidden projects. Can only be set by admins
-	IncludeHidden *bool `form:"include_hidden,omitempty" json:"include_hidden,omitempty"`
+	IncludeHidden *bool `form:"include_hidden,omitempty" json:"include_hidden,omitempty" jsonschema:"description=Include hidden projects. Can only be set by admins,default=false"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=false,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=false,format=int32"`
 
 	// Simple Return only the ID, URL, name, and path of each project
-	Simple *bool `form:"simple,omitempty" json:"simple,omitempty"`
+	Simple *bool `form:"simple,omitempty" json:"simple,omitempty" jsonschema:"description=Return only the ID\\, URL\\, name\\, and path of each project,default=false"`
 
 	// Statistics Include project statistics
-	Statistics *bool `form:"statistics,omitempty" json:"statistics,omitempty"`
+	Statistics *bool `form:"statistics,omitempty" json:"statistics,omitempty" jsonschema:"description=Include project statistics,default=false"`
 
 	// WithCustomAttributes Include custom attributes in the response
-	WithCustomAttributes *bool `form:"with_custom_attributes,omitempty" json:"with_custom_attributes,omitempty"`
+	WithCustomAttributes *bool `form:"with_custom_attributes,omitempty" json:"with_custom_attributes,omitempty" jsonschema:"description=Include custom attributes in the response,default=false"`
 }
 type GetApiV4UsersUserIdStarredProjectsParams struct {
 	// OrderBy Return projects ordered by field. storage_size, repository_size, wiki_size, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to.
-	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty"`
+	OrderBy *string `form:"order_by,omitempty" json:"order_by,omitempty" jsonschema:"description=Return projects ordered by field. storage_size\\, repository_size\\, wiki_size\\, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to.,default=false,enum=id,enum=name,enum=path,enum=created_at,enum=updated_at,enum=last_activity_at,enum=similarity,enum=star_count,enum=storage_size,enum=repository_size,enum=wiki_size,enum=packages_size"`
 
 	// Sort Return projects sorted in ascending and descending order
-	Sort *string `form:"sort,omitempty" json:"sort,omitempty"`
+	Sort *string `form:"sort,omitempty" json:"sort,omitempty" jsonschema:"description=Return projects sorted in ascending and descending order,default=false,enum=asc,enum=desc"`
 
 	// Archived Limit by archived status
-	Archived *bool `form:"archived,omitempty" json:"archived,omitempty"`
+	Archived *bool `form:"archived,omitempty" json:"archived,omitempty" jsonschema:"description=Limit by archived status"`
 
 	// Visibility Limit by visibility
-	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty"`
+	Visibility *string `form:"visibility,omitempty" json:"visibility,omitempty" jsonschema:"description=Limit by visibility,enum=private,enum=internal,enum=public"`
 
 	// Search Return list of projects matching the search criteria
-	Search *string `form:"search,omitempty" json:"search,omitempty"`
+	Search *string `form:"search,omitempty" json:"search,omitempty" jsonschema:"description=Return list of projects matching the search criteria"`
 
 	// SearchNamespaces Include ancestor namespaces when matching search criteria
-	SearchNamespaces *bool `form:"search_namespaces,omitempty" json:"search_namespaces,omitempty"`
+	SearchNamespaces *bool `form:"search_namespaces,omitempty" json:"search_namespaces,omitempty" jsonschema:"description=Include ancestor namespaces when matching search criteria"`
 
 	// Owned Limit by owned by authenticated user
-	Owned *bool `form:"owned,omitempty" json:"owned,omitempty"`
+	Owned *bool `form:"owned,omitempty" json:"owned,omitempty" jsonschema:"description=Limit by owned by authenticated user,default=false"`
 
 	// Starred Limit by starred status
-	Starred *bool `form:"starred,omitempty" json:"starred,omitempty"`
+	Starred *bool `form:"starred,omitempty" json:"starred,omitempty" jsonschema:"description=Limit by starred status,default=false"`
 
 	// Imported Limit by imported by authenticated user
-	Imported *bool `form:"imported,omitempty" json:"imported,omitempty"`
+	Imported *bool `form:"imported,omitempty" json:"imported,omitempty" jsonschema:"description=Limit by imported by authenticated user,default=false"`
 
 	// Membership Limit by projects that the current user is a member of
-	Membership *bool `form:"membership,omitempty" json:"membership,omitempty"`
+	Membership *bool `form:"membership,omitempty" json:"membership,omitempty" jsonschema:"description=Limit by projects that the current user is a member of,default=false"`
 
 	// WithIssuesEnabled Limit by enabled issues feature
-	WithIssuesEnabled *bool `form:"with_issues_enabled,omitempty" json:"with_issues_enabled,omitempty"`
+	WithIssuesEnabled *bool `form:"with_issues_enabled,omitempty" json:"with_issues_enabled,omitempty" jsonschema:"description=Limit by enabled issues feature,default=false"`
 
 	// WithMergeRequestsEnabled Limit by enabled merge requests feature
-	WithMergeRequestsEnabled *bool `form:"with_merge_requests_enabled,omitempty" json:"with_merge_requests_enabled,omitempty"`
+	WithMergeRequestsEnabled *bool `form:"with_merge_requests_enabled,omitempty" json:"with_merge_requests_enabled,omitempty" jsonschema:"description=Limit by enabled merge requests feature,default=false"`
 
 	// WithProgrammingLanguage Limit to repositories which use the given programming language
-	WithProgrammingLanguage *string `form:"with_programming_language,omitempty" json:"with_programming_language,omitempty"`
+	WithProgrammingLanguage *string `form:"with_programming_language,omitempty" json:"with_programming_language,omitempty" jsonschema:"description=Limit to repositories which use the given programming language"`
 
 	// MinAccessLevel Limit by minimum access level of authenticated user
-	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty"`
+	MinAccessLevel *int32 `form:"min_access_level,omitempty" json:"min_access_level,omitempty" jsonschema:"description=Limit by minimum access level of authenticated user,format=int32,enum=10,enum=15,enum=20,enum=30,enum=40,enum=50"`
 
 	// IdAfter Limit results to projects with IDs greater than the specified ID
-	IdAfter *int32 `form:"id_after,omitempty" json:"id_after,omitempty"`
+	IdAfter *int32 `form:"id_after,omitempty" json:"id_after,omitempty" jsonschema:"description=Limit results to projects with IDs greater than the specified ID,format=int32"`
 
 	// IdBefore Limit results to projects with IDs less than the specified ID
-	IdBefore *int32 `form:"id_before,omitempty" json:"id_before,omitempty"`
+	IdBefore *int32 `form:"id_before,omitempty" json:"id_before,omitempty" jsonschema:"description=Limit results to projects with IDs less than the specified ID,format=int32"`
 
 	// LastActivityAfter Limit results to projects with last_activity after specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ
-	LastActivityAfter *time.Time `form:"last_activity_after,omitempty" json:"last_activity_after,omitempty"`
+	LastActivityAfter *time.Time `form:"last_activity_after,omitempty" json:"last_activity_after,omitempty" jsonschema:"description=Limit results to projects with last_activity after specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ,format=int32"`
 
 	// LastActivityBefore Limit results to projects with last_activity before specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ
-	LastActivityBefore *time.Time `form:"last_activity_before,omitempty" json:"last_activity_before,omitempty"`
+	LastActivityBefore *time.Time `form:"last_activity_before,omitempty" json:"last_activity_before,omitempty" jsonschema:"description=Limit results to projects with last_activity before specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ,format=int32"`
 
 	// RepositoryStorage Which storage shard the repository is on. Available only to admins
-	RepositoryStorage *string `form:"repository_storage,omitempty" json:"repository_storage,omitempty"`
+	RepositoryStorage *string `form:"repository_storage,omitempty" json:"repository_storage,omitempty" jsonschema:"description=Which storage shard the repository is on. Available only to admins"`
 
 	// Topic Comma-separated list of topics. Limit results to projects having all topics
-	Topic *[]string `form:"topic,omitempty" json:"topic,omitempty"`
+	Topic *[]string `form:"topic,omitempty" json:"topic,omitempty" jsonschema:"description=Comma-separated list of topics. Limit results to projects having all topics"`
 
 	// TopicId Limit results to projects with the assigned topic given by the topic ID
-	TopicId *int32 `form:"topic_id,omitempty" json:"topic_id,omitempty"`
+	TopicId *int32 `form:"topic_id,omitempty" json:"topic_id,omitempty" jsonschema:"description=Limit results to projects with the assigned topic given by the topic ID,format=int32"`
 
 	// UpdatedBefore Return projects updated before the specified datetime. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ
-	UpdatedBefore *time.Time `form:"updated_before,omitempty" json:"updated_before,omitempty"`
+	UpdatedBefore *time.Time `form:"updated_before,omitempty" json:"updated_before,omitempty" jsonschema:"description=Return projects updated before the specified datetime. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ,format=int32"`
 
 	// UpdatedAfter Return projects updated after the specified datetime. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ
-	UpdatedAfter *time.Time `form:"updated_after,omitempty" json:"updated_after,omitempty"`
+	UpdatedAfter *time.Time `form:"updated_after,omitempty" json:"updated_after,omitempty" jsonschema:"description=Return projects updated after the specified datetime. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ,format=int32"`
 
 	// IncludePendingDelete Include projects in pending delete state. Can only be set by admins
-	IncludePendingDelete *bool `form:"include_pending_delete,omitempty" json:"include_pending_delete,omitempty"`
+	IncludePendingDelete *bool `form:"include_pending_delete,omitempty" json:"include_pending_delete,omitempty" jsonschema:"description=Include projects in pending delete state. Can only be set by admins"`
 
 	// MarkedForDeletionOn Date when the project was marked for deletion
-	MarkedForDeletionOn *openapi_types.Date `form:"marked_for_deletion_on,omitempty" json:"marked_for_deletion_on,omitempty"`
+	MarkedForDeletionOn *openapi_types.Date `form:"marked_for_deletion_on,omitempty" json:"marked_for_deletion_on,omitempty" jsonschema:"description=Date when the project was marked for deletion,format=int32"`
 
 	// Active Limit by projects that are not archived and not marked for deletion
-	Active *bool `form:"active,omitempty" json:"active,omitempty"`
+	Active *bool `form:"active,omitempty" json:"active,omitempty" jsonschema:"description=Limit by projects that are not archived and not marked for deletion"`
 
 	// WikiChecksumFailed Limit by projects where wiki checksum is failed
-	WikiChecksumFailed *bool `form:"wiki_checksum_failed,omitempty" json:"wiki_checksum_failed,omitempty"`
+	WikiChecksumFailed *bool `form:"wiki_checksum_failed,omitempty" json:"wiki_checksum_failed,omitempty" jsonschema:"description=Limit by projects where wiki checksum is failed,default=false"`
 
 	// RepositoryChecksumFailed Limit by projects where repository checksum is failed
-	RepositoryChecksumFailed *bool `form:"repository_checksum_failed,omitempty" json:"repository_checksum_failed,omitempty"`
+	RepositoryChecksumFailed *bool `form:"repository_checksum_failed,omitempty" json:"repository_checksum_failed,omitempty" jsonschema:"description=Limit by projects where repository checksum is failed,default=false"`
 
 	// IncludeHidden Include hidden projects. Can only be set by admins
-	IncludeHidden *bool `form:"include_hidden,omitempty" json:"include_hidden,omitempty"`
+	IncludeHidden *bool `form:"include_hidden,omitempty" json:"include_hidden,omitempty" jsonschema:"description=Include hidden projects. Can only be set by admins,default=false"`
 
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=false,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=false,format=int32"`
 
 	// Simple Return only the ID, URL, name, and path of each project
-	Simple *bool `form:"simple,omitempty" json:"simple,omitempty"`
+	Simple *bool `form:"simple,omitempty" json:"simple,omitempty" jsonschema:"description=Return only the ID\\, URL\\, name\\, and path of each project,default=false"`
 
 	// Statistics Include project statistics
-	Statistics *bool `form:"statistics,omitempty" json:"statistics,omitempty"`
+	Statistics *bool `form:"statistics,omitempty" json:"statistics,omitempty" jsonschema:"description=Include project statistics,default=false"`
 }
 type PostApiV4UserRunnersJSONRequestBody PostApiV4UserRunnersJSONBody
 type PostApiV4UserRunnersResponse struct {
@@ -304,11 +304,11 @@ type GetApiV4UserCountsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AssignedIssues               *int32 `json:"assigned_issues,omitempty"`
-		AssignedMergeRequests        *int32 `json:"assigned_merge_requests,omitempty"`
-		MergeRequests                *int32 `json:"merge_requests,omitempty"`
-		ReviewRequestedMergeRequests *int32 `json:"review_requested_merge_requests,omitempty"`
-		Todos                        *int32 `json:"todos,omitempty"`
+		AssignedIssues               *int32 `json:"assigned_issues,omitempty" jsonschema:",format=int32"`
+		AssignedMergeRequests        *int32 `json:"assigned_merge_requests,omitempty" jsonschema:",format=int32"`
+		MergeRequests                *int32 `json:"merge_requests,omitempty" jsonschema:",format=int32"`
+		ReviewRequestedMergeRequests *int32 `json:"review_requested_merge_requests,omitempty" jsonschema:",format=int32"`
+		Todos                        *int32 `json:"todos,omitempty" jsonschema:",format=int32"`
 	}
 }
 type GetApiV4UsersIdEventsResponse struct {
@@ -325,18 +325,18 @@ type GetApiV4UsersIdEventsResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"author,omitempty"`
-		AuthorId       *int32  `json:"author_id,omitempty"`
+		} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		AuthorId       *int32  `json:"author_id,omitempty" jsonschema:",format=int32"`
 		AuthorUsername *string `json:"author_username,omitempty"`
 		CreatedAt      *string `json:"created_at,omitempty"`
-		Id             *int32  `json:"id,omitempty"`
+		Id             *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		Imported       *bool   `json:"imported,omitempty"`
 		ImportedFrom   *string `json:"imported_from,omitempty"`
 		Note           *struct {
@@ -348,14 +348,14 @@ type GetApiV4UsersIdEventsResponse struct {
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 			Body            *string `json:"body,omitempty"`
 			CommandsChanges *string `json:"commands_changes,omitempty"`
 			CommitId        *string `json:"commit_id,omitempty"`
@@ -382,14 +382,14 @@ type GetApiV4UsersIdEventsResponse struct {
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"resolved_by,omitempty"`
+			} `json:"resolved_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 
 			// Suggestions API_Entities_Suggestion model
 			Suggestions *struct {
@@ -400,24 +400,24 @@ type GetApiV4UsersIdEventsResponse struct {
 				Id          *string `json:"id,omitempty"`
 				ToContent   *string `json:"to_content,omitempty"`
 				ToLine      *string `json:"to_line,omitempty"`
-			} `json:"suggestions,omitempty"`
+			} `json:"suggestions,omitempty" jsonschema:"description=API_Entities_Suggestion model"`
 			System    *string `json:"system,omitempty"`
 			Type      *string `json:"type,omitempty"`
 			UpdatedAt *string `json:"updated_at,omitempty"`
 		} `json:"note,omitempty"`
-		ProjectId *int32 `json:"project_id,omitempty"`
+		ProjectId *int32 `json:"project_id,omitempty" jsonschema:",format=int32"`
 		PushData  *struct {
 			Action      *string `json:"action,omitempty"`
-			CommitCount *int32  `json:"commit_count,omitempty"`
+			CommitCount *int32  `json:"commit_count,omitempty" jsonschema:",format=int32"`
 			CommitFrom  *string `json:"commit_from,omitempty"`
 			CommitTitle *string `json:"commit_title,omitempty"`
 			CommitTo    *string `json:"commit_to,omitempty"`
 			Ref         *string `json:"ref,omitempty"`
-			RefCount    *int32  `json:"ref_count,omitempty"`
+			RefCount    *int32  `json:"ref_count,omitempty" jsonschema:",format=int32"`
 			RefType     *string `json:"ref_type,omitempty"`
 		} `json:"push_data,omitempty"`
-		TargetId    *int32  `json:"target_id,omitempty"`
-		TargetIid   *int32  `json:"target_iid,omitempty"`
+		TargetId    *int32  `json:"target_id,omitempty" jsonschema:",format=int32"`
+		TargetIid   *int32  `json:"target_iid,omitempty" jsonschema:",format=int32"`
 		TargetTitle *string `json:"target_title,omitempty"`
 		TargetType  *string `json:"target_type,omitempty"`
 
@@ -426,8 +426,8 @@ type GetApiV4UsersIdEventsResponse struct {
 			Format         *string `json:"format,omitempty"`
 			Slug           *string `json:"slug,omitempty"`
 			Title          *string `json:"title,omitempty"`
-			WikiPageMetaId *int32  `json:"wiki_page_meta_id,omitempty"`
-		} `json:"wiki_page,omitempty"`
+			WikiPageMetaId *int32  `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
+		} `json:"wiki_page,omitempty" jsonschema:"description=API_Entities_WikiPageBasic model"`
 	}
 }
 type GetApiV4UsersUserIdContributedProjectsResponse struct {
@@ -435,19 +435,19 @@ type GetApiV4UsersUserIdContributedProjectsResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
 		AvatarUrl *string    `json:"avatar_url,omitempty"`
-		CreatedAt *time.Time `json:"created_at,omitempty"`
+		CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// CustomAttributes API_Entities_CustomAttribute model
 		CustomAttributes *struct {
 			Key   *string `json:"key,omitempty"`
 			Value *string `json:"value,omitempty"`
-		} `json:"custom_attributes,omitempty"`
+		} `json:"custom_attributes,omitempty" jsonschema:"description=API_Entities_CustomAttribute model"`
 		DefaultBranch  *string    `json:"default_branch,omitempty"`
 		Description    *string    `json:"description,omitempty"`
-		ForksCount     *int32     `json:"forks_count,omitempty"`
+		ForksCount     *int32     `json:"forks_count,omitempty" jsonschema:",format=int32"`
 		HttpUrlToRepo  *string    `json:"http_url_to_repo,omitempty"`
-		Id             *int32     `json:"id,omitempty"`
-		LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+		Id             *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		LastActivityAt *time.Time `json:"last_activity_at,omitempty" jsonschema:",format=date-time"`
 		License        *struct {
 			HtmlUrl   *string `json:"html_url,omitempty"`
 			Key       *string `json:"key,omitempty"`
@@ -461,10 +461,10 @@ type GetApiV4UsersUserIdContributedProjectsResponse struct {
 		Namespace         *struct {
 			AvatarUrl *string `json:"avatar_url,omitempty"`
 			FullPath  *string `json:"full_path,omitempty"`
-			Id        *int32  `json:"id,omitempty"`
+			Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Kind      *string `json:"kind,omitempty"`
 			Name      *string `json:"name,omitempty"`
-			ParentId  *int32  `json:"parent_id,omitempty"`
+			ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 			Path      *string `json:"path,omitempty"`
 			WebUrl    *string `json:"web_url,omitempty"`
 		} `json:"namespace,omitempty"`
@@ -473,7 +473,7 @@ type GetApiV4UsersUserIdContributedProjectsResponse struct {
 		ReadmeUrl         *string   `json:"readme_url,omitempty"`
 		RepositoryStorage *string   `json:"repository_storage,omitempty"`
 		SshUrlToRepo      *string   `json:"ssh_url_to_repo,omitempty"`
-		StarCount         *int32    `json:"star_count,omitempty"`
+		StarCount         *int32    `json:"star_count,omitempty" jsonschema:",format=int32"`
 		TagList           *[]string `json:"tag_list,omitempty"`
 		Topics            *[]string `json:"topics,omitempty"`
 		WebUrl            *string   `json:"web_url,omitempty"`
@@ -484,19 +484,19 @@ type GetApiV4UsersUserIdProjectsResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
 		AvatarUrl *string    `json:"avatar_url,omitempty"`
-		CreatedAt *time.Time `json:"created_at,omitempty"`
+		CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// CustomAttributes API_Entities_CustomAttribute model
 		CustomAttributes *struct {
 			Key   *string `json:"key,omitempty"`
 			Value *string `json:"value,omitempty"`
-		} `json:"custom_attributes,omitempty"`
+		} `json:"custom_attributes,omitempty" jsonschema:"description=API_Entities_CustomAttribute model"`
 		DefaultBranch  *string    `json:"default_branch,omitempty"`
 		Description    *string    `json:"description,omitempty"`
-		ForksCount     *int32     `json:"forks_count,omitempty"`
+		ForksCount     *int32     `json:"forks_count,omitempty" jsonschema:",format=int32"`
 		HttpUrlToRepo  *string    `json:"http_url_to_repo,omitempty"`
-		Id             *int32     `json:"id,omitempty"`
-		LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+		Id             *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		LastActivityAt *time.Time `json:"last_activity_at,omitempty" jsonschema:",format=date-time"`
 		License        *struct {
 			HtmlUrl   *string `json:"html_url,omitempty"`
 			Key       *string `json:"key,omitempty"`
@@ -510,10 +510,10 @@ type GetApiV4UsersUserIdProjectsResponse struct {
 		Namespace         *struct {
 			AvatarUrl *string `json:"avatar_url,omitempty"`
 			FullPath  *string `json:"full_path,omitempty"`
-			Id        *int32  `json:"id,omitempty"`
+			Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Kind      *string `json:"kind,omitempty"`
 			Name      *string `json:"name,omitempty"`
-			ParentId  *int32  `json:"parent_id,omitempty"`
+			ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 			Path      *string `json:"path,omitempty"`
 			WebUrl    *string `json:"web_url,omitempty"`
 		} `json:"namespace,omitempty"`
@@ -522,7 +522,7 @@ type GetApiV4UsersUserIdProjectsResponse struct {
 		ReadmeUrl         *string   `json:"readme_url,omitempty"`
 		RepositoryStorage *string   `json:"repository_storage,omitempty"`
 		SshUrlToRepo      *string   `json:"ssh_url_to_repo,omitempty"`
-		StarCount         *int32    `json:"star_count,omitempty"`
+		StarCount         *int32    `json:"star_count,omitempty" jsonschema:",format=int32"`
 		TagList           *[]string `json:"tag_list,omitempty"`
 		Topics            *[]string `json:"topics,omitempty"`
 		WebUrl            *string   `json:"web_url,omitempty"`
@@ -533,19 +533,19 @@ type GetApiV4UsersUserIdStarredProjectsResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
 		AvatarUrl *string    `json:"avatar_url,omitempty"`
-		CreatedAt *time.Time `json:"created_at,omitempty"`
+		CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 		// CustomAttributes API_Entities_CustomAttribute model
 		CustomAttributes *struct {
 			Key   *string `json:"key,omitempty"`
 			Value *string `json:"value,omitempty"`
-		} `json:"custom_attributes,omitempty"`
+		} `json:"custom_attributes,omitempty" jsonschema:"description=API_Entities_CustomAttribute model"`
 		DefaultBranch  *string    `json:"default_branch,omitempty"`
 		Description    *string    `json:"description,omitempty"`
-		ForksCount     *int32     `json:"forks_count,omitempty"`
+		ForksCount     *int32     `json:"forks_count,omitempty" jsonschema:",format=int32"`
 		HttpUrlToRepo  *string    `json:"http_url_to_repo,omitempty"`
-		Id             *int32     `json:"id,omitempty"`
-		LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+		Id             *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		LastActivityAt *time.Time `json:"last_activity_at,omitempty" jsonschema:",format=date-time"`
 		License        *struct {
 			HtmlUrl   *string `json:"html_url,omitempty"`
 			Key       *string `json:"key,omitempty"`
@@ -559,10 +559,10 @@ type GetApiV4UsersUserIdStarredProjectsResponse struct {
 		Namespace         *struct {
 			AvatarUrl *string `json:"avatar_url,omitempty"`
 			FullPath  *string `json:"full_path,omitempty"`
-			Id        *int32  `json:"id,omitempty"`
+			Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Kind      *string `json:"kind,omitempty"`
 			Name      *string `json:"name,omitempty"`
-			ParentId  *int32  `json:"parent_id,omitempty"`
+			ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 			Path      *string `json:"path,omitempty"`
 			WebUrl    *string `json:"web_url,omitempty"`
 		} `json:"namespace,omitempty"`
@@ -571,7 +571,7 @@ type GetApiV4UsersUserIdStarredProjectsResponse struct {
 		ReadmeUrl         *string   `json:"readme_url,omitempty"`
 		RepositoryStorage *string   `json:"repository_storage,omitempty"`
 		SshUrlToRepo      *string   `json:"ssh_url_to_repo,omitempty"`
-		StarCount         *int32    `json:"star_count,omitempty"`
+		StarCount         *int32    `json:"star_count,omitempty" jsonschema:",format=int32"`
 		TagList           *[]string `json:"tag_list,omitempty"`
 		Topics            *[]string `json:"topics,omitempty"`
 		WebUrl            *string   `json:"web_url,omitempty"`
@@ -2296,11 +2296,11 @@ func ParseGetApiV4UserCountsResponse(rsp *http.Response) (*GetApiV4UserCountsRes
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AssignedIssues               *int32 `json:"assigned_issues,omitempty"`
-			AssignedMergeRequests        *int32 `json:"assigned_merge_requests,omitempty"`
-			MergeRequests                *int32 `json:"merge_requests,omitempty"`
-			ReviewRequestedMergeRequests *int32 `json:"review_requested_merge_requests,omitempty"`
-			Todos                        *int32 `json:"todos,omitempty"`
+			AssignedIssues               *int32 `json:"assigned_issues,omitempty" jsonschema:",format=int32"`
+			AssignedMergeRequests        *int32 `json:"assigned_merge_requests,omitempty" jsonschema:",format=int32"`
+			MergeRequests                *int32 `json:"merge_requests,omitempty" jsonschema:",format=int32"`
+			ReviewRequestedMergeRequests *int32 `json:"review_requested_merge_requests,omitempty" jsonschema:",format=int32"`
+			Todos                        *int32 `json:"todos,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2336,18 +2336,18 @@ func ParseGetApiV4UsersIdEventsResponse(rsp *http.Response) (*GetApiV4UsersIdEve
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"author,omitempty"`
-			AuthorId       *int32  `json:"author_id,omitempty"`
+			} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			AuthorId       *int32  `json:"author_id,omitempty" jsonschema:",format=int32"`
 			AuthorUsername *string `json:"author_username,omitempty"`
 			CreatedAt      *string `json:"created_at,omitempty"`
-			Id             *int32  `json:"id,omitempty"`
+			Id             *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Imported       *bool   `json:"imported,omitempty"`
 			ImportedFrom   *string `json:"imported_from,omitempty"`
 			Note           *struct {
@@ -2359,14 +2359,14 @@ func ParseGetApiV4UsersIdEventsResponse(rsp *http.Response) (*GetApiV4UsersIdEve
 						Key   *string `json:"key,omitempty"`
 						Value *string `json:"value,omitempty"`
 					} `json:"custom_attributes,omitempty"`
-					Id          *int32  `json:"id,omitempty"`
+					Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 					Locked      *bool   `json:"locked,omitempty"`
 					Name        *string `json:"name,omitempty"`
 					PublicEmail *string `json:"public_email,omitempty"`
 					State       *string `json:"state,omitempty"`
 					Username    *string `json:"username,omitempty"`
 					WebUrl      *string `json:"web_url,omitempty"`
-				} `json:"author,omitempty"`
+				} `json:"author,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 				Body            *string `json:"body,omitempty"`
 				CommandsChanges *string `json:"commands_changes,omitempty"`
 				CommitId        *string `json:"commit_id,omitempty"`
@@ -2393,14 +2393,14 @@ func ParseGetApiV4UsersIdEventsResponse(rsp *http.Response) (*GetApiV4UsersIdEve
 						Key   *string `json:"key,omitempty"`
 						Value *string `json:"value,omitempty"`
 					} `json:"custom_attributes,omitempty"`
-					Id          *int32  `json:"id,omitempty"`
+					Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 					Locked      *bool   `json:"locked,omitempty"`
 					Name        *string `json:"name,omitempty"`
 					PublicEmail *string `json:"public_email,omitempty"`
 					State       *string `json:"state,omitempty"`
 					Username    *string `json:"username,omitempty"`
 					WebUrl      *string `json:"web_url,omitempty"`
-				} `json:"resolved_by,omitempty"`
+				} `json:"resolved_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
 
 				// Suggestions API_Entities_Suggestion model
 				Suggestions *struct {
@@ -2411,24 +2411,24 @@ func ParseGetApiV4UsersIdEventsResponse(rsp *http.Response) (*GetApiV4UsersIdEve
 					Id          *string `json:"id,omitempty"`
 					ToContent   *string `json:"to_content,omitempty"`
 					ToLine      *string `json:"to_line,omitempty"`
-				} `json:"suggestions,omitempty"`
+				} `json:"suggestions,omitempty" jsonschema:"description=API_Entities_Suggestion model"`
 				System    *string `json:"system,omitempty"`
 				Type      *string `json:"type,omitempty"`
 				UpdatedAt *string `json:"updated_at,omitempty"`
 			} `json:"note,omitempty"`
-			ProjectId *int32 `json:"project_id,omitempty"`
+			ProjectId *int32 `json:"project_id,omitempty" jsonschema:",format=int32"`
 			PushData  *struct {
 				Action      *string `json:"action,omitempty"`
-				CommitCount *int32  `json:"commit_count,omitempty"`
+				CommitCount *int32  `json:"commit_count,omitempty" jsonschema:",format=int32"`
 				CommitFrom  *string `json:"commit_from,omitempty"`
 				CommitTitle *string `json:"commit_title,omitempty"`
 				CommitTo    *string `json:"commit_to,omitempty"`
 				Ref         *string `json:"ref,omitempty"`
-				RefCount    *int32  `json:"ref_count,omitempty"`
+				RefCount    *int32  `json:"ref_count,omitempty" jsonschema:",format=int32"`
 				RefType     *string `json:"ref_type,omitempty"`
 			} `json:"push_data,omitempty"`
-			TargetId    *int32  `json:"target_id,omitempty"`
-			TargetIid   *int32  `json:"target_iid,omitempty"`
+			TargetId    *int32  `json:"target_id,omitempty" jsonschema:",format=int32"`
+			TargetIid   *int32  `json:"target_iid,omitempty" jsonschema:",format=int32"`
 			TargetTitle *string `json:"target_title,omitempty"`
 			TargetType  *string `json:"target_type,omitempty"`
 
@@ -2437,8 +2437,8 @@ func ParseGetApiV4UsersIdEventsResponse(rsp *http.Response) (*GetApiV4UsersIdEve
 				Format         *string `json:"format,omitempty"`
 				Slug           *string `json:"slug,omitempty"`
 				Title          *string `json:"title,omitempty"`
-				WikiPageMetaId *int32  `json:"wiki_page_meta_id,omitempty"`
-			} `json:"wiki_page,omitempty"`
+				WikiPageMetaId *int32  `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
+			} `json:"wiki_page,omitempty" jsonschema:"description=API_Entities_WikiPageBasic model"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2465,19 +2465,19 @@ func ParseGetApiV4UsersUserIdContributedProjectsResponse(rsp *http.Response) (*G
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
 			AvatarUrl *string    `json:"avatar_url,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CustomAttributes API_Entities_CustomAttribute model
 			CustomAttributes *struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
-			} `json:"custom_attributes,omitempty"`
+			} `json:"custom_attributes,omitempty" jsonschema:"description=API_Entities_CustomAttribute model"`
 			DefaultBranch  *string    `json:"default_branch,omitempty"`
 			Description    *string    `json:"description,omitempty"`
-			ForksCount     *int32     `json:"forks_count,omitempty"`
+			ForksCount     *int32     `json:"forks_count,omitempty" jsonschema:",format=int32"`
 			HttpUrlToRepo  *string    `json:"http_url_to_repo,omitempty"`
-			Id             *int32     `json:"id,omitempty"`
-			LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+			Id             *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastActivityAt *time.Time `json:"last_activity_at,omitempty" jsonschema:",format=date-time"`
 			License        *struct {
 				HtmlUrl   *string `json:"html_url,omitempty"`
 				Key       *string `json:"key,omitempty"`
@@ -2491,10 +2491,10 @@ func ParseGetApiV4UsersUserIdContributedProjectsResponse(rsp *http.Response) (*G
 			Namespace         *struct {
 				AvatarUrl *string `json:"avatar_url,omitempty"`
 				FullPath  *string `json:"full_path,omitempty"`
-				Id        *int32  `json:"id,omitempty"`
+				Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Kind      *string `json:"kind,omitempty"`
 				Name      *string `json:"name,omitempty"`
-				ParentId  *int32  `json:"parent_id,omitempty"`
+				ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 				Path      *string `json:"path,omitempty"`
 				WebUrl    *string `json:"web_url,omitempty"`
 			} `json:"namespace,omitempty"`
@@ -2503,7 +2503,7 @@ func ParseGetApiV4UsersUserIdContributedProjectsResponse(rsp *http.Response) (*G
 			ReadmeUrl         *string   `json:"readme_url,omitempty"`
 			RepositoryStorage *string   `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string   `json:"ssh_url_to_repo,omitempty"`
-			StarCount         *int32    `json:"star_count,omitempty"`
+			StarCount         *int32    `json:"star_count,omitempty" jsonschema:",format=int32"`
 			TagList           *[]string `json:"tag_list,omitempty"`
 			Topics            *[]string `json:"topics,omitempty"`
 			WebUrl            *string   `json:"web_url,omitempty"`
@@ -2533,19 +2533,19 @@ func ParseGetApiV4UsersUserIdProjectsResponse(rsp *http.Response) (*GetApiV4User
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
 			AvatarUrl *string    `json:"avatar_url,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CustomAttributes API_Entities_CustomAttribute model
 			CustomAttributes *struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
-			} `json:"custom_attributes,omitempty"`
+			} `json:"custom_attributes,omitempty" jsonschema:"description=API_Entities_CustomAttribute model"`
 			DefaultBranch  *string    `json:"default_branch,omitempty"`
 			Description    *string    `json:"description,omitempty"`
-			ForksCount     *int32     `json:"forks_count,omitempty"`
+			ForksCount     *int32     `json:"forks_count,omitempty" jsonschema:",format=int32"`
 			HttpUrlToRepo  *string    `json:"http_url_to_repo,omitempty"`
-			Id             *int32     `json:"id,omitempty"`
-			LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+			Id             *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastActivityAt *time.Time `json:"last_activity_at,omitempty" jsonschema:",format=date-time"`
 			License        *struct {
 				HtmlUrl   *string `json:"html_url,omitempty"`
 				Key       *string `json:"key,omitempty"`
@@ -2559,10 +2559,10 @@ func ParseGetApiV4UsersUserIdProjectsResponse(rsp *http.Response) (*GetApiV4User
 			Namespace         *struct {
 				AvatarUrl *string `json:"avatar_url,omitempty"`
 				FullPath  *string `json:"full_path,omitempty"`
-				Id        *int32  `json:"id,omitempty"`
+				Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Kind      *string `json:"kind,omitempty"`
 				Name      *string `json:"name,omitempty"`
-				ParentId  *int32  `json:"parent_id,omitempty"`
+				ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 				Path      *string `json:"path,omitempty"`
 				WebUrl    *string `json:"web_url,omitempty"`
 			} `json:"namespace,omitempty"`
@@ -2571,7 +2571,7 @@ func ParseGetApiV4UsersUserIdProjectsResponse(rsp *http.Response) (*GetApiV4User
 			ReadmeUrl         *string   `json:"readme_url,omitempty"`
 			RepositoryStorage *string   `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string   `json:"ssh_url_to_repo,omitempty"`
-			StarCount         *int32    `json:"star_count,omitempty"`
+			StarCount         *int32    `json:"star_count,omitempty" jsonschema:",format=int32"`
 			TagList           *[]string `json:"tag_list,omitempty"`
 			Topics            *[]string `json:"topics,omitempty"`
 			WebUrl            *string   `json:"web_url,omitempty"`
@@ -2601,19 +2601,19 @@ func ParseGetApiV4UsersUserIdStarredProjectsResponse(rsp *http.Response) (*GetAp
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
 			AvatarUrl *string    `json:"avatar_url,omitempty"`
-			CreatedAt *time.Time `json:"created_at,omitempty"`
+			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 
 			// CustomAttributes API_Entities_CustomAttribute model
 			CustomAttributes *struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
-			} `json:"custom_attributes,omitempty"`
+			} `json:"custom_attributes,omitempty" jsonschema:"description=API_Entities_CustomAttribute model"`
 			DefaultBranch  *string    `json:"default_branch,omitempty"`
 			Description    *string    `json:"description,omitempty"`
-			ForksCount     *int32     `json:"forks_count,omitempty"`
+			ForksCount     *int32     `json:"forks_count,omitempty" jsonschema:",format=int32"`
 			HttpUrlToRepo  *string    `json:"http_url_to_repo,omitempty"`
-			Id             *int32     `json:"id,omitempty"`
-			LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+			Id             *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastActivityAt *time.Time `json:"last_activity_at,omitempty" jsonschema:",format=date-time"`
 			License        *struct {
 				HtmlUrl   *string `json:"html_url,omitempty"`
 				Key       *string `json:"key,omitempty"`
@@ -2627,10 +2627,10 @@ func ParseGetApiV4UsersUserIdStarredProjectsResponse(rsp *http.Response) (*GetAp
 			Namespace         *struct {
 				AvatarUrl *string `json:"avatar_url,omitempty"`
 				FullPath  *string `json:"full_path,omitempty"`
-				Id        *int32  `json:"id,omitempty"`
+				Id        *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Kind      *string `json:"kind,omitempty"`
 				Name      *string `json:"name,omitempty"`
-				ParentId  *int32  `json:"parent_id,omitempty"`
+				ParentId  *int32  `json:"parent_id,omitempty" jsonschema:",format=int32"`
 				Path      *string `json:"path,omitempty"`
 				WebUrl    *string `json:"web_url,omitempty"`
 			} `json:"namespace,omitempty"`
@@ -2639,7 +2639,7 @@ func ParseGetApiV4UsersUserIdStarredProjectsResponse(rsp *http.Response) (*GetAp
 			ReadmeUrl         *string   `json:"readme_url,omitempty"`
 			RepositoryStorage *string   `json:"repository_storage,omitempty"`
 			SshUrlToRepo      *string   `json:"ssh_url_to_repo,omitempty"`
-			StarCount         *int32    `json:"star_count,omitempty"`
+			StarCount         *int32    `json:"star_count,omitempty" jsonschema:",format=int32"`
 			TagList           *[]string `json:"tag_list,omitempty"`
 			Topics            *[]string `json:"topics,omitempty"`
 			WebUrl            *string   `json:"web_url,omitempty"`

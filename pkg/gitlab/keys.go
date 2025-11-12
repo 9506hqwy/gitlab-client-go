@@ -15,7 +15,7 @@ import (
 
 type GetApiV4KeysParams struct {
 	// Fingerprint The fingerprint of an SSH key
-	Fingerprint string `form:"fingerprint" json:"fingerprint"`
+	Fingerprint string `form:"fingerprint" json:"fingerprint" jsonschema:"description=The fingerprint of an SSH key"`
 }
 type GetApiV4KeysResponse struct {
 	Body         []byte
@@ -27,9 +27,9 @@ type GetApiV4KeysResponse struct {
 		Bot              *string    `json:"bot,omitempty"`
 		CanCreateGroup   *bool      `json:"can_create_group,omitempty"`
 		CanCreateProject *bool      `json:"can_create_project,omitempty"`
-		ColorSchemeId    *int32     `json:"color_scheme_id,omitempty"`
+		ColorSchemeId    *int32     `json:"color_scheme_id,omitempty" jsonschema:",format=int32"`
 		CommitEmail      *string    `json:"commit_email,omitempty"`
-		ConfirmedAt      *time.Time `json:"confirmed_at,omitempty"`
+		ConfirmedAt      *time.Time `json:"confirmed_at,omitempty" jsonschema:",format=date-time"`
 		CreatedAt        *string    `json:"created_at,omitempty"`
 
 		// CreatedBy API_Entities_UserBasic model
@@ -40,15 +40,15 @@ type GetApiV4KeysResponse struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
 			} `json:"custom_attributes,omitempty"`
-			Id          *int32  `json:"id,omitempty"`
+			Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Locked      *bool   `json:"locked,omitempty"`
 			Name        *string `json:"name,omitempty"`
 			PublicEmail *string `json:"public_email,omitempty"`
 			State       *string `json:"state,omitempty"`
 			Username    *string `json:"username,omitempty"`
 			WebUrl      *string `json:"web_url,omitempty"`
-		} `json:"created_by,omitempty"`
-		CurrentSignInAt  *time.Time `json:"current_sign_in_at,omitempty"`
+		} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+		CurrentSignInAt  *time.Time `json:"current_sign_in_at,omitempty" jsonschema:",format=date-time"`
 		CustomAttributes *[]struct {
 			Key   *string `json:"key,omitempty"`
 			Value *string `json:"value,omitempty"`
@@ -63,7 +63,7 @@ type GetApiV4KeysResponse struct {
 		Followers                      *string `json:"followers,omitempty"`
 		Following                      *string `json:"following,omitempty"`
 		Github                         *string `json:"github,omitempty"`
-		Id                             *int32  `json:"id,omitempty"`
+		Id                             *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 		Identities                     *struct {
 			ExternUid      *string `json:"extern_uid,omitempty"`
 			Provider       *string `json:"provider,omitempty"`
@@ -73,8 +73,8 @@ type GetApiV4KeysResponse struct {
 		IsAuditor            *string    `json:"is_auditor,omitempty"`
 		IsFollowed           *string    `json:"is_followed,omitempty"`
 		JobTitle             *string    `json:"job_title,omitempty"`
-		LastActivityOn       *time.Time `json:"last_activity_on,omitempty"`
-		LastSignInAt         *time.Time `json:"last_sign_in_at,omitempty"`
+		LastActivityOn       *time.Time `json:"last_activity_on,omitempty" jsonschema:",format=date-time"`
+		LastSignInAt         *time.Time `json:"last_sign_in_at,omitempty" jsonschema:",format=date-time"`
 		Linkedin             *string    `json:"linkedin,omitempty"`
 		LocalTime            *string    `json:"local_time,omitempty"`
 		Location             *string    `json:"location,omitempty"`
@@ -84,7 +84,7 @@ type GetApiV4KeysResponse struct {
 		Note                 *string    `json:"note,omitempty"`
 		Organization         *string    `json:"organization,omitempty"`
 		PrivateProfile       *bool      `json:"private_profile,omitempty"`
-		ProjectsLimit        *int32     `json:"projects_limit,omitempty"`
+		ProjectsLimit        *int32     `json:"projects_limit,omitempty" jsonschema:",format=int32"`
 		Pronouns             *string    `json:"pronouns,omitempty"`
 		ProvisionedByGroupId *string    `json:"provisioned_by_group_id,omitempty"`
 		PublicEmail          *string    `json:"public_email,omitempty"`
@@ -96,7 +96,7 @@ type GetApiV4KeysResponse struct {
 		SharedRunnersMinutesLimit *string `json:"shared_runners_minutes_limit,omitempty"`
 		Skype                     *string `json:"skype,omitempty"`
 		State                     *string `json:"state,omitempty"`
-		ThemeId                   *int32  `json:"theme_id,omitempty"`
+		ThemeId                   *int32  `json:"theme_id,omitempty" jsonschema:",format=int32"`
 		Twitter                   *string `json:"twitter,omitempty"`
 		TwoFactorEnabled          *bool   `json:"two_factor_enabled,omitempty"`
 		Username                  *string `json:"username,omitempty"`
@@ -110,11 +110,11 @@ type GetApiV4KeysIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		CreatedAt  *time.Time `json:"created_at,omitempty"`
-		ExpiresAt  *time.Time `json:"expires_at,omitempty"`
-		Id         *int32     `json:"id,omitempty"`
+		CreatedAt  *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		ExpiresAt  *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id         *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Key        *string    `json:"key,omitempty"`
-		LastUsedAt *time.Time `json:"last_used_at,omitempty"`
+		LastUsedAt *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
 		Title      *string    `json:"title,omitempty"`
 		UsageType  *string    `json:"usage_type,omitempty"`
 
@@ -126,11 +126,11 @@ type GetApiV4KeysIdResponse struct {
 			Bot              *string    `json:"bot,omitempty"`
 			CanCreateGroup   *bool      `json:"can_create_group,omitempty"`
 			CanCreateProject *bool      `json:"can_create_project,omitempty"`
-			ColorSchemeId    *int32     `json:"color_scheme_id,omitempty"`
+			ColorSchemeId    *int32     `json:"color_scheme_id,omitempty" jsonschema:",format=int32"`
 			CommitEmail      *string    `json:"commit_email,omitempty"`
-			ConfirmedAt      *time.Time `json:"confirmed_at,omitempty"`
+			ConfirmedAt      *time.Time `json:"confirmed_at,omitempty" jsonschema:",format=date-time"`
 			CreatedAt        *string    `json:"created_at,omitempty"`
-			CurrentSignInAt  *time.Time `json:"current_sign_in_at,omitempty"`
+			CurrentSignInAt  *time.Time `json:"current_sign_in_at,omitempty" jsonschema:",format=date-time"`
 			CustomAttributes *[]struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
@@ -142,7 +142,7 @@ type GetApiV4KeysIdResponse struct {
 			Followers                      *string `json:"followers,omitempty"`
 			Following                      *string `json:"following,omitempty"`
 			Github                         *string `json:"github,omitempty"`
-			Id                             *int32  `json:"id,omitempty"`
+			Id                             *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Identities                     *struct {
 				ExternUid      *string `json:"extern_uid,omitempty"`
 				Provider       *string `json:"provider,omitempty"`
@@ -150,8 +150,8 @@ type GetApiV4KeysIdResponse struct {
 			} `json:"identities,omitempty"`
 			IsFollowed     *string    `json:"is_followed,omitempty"`
 			JobTitle       *string    `json:"job_title,omitempty"`
-			LastActivityOn *time.Time `json:"last_activity_on,omitempty"`
-			LastSignInAt   *time.Time `json:"last_sign_in_at,omitempty"`
+			LastActivityOn *time.Time `json:"last_activity_on,omitempty" jsonschema:",format=date-time"`
+			LastSignInAt   *time.Time `json:"last_sign_in_at,omitempty" jsonschema:",format=date-time"`
 			Linkedin       *string    `json:"linkedin,omitempty"`
 			LocalTime      *string    `json:"local_time,omitempty"`
 			Location       *string    `json:"location,omitempty"`
@@ -159,7 +159,7 @@ type GetApiV4KeysIdResponse struct {
 			Name           *string    `json:"name,omitempty"`
 			Organization   *string    `json:"organization,omitempty"`
 			PrivateProfile *bool      `json:"private_profile,omitempty"`
-			ProjectsLimit  *int32     `json:"projects_limit,omitempty"`
+			ProjectsLimit  *int32     `json:"projects_limit,omitempty" jsonschema:",format=int32"`
 			Pronouns       *string    `json:"pronouns,omitempty"`
 			PublicEmail    *string    `json:"public_email,omitempty"`
 			ScimIdentities *struct {
@@ -170,14 +170,14 @@ type GetApiV4KeysIdResponse struct {
 			SharedRunnersMinutesLimit *string `json:"shared_runners_minutes_limit,omitempty"`
 			Skype                     *string `json:"skype,omitempty"`
 			State                     *string `json:"state,omitempty"`
-			ThemeId                   *int32  `json:"theme_id,omitempty"`
+			ThemeId                   *int32  `json:"theme_id,omitempty" jsonschema:",format=int32"`
 			Twitter                   *string `json:"twitter,omitempty"`
 			TwoFactorEnabled          *bool   `json:"two_factor_enabled,omitempty"`
 			Username                  *string `json:"username,omitempty"`
 			WebUrl                    *string `json:"web_url,omitempty"`
 			WebsiteUrl                *string `json:"website_url,omitempty"`
 			WorkInformation           *string `json:"work_information,omitempty"`
-		} `json:"user,omitempty"`
+		} `json:"user,omitempty" jsonschema:"description=API_Entities_UserPublic model"`
 	}
 }
 
@@ -337,9 +337,9 @@ func ParseGetApiV4KeysResponse(rsp *http.Response) (*GetApiV4KeysResponse, error
 			Bot              *string    `json:"bot,omitempty"`
 			CanCreateGroup   *bool      `json:"can_create_group,omitempty"`
 			CanCreateProject *bool      `json:"can_create_project,omitempty"`
-			ColorSchemeId    *int32     `json:"color_scheme_id,omitempty"`
+			ColorSchemeId    *int32     `json:"color_scheme_id,omitempty" jsonschema:",format=int32"`
 			CommitEmail      *string    `json:"commit_email,omitempty"`
-			ConfirmedAt      *time.Time `json:"confirmed_at,omitempty"`
+			ConfirmedAt      *time.Time `json:"confirmed_at,omitempty" jsonschema:",format=date-time"`
 			CreatedAt        *string    `json:"created_at,omitempty"`
 
 			// CreatedBy API_Entities_UserBasic model
@@ -350,15 +350,15 @@ func ParseGetApiV4KeysResponse(rsp *http.Response) (*GetApiV4KeysResponse, error
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
 				} `json:"custom_attributes,omitempty"`
-				Id          *int32  `json:"id,omitempty"`
+				Id          *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Locked      *bool   `json:"locked,omitempty"`
 				Name        *string `json:"name,omitempty"`
 				PublicEmail *string `json:"public_email,omitempty"`
 				State       *string `json:"state,omitempty"`
 				Username    *string `json:"username,omitempty"`
 				WebUrl      *string `json:"web_url,omitempty"`
-			} `json:"created_by,omitempty"`
-			CurrentSignInAt  *time.Time `json:"current_sign_in_at,omitempty"`
+			} `json:"created_by,omitempty" jsonschema:"description=API_Entities_UserBasic model"`
+			CurrentSignInAt  *time.Time `json:"current_sign_in_at,omitempty" jsonschema:",format=date-time"`
 			CustomAttributes *[]struct {
 				Key   *string `json:"key,omitempty"`
 				Value *string `json:"value,omitempty"`
@@ -373,7 +373,7 @@ func ParseGetApiV4KeysResponse(rsp *http.Response) (*GetApiV4KeysResponse, error
 			Followers                      *string `json:"followers,omitempty"`
 			Following                      *string `json:"following,omitempty"`
 			Github                         *string `json:"github,omitempty"`
-			Id                             *int32  `json:"id,omitempty"`
+			Id                             *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 			Identities                     *struct {
 				ExternUid      *string `json:"extern_uid,omitempty"`
 				Provider       *string `json:"provider,omitempty"`
@@ -383,8 +383,8 @@ func ParseGetApiV4KeysResponse(rsp *http.Response) (*GetApiV4KeysResponse, error
 			IsAuditor            *string    `json:"is_auditor,omitempty"`
 			IsFollowed           *string    `json:"is_followed,omitempty"`
 			JobTitle             *string    `json:"job_title,omitempty"`
-			LastActivityOn       *time.Time `json:"last_activity_on,omitempty"`
-			LastSignInAt         *time.Time `json:"last_sign_in_at,omitempty"`
+			LastActivityOn       *time.Time `json:"last_activity_on,omitempty" jsonschema:",format=date-time"`
+			LastSignInAt         *time.Time `json:"last_sign_in_at,omitempty" jsonschema:",format=date-time"`
 			Linkedin             *string    `json:"linkedin,omitempty"`
 			LocalTime            *string    `json:"local_time,omitempty"`
 			Location             *string    `json:"location,omitempty"`
@@ -394,7 +394,7 @@ func ParseGetApiV4KeysResponse(rsp *http.Response) (*GetApiV4KeysResponse, error
 			Note                 *string    `json:"note,omitempty"`
 			Organization         *string    `json:"organization,omitempty"`
 			PrivateProfile       *bool      `json:"private_profile,omitempty"`
-			ProjectsLimit        *int32     `json:"projects_limit,omitempty"`
+			ProjectsLimit        *int32     `json:"projects_limit,omitempty" jsonschema:",format=int32"`
 			Pronouns             *string    `json:"pronouns,omitempty"`
 			ProvisionedByGroupId *string    `json:"provisioned_by_group_id,omitempty"`
 			PublicEmail          *string    `json:"public_email,omitempty"`
@@ -406,7 +406,7 @@ func ParseGetApiV4KeysResponse(rsp *http.Response) (*GetApiV4KeysResponse, error
 			SharedRunnersMinutesLimit *string `json:"shared_runners_minutes_limit,omitempty"`
 			Skype                     *string `json:"skype,omitempty"`
 			State                     *string `json:"state,omitempty"`
-			ThemeId                   *int32  `json:"theme_id,omitempty"`
+			ThemeId                   *int32  `json:"theme_id,omitempty" jsonschema:",format=int32"`
 			Twitter                   *string `json:"twitter,omitempty"`
 			TwoFactorEnabled          *bool   `json:"two_factor_enabled,omitempty"`
 			Username                  *string `json:"username,omitempty"`
@@ -439,11 +439,11 @@ func ParseGetApiV4KeysIdResponse(rsp *http.Response) (*GetApiV4KeysIdResponse, e
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			CreatedAt  *time.Time `json:"created_at,omitempty"`
-			ExpiresAt  *time.Time `json:"expires_at,omitempty"`
-			Id         *int32     `json:"id,omitempty"`
+			CreatedAt  *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			ExpiresAt  *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id         *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Key        *string    `json:"key,omitempty"`
-			LastUsedAt *time.Time `json:"last_used_at,omitempty"`
+			LastUsedAt *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
 			Title      *string    `json:"title,omitempty"`
 			UsageType  *string    `json:"usage_type,omitempty"`
 
@@ -455,11 +455,11 @@ func ParseGetApiV4KeysIdResponse(rsp *http.Response) (*GetApiV4KeysIdResponse, e
 				Bot              *string    `json:"bot,omitempty"`
 				CanCreateGroup   *bool      `json:"can_create_group,omitempty"`
 				CanCreateProject *bool      `json:"can_create_project,omitempty"`
-				ColorSchemeId    *int32     `json:"color_scheme_id,omitempty"`
+				ColorSchemeId    *int32     `json:"color_scheme_id,omitempty" jsonschema:",format=int32"`
 				CommitEmail      *string    `json:"commit_email,omitempty"`
-				ConfirmedAt      *time.Time `json:"confirmed_at,omitempty"`
+				ConfirmedAt      *time.Time `json:"confirmed_at,omitempty" jsonschema:",format=date-time"`
 				CreatedAt        *string    `json:"created_at,omitempty"`
-				CurrentSignInAt  *time.Time `json:"current_sign_in_at,omitempty"`
+				CurrentSignInAt  *time.Time `json:"current_sign_in_at,omitempty" jsonschema:",format=date-time"`
 				CustomAttributes *[]struct {
 					Key   *string `json:"key,omitempty"`
 					Value *string `json:"value,omitempty"`
@@ -471,7 +471,7 @@ func ParseGetApiV4KeysIdResponse(rsp *http.Response) (*GetApiV4KeysIdResponse, e
 				Followers                      *string `json:"followers,omitempty"`
 				Following                      *string `json:"following,omitempty"`
 				Github                         *string `json:"github,omitempty"`
-				Id                             *int32  `json:"id,omitempty"`
+				Id                             *int32  `json:"id,omitempty" jsonschema:",format=int32"`
 				Identities                     *struct {
 					ExternUid      *string `json:"extern_uid,omitempty"`
 					Provider       *string `json:"provider,omitempty"`
@@ -479,8 +479,8 @@ func ParseGetApiV4KeysIdResponse(rsp *http.Response) (*GetApiV4KeysIdResponse, e
 				} `json:"identities,omitempty"`
 				IsFollowed     *string    `json:"is_followed,omitempty"`
 				JobTitle       *string    `json:"job_title,omitempty"`
-				LastActivityOn *time.Time `json:"last_activity_on,omitempty"`
-				LastSignInAt   *time.Time `json:"last_sign_in_at,omitempty"`
+				LastActivityOn *time.Time `json:"last_activity_on,omitempty" jsonschema:",format=date-time"`
+				LastSignInAt   *time.Time `json:"last_sign_in_at,omitempty" jsonschema:",format=date-time"`
 				Linkedin       *string    `json:"linkedin,omitempty"`
 				LocalTime      *string    `json:"local_time,omitempty"`
 				Location       *string    `json:"location,omitempty"`
@@ -488,7 +488,7 @@ func ParseGetApiV4KeysIdResponse(rsp *http.Response) (*GetApiV4KeysIdResponse, e
 				Name           *string    `json:"name,omitempty"`
 				Organization   *string    `json:"organization,omitempty"`
 				PrivateProfile *bool      `json:"private_profile,omitempty"`
-				ProjectsLimit  *int32     `json:"projects_limit,omitempty"`
+				ProjectsLimit  *int32     `json:"projects_limit,omitempty" jsonschema:",format=int32"`
 				Pronouns       *string    `json:"pronouns,omitempty"`
 				PublicEmail    *string    `json:"public_email,omitempty"`
 				ScimIdentities *struct {
@@ -499,14 +499,14 @@ func ParseGetApiV4KeysIdResponse(rsp *http.Response) (*GetApiV4KeysIdResponse, e
 				SharedRunnersMinutesLimit *string `json:"shared_runners_minutes_limit,omitempty"`
 				Skype                     *string `json:"skype,omitempty"`
 				State                     *string `json:"state,omitempty"`
-				ThemeId                   *int32  `json:"theme_id,omitempty"`
+				ThemeId                   *int32  `json:"theme_id,omitempty" jsonschema:",format=int32"`
 				Twitter                   *string `json:"twitter,omitempty"`
 				TwoFactorEnabled          *bool   `json:"two_factor_enabled,omitempty"`
 				Username                  *string `json:"username,omitempty"`
 				WebUrl                    *string `json:"web_url,omitempty"`
 				WebsiteUrl                *string `json:"website_url,omitempty"`
 				WorkInformation           *string `json:"work_information,omitempty"`
-			} `json:"user,omitempty"`
+			} `json:"user,omitempty" jsonschema:"description=API_Entities_UserPublic model"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

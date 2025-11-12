@@ -15,27 +15,27 @@ import (
 
 type GetApiV4RegistryRepositoriesIdParams struct {
 	// Tags Determines if tags should be included
-	Tags *bool `form:"tags,omitempty" json:"tags,omitempty"`
+	Tags *bool `form:"tags,omitempty" json:"tags,omitempty" jsonschema:"description=Determines if tags should be included,default=false"`
 
 	// TagsCount Determines if the tags count should be included
-	TagsCount *bool `form:"tags_count,omitempty" json:"tags_count,omitempty"`
+	TagsCount *bool `form:"tags_count,omitempty" json:"tags_count,omitempty" jsonschema:"description=Determines if the tags count should be included,default=false"`
 
 	// Size Determines if the size should be included
-	Size *bool `form:"size,omitempty" json:"size,omitempty"`
+	Size *bool `form:"size,omitempty" json:"size,omitempty" jsonschema:"description=Determines if the size should be included,default=false"`
 }
 type GetApiV4RegistryRepositoriesIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		CleanupPolicyStartedAt *time.Time `json:"cleanup_policy_started_at,omitempty"`
-		CreatedAt              *time.Time `json:"created_at,omitempty"`
+		CleanupPolicyStartedAt *time.Time `json:"cleanup_policy_started_at,omitempty" jsonschema:",format=date-time"`
+		CreatedAt              *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 		DeleteApiPath          *string    `json:"delete_api_path,omitempty"`
-		Id                     *int32     `json:"id,omitempty"`
+		Id                     *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Location               *string    `json:"location,omitempty"`
 		Name                   *string    `json:"name,omitempty"`
 		Path                   *string    `json:"path,omitempty"`
-		ProjectId              *int32     `json:"project_id,omitempty"`
-		Size                   *int32     `json:"size,omitempty"`
+		ProjectId              *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
+		Size                   *int32     `json:"size,omitempty" jsonschema:",format=int32"`
 		Status                 *string    `json:"status,omitempty"`
 
 		// Tags API_Entities_ContainerRegistry_Tag model
@@ -43,8 +43,8 @@ type GetApiV4RegistryRepositoriesIdResponse struct {
 			Location *string `json:"location,omitempty"`
 			Name     *string `json:"name,omitempty"`
 			Path     *string `json:"path,omitempty"`
-		} `json:"tags,omitempty"`
-		TagsCount *int32 `json:"tags_count,omitempty"`
+		} `json:"tags,omitempty" jsonschema:"description=API_Entities_ContainerRegistry_Tag model"`
+		TagsCount *int32 `json:"tags_count,omitempty" jsonschema:",format=int32"`
 	}
 }
 
@@ -179,15 +179,15 @@ func ParseGetApiV4RegistryRepositoriesIdResponse(rsp *http.Response) (*GetApiV4R
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			CleanupPolicyStartedAt *time.Time `json:"cleanup_policy_started_at,omitempty"`
-			CreatedAt              *time.Time `json:"created_at,omitempty"`
+			CleanupPolicyStartedAt *time.Time `json:"cleanup_policy_started_at,omitempty" jsonschema:",format=date-time"`
+			CreatedAt              *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			DeleteApiPath          *string    `json:"delete_api_path,omitempty"`
-			Id                     *int32     `json:"id,omitempty"`
+			Id                     *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Location               *string    `json:"location,omitempty"`
 			Name                   *string    `json:"name,omitempty"`
 			Path                   *string    `json:"path,omitempty"`
-			ProjectId              *int32     `json:"project_id,omitempty"`
-			Size                   *int32     `json:"size,omitempty"`
+			ProjectId              *int32     `json:"project_id,omitempty" jsonschema:",format=int32"`
+			Size                   *int32     `json:"size,omitempty" jsonschema:",format=int32"`
 			Status                 *string    `json:"status,omitempty"`
 
 			// Tags API_Entities_ContainerRegistry_Tag model
@@ -195,8 +195,8 @@ func ParseGetApiV4RegistryRepositoriesIdResponse(rsp *http.Response) (*GetApiV4R
 				Location *string `json:"location,omitempty"`
 				Name     *string `json:"name,omitempty"`
 				Path     *string `json:"path,omitempty"`
-			} `json:"tags,omitempty"`
-			TagsCount *int32 `json:"tags_count,omitempty"`
+			} `json:"tags,omitempty" jsonschema:"description=API_Entities_ContainerRegistry_Tag model"`
+			TagsCount *int32 `json:"tags_count,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

@@ -13,13 +13,13 @@ import (
 
 type PostApiV4MarkdownJSONBody struct {
 	// Gfm Render text using GitLab Flavored Markdown. Default is false
-	Gfm *bool `json:"gfm,omitempty"`
+	Gfm *bool `json:"gfm,omitempty" jsonschema:"description=Render text using GitLab Flavored Markdown. Default is false"`
 
 	// Project Use project as a context when creating references using GitLab Flavored Markdown
-	Project *string `json:"project,omitempty"`
+	Project *string `json:"project,omitempty" jsonschema:"description=Use project as a context when creating references using GitLab Flavored Markdown"`
 
 	// Text The Markdown text to render
-	Text string `json:"text"`
+	Text string `json:"text" jsonschema:"description=The Markdown text to render"`
 }
 type PostApiV4MarkdownJSONRequestBody PostApiV4MarkdownJSONBody
 type PostApiV4MarkdownResponse struct {

@@ -16,59 +16,59 @@ import (
 
 type GetApiV4DeployKeysParams struct {
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=false,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=false,format=int32"`
 
 	// Public Only return deploy keys that are public
-	Public *bool `form:"public,omitempty" json:"public,omitempty"`
+	Public *bool `form:"public,omitempty" json:"public,omitempty" jsonschema:"description=Only return deploy keys that are public,default=false"`
 }
 type PostApiV4DeployKeysJSONBody struct {
 	// ExpiresAt The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
-	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	ExpiresAt *time.Time `json:"expires_at,omitempty" jsonschema:"description=The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ),format=date-time"`
 
 	// Key New deploy key
-	Key string `json:"key"`
+	Key string `json:"key" jsonschema:"description=New deploy key"`
 
 	// Title New deploy key's title
-	Title string `json:"title"`
+	Title string `json:"title" jsonschema:"description=New deploy key's title"`
 }
 type GetApiV4DeployTokensParams struct {
 	// Page Current page number
-	Page *int32 `form:"page,omitempty" json:"page,omitempty"`
+	Page *int32 `form:"page,omitempty" json:"page,omitempty" jsonschema:"description=Current page number,default=20,format=int32"`
 
 	// PerPage Number of items per page
-	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty"`
+	PerPage *int32 `form:"per_page,omitempty" json:"per_page,omitempty" jsonschema:"description=Number of items per page,default=20,format=int32"`
 
 	// Active Limit by active status
-	Active *bool `form:"active,omitempty" json:"active,omitempty"`
+	Active *bool `form:"active,omitempty" json:"active,omitempty" jsonschema:"description=Limit by active status"`
 }
 type PostApiV4DeployKeysJSONRequestBody PostApiV4DeployKeysJSONBody
 type GetApiV4DeployKeysResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
-		CreatedAt                  *time.Time `json:"created_at,omitempty"`
-		ExpiresAt                  *time.Time `json:"expires_at,omitempty"`
+		CreatedAt                  *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		ExpiresAt                  *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
 		Fingerprint                *string    `json:"fingerprint,omitempty"`
 		FingerprintSha256          *string    `json:"fingerprint_sha256,omitempty"`
-		Id                         *int32     `json:"id,omitempty"`
+		Id                         *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Key                        *string    `json:"key,omitempty"`
-		LastUsedAt                 *time.Time `json:"last_used_at,omitempty"`
+		LastUsedAt                 *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
 		ProjectsWithReadonlyAccess *struct {
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name              *string    `json:"name,omitempty"`
 			NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 			Path              *string    `json:"path,omitempty"`
 			PathWithNamespace *string    `json:"path_with_namespace,omitempty"`
 		} `json:"projects_with_readonly_access,omitempty"`
 		ProjectsWithWriteAccess *struct {
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name              *string    `json:"name,omitempty"`
 			NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 			Path              *string    `json:"path,omitempty"`
@@ -82,26 +82,26 @@ type PostApiV4DeployKeysResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		CreatedAt                  *time.Time `json:"created_at,omitempty"`
-		ExpiresAt                  *time.Time `json:"expires_at,omitempty"`
+		CreatedAt                  *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		ExpiresAt                  *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
 		Fingerprint                *string    `json:"fingerprint,omitempty"`
 		FingerprintSha256          *string    `json:"fingerprint_sha256,omitempty"`
-		Id                         *int32     `json:"id,omitempty"`
+		Id                         *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 		Key                        *string    `json:"key,omitempty"`
-		LastUsedAt                 *time.Time `json:"last_used_at,omitempty"`
+		LastUsedAt                 *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
 		ProjectsWithReadonlyAccess *struct {
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name              *string    `json:"name,omitempty"`
 			NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 			Path              *string    `json:"path,omitempty"`
 			PathWithNamespace *string    `json:"path_with_namespace,omitempty"`
 		} `json:"projects_with_readonly_access,omitempty"`
 		ProjectsWithWriteAccess *struct {
-			CreatedAt         *time.Time `json:"created_at,omitempty"`
+			CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 			Description       *string    `json:"description,omitempty"`
-			Id                *int32     `json:"id,omitempty"`
+			Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Name              *string    `json:"name,omitempty"`
 			NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 			Path              *string    `json:"path,omitempty"`
@@ -116,8 +116,8 @@ type GetApiV4DeployTokensResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
 		Expired   *bool          `json:"expired,omitempty"`
-		ExpiresAt *time.Time     `json:"expires_at,omitempty"`
-		Id        *int32         `json:"id,omitempty"`
+		ExpiresAt *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id        *int32         `json:"id,omitempty" jsonschema:",format=int32"`
 		Name      *string        `json:"name,omitempty"`
 		Revoked   *bool          `json:"revoked,omitempty"`
 		Scopes    *[]interface{} `json:"scopes,omitempty"`
@@ -442,26 +442,26 @@ func ParseGetApiV4DeployKeysResponse(rsp *http.Response) (*GetApiV4DeployKeysRes
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
-			CreatedAt                  *time.Time `json:"created_at,omitempty"`
-			ExpiresAt                  *time.Time `json:"expires_at,omitempty"`
+			CreatedAt                  *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			ExpiresAt                  *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
 			Fingerprint                *string    `json:"fingerprint,omitempty"`
 			FingerprintSha256          *string    `json:"fingerprint_sha256,omitempty"`
-			Id                         *int32     `json:"id,omitempty"`
+			Id                         *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Key                        *string    `json:"key,omitempty"`
-			LastUsedAt                 *time.Time `json:"last_used_at,omitempty"`
+			LastUsedAt                 *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
 			ProjectsWithReadonlyAccess *struct {
-				CreatedAt         *time.Time `json:"created_at,omitempty"`
+				CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				Description       *string    `json:"description,omitempty"`
-				Id                *int32     `json:"id,omitempty"`
+				Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 				Name              *string    `json:"name,omitempty"`
 				NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 				Path              *string    `json:"path,omitempty"`
 				PathWithNamespace *string    `json:"path_with_namespace,omitempty"`
 			} `json:"projects_with_readonly_access,omitempty"`
 			ProjectsWithWriteAccess *struct {
-				CreatedAt         *time.Time `json:"created_at,omitempty"`
+				CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				Description       *string    `json:"description,omitempty"`
-				Id                *int32     `json:"id,omitempty"`
+				Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 				Name              *string    `json:"name,omitempty"`
 				NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 				Path              *string    `json:"path,omitempty"`
@@ -494,26 +494,26 @@ func ParsePostApiV4DeployKeysResponse(rsp *http.Response) (*PostApiV4DeployKeysR
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			CreatedAt                  *time.Time `json:"created_at,omitempty"`
-			ExpiresAt                  *time.Time `json:"expires_at,omitempty"`
+			CreatedAt                  *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			ExpiresAt                  *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
 			Fingerprint                *string    `json:"fingerprint,omitempty"`
 			FingerprintSha256          *string    `json:"fingerprint_sha256,omitempty"`
-			Id                         *int32     `json:"id,omitempty"`
+			Id                         *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 			Key                        *string    `json:"key,omitempty"`
-			LastUsedAt                 *time.Time `json:"last_used_at,omitempty"`
+			LastUsedAt                 *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
 			ProjectsWithReadonlyAccess *struct {
-				CreatedAt         *time.Time `json:"created_at,omitempty"`
+				CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				Description       *string    `json:"description,omitempty"`
-				Id                *int32     `json:"id,omitempty"`
+				Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 				Name              *string    `json:"name,omitempty"`
 				NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 				Path              *string    `json:"path,omitempty"`
 				PathWithNamespace *string    `json:"path_with_namespace,omitempty"`
 			} `json:"projects_with_readonly_access,omitempty"`
 			ProjectsWithWriteAccess *struct {
-				CreatedAt         *time.Time `json:"created_at,omitempty"`
+				CreatedAt         *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
 				Description       *string    `json:"description,omitempty"`
-				Id                *int32     `json:"id,omitempty"`
+				Id                *int32     `json:"id,omitempty" jsonschema:",format=int32"`
 				Name              *string    `json:"name,omitempty"`
 				NameWithNamespace *string    `json:"name_with_namespace,omitempty"`
 				Path              *string    `json:"path,omitempty"`
@@ -547,8 +547,8 @@ func ParseGetApiV4DeployTokensResponse(rsp *http.Response) (*GetApiV4DeployToken
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
 			Expired   *bool          `json:"expired,omitempty"`
-			ExpiresAt *time.Time     `json:"expires_at,omitempty"`
-			Id        *int32         `json:"id,omitempty"`
+			ExpiresAt *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id        *int32         `json:"id,omitempty" jsonschema:",format=int32"`
 			Name      *string        `json:"name,omitempty"`
 			Revoked   *bool          `json:"revoked,omitempty"`
 			Scopes    *[]interface{} `json:"scopes,omitempty"`
