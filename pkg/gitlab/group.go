@@ -4221,8 +4221,8 @@ type GetApiV4GroupsIdPackagesNugetIndexResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Resources *[]map[string]interface{} `json:"resources,omitempty"`
-		Version   *string                   `json:"version,omitempty"`
+		Resources *[]map[string]any `json:"resources,omitempty"`
+		Version   *string           `json:"version,omitempty"`
 	}
 }
 type GetApiV4GroupsIdPackagesNugetQueryResponse struct {
@@ -4332,20 +4332,20 @@ type PostApiV4GroupsIdAccessTokensSelfRotateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AccessLevel  *int32         `json:"access_level,omitempty" jsonschema:",format=int32,enum=10,enum=20,enum=30,enum=40,enum=50"`
-		Active       *bool          `json:"active,omitempty"`
-		CreatedAt    *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		Description  *string        `json:"description,omitempty"`
-		ExpiresAt    *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id           *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		LastUsedAt   *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-		Name         *string        `json:"name,omitempty"`
-		ResourceId   *int32         `json:"resource_id,omitempty" jsonschema:",format=int32"`
-		ResourceType *string        `json:"resource_type,omitempty" jsonschema:",enum=project,enum=group"`
-		Revoked      *bool          `json:"revoked,omitempty"`
-		Scopes       *[]interface{} `json:"scopes,omitempty"`
-		Token        *string        `json:"token,omitempty"`
-		UserId       *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+		AccessLevel  *int32     `json:"access_level,omitempty" jsonschema:",format=int32,enum=10,enum=20,enum=30,enum=40,enum=50"`
+		Active       *bool      `json:"active,omitempty"`
+		CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		Description  *string    `json:"description,omitempty"`
+		ExpiresAt    *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id           *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		LastUsedAt   *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+		Name         *string    `json:"name,omitempty"`
+		ResourceId   *int32     `json:"resource_id,omitempty" jsonschema:",format=int32"`
+		ResourceType *string    `json:"resource_type,omitempty" jsonschema:",enum=project,enum=group"`
+		Revoked      *bool      `json:"revoked,omitempty"`
+		Scopes       *[]any     `json:"scopes,omitempty"`
+		Token        *string    `json:"token,omitempty"`
+		UserId       *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 	}
 }
 type PostApiV4GroupsIdArchiveResponse struct {
@@ -5035,27 +5035,27 @@ type GetApiV4GroupsIdDeployTokensResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
-		Expired   *bool          `json:"expired,omitempty"`
-		ExpiresAt *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id        *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		Name      *string        `json:"name,omitempty"`
-		Revoked   *bool          `json:"revoked,omitempty"`
-		Scopes    *[]interface{} `json:"scopes,omitempty"`
-		Username  *string        `json:"username,omitempty"`
+		Expired   *bool      `json:"expired,omitempty"`
+		ExpiresAt *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		Name      *string    `json:"name,omitempty"`
+		Revoked   *bool      `json:"revoked,omitempty"`
+		Scopes    *[]any     `json:"scopes,omitempty"`
+		Username  *string    `json:"username,omitempty"`
 	}
 }
 type PostApiV4GroupsIdDeployTokensResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		Expired   *bool          `json:"expired,omitempty"`
-		ExpiresAt *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id        *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		Name      *string        `json:"name,omitempty"`
-		Revoked   *bool          `json:"revoked,omitempty"`
-		Scopes    *[]interface{} `json:"scopes,omitempty"`
-		Token     *string        `json:"token,omitempty"`
-		Username  *string        `json:"username,omitempty"`
+		Expired   *bool      `json:"expired,omitempty"`
+		ExpiresAt *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		Name      *string    `json:"name,omitempty"`
+		Revoked   *bool      `json:"revoked,omitempty"`
+		Scopes    *[]any     `json:"scopes,omitempty"`
+		Token     *string    `json:"token,omitempty"`
+		Username  *string    `json:"username,omitempty"`
 	}
 }
 type DeleteApiV4GroupsIdDeployTokensTokenIdResponse struct {
@@ -5066,13 +5066,13 @@ type GetApiV4GroupsIdDeployTokensTokenIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Expired   *bool          `json:"expired,omitempty"`
-		ExpiresAt *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id        *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		Name      *string        `json:"name,omitempty"`
-		Revoked   *bool          `json:"revoked,omitempty"`
-		Scopes    *[]interface{} `json:"scopes,omitempty"`
-		Username  *string        `json:"username,omitempty"`
+		Expired   *bool      `json:"expired,omitempty"`
+		ExpiresAt *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		Name      *string    `json:"name,omitempty"`
+		Revoked   *bool      `json:"revoked,omitempty"`
+		Scopes    *[]any     `json:"scopes,omitempty"`
+		Username  *string    `json:"username,omitempty"`
 	}
 }
 type GetApiV4GroupsIdDescendantGroupsResponse struct {
@@ -7045,30 +7045,30 @@ type GetApiV4GroupsIdIntegrationsSlugResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Active                   *bool                   `json:"active,omitempty"`
-		AlertEvents              *bool                   `json:"alert_events,omitempty"`
-		CommentOnEventEnabled    *bool                   `json:"comment_on_event_enabled,omitempty"`
-		CommitEvents             *bool                   `json:"commit_events,omitempty"`
-		ConfidentialIssuesEvents *bool                   `json:"confidential_issues_events,omitempty"`
-		ConfidentialNoteEvents   *bool                   `json:"confidential_note_events,omitempty"`
-		CreatedAt                *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		DeploymentEvents         *bool                   `json:"deployment_events,omitempty"`
-		Id                       *int32                  `json:"id,omitempty" jsonschema:",format=int32"`
-		IncidentEvents           *bool                   `json:"incident_events,omitempty"`
-		Inherited                *bool                   `json:"inherited,omitempty"`
-		IssuesEvents             *bool                   `json:"issues_events,omitempty"`
-		JobEvents                *bool                   `json:"job_events,omitempty"`
-		MergeRequestsEvents      *bool                   `json:"merge_requests_events,omitempty"`
-		NoteEvents               *bool                   `json:"note_events,omitempty"`
-		PipelineEvents           *bool                   `json:"pipeline_events,omitempty"`
-		Properties               *map[string]interface{} `json:"properties,omitempty"`
-		PushEvents               *bool                   `json:"push_events,omitempty"`
-		Slug                     *int32                  `json:"slug,omitempty" jsonschema:",format=int32"`
-		TagPushEvents            *bool                   `json:"tag_push_events,omitempty"`
-		Title                    *string                 `json:"title,omitempty"`
-		UpdatedAt                *time.Time              `json:"updated_at,omitempty" jsonschema:",format=date-time"`
-		VulnerabilityEvents      *bool                   `json:"vulnerability_events,omitempty"`
-		WikiPageEvents           *bool                   `json:"wiki_page_events,omitempty"`
+		Active                   *bool           `json:"active,omitempty"`
+		AlertEvents              *bool           `json:"alert_events,omitempty"`
+		CommentOnEventEnabled    *bool           `json:"comment_on_event_enabled,omitempty"`
+		CommitEvents             *bool           `json:"commit_events,omitempty"`
+		ConfidentialIssuesEvents *bool           `json:"confidential_issues_events,omitempty"`
+		ConfidentialNoteEvents   *bool           `json:"confidential_note_events,omitempty"`
+		CreatedAt                *time.Time      `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		DeploymentEvents         *bool           `json:"deployment_events,omitempty"`
+		Id                       *int32          `json:"id,omitempty" jsonschema:",format=int32"`
+		IncidentEvents           *bool           `json:"incident_events,omitempty"`
+		Inherited                *bool           `json:"inherited,omitempty"`
+		IssuesEvents             *bool           `json:"issues_events,omitempty"`
+		JobEvents                *bool           `json:"job_events,omitempty"`
+		MergeRequestsEvents      *bool           `json:"merge_requests_events,omitempty"`
+		NoteEvents               *bool           `json:"note_events,omitempty"`
+		PipelineEvents           *bool           `json:"pipeline_events,omitempty"`
+		Properties               *map[string]any `json:"properties,omitempty"`
+		PushEvents               *bool           `json:"push_events,omitempty"`
+		Slug                     *int32          `json:"slug,omitempty" jsonschema:",format=int32"`
+		TagPushEvents            *bool           `json:"tag_push_events,omitempty"`
+		Title                    *string         `json:"title,omitempty"`
+		UpdatedAt                *time.Time      `json:"updated_at,omitempty" jsonschema:",format=date-time"`
+		VulnerabilityEvents      *bool           `json:"vulnerability_events,omitempty"`
+		WikiPageEvents           *bool           `json:"wiki_page_events,omitempty"`
 	}
 }
 type GetApiV4GroupsIdInvitationsResponse struct {
@@ -9659,21 +9659,21 @@ type GetApiV4GroupsIdReleasesResponse struct {
 
 		// Commit API_Entities_Commit model
 		Commit *struct {
-			AuthorEmail      *string                 `json:"author_email,omitempty"`
-			AuthorName       *string                 `json:"author_name,omitempty"`
-			AuthoredDate     *time.Time              `json:"authored_date,omitempty" jsonschema:",format=date-time"`
-			CommittedDate    *time.Time              `json:"committed_date,omitempty" jsonschema:",format=date-time"`
-			CommitterEmail   *string                 `json:"committer_email,omitempty"`
-			CommitterName    *string                 `json:"committer_name,omitempty"`
-			CreatedAt        *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
-			Id               *string                 `json:"id,omitempty"`
-			Message          *string                 `json:"message,omitempty"`
-			ParentIds        *[]string               `json:"parent_ids,omitempty"`
-			ShortId          *string                 `json:"short_id,omitempty"`
-			Title            *string                 `json:"title,omitempty"`
-			Trailers         *map[string]interface{} `json:"trailers,omitempty"`
-			WebUrl           *string                 `json:"web_url,omitempty"`
+			AuthorEmail      *string         `json:"author_email,omitempty"`
+			AuthorName       *string         `json:"author_name,omitempty"`
+			AuthoredDate     *time.Time      `json:"authored_date,omitempty" jsonschema:",format=date-time"`
+			CommittedDate    *time.Time      `json:"committed_date,omitempty" jsonschema:",format=date-time"`
+			CommitterEmail   *string         `json:"committer_email,omitempty"`
+			CommitterName    *string         `json:"committer_name,omitempty"`
+			CreatedAt        *time.Time      `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			ExtendedTrailers *map[string]any `json:"extended_trailers,omitempty"`
+			Id               *string         `json:"id,omitempty"`
+			Message          *string         `json:"message,omitempty"`
+			ParentIds        *[]string       `json:"parent_ids,omitempty"`
+			ShortId          *string         `json:"short_id,omitempty"`
+			Title            *string         `json:"title,omitempty"`
+			Trailers         *map[string]any `json:"trailers,omitempty"`
+			WebUrl           *string         `json:"web_url,omitempty"`
 		} `json:"commit,omitempty" jsonschema:"description=API_Entities_Commit model"`
 		CommitPath      *string    `json:"commit_path,omitempty"`
 		CreatedAt       *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
@@ -11027,13 +11027,13 @@ type PostApiV4GroupsIdWikisResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		Content        *string                 `json:"content,omitempty"`
-		Encoding       *string                 `json:"encoding,omitempty"`
-		Format         *string                 `json:"format,omitempty"`
-		FrontMatter    *map[string]interface{} `json:"front_matter,omitempty"`
-		Slug           *string                 `json:"slug,omitempty"`
-		Title          *string                 `json:"title,omitempty"`
-		WikiPageMetaId *int32                  `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
+		Content        *string         `json:"content,omitempty"`
+		Encoding       *string         `json:"encoding,omitempty"`
+		Format         *string         `json:"format,omitempty"`
+		FrontMatter    *map[string]any `json:"front_matter,omitempty"`
+		Slug           *string         `json:"slug,omitempty"`
+		Title          *string         `json:"title,omitempty"`
+		WikiPageMetaId *int32          `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
 	}
 }
 type PostApiV4GroupsIdWikisAttachmentsResponse struct {
@@ -11057,26 +11057,26 @@ type GetApiV4GroupsIdWikisSlugResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Content        *string                 `json:"content,omitempty"`
-		Encoding       *string                 `json:"encoding,omitempty"`
-		Format         *string                 `json:"format,omitempty"`
-		FrontMatter    *map[string]interface{} `json:"front_matter,omitempty"`
-		Slug           *string                 `json:"slug,omitempty"`
-		Title          *string                 `json:"title,omitempty"`
-		WikiPageMetaId *int32                  `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
+		Content        *string         `json:"content,omitempty"`
+		Encoding       *string         `json:"encoding,omitempty"`
+		Format         *string         `json:"format,omitempty"`
+		FrontMatter    *map[string]any `json:"front_matter,omitempty"`
+		Slug           *string         `json:"slug,omitempty"`
+		Title          *string         `json:"title,omitempty"`
+		WikiPageMetaId *int32          `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
 	}
 }
 type PutApiV4GroupsIdWikisSlugResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Content        *string                 `json:"content,omitempty"`
-		Encoding       *string                 `json:"encoding,omitempty"`
-		Format         *string                 `json:"format,omitempty"`
-		FrontMatter    *map[string]interface{} `json:"front_matter,omitempty"`
-		Slug           *string                 `json:"slug,omitempty"`
-		Title          *string                 `json:"title,omitempty"`
-		WikiPageMetaId *int32                  `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
+		Content        *string         `json:"content,omitempty"`
+		Encoding       *string         `json:"encoding,omitempty"`
+		Format         *string         `json:"format,omitempty"`
+		FrontMatter    *map[string]any `json:"front_matter,omitempty"`
+		Slug           *string         `json:"slug,omitempty"`
+		Title          *string         `json:"title,omitempty"`
+		WikiPageMetaId *int32          `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
 	}
 }
 
@@ -32004,8 +32004,8 @@ func ParseGetApiV4GroupsIdPackagesNugetIndexResponse(rsp *http.Response) (*GetAp
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Resources *[]map[string]interface{} `json:"resources,omitempty"`
-			Version   *string                   `json:"version,omitempty"`
+			Resources *[]map[string]any `json:"resources,omitempty"`
+			Version   *string           `json:"version,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -32256,20 +32256,20 @@ func ParsePostApiV4GroupsIdAccessTokensSelfRotateResponse(rsp *http.Response) (*
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AccessLevel  *int32         `json:"access_level,omitempty" jsonschema:",format=int32,enum=10,enum=20,enum=30,enum=40,enum=50"`
-			Active       *bool          `json:"active,omitempty"`
-			CreatedAt    *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			Description  *string        `json:"description,omitempty"`
-			ExpiresAt    *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id           *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			LastUsedAt   *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-			Name         *string        `json:"name,omitempty"`
-			ResourceId   *int32         `json:"resource_id,omitempty" jsonschema:",format=int32"`
-			ResourceType *string        `json:"resource_type,omitempty" jsonschema:",enum=project,enum=group"`
-			Revoked      *bool          `json:"revoked,omitempty"`
-			Scopes       *[]interface{} `json:"scopes,omitempty"`
-			Token        *string        `json:"token,omitempty"`
-			UserId       *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+			AccessLevel  *int32     `json:"access_level,omitempty" jsonschema:",format=int32,enum=10,enum=20,enum=30,enum=40,enum=50"`
+			Active       *bool      `json:"active,omitempty"`
+			CreatedAt    *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			Description  *string    `json:"description,omitempty"`
+			ExpiresAt    *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id           *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastUsedAt   *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+			Name         *string    `json:"name,omitempty"`
+			ResourceId   *int32     `json:"resource_id,omitempty" jsonschema:",format=int32"`
+			ResourceType *string    `json:"resource_type,omitempty" jsonschema:",enum=project,enum=group"`
+			Revoked      *bool      `json:"revoked,omitempty"`
+			Scopes       *[]any     `json:"scopes,omitempty"`
+			Token        *string    `json:"token,omitempty"`
+			UserId       *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -33380,13 +33380,13 @@ func ParseGetApiV4GroupsIdDeployTokensResponse(rsp *http.Response) (*GetApiV4Gro
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
-			Expired   *bool          `json:"expired,omitempty"`
-			ExpiresAt *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id        *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			Name      *string        `json:"name,omitempty"`
-			Revoked   *bool          `json:"revoked,omitempty"`
-			Scopes    *[]interface{} `json:"scopes,omitempty"`
-			Username  *string        `json:"username,omitempty"`
+			Expired   *bool      `json:"expired,omitempty"`
+			ExpiresAt *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			Name      *string    `json:"name,omitempty"`
+			Revoked   *bool      `json:"revoked,omitempty"`
+			Scopes    *[]any     `json:"scopes,omitempty"`
+			Username  *string    `json:"username,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -33412,14 +33412,14 @@ func ParsePostApiV4GroupsIdDeployTokensResponse(rsp *http.Response) (*PostApiV4G
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			Expired   *bool          `json:"expired,omitempty"`
-			ExpiresAt *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id        *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			Name      *string        `json:"name,omitempty"`
-			Revoked   *bool          `json:"revoked,omitempty"`
-			Scopes    *[]interface{} `json:"scopes,omitempty"`
-			Token     *string        `json:"token,omitempty"`
-			Username  *string        `json:"username,omitempty"`
+			Expired   *bool      `json:"expired,omitempty"`
+			ExpiresAt *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			Name      *string    `json:"name,omitempty"`
+			Revoked   *bool      `json:"revoked,omitempty"`
+			Scopes    *[]any     `json:"scopes,omitempty"`
+			Token     *string    `json:"token,omitempty"`
+			Username  *string    `json:"username,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -33459,13 +33459,13 @@ func ParseGetApiV4GroupsIdDeployTokensTokenIdResponse(rsp *http.Response) (*GetA
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Expired   *bool          `json:"expired,omitempty"`
-			ExpiresAt *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id        *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			Name      *string        `json:"name,omitempty"`
-			Revoked   *bool          `json:"revoked,omitempty"`
-			Scopes    *[]interface{} `json:"scopes,omitempty"`
-			Username  *string        `json:"username,omitempty"`
+			Expired   *bool      `json:"expired,omitempty"`
+			ExpiresAt *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			Name      *string    `json:"name,omitempty"`
+			Revoked   *bool      `json:"revoked,omitempty"`
+			Scopes    *[]any     `json:"scopes,omitempty"`
+			Username  *string    `json:"username,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -36686,30 +36686,30 @@ func ParseGetApiV4GroupsIdIntegrationsSlugResponse(rsp *http.Response) (*GetApiV
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Active                   *bool                   `json:"active,omitempty"`
-			AlertEvents              *bool                   `json:"alert_events,omitempty"`
-			CommentOnEventEnabled    *bool                   `json:"comment_on_event_enabled,omitempty"`
-			CommitEvents             *bool                   `json:"commit_events,omitempty"`
-			ConfidentialIssuesEvents *bool                   `json:"confidential_issues_events,omitempty"`
-			ConfidentialNoteEvents   *bool                   `json:"confidential_note_events,omitempty"`
-			CreatedAt                *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			DeploymentEvents         *bool                   `json:"deployment_events,omitempty"`
-			Id                       *int32                  `json:"id,omitempty" jsonschema:",format=int32"`
-			IncidentEvents           *bool                   `json:"incident_events,omitempty"`
-			Inherited                *bool                   `json:"inherited,omitempty"`
-			IssuesEvents             *bool                   `json:"issues_events,omitempty"`
-			JobEvents                *bool                   `json:"job_events,omitempty"`
-			MergeRequestsEvents      *bool                   `json:"merge_requests_events,omitempty"`
-			NoteEvents               *bool                   `json:"note_events,omitempty"`
-			PipelineEvents           *bool                   `json:"pipeline_events,omitempty"`
-			Properties               *map[string]interface{} `json:"properties,omitempty"`
-			PushEvents               *bool                   `json:"push_events,omitempty"`
-			Slug                     *int32                  `json:"slug,omitempty" jsonschema:",format=int32"`
-			TagPushEvents            *bool                   `json:"tag_push_events,omitempty"`
-			Title                    *string                 `json:"title,omitempty"`
-			UpdatedAt                *time.Time              `json:"updated_at,omitempty" jsonschema:",format=date-time"`
-			VulnerabilityEvents      *bool                   `json:"vulnerability_events,omitempty"`
-			WikiPageEvents           *bool                   `json:"wiki_page_events,omitempty"`
+			Active                   *bool           `json:"active,omitempty"`
+			AlertEvents              *bool           `json:"alert_events,omitempty"`
+			CommentOnEventEnabled    *bool           `json:"comment_on_event_enabled,omitempty"`
+			CommitEvents             *bool           `json:"commit_events,omitempty"`
+			ConfidentialIssuesEvents *bool           `json:"confidential_issues_events,omitempty"`
+			ConfidentialNoteEvents   *bool           `json:"confidential_note_events,omitempty"`
+			CreatedAt                *time.Time      `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			DeploymentEvents         *bool           `json:"deployment_events,omitempty"`
+			Id                       *int32          `json:"id,omitempty" jsonschema:",format=int32"`
+			IncidentEvents           *bool           `json:"incident_events,omitempty"`
+			Inherited                *bool           `json:"inherited,omitempty"`
+			IssuesEvents             *bool           `json:"issues_events,omitempty"`
+			JobEvents                *bool           `json:"job_events,omitempty"`
+			MergeRequestsEvents      *bool           `json:"merge_requests_events,omitempty"`
+			NoteEvents               *bool           `json:"note_events,omitempty"`
+			PipelineEvents           *bool           `json:"pipeline_events,omitempty"`
+			Properties               *map[string]any `json:"properties,omitempty"`
+			PushEvents               *bool           `json:"push_events,omitempty"`
+			Slug                     *int32          `json:"slug,omitempty" jsonschema:",format=int32"`
+			TagPushEvents            *bool           `json:"tag_push_events,omitempty"`
+			Title                    *string         `json:"title,omitempty"`
+			UpdatedAt                *time.Time      `json:"updated_at,omitempty" jsonschema:",format=date-time"`
+			VulnerabilityEvents      *bool           `json:"vulnerability_events,omitempty"`
+			WikiPageEvents           *bool           `json:"wiki_page_events,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -39799,21 +39799,21 @@ func ParseGetApiV4GroupsIdReleasesResponse(rsp *http.Response) (*GetApiV4GroupsI
 
 			// Commit API_Entities_Commit model
 			Commit *struct {
-				AuthorEmail      *string                 `json:"author_email,omitempty"`
-				AuthorName       *string                 `json:"author_name,omitempty"`
-				AuthoredDate     *time.Time              `json:"authored_date,omitempty" jsonschema:",format=date-time"`
-				CommittedDate    *time.Time              `json:"committed_date,omitempty" jsonschema:",format=date-time"`
-				CommitterEmail   *string                 `json:"committer_email,omitempty"`
-				CommitterName    *string                 `json:"committer_name,omitempty"`
-				CreatedAt        *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
-				ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
-				Id               *string                 `json:"id,omitempty"`
-				Message          *string                 `json:"message,omitempty"`
-				ParentIds        *[]string               `json:"parent_ids,omitempty"`
-				ShortId          *string                 `json:"short_id,omitempty"`
-				Title            *string                 `json:"title,omitempty"`
-				Trailers         *map[string]interface{} `json:"trailers,omitempty"`
-				WebUrl           *string                 `json:"web_url,omitempty"`
+				AuthorEmail      *string         `json:"author_email,omitempty"`
+				AuthorName       *string         `json:"author_name,omitempty"`
+				AuthoredDate     *time.Time      `json:"authored_date,omitempty" jsonschema:",format=date-time"`
+				CommittedDate    *time.Time      `json:"committed_date,omitempty" jsonschema:",format=date-time"`
+				CommitterEmail   *string         `json:"committer_email,omitempty"`
+				CommitterName    *string         `json:"committer_name,omitempty"`
+				CreatedAt        *time.Time      `json:"created_at,omitempty" jsonschema:",format=date-time"`
+				ExtendedTrailers *map[string]any `json:"extended_trailers,omitempty"`
+				Id               *string         `json:"id,omitempty"`
+				Message          *string         `json:"message,omitempty"`
+				ParentIds        *[]string       `json:"parent_ids,omitempty"`
+				ShortId          *string         `json:"short_id,omitempty"`
+				Title            *string         `json:"title,omitempty"`
+				Trailers         *map[string]any `json:"trailers,omitempty"`
+				WebUrl           *string         `json:"web_url,omitempty"`
 			} `json:"commit,omitempty" jsonschema:"description=API_Entities_Commit model"`
 			CommitPath      *string    `json:"commit_path,omitempty"`
 			CreatedAt       *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
@@ -41617,13 +41617,13 @@ func ParsePostApiV4GroupsIdWikisResponse(rsp *http.Response) (*PostApiV4GroupsId
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			Content        *string                 `json:"content,omitempty"`
-			Encoding       *string                 `json:"encoding,omitempty"`
-			Format         *string                 `json:"format,omitempty"`
-			FrontMatter    *map[string]interface{} `json:"front_matter,omitempty"`
-			Slug           *string                 `json:"slug,omitempty"`
-			Title          *string                 `json:"title,omitempty"`
-			WikiPageMetaId *int32                  `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
+			Content        *string         `json:"content,omitempty"`
+			Encoding       *string         `json:"encoding,omitempty"`
+			Format         *string         `json:"format,omitempty"`
+			FrontMatter    *map[string]any `json:"front_matter,omitempty"`
+			Slug           *string         `json:"slug,omitempty"`
+			Title          *string         `json:"title,omitempty"`
+			WikiPageMetaId *int32          `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -41695,13 +41695,13 @@ func ParseGetApiV4GroupsIdWikisSlugResponse(rsp *http.Response) (*GetApiV4Groups
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Content        *string                 `json:"content,omitempty"`
-			Encoding       *string                 `json:"encoding,omitempty"`
-			Format         *string                 `json:"format,omitempty"`
-			FrontMatter    *map[string]interface{} `json:"front_matter,omitempty"`
-			Slug           *string                 `json:"slug,omitempty"`
-			Title          *string                 `json:"title,omitempty"`
-			WikiPageMetaId *int32                  `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
+			Content        *string         `json:"content,omitempty"`
+			Encoding       *string         `json:"encoding,omitempty"`
+			Format         *string         `json:"format,omitempty"`
+			FrontMatter    *map[string]any `json:"front_matter,omitempty"`
+			Slug           *string         `json:"slug,omitempty"`
+			Title          *string         `json:"title,omitempty"`
+			WikiPageMetaId *int32          `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -41727,13 +41727,13 @@ func ParsePutApiV4GroupsIdWikisSlugResponse(rsp *http.Response) (*PutApiV4Groups
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Content        *string                 `json:"content,omitempty"`
-			Encoding       *string                 `json:"encoding,omitempty"`
-			Format         *string                 `json:"format,omitempty"`
-			FrontMatter    *map[string]interface{} `json:"front_matter,omitempty"`
-			Slug           *string                 `json:"slug,omitempty"`
-			Title          *string                 `json:"title,omitempty"`
-			WikiPageMetaId *int32                  `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
+			Content        *string         `json:"content,omitempty"`
+			Encoding       *string         `json:"encoding,omitempty"`
+			Format         *string         `json:"format,omitempty"`
+			FrontMatter    *map[string]any `json:"front_matter,omitempty"`
+			Slug           *string         `json:"slug,omitempty"`
+			Title          *string         `json:"title,omitempty"`
+			WikiPageMetaId *int32          `json:"wiki_page_meta_id,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

@@ -537,21 +537,21 @@ type GetApiV4RunnersIdJobsResponse struct {
 
 		// Commit API_Entities_Commit model
 		Commit *struct {
-			AuthorEmail      *string                 `json:"author_email,omitempty"`
-			AuthorName       *string                 `json:"author_name,omitempty"`
-			AuthoredDate     *time.Time              `json:"authored_date,omitempty" jsonschema:",format=date-time"`
-			CommittedDate    *time.Time              `json:"committed_date,omitempty" jsonschema:",format=date-time"`
-			CommitterEmail   *string                 `json:"committer_email,omitempty"`
-			CommitterName    *string                 `json:"committer_name,omitempty"`
-			CreatedAt        *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
-			Id               *string                 `json:"id,omitempty"`
-			Message          *string                 `json:"message,omitempty"`
-			ParentIds        *[]string               `json:"parent_ids,omitempty"`
-			ShortId          *string                 `json:"short_id,omitempty"`
-			Title            *string                 `json:"title,omitempty"`
-			Trailers         *map[string]interface{} `json:"trailers,omitempty"`
-			WebUrl           *string                 `json:"web_url,omitempty"`
+			AuthorEmail      *string         `json:"author_email,omitempty"`
+			AuthorName       *string         `json:"author_name,omitempty"`
+			AuthoredDate     *time.Time      `json:"authored_date,omitempty" jsonschema:",format=date-time"`
+			CommittedDate    *time.Time      `json:"committed_date,omitempty" jsonschema:",format=date-time"`
+			CommitterEmail   *string         `json:"committer_email,omitempty"`
+			CommitterName    *string         `json:"committer_name,omitempty"`
+			CreatedAt        *time.Time      `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			ExtendedTrailers *map[string]any `json:"extended_trailers,omitempty"`
+			Id               *string         `json:"id,omitempty"`
+			Message          *string         `json:"message,omitempty"`
+			ParentIds        *[]string       `json:"parent_ids,omitempty"`
+			ShortId          *string         `json:"short_id,omitempty"`
+			Title            *string         `json:"title,omitempty"`
+			Trailers         *map[string]any `json:"trailers,omitempty"`
+			WebUrl           *string         `json:"web_url,omitempty"`
 		} `json:"commit,omitempty" jsonschema:"description=API_Entities_Commit model"`
 		Coverage  *float32   `json:"coverage,omitempty" jsonschema:",format=float"`
 		CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
@@ -2555,21 +2555,21 @@ func ParseGetApiV4RunnersIdJobsResponse(rsp *http.Response) (*GetApiV4RunnersIdJ
 
 			// Commit API_Entities_Commit model
 			Commit *struct {
-				AuthorEmail      *string                 `json:"author_email,omitempty"`
-				AuthorName       *string                 `json:"author_name,omitempty"`
-				AuthoredDate     *time.Time              `json:"authored_date,omitempty" jsonschema:",format=date-time"`
-				CommittedDate    *time.Time              `json:"committed_date,omitempty" jsonschema:",format=date-time"`
-				CommitterEmail   *string                 `json:"committer_email,omitempty"`
-				CommitterName    *string                 `json:"committer_name,omitempty"`
-				CreatedAt        *time.Time              `json:"created_at,omitempty" jsonschema:",format=date-time"`
-				ExtendedTrailers *map[string]interface{} `json:"extended_trailers,omitempty"`
-				Id               *string                 `json:"id,omitempty"`
-				Message          *string                 `json:"message,omitempty"`
-				ParentIds        *[]string               `json:"parent_ids,omitempty"`
-				ShortId          *string                 `json:"short_id,omitempty"`
-				Title            *string                 `json:"title,omitempty"`
-				Trailers         *map[string]interface{} `json:"trailers,omitempty"`
-				WebUrl           *string                 `json:"web_url,omitempty"`
+				AuthorEmail      *string         `json:"author_email,omitempty"`
+				AuthorName       *string         `json:"author_name,omitempty"`
+				AuthoredDate     *time.Time      `json:"authored_date,omitempty" jsonschema:",format=date-time"`
+				CommittedDate    *time.Time      `json:"committed_date,omitempty" jsonschema:",format=date-time"`
+				CommitterEmail   *string         `json:"committer_email,omitempty"`
+				CommitterName    *string         `json:"committer_name,omitempty"`
+				CreatedAt        *time.Time      `json:"created_at,omitempty" jsonschema:",format=date-time"`
+				ExtendedTrailers *map[string]any `json:"extended_trailers,omitempty"`
+				Id               *string         `json:"id,omitempty"`
+				Message          *string         `json:"message,omitempty"`
+				ParentIds        *[]string       `json:"parent_ids,omitempty"`
+				ShortId          *string         `json:"short_id,omitempty"`
+				Title            *string         `json:"title,omitempty"`
+				Trailers         *map[string]any `json:"trailers,omitempty"`
+				WebUrl           *string         `json:"web_url,omitempty"`
 			} `json:"commit,omitempty" jsonschema:"description=API_Entities_Commit model"`
 			Coverage  *float32   `json:"coverage,omitempty" jsonschema:",format=float"`
 			CreatedAt *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`

@@ -26,7 +26,7 @@ type GetApiV4UsageDataMetricDefinitionsParams struct {
 }
 type PostApiV4UsageDataTrackEventJSONBody struct {
 	// AdditionalProperties Additional properties to be tracked
-	AdditionalProperties *map[string]interface{} `json:"additional_properties,omitempty" jsonschema:"description=Additional properties to be tracked"`
+	AdditionalProperties *map[string]any `json:"additional_properties,omitempty" jsonschema:"description=Additional properties to be tracked"`
 
 	// Event The event name that should be tracked
 	Event string `json:"event" jsonschema:"description=The event name that should be tracked"`
@@ -44,7 +44,7 @@ type PostApiV4UsageDataTrackEventsJSONBody struct {
 	// Events An array of internal events. Maximum 50 events allowed.
 	Events []struct {
 		// AdditionalProperties Additional properties to be tracked
-		AdditionalProperties *map[string]interface{} `json:"additional_properties,omitempty" jsonschema:"description=Additional properties to be tracked"`
+		AdditionalProperties *map[string]any `json:"additional_properties,omitempty" jsonschema:"description=Additional properties to be tracked"`
 
 		// Event The event name that should be tracked
 		Event string `json:"event" jsonschema:"description=The event name that should be tracked"`

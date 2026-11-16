@@ -141,92 +141,92 @@ type GetApiV4HooksResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
-		AlertStatus            *string                   `json:"alert_status,omitempty"`
-		BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-		CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
-		CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
-		Description            *string                   `json:"description,omitempty"`
-		DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
-		EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
-		Id                     *string                   `json:"id,omitempty"`
-		MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
-		Name                   *string                   `json:"name,omitempty"`
-		PushEvents             *bool                     `json:"push_events,omitempty"`
-		PushEventsBranchFilter *string                   `json:"push_events_branch_filter,omitempty"`
-		RepositoryUpdateEvents *bool                     `json:"repository_update_events,omitempty"`
-		TagPushEvents          *bool                     `json:"tag_push_events,omitempty"`
-		Url                    *string                   `json:"url,omitempty"`
-		UrlVariables           *[]map[string]interface{} `json:"url_variables,omitempty"`
+		AlertStatus            *string           `json:"alert_status,omitempty"`
+		BranchFilterStrategy   *string           `json:"branch_filter_strategy,omitempty"`
+		CreatedAt              *time.Time        `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		CustomHeaders          *[]map[string]any `json:"custom_headers,omitempty"`
+		CustomWebhookTemplate  *string           `json:"custom_webhook_template,omitempty"`
+		Description            *string           `json:"description,omitempty"`
+		DisabledUntil          *time.Time        `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
+		EnableSslVerification  *bool             `json:"enable_ssl_verification,omitempty"`
+		Id                     *string           `json:"id,omitempty"`
+		MergeRequestsEvents    *bool             `json:"merge_requests_events,omitempty"`
+		Name                   *string           `json:"name,omitempty"`
+		PushEvents             *bool             `json:"push_events,omitempty"`
+		PushEventsBranchFilter *string           `json:"push_events_branch_filter,omitempty"`
+		RepositoryUpdateEvents *bool             `json:"repository_update_events,omitempty"`
+		TagPushEvents          *bool             `json:"tag_push_events,omitempty"`
+		Url                    *string           `json:"url,omitempty"`
+		UrlVariables           *[]map[string]any `json:"url_variables,omitempty"`
 	}
 }
 type PostApiV4HooksResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		AlertStatus            *string                   `json:"alert_status,omitempty"`
-		BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-		CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
-		CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
-		Description            *string                   `json:"description,omitempty"`
-		DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
-		EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
-		Id                     *string                   `json:"id,omitempty"`
-		MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
-		Name                   *string                   `json:"name,omitempty"`
-		PushEvents             *bool                     `json:"push_events,omitempty"`
-		PushEventsBranchFilter *string                   `json:"push_events_branch_filter,omitempty"`
-		RepositoryUpdateEvents *bool                     `json:"repository_update_events,omitempty"`
-		TagPushEvents          *bool                     `json:"tag_push_events,omitempty"`
-		Url                    *string                   `json:"url,omitempty"`
-		UrlVariables           *[]map[string]interface{} `json:"url_variables,omitempty"`
+		AlertStatus            *string           `json:"alert_status,omitempty"`
+		BranchFilterStrategy   *string           `json:"branch_filter_strategy,omitempty"`
+		CreatedAt              *time.Time        `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		CustomHeaders          *[]map[string]any `json:"custom_headers,omitempty"`
+		CustomWebhookTemplate  *string           `json:"custom_webhook_template,omitempty"`
+		Description            *string           `json:"description,omitempty"`
+		DisabledUntil          *time.Time        `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
+		EnableSslVerification  *bool             `json:"enable_ssl_verification,omitempty"`
+		Id                     *string           `json:"id,omitempty"`
+		MergeRequestsEvents    *bool             `json:"merge_requests_events,omitempty"`
+		Name                   *string           `json:"name,omitempty"`
+		PushEvents             *bool             `json:"push_events,omitempty"`
+		PushEventsBranchFilter *string           `json:"push_events_branch_filter,omitempty"`
+		RepositoryUpdateEvents *bool             `json:"repository_update_events,omitempty"`
+		TagPushEvents          *bool             `json:"tag_push_events,omitempty"`
+		Url                    *string           `json:"url,omitempty"`
+		UrlVariables           *[]map[string]any `json:"url_variables,omitempty"`
 	}
 }
 type DeleteApiV4HooksHookIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON204      *struct {
-		AlertStatus            *string                   `json:"alert_status,omitempty"`
-		BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-		CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
-		CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
-		Description            *string                   `json:"description,omitempty"`
-		DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
-		EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
-		Id                     *string                   `json:"id,omitempty"`
-		MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
-		Name                   *string                   `json:"name,omitempty"`
-		PushEvents             *bool                     `json:"push_events,omitempty"`
-		PushEventsBranchFilter *string                   `json:"push_events_branch_filter,omitempty"`
-		RepositoryUpdateEvents *bool                     `json:"repository_update_events,omitempty"`
-		TagPushEvents          *bool                     `json:"tag_push_events,omitempty"`
-		Url                    *string                   `json:"url,omitempty"`
-		UrlVariables           *[]map[string]interface{} `json:"url_variables,omitempty"`
+		AlertStatus            *string           `json:"alert_status,omitempty"`
+		BranchFilterStrategy   *string           `json:"branch_filter_strategy,omitempty"`
+		CreatedAt              *time.Time        `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		CustomHeaders          *[]map[string]any `json:"custom_headers,omitempty"`
+		CustomWebhookTemplate  *string           `json:"custom_webhook_template,omitempty"`
+		Description            *string           `json:"description,omitempty"`
+		DisabledUntil          *time.Time        `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
+		EnableSslVerification  *bool             `json:"enable_ssl_verification,omitempty"`
+		Id                     *string           `json:"id,omitempty"`
+		MergeRequestsEvents    *bool             `json:"merge_requests_events,omitempty"`
+		Name                   *string           `json:"name,omitempty"`
+		PushEvents             *bool             `json:"push_events,omitempty"`
+		PushEventsBranchFilter *string           `json:"push_events_branch_filter,omitempty"`
+		RepositoryUpdateEvents *bool             `json:"repository_update_events,omitempty"`
+		TagPushEvents          *bool             `json:"tag_push_events,omitempty"`
+		Url                    *string           `json:"url,omitempty"`
+		UrlVariables           *[]map[string]any `json:"url_variables,omitempty"`
 	}
 }
 type GetApiV4HooksHookIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AlertStatus            *string                   `json:"alert_status,omitempty"`
-		BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-		CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
-		CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
-		Description            *string                   `json:"description,omitempty"`
-		DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
-		EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
-		Id                     *string                   `json:"id,omitempty"`
-		MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
-		Name                   *string                   `json:"name,omitempty"`
-		PushEvents             *bool                     `json:"push_events,omitempty"`
-		PushEventsBranchFilter *string                   `json:"push_events_branch_filter,omitempty"`
-		RepositoryUpdateEvents *bool                     `json:"repository_update_events,omitempty"`
-		TagPushEvents          *bool                     `json:"tag_push_events,omitempty"`
-		Url                    *string                   `json:"url,omitempty"`
-		UrlVariables           *[]map[string]interface{} `json:"url_variables,omitempty"`
+		AlertStatus            *string           `json:"alert_status,omitempty"`
+		BranchFilterStrategy   *string           `json:"branch_filter_strategy,omitempty"`
+		CreatedAt              *time.Time        `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		CustomHeaders          *[]map[string]any `json:"custom_headers,omitempty"`
+		CustomWebhookTemplate  *string           `json:"custom_webhook_template,omitempty"`
+		Description            *string           `json:"description,omitempty"`
+		DisabledUntil          *time.Time        `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
+		EnableSslVerification  *bool             `json:"enable_ssl_verification,omitempty"`
+		Id                     *string           `json:"id,omitempty"`
+		MergeRequestsEvents    *bool             `json:"merge_requests_events,omitempty"`
+		Name                   *string           `json:"name,omitempty"`
+		PushEvents             *bool             `json:"push_events,omitempty"`
+		PushEventsBranchFilter *string           `json:"push_events_branch_filter,omitempty"`
+		RepositoryUpdateEvents *bool             `json:"repository_update_events,omitempty"`
+		TagPushEvents          *bool             `json:"tag_push_events,omitempty"`
+		Url                    *string           `json:"url,omitempty"`
+		UrlVariables           *[]map[string]any `json:"url_variables,omitempty"`
 	}
 }
 type PostApiV4HooksHookIdResponse struct {
@@ -237,23 +237,23 @@ type PutApiV4HooksHookIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		AlertStatus            *string                   `json:"alert_status,omitempty"`
-		BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-		CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
-		CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
-		Description            *string                   `json:"description,omitempty"`
-		DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
-		EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
-		Id                     *string                   `json:"id,omitempty"`
-		MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
-		Name                   *string                   `json:"name,omitempty"`
-		PushEvents             *bool                     `json:"push_events,omitempty"`
-		PushEventsBranchFilter *string                   `json:"push_events_branch_filter,omitempty"`
-		RepositoryUpdateEvents *bool                     `json:"repository_update_events,omitempty"`
-		TagPushEvents          *bool                     `json:"tag_push_events,omitempty"`
-		Url                    *string                   `json:"url,omitempty"`
-		UrlVariables           *[]map[string]interface{} `json:"url_variables,omitempty"`
+		AlertStatus            *string           `json:"alert_status,omitempty"`
+		BranchFilterStrategy   *string           `json:"branch_filter_strategy,omitempty"`
+		CreatedAt              *time.Time        `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		CustomHeaders          *[]map[string]any `json:"custom_headers,omitempty"`
+		CustomWebhookTemplate  *string           `json:"custom_webhook_template,omitempty"`
+		Description            *string           `json:"description,omitempty"`
+		DisabledUntil          *time.Time        `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
+		EnableSslVerification  *bool             `json:"enable_ssl_verification,omitempty"`
+		Id                     *string           `json:"id,omitempty"`
+		MergeRequestsEvents    *bool             `json:"merge_requests_events,omitempty"`
+		Name                   *string           `json:"name,omitempty"`
+		PushEvents             *bool             `json:"push_events,omitempty"`
+		PushEventsBranchFilter *string           `json:"push_events_branch_filter,omitempty"`
+		RepositoryUpdateEvents *bool             `json:"repository_update_events,omitempty"`
+		TagPushEvents          *bool             `json:"tag_push_events,omitempty"`
+		Url                    *string           `json:"url,omitempty"`
+		UrlVariables           *[]map[string]any `json:"url_variables,omitempty"`
 	}
 }
 type DeleteApiV4HooksHookIdCustomHeadersKeyResponse struct {
@@ -1076,23 +1076,23 @@ func ParseGetApiV4HooksResponse(rsp *http.Response) (*GetApiV4HooksResponse, err
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
-			AlertStatus            *string                   `json:"alert_status,omitempty"`
-			BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-			CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
-			CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
-			Description            *string                   `json:"description,omitempty"`
-			DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
-			EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
-			Id                     *string                   `json:"id,omitempty"`
-			MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
-			Name                   *string                   `json:"name,omitempty"`
-			PushEvents             *bool                     `json:"push_events,omitempty"`
-			PushEventsBranchFilter *string                   `json:"push_events_branch_filter,omitempty"`
-			RepositoryUpdateEvents *bool                     `json:"repository_update_events,omitempty"`
-			TagPushEvents          *bool                     `json:"tag_push_events,omitempty"`
-			Url                    *string                   `json:"url,omitempty"`
-			UrlVariables           *[]map[string]interface{} `json:"url_variables,omitempty"`
+			AlertStatus            *string           `json:"alert_status,omitempty"`
+			BranchFilterStrategy   *string           `json:"branch_filter_strategy,omitempty"`
+			CreatedAt              *time.Time        `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			CustomHeaders          *[]map[string]any `json:"custom_headers,omitempty"`
+			CustomWebhookTemplate  *string           `json:"custom_webhook_template,omitempty"`
+			Description            *string           `json:"description,omitempty"`
+			DisabledUntil          *time.Time        `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
+			EnableSslVerification  *bool             `json:"enable_ssl_verification,omitempty"`
+			Id                     *string           `json:"id,omitempty"`
+			MergeRequestsEvents    *bool             `json:"merge_requests_events,omitempty"`
+			Name                   *string           `json:"name,omitempty"`
+			PushEvents             *bool             `json:"push_events,omitempty"`
+			PushEventsBranchFilter *string           `json:"push_events_branch_filter,omitempty"`
+			RepositoryUpdateEvents *bool             `json:"repository_update_events,omitempty"`
+			TagPushEvents          *bool             `json:"tag_push_events,omitempty"`
+			Url                    *string           `json:"url,omitempty"`
+			UrlVariables           *[]map[string]any `json:"url_variables,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1118,23 +1118,23 @@ func ParsePostApiV4HooksResponse(rsp *http.Response) (*PostApiV4HooksResponse, e
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			AlertStatus            *string                   `json:"alert_status,omitempty"`
-			BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-			CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
-			CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
-			Description            *string                   `json:"description,omitempty"`
-			DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
-			EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
-			Id                     *string                   `json:"id,omitempty"`
-			MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
-			Name                   *string                   `json:"name,omitempty"`
-			PushEvents             *bool                     `json:"push_events,omitempty"`
-			PushEventsBranchFilter *string                   `json:"push_events_branch_filter,omitempty"`
-			RepositoryUpdateEvents *bool                     `json:"repository_update_events,omitempty"`
-			TagPushEvents          *bool                     `json:"tag_push_events,omitempty"`
-			Url                    *string                   `json:"url,omitempty"`
-			UrlVariables           *[]map[string]interface{} `json:"url_variables,omitempty"`
+			AlertStatus            *string           `json:"alert_status,omitempty"`
+			BranchFilterStrategy   *string           `json:"branch_filter_strategy,omitempty"`
+			CreatedAt              *time.Time        `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			CustomHeaders          *[]map[string]any `json:"custom_headers,omitempty"`
+			CustomWebhookTemplate  *string           `json:"custom_webhook_template,omitempty"`
+			Description            *string           `json:"description,omitempty"`
+			DisabledUntil          *time.Time        `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
+			EnableSslVerification  *bool             `json:"enable_ssl_verification,omitempty"`
+			Id                     *string           `json:"id,omitempty"`
+			MergeRequestsEvents    *bool             `json:"merge_requests_events,omitempty"`
+			Name                   *string           `json:"name,omitempty"`
+			PushEvents             *bool             `json:"push_events,omitempty"`
+			PushEventsBranchFilter *string           `json:"push_events_branch_filter,omitempty"`
+			RepositoryUpdateEvents *bool             `json:"repository_update_events,omitempty"`
+			TagPushEvents          *bool             `json:"tag_push_events,omitempty"`
+			Url                    *string           `json:"url,omitempty"`
+			UrlVariables           *[]map[string]any `json:"url_variables,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1160,23 +1160,23 @@ func ParseDeleteApiV4HooksHookIdResponse(rsp *http.Response) (*DeleteApiV4HooksH
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 204:
 		var dest struct {
-			AlertStatus            *string                   `json:"alert_status,omitempty"`
-			BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-			CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
-			CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
-			Description            *string                   `json:"description,omitempty"`
-			DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
-			EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
-			Id                     *string                   `json:"id,omitempty"`
-			MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
-			Name                   *string                   `json:"name,omitempty"`
-			PushEvents             *bool                     `json:"push_events,omitempty"`
-			PushEventsBranchFilter *string                   `json:"push_events_branch_filter,omitempty"`
-			RepositoryUpdateEvents *bool                     `json:"repository_update_events,omitempty"`
-			TagPushEvents          *bool                     `json:"tag_push_events,omitempty"`
-			Url                    *string                   `json:"url,omitempty"`
-			UrlVariables           *[]map[string]interface{} `json:"url_variables,omitempty"`
+			AlertStatus            *string           `json:"alert_status,omitempty"`
+			BranchFilterStrategy   *string           `json:"branch_filter_strategy,omitempty"`
+			CreatedAt              *time.Time        `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			CustomHeaders          *[]map[string]any `json:"custom_headers,omitempty"`
+			CustomWebhookTemplate  *string           `json:"custom_webhook_template,omitempty"`
+			Description            *string           `json:"description,omitempty"`
+			DisabledUntil          *time.Time        `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
+			EnableSslVerification  *bool             `json:"enable_ssl_verification,omitempty"`
+			Id                     *string           `json:"id,omitempty"`
+			MergeRequestsEvents    *bool             `json:"merge_requests_events,omitempty"`
+			Name                   *string           `json:"name,omitempty"`
+			PushEvents             *bool             `json:"push_events,omitempty"`
+			PushEventsBranchFilter *string           `json:"push_events_branch_filter,omitempty"`
+			RepositoryUpdateEvents *bool             `json:"repository_update_events,omitempty"`
+			TagPushEvents          *bool             `json:"tag_push_events,omitempty"`
+			Url                    *string           `json:"url,omitempty"`
+			UrlVariables           *[]map[string]any `json:"url_variables,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1202,23 +1202,23 @@ func ParseGetApiV4HooksHookIdResponse(rsp *http.Response) (*GetApiV4HooksHookIdR
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AlertStatus            *string                   `json:"alert_status,omitempty"`
-			BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-			CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
-			CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
-			Description            *string                   `json:"description,omitempty"`
-			DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
-			EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
-			Id                     *string                   `json:"id,omitempty"`
-			MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
-			Name                   *string                   `json:"name,omitempty"`
-			PushEvents             *bool                     `json:"push_events,omitempty"`
-			PushEventsBranchFilter *string                   `json:"push_events_branch_filter,omitempty"`
-			RepositoryUpdateEvents *bool                     `json:"repository_update_events,omitempty"`
-			TagPushEvents          *bool                     `json:"tag_push_events,omitempty"`
-			Url                    *string                   `json:"url,omitempty"`
-			UrlVariables           *[]map[string]interface{} `json:"url_variables,omitempty"`
+			AlertStatus            *string           `json:"alert_status,omitempty"`
+			BranchFilterStrategy   *string           `json:"branch_filter_strategy,omitempty"`
+			CreatedAt              *time.Time        `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			CustomHeaders          *[]map[string]any `json:"custom_headers,omitempty"`
+			CustomWebhookTemplate  *string           `json:"custom_webhook_template,omitempty"`
+			Description            *string           `json:"description,omitempty"`
+			DisabledUntil          *time.Time        `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
+			EnableSslVerification  *bool             `json:"enable_ssl_verification,omitempty"`
+			Id                     *string           `json:"id,omitempty"`
+			MergeRequestsEvents    *bool             `json:"merge_requests_events,omitempty"`
+			Name                   *string           `json:"name,omitempty"`
+			PushEvents             *bool             `json:"push_events,omitempty"`
+			PushEventsBranchFilter *string           `json:"push_events_branch_filter,omitempty"`
+			RepositoryUpdateEvents *bool             `json:"repository_update_events,omitempty"`
+			TagPushEvents          *bool             `json:"tag_push_events,omitempty"`
+			Url                    *string           `json:"url,omitempty"`
+			UrlVariables           *[]map[string]any `json:"url_variables,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1258,23 +1258,23 @@ func ParsePutApiV4HooksHookIdResponse(rsp *http.Response) (*PutApiV4HooksHookIdR
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			AlertStatus            *string                   `json:"alert_status,omitempty"`
-			BranchFilterStrategy   *string                   `json:"branch_filter_strategy,omitempty"`
-			CreatedAt              *time.Time                `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			CustomHeaders          *[]map[string]interface{} `json:"custom_headers,omitempty"`
-			CustomWebhookTemplate  *string                   `json:"custom_webhook_template,omitempty"`
-			Description            *string                   `json:"description,omitempty"`
-			DisabledUntil          *time.Time                `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
-			EnableSslVerification  *bool                     `json:"enable_ssl_verification,omitempty"`
-			Id                     *string                   `json:"id,omitempty"`
-			MergeRequestsEvents    *bool                     `json:"merge_requests_events,omitempty"`
-			Name                   *string                   `json:"name,omitempty"`
-			PushEvents             *bool                     `json:"push_events,omitempty"`
-			PushEventsBranchFilter *string                   `json:"push_events_branch_filter,omitempty"`
-			RepositoryUpdateEvents *bool                     `json:"repository_update_events,omitempty"`
-			TagPushEvents          *bool                     `json:"tag_push_events,omitempty"`
-			Url                    *string                   `json:"url,omitempty"`
-			UrlVariables           *[]map[string]interface{} `json:"url_variables,omitempty"`
+			AlertStatus            *string           `json:"alert_status,omitempty"`
+			BranchFilterStrategy   *string           `json:"branch_filter_strategy,omitempty"`
+			CreatedAt              *time.Time        `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			CustomHeaders          *[]map[string]any `json:"custom_headers,omitempty"`
+			CustomWebhookTemplate  *string           `json:"custom_webhook_template,omitempty"`
+			Description            *string           `json:"description,omitempty"`
+			DisabledUntil          *time.Time        `json:"disabled_until,omitempty" jsonschema:",format=date-time"`
+			EnableSslVerification  *bool             `json:"enable_ssl_verification,omitempty"`
+			Id                     *string           `json:"id,omitempty"`
+			MergeRequestsEvents    *bool             `json:"merge_requests_events,omitempty"`
+			Name                   *string           `json:"name,omitempty"`
+			PushEvents             *bool             `json:"push_events,omitempty"`
+			PushEventsBranchFilter *string           `json:"push_events_branch_filter,omitempty"`
+			RepositoryUpdateEvents *bool             `json:"repository_update_events,omitempty"`
+			TagPushEvents          *bool             `json:"tag_push_events,omitempty"`
+			Url                    *string           `json:"url,omitempty"`
+			UrlVariables           *[]map[string]any `json:"url_variables,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

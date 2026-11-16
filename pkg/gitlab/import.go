@@ -60,7 +60,7 @@ type PostApiV4ImportGithubJSONBody struct {
 	NewName *string `json:"new_name,omitempty" jsonschema:"description=New repo name"`
 
 	// OptionalStages Optional stages of import to be performed
-	OptionalStages *map[string]interface{} `json:"optional_stages,omitempty" jsonschema:"description=Optional stages of import to be performed"`
+	OptionalStages *map[string]any `json:"optional_stages,omitempty" jsonschema:"description=Optional stages of import to be performed"`
 
 	// PaginationLimit Pagination limit
 	PaginationLimit *int32 `json:"pagination_limit,omitempty" jsonschema:"description=Pagination limit,format=int32"`

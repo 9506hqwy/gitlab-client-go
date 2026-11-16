@@ -215,58 +215,58 @@ type GetApiV4ApplicationPlanLimitsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		CiActiveJobs               *int32                  `json:"ci_active_jobs,omitempty" jsonschema:",format=int32"`
-		CiInstanceLevelVariables   *int32                  `json:"ci_instance_level_variables,omitempty" jsonschema:",format=int32"`
-		CiNeedsSizeLimit           *int32                  `json:"ci_needs_size_limit,omitempty" jsonschema:",format=int32"`
-		CiPipelineSchedules        *int32                  `json:"ci_pipeline_schedules,omitempty" jsonschema:",format=int32"`
-		CiPipelineSize             *int32                  `json:"ci_pipeline_size,omitempty" jsonschema:",format=int32"`
-		CiProjectSubscriptions     *int32                  `json:"ci_project_subscriptions,omitempty" jsonschema:",format=int32"`
-		CiRegisteredGroupRunners   *int32                  `json:"ci_registered_group_runners,omitempty" jsonschema:",format=int32"`
-		CiRegisteredProjectRunners *int32                  `json:"ci_registered_project_runners,omitempty" jsonschema:",format=int32"`
-		ConanMaxFileSize           *int32                  `json:"conan_max_file_size,omitempty" jsonschema:",format=int32"`
-		DotenvSize                 *int32                  `json:"dotenv_size,omitempty" jsonschema:",format=int32"`
-		DotenvVariables            *int32                  `json:"dotenv_variables,omitempty" jsonschema:",format=int32"`
-		EnforcementLimit           *int32                  `json:"enforcement_limit,omitempty" jsonschema:",format=int32"`
-		GenericPackagesMaxFileSize *int32                  `json:"generic_packages_max_file_size,omitempty" jsonschema:",format=int32"`
-		HelmMaxFileSize            *int32                  `json:"helm_max_file_size,omitempty" jsonschema:",format=int32"`
-		LimitsHistory              *map[string]interface{} `json:"limits_history,omitempty"`
-		MavenMaxFileSize           *int32                  `json:"maven_max_file_size,omitempty" jsonschema:",format=int32"`
-		NotificationLimit          *int32                  `json:"notification_limit,omitempty" jsonschema:",format=int32"`
-		NpmMaxFileSize             *int32                  `json:"npm_max_file_size,omitempty" jsonschema:",format=int32"`
-		NugetMaxFileSize           *int32                  `json:"nuget_max_file_size,omitempty" jsonschema:",format=int32"`
-		PipelineHierarchySize      *int32                  `json:"pipeline_hierarchy_size,omitempty" jsonschema:",format=int32"`
-		PypiMaxFileSize            *int32                  `json:"pypi_max_file_size,omitempty" jsonschema:",format=int32"`
-		StorageSizeLimit           *int32                  `json:"storage_size_limit,omitempty" jsonschema:",format=int32"`
-		TerraformModuleMaxFileSize *int32                  `json:"terraform_module_max_file_size,omitempty" jsonschema:",format=int32"`
+		CiActiveJobs               *int32          `json:"ci_active_jobs,omitempty" jsonschema:",format=int32"`
+		CiInstanceLevelVariables   *int32          `json:"ci_instance_level_variables,omitempty" jsonschema:",format=int32"`
+		CiNeedsSizeLimit           *int32          `json:"ci_needs_size_limit,omitempty" jsonschema:",format=int32"`
+		CiPipelineSchedules        *int32          `json:"ci_pipeline_schedules,omitempty" jsonschema:",format=int32"`
+		CiPipelineSize             *int32          `json:"ci_pipeline_size,omitempty" jsonschema:",format=int32"`
+		CiProjectSubscriptions     *int32          `json:"ci_project_subscriptions,omitempty" jsonschema:",format=int32"`
+		CiRegisteredGroupRunners   *int32          `json:"ci_registered_group_runners,omitempty" jsonschema:",format=int32"`
+		CiRegisteredProjectRunners *int32          `json:"ci_registered_project_runners,omitempty" jsonschema:",format=int32"`
+		ConanMaxFileSize           *int32          `json:"conan_max_file_size,omitempty" jsonschema:",format=int32"`
+		DotenvSize                 *int32          `json:"dotenv_size,omitempty" jsonschema:",format=int32"`
+		DotenvVariables            *int32          `json:"dotenv_variables,omitempty" jsonschema:",format=int32"`
+		EnforcementLimit           *int32          `json:"enforcement_limit,omitempty" jsonschema:",format=int32"`
+		GenericPackagesMaxFileSize *int32          `json:"generic_packages_max_file_size,omitempty" jsonschema:",format=int32"`
+		HelmMaxFileSize            *int32          `json:"helm_max_file_size,omitempty" jsonschema:",format=int32"`
+		LimitsHistory              *map[string]any `json:"limits_history,omitempty"`
+		MavenMaxFileSize           *int32          `json:"maven_max_file_size,omitempty" jsonschema:",format=int32"`
+		NotificationLimit          *int32          `json:"notification_limit,omitempty" jsonschema:",format=int32"`
+		NpmMaxFileSize             *int32          `json:"npm_max_file_size,omitempty" jsonschema:",format=int32"`
+		NugetMaxFileSize           *int32          `json:"nuget_max_file_size,omitempty" jsonschema:",format=int32"`
+		PipelineHierarchySize      *int32          `json:"pipeline_hierarchy_size,omitempty" jsonschema:",format=int32"`
+		PypiMaxFileSize            *int32          `json:"pypi_max_file_size,omitempty" jsonschema:",format=int32"`
+		StorageSizeLimit           *int32          `json:"storage_size_limit,omitempty" jsonschema:",format=int32"`
+		TerraformModuleMaxFileSize *int32          `json:"terraform_module_max_file_size,omitempty" jsonschema:",format=int32"`
 	}
 }
 type PutApiV4ApplicationPlanLimitsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		CiActiveJobs               *int32                  `json:"ci_active_jobs,omitempty" jsonschema:",format=int32"`
-		CiInstanceLevelVariables   *int32                  `json:"ci_instance_level_variables,omitempty" jsonschema:",format=int32"`
-		CiNeedsSizeLimit           *int32                  `json:"ci_needs_size_limit,omitempty" jsonschema:",format=int32"`
-		CiPipelineSchedules        *int32                  `json:"ci_pipeline_schedules,omitempty" jsonschema:",format=int32"`
-		CiPipelineSize             *int32                  `json:"ci_pipeline_size,omitempty" jsonschema:",format=int32"`
-		CiProjectSubscriptions     *int32                  `json:"ci_project_subscriptions,omitempty" jsonschema:",format=int32"`
-		CiRegisteredGroupRunners   *int32                  `json:"ci_registered_group_runners,omitempty" jsonschema:",format=int32"`
-		CiRegisteredProjectRunners *int32                  `json:"ci_registered_project_runners,omitempty" jsonschema:",format=int32"`
-		ConanMaxFileSize           *int32                  `json:"conan_max_file_size,omitempty" jsonschema:",format=int32"`
-		DotenvSize                 *int32                  `json:"dotenv_size,omitempty" jsonschema:",format=int32"`
-		DotenvVariables            *int32                  `json:"dotenv_variables,omitempty" jsonschema:",format=int32"`
-		EnforcementLimit           *int32                  `json:"enforcement_limit,omitempty" jsonschema:",format=int32"`
-		GenericPackagesMaxFileSize *int32                  `json:"generic_packages_max_file_size,omitempty" jsonschema:",format=int32"`
-		HelmMaxFileSize            *int32                  `json:"helm_max_file_size,omitempty" jsonschema:",format=int32"`
-		LimitsHistory              *map[string]interface{} `json:"limits_history,omitempty"`
-		MavenMaxFileSize           *int32                  `json:"maven_max_file_size,omitempty" jsonschema:",format=int32"`
-		NotificationLimit          *int32                  `json:"notification_limit,omitempty" jsonschema:",format=int32"`
-		NpmMaxFileSize             *int32                  `json:"npm_max_file_size,omitempty" jsonschema:",format=int32"`
-		NugetMaxFileSize           *int32                  `json:"nuget_max_file_size,omitempty" jsonschema:",format=int32"`
-		PipelineHierarchySize      *int32                  `json:"pipeline_hierarchy_size,omitempty" jsonschema:",format=int32"`
-		PypiMaxFileSize            *int32                  `json:"pypi_max_file_size,omitempty" jsonschema:",format=int32"`
-		StorageSizeLimit           *int32                  `json:"storage_size_limit,omitempty" jsonschema:",format=int32"`
-		TerraformModuleMaxFileSize *int32                  `json:"terraform_module_max_file_size,omitempty" jsonschema:",format=int32"`
+		CiActiveJobs               *int32          `json:"ci_active_jobs,omitempty" jsonschema:",format=int32"`
+		CiInstanceLevelVariables   *int32          `json:"ci_instance_level_variables,omitempty" jsonschema:",format=int32"`
+		CiNeedsSizeLimit           *int32          `json:"ci_needs_size_limit,omitempty" jsonschema:",format=int32"`
+		CiPipelineSchedules        *int32          `json:"ci_pipeline_schedules,omitempty" jsonschema:",format=int32"`
+		CiPipelineSize             *int32          `json:"ci_pipeline_size,omitempty" jsonschema:",format=int32"`
+		CiProjectSubscriptions     *int32          `json:"ci_project_subscriptions,omitempty" jsonschema:",format=int32"`
+		CiRegisteredGroupRunners   *int32          `json:"ci_registered_group_runners,omitempty" jsonschema:",format=int32"`
+		CiRegisteredProjectRunners *int32          `json:"ci_registered_project_runners,omitempty" jsonschema:",format=int32"`
+		ConanMaxFileSize           *int32          `json:"conan_max_file_size,omitempty" jsonschema:",format=int32"`
+		DotenvSize                 *int32          `json:"dotenv_size,omitempty" jsonschema:",format=int32"`
+		DotenvVariables            *int32          `json:"dotenv_variables,omitempty" jsonschema:",format=int32"`
+		EnforcementLimit           *int32          `json:"enforcement_limit,omitempty" jsonschema:",format=int32"`
+		GenericPackagesMaxFileSize *int32          `json:"generic_packages_max_file_size,omitempty" jsonschema:",format=int32"`
+		HelmMaxFileSize            *int32          `json:"helm_max_file_size,omitempty" jsonschema:",format=int32"`
+		LimitsHistory              *map[string]any `json:"limits_history,omitempty"`
+		MavenMaxFileSize           *int32          `json:"maven_max_file_size,omitempty" jsonschema:",format=int32"`
+		NotificationLimit          *int32          `json:"notification_limit,omitempty" jsonschema:",format=int32"`
+		NpmMaxFileSize             *int32          `json:"npm_max_file_size,omitempty" jsonschema:",format=int32"`
+		NugetMaxFileSize           *int32          `json:"nuget_max_file_size,omitempty" jsonschema:",format=int32"`
+		PipelineHierarchySize      *int32          `json:"pipeline_hierarchy_size,omitempty" jsonschema:",format=int32"`
+		PypiMaxFileSize            *int32          `json:"pypi_max_file_size,omitempty" jsonschema:",format=int32"`
+		StorageSizeLimit           *int32          `json:"storage_size_limit,omitempty" jsonschema:",format=int32"`
+		TerraformModuleMaxFileSize *int32          `json:"terraform_module_max_file_size,omitempty" jsonschema:",format=int32"`
 	}
 }
 type GetApiV4ApplicationStatisticsResponse struct {
@@ -1037,29 +1037,29 @@ func ParseGetApiV4ApplicationPlanLimitsResponse(rsp *http.Response) (*GetApiV4Ap
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			CiActiveJobs               *int32                  `json:"ci_active_jobs,omitempty" jsonschema:",format=int32"`
-			CiInstanceLevelVariables   *int32                  `json:"ci_instance_level_variables,omitempty" jsonschema:",format=int32"`
-			CiNeedsSizeLimit           *int32                  `json:"ci_needs_size_limit,omitempty" jsonschema:",format=int32"`
-			CiPipelineSchedules        *int32                  `json:"ci_pipeline_schedules,omitempty" jsonschema:",format=int32"`
-			CiPipelineSize             *int32                  `json:"ci_pipeline_size,omitempty" jsonschema:",format=int32"`
-			CiProjectSubscriptions     *int32                  `json:"ci_project_subscriptions,omitempty" jsonschema:",format=int32"`
-			CiRegisteredGroupRunners   *int32                  `json:"ci_registered_group_runners,omitempty" jsonschema:",format=int32"`
-			CiRegisteredProjectRunners *int32                  `json:"ci_registered_project_runners,omitempty" jsonschema:",format=int32"`
-			ConanMaxFileSize           *int32                  `json:"conan_max_file_size,omitempty" jsonschema:",format=int32"`
-			DotenvSize                 *int32                  `json:"dotenv_size,omitempty" jsonschema:",format=int32"`
-			DotenvVariables            *int32                  `json:"dotenv_variables,omitempty" jsonschema:",format=int32"`
-			EnforcementLimit           *int32                  `json:"enforcement_limit,omitempty" jsonschema:",format=int32"`
-			GenericPackagesMaxFileSize *int32                  `json:"generic_packages_max_file_size,omitempty" jsonschema:",format=int32"`
-			HelmMaxFileSize            *int32                  `json:"helm_max_file_size,omitempty" jsonschema:",format=int32"`
-			LimitsHistory              *map[string]interface{} `json:"limits_history,omitempty"`
-			MavenMaxFileSize           *int32                  `json:"maven_max_file_size,omitempty" jsonschema:",format=int32"`
-			NotificationLimit          *int32                  `json:"notification_limit,omitempty" jsonschema:",format=int32"`
-			NpmMaxFileSize             *int32                  `json:"npm_max_file_size,omitempty" jsonschema:",format=int32"`
-			NugetMaxFileSize           *int32                  `json:"nuget_max_file_size,omitempty" jsonschema:",format=int32"`
-			PipelineHierarchySize      *int32                  `json:"pipeline_hierarchy_size,omitempty" jsonschema:",format=int32"`
-			PypiMaxFileSize            *int32                  `json:"pypi_max_file_size,omitempty" jsonschema:",format=int32"`
-			StorageSizeLimit           *int32                  `json:"storage_size_limit,omitempty" jsonschema:",format=int32"`
-			TerraformModuleMaxFileSize *int32                  `json:"terraform_module_max_file_size,omitempty" jsonschema:",format=int32"`
+			CiActiveJobs               *int32          `json:"ci_active_jobs,omitempty" jsonschema:",format=int32"`
+			CiInstanceLevelVariables   *int32          `json:"ci_instance_level_variables,omitempty" jsonschema:",format=int32"`
+			CiNeedsSizeLimit           *int32          `json:"ci_needs_size_limit,omitempty" jsonschema:",format=int32"`
+			CiPipelineSchedules        *int32          `json:"ci_pipeline_schedules,omitempty" jsonschema:",format=int32"`
+			CiPipelineSize             *int32          `json:"ci_pipeline_size,omitempty" jsonschema:",format=int32"`
+			CiProjectSubscriptions     *int32          `json:"ci_project_subscriptions,omitempty" jsonschema:",format=int32"`
+			CiRegisteredGroupRunners   *int32          `json:"ci_registered_group_runners,omitempty" jsonschema:",format=int32"`
+			CiRegisteredProjectRunners *int32          `json:"ci_registered_project_runners,omitempty" jsonschema:",format=int32"`
+			ConanMaxFileSize           *int32          `json:"conan_max_file_size,omitempty" jsonschema:",format=int32"`
+			DotenvSize                 *int32          `json:"dotenv_size,omitempty" jsonschema:",format=int32"`
+			DotenvVariables            *int32          `json:"dotenv_variables,omitempty" jsonschema:",format=int32"`
+			EnforcementLimit           *int32          `json:"enforcement_limit,omitempty" jsonschema:",format=int32"`
+			GenericPackagesMaxFileSize *int32          `json:"generic_packages_max_file_size,omitempty" jsonschema:",format=int32"`
+			HelmMaxFileSize            *int32          `json:"helm_max_file_size,omitempty" jsonschema:",format=int32"`
+			LimitsHistory              *map[string]any `json:"limits_history,omitempty"`
+			MavenMaxFileSize           *int32          `json:"maven_max_file_size,omitempty" jsonschema:",format=int32"`
+			NotificationLimit          *int32          `json:"notification_limit,omitempty" jsonschema:",format=int32"`
+			NpmMaxFileSize             *int32          `json:"npm_max_file_size,omitempty" jsonschema:",format=int32"`
+			NugetMaxFileSize           *int32          `json:"nuget_max_file_size,omitempty" jsonschema:",format=int32"`
+			PipelineHierarchySize      *int32          `json:"pipeline_hierarchy_size,omitempty" jsonschema:",format=int32"`
+			PypiMaxFileSize            *int32          `json:"pypi_max_file_size,omitempty" jsonschema:",format=int32"`
+			StorageSizeLimit           *int32          `json:"storage_size_limit,omitempty" jsonschema:",format=int32"`
+			TerraformModuleMaxFileSize *int32          `json:"terraform_module_max_file_size,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1085,29 +1085,29 @@ func ParsePutApiV4ApplicationPlanLimitsResponse(rsp *http.Response) (*PutApiV4Ap
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			CiActiveJobs               *int32                  `json:"ci_active_jobs,omitempty" jsonschema:",format=int32"`
-			CiInstanceLevelVariables   *int32                  `json:"ci_instance_level_variables,omitempty" jsonschema:",format=int32"`
-			CiNeedsSizeLimit           *int32                  `json:"ci_needs_size_limit,omitempty" jsonschema:",format=int32"`
-			CiPipelineSchedules        *int32                  `json:"ci_pipeline_schedules,omitempty" jsonschema:",format=int32"`
-			CiPipelineSize             *int32                  `json:"ci_pipeline_size,omitempty" jsonschema:",format=int32"`
-			CiProjectSubscriptions     *int32                  `json:"ci_project_subscriptions,omitempty" jsonschema:",format=int32"`
-			CiRegisteredGroupRunners   *int32                  `json:"ci_registered_group_runners,omitempty" jsonschema:",format=int32"`
-			CiRegisteredProjectRunners *int32                  `json:"ci_registered_project_runners,omitempty" jsonschema:",format=int32"`
-			ConanMaxFileSize           *int32                  `json:"conan_max_file_size,omitempty" jsonschema:",format=int32"`
-			DotenvSize                 *int32                  `json:"dotenv_size,omitempty" jsonschema:",format=int32"`
-			DotenvVariables            *int32                  `json:"dotenv_variables,omitempty" jsonschema:",format=int32"`
-			EnforcementLimit           *int32                  `json:"enforcement_limit,omitempty" jsonschema:",format=int32"`
-			GenericPackagesMaxFileSize *int32                  `json:"generic_packages_max_file_size,omitempty" jsonschema:",format=int32"`
-			HelmMaxFileSize            *int32                  `json:"helm_max_file_size,omitempty" jsonschema:",format=int32"`
-			LimitsHistory              *map[string]interface{} `json:"limits_history,omitempty"`
-			MavenMaxFileSize           *int32                  `json:"maven_max_file_size,omitempty" jsonschema:",format=int32"`
-			NotificationLimit          *int32                  `json:"notification_limit,omitempty" jsonschema:",format=int32"`
-			NpmMaxFileSize             *int32                  `json:"npm_max_file_size,omitempty" jsonschema:",format=int32"`
-			NugetMaxFileSize           *int32                  `json:"nuget_max_file_size,omitempty" jsonschema:",format=int32"`
-			PipelineHierarchySize      *int32                  `json:"pipeline_hierarchy_size,omitempty" jsonschema:",format=int32"`
-			PypiMaxFileSize            *int32                  `json:"pypi_max_file_size,omitempty" jsonschema:",format=int32"`
-			StorageSizeLimit           *int32                  `json:"storage_size_limit,omitempty" jsonschema:",format=int32"`
-			TerraformModuleMaxFileSize *int32                  `json:"terraform_module_max_file_size,omitempty" jsonschema:",format=int32"`
+			CiActiveJobs               *int32          `json:"ci_active_jobs,omitempty" jsonschema:",format=int32"`
+			CiInstanceLevelVariables   *int32          `json:"ci_instance_level_variables,omitempty" jsonschema:",format=int32"`
+			CiNeedsSizeLimit           *int32          `json:"ci_needs_size_limit,omitempty" jsonschema:",format=int32"`
+			CiPipelineSchedules        *int32          `json:"ci_pipeline_schedules,omitempty" jsonschema:",format=int32"`
+			CiPipelineSize             *int32          `json:"ci_pipeline_size,omitempty" jsonschema:",format=int32"`
+			CiProjectSubscriptions     *int32          `json:"ci_project_subscriptions,omitempty" jsonschema:",format=int32"`
+			CiRegisteredGroupRunners   *int32          `json:"ci_registered_group_runners,omitempty" jsonschema:",format=int32"`
+			CiRegisteredProjectRunners *int32          `json:"ci_registered_project_runners,omitempty" jsonschema:",format=int32"`
+			ConanMaxFileSize           *int32          `json:"conan_max_file_size,omitempty" jsonschema:",format=int32"`
+			DotenvSize                 *int32          `json:"dotenv_size,omitempty" jsonschema:",format=int32"`
+			DotenvVariables            *int32          `json:"dotenv_variables,omitempty" jsonschema:",format=int32"`
+			EnforcementLimit           *int32          `json:"enforcement_limit,omitempty" jsonschema:",format=int32"`
+			GenericPackagesMaxFileSize *int32          `json:"generic_packages_max_file_size,omitempty" jsonschema:",format=int32"`
+			HelmMaxFileSize            *int32          `json:"helm_max_file_size,omitempty" jsonschema:",format=int32"`
+			LimitsHistory              *map[string]any `json:"limits_history,omitempty"`
+			MavenMaxFileSize           *int32          `json:"maven_max_file_size,omitempty" jsonschema:",format=int32"`
+			NotificationLimit          *int32          `json:"notification_limit,omitempty" jsonschema:",format=int32"`
+			NpmMaxFileSize             *int32          `json:"npm_max_file_size,omitempty" jsonschema:",format=int32"`
+			NugetMaxFileSize           *int32          `json:"nuget_max_file_size,omitempty" jsonschema:",format=int32"`
+			PipelineHierarchySize      *int32          `json:"pipeline_hierarchy_size,omitempty" jsonschema:",format=int32"`
+			PypiMaxFileSize            *int32          `json:"pypi_max_file_size,omitempty" jsonschema:",format=int32"`
+			StorageSizeLimit           *int32          `json:"storage_size_limit,omitempty" jsonschema:",format=int32"`
+			TerraformModuleMaxFileSize *int32          `json:"terraform_module_max_file_size,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

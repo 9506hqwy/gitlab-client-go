@@ -79,17 +79,17 @@ type GetApiV4PersonalAccessTokensResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
-		Active      *bool          `json:"active,omitempty"`
-		CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		Description *string        `json:"description,omitempty"`
-		ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-		LastUsedIps *[]interface{} `json:"last_used_ips,omitempty"`
-		Name        *string        `json:"name,omitempty"`
-		Revoked     *bool          `json:"revoked,omitempty"`
-		Scopes      *[]interface{} `json:"scopes,omitempty"`
-		UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+		Active      *bool      `json:"active,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		Description *string    `json:"description,omitempty"`
+		ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+		LastUsedIps *[]any     `json:"last_used_ips,omitempty"`
+		Name        *string    `json:"name,omitempty"`
+		Revoked     *bool      `json:"revoked,omitempty"`
+		Scopes      *[]any     `json:"scopes,omitempty"`
+		UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 	}
 }
 type DeleteApiV4PersonalAccessTokensSelfResponse struct {
@@ -100,50 +100,50 @@ type GetApiV4PersonalAccessTokensSelfResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Active      *bool          `json:"active,omitempty"`
-		CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		Description *string        `json:"description,omitempty"`
-		ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-		LastUsedIps *[]interface{} `json:"last_used_ips,omitempty"`
-		Name        *string        `json:"name,omitempty"`
-		Revoked     *bool          `json:"revoked,omitempty"`
-		Scopes      *[]interface{} `json:"scopes,omitempty"`
-		UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+		Active      *bool      `json:"active,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		Description *string    `json:"description,omitempty"`
+		ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+		LastUsedIps *[]any     `json:"last_used_ips,omitempty"`
+		Name        *string    `json:"name,omitempty"`
+		Revoked     *bool      `json:"revoked,omitempty"`
+		Scopes      *[]any     `json:"scopes,omitempty"`
+		UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 	}
 }
 type GetApiV4PersonalAccessTokensSelfAssociationsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Active      *bool          `json:"active,omitempty"`
-		CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		Description *string        `json:"description,omitempty"`
-		ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-		Name        *string        `json:"name,omitempty"`
-		Revoked     *bool          `json:"revoked,omitempty"`
-		Scopes      *[]interface{} `json:"scopes,omitempty"`
-		UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+		Active      *bool      `json:"active,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		Description *string    `json:"description,omitempty"`
+		ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+		Name        *string    `json:"name,omitempty"`
+		Revoked     *bool      `json:"revoked,omitempty"`
+		Scopes      *[]any     `json:"scopes,omitempty"`
+		UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 	}
 }
 type PostApiV4PersonalAccessTokensSelfRotateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Active      *bool          `json:"active,omitempty"`
-		CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		Description *string        `json:"description,omitempty"`
-		ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-		Name        *string        `json:"name,omitempty"`
-		Revoked     *bool          `json:"revoked,omitempty"`
-		Scopes      *[]interface{} `json:"scopes,omitempty"`
-		Token       *string        `json:"token,omitempty"`
-		UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+		Active      *bool      `json:"active,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		Description *string    `json:"description,omitempty"`
+		ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+		Name        *string    `json:"name,omitempty"`
+		Revoked     *bool      `json:"revoked,omitempty"`
+		Scopes      *[]any     `json:"scopes,omitempty"`
+		Token       *string    `json:"token,omitempty"`
+		UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 	}
 }
 type DeleteApiV4PersonalAccessTokensIdResponse struct {
@@ -154,34 +154,34 @@ type GetApiV4PersonalAccessTokensIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Active      *bool          `json:"active,omitempty"`
-		CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		Description *string        `json:"description,omitempty"`
-		ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-		LastUsedIps *[]interface{} `json:"last_used_ips,omitempty"`
-		Name        *string        `json:"name,omitempty"`
-		Revoked     *bool          `json:"revoked,omitempty"`
-		Scopes      *[]interface{} `json:"scopes,omitempty"`
-		UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+		Active      *bool      `json:"active,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		Description *string    `json:"description,omitempty"`
+		ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+		LastUsedIps *[]any     `json:"last_used_ips,omitempty"`
+		Name        *string    `json:"name,omitempty"`
+		Revoked     *bool      `json:"revoked,omitempty"`
+		Scopes      *[]any     `json:"scopes,omitempty"`
+		UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 	}
 }
 type PostApiV4PersonalAccessTokensIdRotateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		Active      *bool          `json:"active,omitempty"`
-		CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-		Description *string        `json:"description,omitempty"`
-		ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-		Name        *string        `json:"name,omitempty"`
-		Revoked     *bool          `json:"revoked,omitempty"`
-		Scopes      *[]interface{} `json:"scopes,omitempty"`
-		Token       *string        `json:"token,omitempty"`
-		UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+		Active      *bool      `json:"active,omitempty"`
+		CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+		Description *string    `json:"description,omitempty"`
+		ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+		Name        *string    `json:"name,omitempty"`
+		Revoked     *bool      `json:"revoked,omitempty"`
+		Scopes      *[]any     `json:"scopes,omitempty"`
+		Token       *string    `json:"token,omitempty"`
+		UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 	}
 }
 
@@ -987,17 +987,17 @@ func ParseGetApiV4PersonalAccessTokensResponse(rsp *http.Response) (*GetApiV4Per
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
-			Active      *bool          `json:"active,omitempty"`
-			CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			Description *string        `json:"description,omitempty"`
-			ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-			LastUsedIps *[]interface{} `json:"last_used_ips,omitempty"`
-			Name        *string        `json:"name,omitempty"`
-			Revoked     *bool          `json:"revoked,omitempty"`
-			Scopes      *[]interface{} `json:"scopes,omitempty"`
-			UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+			Active      *bool      `json:"active,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			Description *string    `json:"description,omitempty"`
+			ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+			LastUsedIps *[]any     `json:"last_used_ips,omitempty"`
+			Name        *string    `json:"name,omitempty"`
+			Revoked     *bool      `json:"revoked,omitempty"`
+			Scopes      *[]any     `json:"scopes,omitempty"`
+			UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1037,17 +1037,17 @@ func ParseGetApiV4PersonalAccessTokensSelfResponse(rsp *http.Response) (*GetApiV
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Active      *bool          `json:"active,omitempty"`
-			CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			Description *string        `json:"description,omitempty"`
-			ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-			LastUsedIps *[]interface{} `json:"last_used_ips,omitempty"`
-			Name        *string        `json:"name,omitempty"`
-			Revoked     *bool          `json:"revoked,omitempty"`
-			Scopes      *[]interface{} `json:"scopes,omitempty"`
-			UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+			Active      *bool      `json:"active,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			Description *string    `json:"description,omitempty"`
+			ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+			LastUsedIps *[]any     `json:"last_used_ips,omitempty"`
+			Name        *string    `json:"name,omitempty"`
+			Revoked     *bool      `json:"revoked,omitempty"`
+			Scopes      *[]any     `json:"scopes,omitempty"`
+			UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1073,16 +1073,16 @@ func ParseGetApiV4PersonalAccessTokensSelfAssociationsResponse(rsp *http.Respons
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Active      *bool          `json:"active,omitempty"`
-			CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			Description *string        `json:"description,omitempty"`
-			ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-			Name        *string        `json:"name,omitempty"`
-			Revoked     *bool          `json:"revoked,omitempty"`
-			Scopes      *[]interface{} `json:"scopes,omitempty"`
-			UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+			Active      *bool      `json:"active,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			Description *string    `json:"description,omitempty"`
+			ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+			Name        *string    `json:"name,omitempty"`
+			Revoked     *bool      `json:"revoked,omitempty"`
+			Scopes      *[]any     `json:"scopes,omitempty"`
+			UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1108,17 +1108,17 @@ func ParsePostApiV4PersonalAccessTokensSelfRotateResponse(rsp *http.Response) (*
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Active      *bool          `json:"active,omitempty"`
-			CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			Description *string        `json:"description,omitempty"`
-			ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-			Name        *string        `json:"name,omitempty"`
-			Revoked     *bool          `json:"revoked,omitempty"`
-			Scopes      *[]interface{} `json:"scopes,omitempty"`
-			Token       *string        `json:"token,omitempty"`
-			UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+			Active      *bool      `json:"active,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			Description *string    `json:"description,omitempty"`
+			ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+			Name        *string    `json:"name,omitempty"`
+			Revoked     *bool      `json:"revoked,omitempty"`
+			Scopes      *[]any     `json:"scopes,omitempty"`
+			Token       *string    `json:"token,omitempty"`
+			UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1158,17 +1158,17 @@ func ParseGetApiV4PersonalAccessTokensIdResponse(rsp *http.Response) (*GetApiV4P
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Active      *bool          `json:"active,omitempty"`
-			CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			Description *string        `json:"description,omitempty"`
-			ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-			LastUsedIps *[]interface{} `json:"last_used_ips,omitempty"`
-			Name        *string        `json:"name,omitempty"`
-			Revoked     *bool          `json:"revoked,omitempty"`
-			Scopes      *[]interface{} `json:"scopes,omitempty"`
-			UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+			Active      *bool      `json:"active,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			Description *string    `json:"description,omitempty"`
+			ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+			LastUsedIps *[]any     `json:"last_used_ips,omitempty"`
+			Name        *string    `json:"name,omitempty"`
+			Revoked     *bool      `json:"revoked,omitempty"`
+			Scopes      *[]any     `json:"scopes,omitempty"`
+			UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -1194,17 +1194,17 @@ func ParsePostApiV4PersonalAccessTokensIdRotateResponse(rsp *http.Response) (*Po
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			Active      *bool          `json:"active,omitempty"`
-			CreatedAt   *time.Time     `json:"created_at,omitempty" jsonschema:",format=date-time"`
-			Description *string        `json:"description,omitempty"`
-			ExpiresAt   *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id          *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			LastUsedAt  *time.Time     `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
-			Name        *string        `json:"name,omitempty"`
-			Revoked     *bool          `json:"revoked,omitempty"`
-			Scopes      *[]interface{} `json:"scopes,omitempty"`
-			Token       *string        `json:"token,omitempty"`
-			UserId      *int32         `json:"user_id,omitempty" jsonschema:",format=int32"`
+			Active      *bool      `json:"active,omitempty"`
+			CreatedAt   *time.Time `json:"created_at,omitempty" jsonschema:",format=date-time"`
+			Description *string    `json:"description,omitempty"`
+			ExpiresAt   *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id          *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			LastUsedAt  *time.Time `json:"last_used_at,omitempty" jsonschema:",format=date-time"`
+			Name        *string    `json:"name,omitempty"`
+			Revoked     *bool      `json:"revoked,omitempty"`
+			Scopes      *[]any     `json:"scopes,omitempty"`
+			Token       *string    `json:"token,omitempty"`
+			UserId      *int32     `json:"user_id,omitempty" jsonschema:",format=int32"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

@@ -115,13 +115,13 @@ type GetApiV4DeployTokensResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *[]struct {
-		Expired   *bool          `json:"expired,omitempty"`
-		ExpiresAt *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-		Id        *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-		Name      *string        `json:"name,omitempty"`
-		Revoked   *bool          `json:"revoked,omitempty"`
-		Scopes    *[]interface{} `json:"scopes,omitempty"`
-		Username  *string        `json:"username,omitempty"`
+		Expired   *bool      `json:"expired,omitempty"`
+		ExpiresAt *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+		Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+		Name      *string    `json:"name,omitempty"`
+		Revoked   *bool      `json:"revoked,omitempty"`
+		Scopes    *[]any     `json:"scopes,omitempty"`
+		Username  *string    `json:"username,omitempty"`
 	}
 }
 
@@ -546,13 +546,13 @@ func ParseGetApiV4DeployTokensResponse(rsp *http.Response) (*GetApiV4DeployToken
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest []struct {
-			Expired   *bool          `json:"expired,omitempty"`
-			ExpiresAt *time.Time     `json:"expires_at,omitempty" jsonschema:",format=date-time"`
-			Id        *int32         `json:"id,omitempty" jsonschema:",format=int32"`
-			Name      *string        `json:"name,omitempty"`
-			Revoked   *bool          `json:"revoked,omitempty"`
-			Scopes    *[]interface{} `json:"scopes,omitempty"`
-			Username  *string        `json:"username,omitempty"`
+			Expired   *bool      `json:"expired,omitempty"`
+			ExpiresAt *time.Time `json:"expires_at,omitempty" jsonschema:",format=date-time"`
+			Id        *int32     `json:"id,omitempty" jsonschema:",format=int32"`
+			Name      *string    `json:"name,omitempty"`
+			Revoked   *bool      `json:"revoked,omitempty"`
+			Scopes    *[]any     `json:"scopes,omitempty"`
+			Username  *string    `json:"username,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

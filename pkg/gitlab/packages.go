@@ -39,49 +39,49 @@ type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackag
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		RecipeSnapshot *map[string]interface{} `json:"recipe_snapshot,omitempty"`
+		RecipeSnapshot *map[string]any `json:"recipe_snapshot,omitempty"`
 	}
 }
 type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDigestResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		RecipeUrls *map[string]interface{} `json:"recipe_urls,omitempty"`
+		RecipeUrls *map[string]any `json:"recipe_urls,omitempty"`
 	}
 }
 type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelDownloadUrlsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		RecipeUrls *map[string]interface{} `json:"recipe_urls,omitempty"`
+		RecipeUrls *map[string]any `json:"recipe_urls,omitempty"`
 	}
 }
 type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		PackageSnapshot *map[string]interface{} `json:"package_snapshot,omitempty"`
+		PackageSnapshot *map[string]any `json:"package_snapshot,omitempty"`
 	}
 }
 type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDigestResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		PackageUrls *map[string]interface{} `json:"package_urls,omitempty"`
+		PackageUrls *map[string]any `json:"package_urls,omitempty"`
 	}
 }
 type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceDownloadUrlsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		PackageUrls *map[string]interface{} `json:"package_urls,omitempty"`
+		PackageUrls *map[string]any `json:"package_urls,omitempty"`
 	}
 }
 type PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelPackagesConanPackageReferenceUploadUrlsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		UploadUrls *map[string]interface{} `json:"upload_urls,omitempty"`
+		UploadUrls *map[string]any `json:"upload_urls,omitempty"`
 	}
 }
 type GetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePackageChannelSearchResponse struct {
@@ -92,7 +92,7 @@ type PostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernamePacka
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		UploadUrls *map[string]interface{} `json:"upload_urls,omitempty"`
+		UploadUrls *map[string]any `json:"upload_urls,omitempty"`
 	}
 }
 type GetApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileNameResponse struct {
@@ -2324,7 +2324,7 @@ func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernameP
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			RecipeSnapshot *map[string]interface{} `json:"recipe_snapshot,omitempty"`
+			RecipeSnapshot *map[string]any `json:"recipe_snapshot,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2350,7 +2350,7 @@ func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernameP
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			RecipeUrls *map[string]interface{} `json:"recipe_urls,omitempty"`
+			RecipeUrls *map[string]any `json:"recipe_urls,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2376,7 +2376,7 @@ func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernameP
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			RecipeUrls *map[string]interface{} `json:"recipe_urls,omitempty"`
+			RecipeUrls *map[string]any `json:"recipe_urls,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2402,7 +2402,7 @@ func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernameP
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			PackageSnapshot *map[string]interface{} `json:"package_snapshot,omitempty"`
+			PackageSnapshot *map[string]any `json:"package_snapshot,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2428,7 +2428,7 @@ func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernameP
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			PackageUrls *map[string]interface{} `json:"package_urls,omitempty"`
+			PackageUrls *map[string]any `json:"package_urls,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2454,7 +2454,7 @@ func ParseGetApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsernameP
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			PackageUrls *map[string]interface{} `json:"package_urls,omitempty"`
+			PackageUrls *map[string]any `json:"package_urls,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2480,7 +2480,7 @@ func ParsePostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsername
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			UploadUrls *map[string]interface{} `json:"upload_urls,omitempty"`
+			UploadUrls *map[string]any `json:"upload_urls,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
@@ -2520,7 +2520,7 @@ func ParsePostApiV4PackagesConanV1ConansPackageNamePackageVersionPackageUsername
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			UploadUrls *map[string]interface{} `json:"upload_urls,omitempty"`
+			UploadUrls *map[string]any `json:"upload_urls,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err

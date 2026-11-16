@@ -26,7 +26,7 @@ type PostApiV4IntegrationsSlackEventsJSONBody struct {
 	AuthedUsers *[]string `json:"authed_users,omitempty" jsonschema:"description=(Deprecated by Slack) An array of Slack user IDs"`
 
 	// Event The event object with variable properties
-	Event *map[string]interface{} `json:"event,omitempty" jsonschema:"description=The event object with variable properties"`
+	Event *map[string]any `json:"event,omitempty" jsonschema:"description=The event object with variable properties"`
 
 	// EventId A unique identifier for this specific event
 	EventId *string `json:"event_id,omitempty" jsonschema:"description=A unique identifier for this specific event"`
@@ -49,7 +49,7 @@ type PostApiV4IntegrationsJiraConnectSubscriptionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON201      *struct {
-		Success *map[string]interface{} `json:"success,omitempty"`
+		Success *map[string]any `json:"success,omitempty"`
 	}
 }
 type PostApiV4IntegrationsSlackEventsResponse struct {
@@ -358,7 +358,7 @@ func ParsePostApiV4IntegrationsJiraConnectSubscriptionsResponse(rsp *http.Respon
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 201:
 		var dest struct {
-			Success *map[string]interface{} `json:"success,omitempty"`
+			Success *map[string]any `json:"success,omitempty"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
 			return nil, err
